@@ -1,0 +1,24 @@
+description = 'PatronNoOperation'
+version = '0.0.1'
+
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'groovy'
+
+repositories {	
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'org.gebish:geb-spock:0.9.2'
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '1.10'
+}
+
+test {
+    include '**/*Spec.*'
+}
