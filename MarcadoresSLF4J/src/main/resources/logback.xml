@@ -1,0 +1,14 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="io.github.picodotdev.log.markers.ImportacionFilter"></filter>
+        <encoder>
+            <pattern>%-23d{ISO8601} %-5p %-17marker %-17t %40.40C %-15M %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="io.github.picodotdev.log.markers" level="INFO"/>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
