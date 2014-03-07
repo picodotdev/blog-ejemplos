@@ -1,0 +1,23 @@
+description = 'HolaMundoJMS'
+version = '0.1'
+
+apply plugin: 'eclipse'
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+
+	maven {
+    	name 'JBoss'
+    	url 'http://repository.jboss.org/nexus/content/groups/public/'
+    }
+}
+
+dependencies {
+	compile 'javax.jms:javax.jms-api:2.0'
+	runtime 'org.wildfly:wildfly-jms-client-bom:8.0.0.Final'
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '1.10'
+}
