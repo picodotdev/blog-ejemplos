@@ -20,8 +20,8 @@ import javax.naming.InitialContext;
 public class Topic {
 
 	/**
-	 * Antes de ejecutar este ejemplo, usando JBoss se ha de crear un usuario guest y clave tseug con el 
-	 * script JBOSS_HOME/bin/add-user.sh.
+	 * Antes de ejecutar este ejemplo, usando WilfFly se ha de crear un usuario guest y clave guest con el 
+	 * script WILDFLY_HOME/bin/add-user.sh.
 	 */
 	public static void main(String[] args) throws Exception {
 		// Usuario y password para conectarse al servidor JNDI y al Topic
