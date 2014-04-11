@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Jasmine Spec Runner</title>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="../../../src/main/webapp/css/jasmine.css">
+
+	<script type="text/javascript" src="../../../src/main/webapp/js/require.js"></script>
+	<script type="text/javascript">
+		requirejs.config({			
+				baseUrl: '../../../src/main/webapp/js',
+    			shim: {
+					'underscore': {
+						exports: '_'
+					},
+                    'json2': {
+                        exports: 'JSON'
+                    },
+        			'backbone': {
+            			deps: ['jquery', 'underscore', 'json2'],
+            			exports: 'Backbone'
+        			},
+					'jasmine': {
+      					exports: 'jasmine'
+				    },
+					'jasmine-html': {
+						deps: ['jasmine'],
+						exports: 'jasmine'
+					},
+                    'sinon': {
+                        exports: 'sinon'
+                    }
+		        }
+		});
+	</script>
+    <script type="text/javascript">
+        require(['jasmine-html', 'specs/main-specs'], function(jasmine, specs) {
+            var env = jasmine.getEnv();
+    
+            var reporter = new jasmine.HtmlReporter();
+            env.specFilter = function(spec) {
+                return reporter.specFilter(spec);
+            };
+            env.updateInterval = 1000;
+            env.addReporter(reporter);
+            env.execute();
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

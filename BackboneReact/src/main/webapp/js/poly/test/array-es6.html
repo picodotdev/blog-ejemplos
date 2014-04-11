@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+<title>array-es6 tests</title>
+
+<script>
+
+    curl = {
+		baseUrl: '../',
+		paths: {
+			curl: 'test/curl'
+		},
+		packages: [
+			{ name: 'poly', location: '.', main: 'poly' }
+		]
+	};
+
+</script>
+
+<script src="curl.js"></script>
+
+<script>
+
+curl(['poly/array-es6', 'domReady!'], function () {
+}).next(['test/testutils'], runTests);
+
+function runTests (tester) {
+
+	/***** Array.from and Array.of *****/
+
+	// basics
+	tester.assertTrue('Array.from exists', typeof Array.from == 'function');
+	tester.assertTrue('Array.of exists', typeof Array.of == 'function');
+	tester.assertEquals('the length property of Array.from is 1', Array.from.length, 1);
+	tester.assertEquals('the length property of Array.from is 0', Array.of.length, 0);
+
+	// happy path
+	tester.assertTrue('Array.of(...tihngs) should return [...things]', arraysLookIdentical(Array.of(1, 2, 3, 'four'), [1, 2, 3, 'four']));
+
+	var nodes = document.all ? document.all() : document.querySelectorAll('html *');
+	var a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+	var args = asArguments.apply(null, a);
+	tester.assertTrue('Array.from(nodelist)', arraysLookIdentical(Array.from(nodes), nodes));
+	tester.assertTrue('Array.from(arguments)', arraysLookIdentical(Array.from(args), a));
+
+	// edges
+	tester.assertTrue('Array.from(<number>) is empty array', arraysLookIdentical(Array.from(5), []));
+	tester.assertTrue('Array.from(<non-array-like>) is empty array', arraysLookIdentical(Array.from({}), []));
+
+	var a = [undefined, 1, 2, undefined];
+	tester.assertTrue('Array.from(<array-like-with-missing-items>) should have undefined placeholders', arraysLookIdentical(Array.from(a), a));
+
+	tester.assertTrue('Array.of(<number>) should return [<number>]', arraysLookIdentical(Array.of(4), [4]));
+	tester.assertTrue('Array.of(<array>) should return [<array>]', arraysLookIdentical(Array.of(a), [a]));
+
+	// generic from()
+	tester.assertEquals(
+			'Array.from.call(ArrayLike, <arr>) converts to an array-like object',
+			Object.prototype.toString.call(Array.from.call(ArrayLike, [ 1, 2, 3 ])),
+			Object.prototype.toString.call(new ArrayLike())
+	);
+	tester.assertTrue(
+			'Array.from.call(ArrayLike, <arr>) copies all items',
+			arraysLookIdentical(Array.from.call(ArrayLike, [ 1, 2, 3 ]), [ 1, 2, 3 ])
+	);
+
+	function ArrayLike (len) {}
+
+	/***** find and findIndex *****/
+
+	var functionLength = [].findIndex.length;
+
+	tester.assertEquals('the length property of findIndex is 1', functionLength, 1);
+
+	var result = [].findIndex(function (e) {
+		return true;	// doesn't really matter
+	});
+
+	tester.assertEquals('if length is 0, return -1', result, -1)
+
+	var a, isTypeError;
+
+	a = ['not empty'];
+	isTypeError = false;
+
+	try {
+		a.findIndex();
+	}
+	catch (e) {
+		isTypeError = e instanceof TypeError;
+	}
+	tester.assertTrue('throw TypeError exception if predicate is not callable', isTypeError);
+
+	var a, result;
+
+	a = [1, 2, 3, 4, 6];
+	result = a.findIndex(function (item, i, arr) {
+		return item === 5;
+	});
+
+	tester.assertEquals('when no result is found return -1', result, -1);
+
+	var a, result;
+
+	a = [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1];
+	result = a.findIndex(function (item, i, arr) {
+		return item === 5;
+	});
+
+	tester.assertEquals('returns the index of the first element the predicate deems true', result, 4);
+
+	var a, result;
+
+	a = [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1];
+	result = a.findIndex(function (item, i, arr) {
+		return item === this.value;
+	}, { value: 5 });
+
+	tester.assertEquals('returns the index of the first element the predicate with a context deems true', result, 4);
+
+	var functionLength = [].find.length;
+
+	tester.assertEquals('the length property of find is 1', functionLength, 1);
+
+	var result = [].find(function (e) {
+		return true;	// doesn't really matter
+	});
+
+	tester.assertEquals('if length is 0, return undefined', result, undefined)
+
+	var a, isTypeError;
+
+	a = ['not empty'];
+	isTypeError = false;
+
+	try {
+		a.find();
+	}
+	catch (e) {
+		isTypeError = e instanceof TypeError;
+	}
+	tester.assertTrue('throw TypeError exception if predicate is not callable', isTypeError);
+
+	var a, result;
+
+	a = [1, 2, 3, 4, 6];
+	result = a.find(function (item, i, arr) {
+		return item === 5;
+	});
+
+	tester.assertEquals('when no result is found return undefined', result, undefined);
+
+	var a, result;
+
+	a = [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1];
+	result = a.find(function (item, i, arr) {
+		return item === 5;
+	});
+
+	tester.assertEquals('returns the first element the predicate deems true', result, a[4]);
+
+	var a, result;
+
+	a = [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1];
+	result = a.find(function (item, i, arr) {
+		return item === this.value;
+	}, { value: 5 });
+
+	tester.assertEquals('returns the first element the predicate with a context deems true', result, a[4]);
+}
+
+function arraysLookIdentical (a, b) {
+	if (a.length != b.length) return false;
+	for (var i = 0; i < a.length; i++) {
+		if (a[i] !== b[i]) return false;
+	}
+	return true;
+}
+
+function asArguments () {
+	return arguments;
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div id="output"></div>
+
+</body>
+</html>

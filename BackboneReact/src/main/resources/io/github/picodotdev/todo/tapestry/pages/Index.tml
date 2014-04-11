@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+<head>
+	<title>Aplicación de ejemplo de Apache Tapestry 5 integrado con Backbone y React</title>
+	
+	<meta name="author" content="pico.dev"/>
+	<meta name="description" content="Aplicación de ejemplo de Apache Tapestry 5 integrado con Backbone y React"/>
+	
+	<link type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
+	<link type="text/css" href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
+
+	<script type="text/javascript" src="js/require.js" data-main="js/main"></script>
+    <script type="text/javascript">
+        requirejs.config({
+            shim: {
+                underscore: {
+                    exports: '_'
+                },
+                json2: {
+                    exports: 'JSON'
+                },
+                backbone: {
+                    deps: ['jquery', 'underscore', 'json2'],
+                    exports: 'Backbone'
+                }
+            },
+        	locale: '${locale}'
+        });
+    </script>
+	<style type="text/css">
+		body {
+			font-family: 'Open Sans', arial, serif;
+		}
+		
+		span.completada {
+            text-decoration: line-through;
+		}
+		
+		li {
+			list-style: none;
+		}
+		
+		#estado {
+		  margin-bottom: 1em;
+		}		
+	</style>
+</head>
+<body>
+    <div class="container">
+    	<div class="row">
+			<div class="col-md-2"></div>
+    		<div class="col-md-4 text-center">
+				<img src="${context:images/tapestry5.png}" alt="Tapestry 5" title="Tapestry 5"/><br/>
+    		</div>
+        	<div class="col-md-4 text-center">
+				<img src="${context:images/requirejs.png}" alt="require.js" title="require.js"/><br/>
+        	</div>
+			<div class="col-md-2"></div>
+        </div>
+    	<div class="row text-center">
+			<div class="col-md-2"></div>
+    		<div class="col-md-4 text-center">
+				<img src="${context:images/backbone.png}" alt="Backbone.js" title="Backbone.js" style="width: 350px"/><br/>
+    		</div>
+        	<div class="col-md-4 text-center">
+            	<img src="${context:images/react.png}" alt="React.js" title="React.js" style="height: 150px"/><br/>
+        	</div>
+			<div class="col-md-2"></div>
+        </div>
+    </div>
+    
+    <div class="container" style="margin-top: 20px">
+		<div class="row">
+			<div class="col-md-2"></div>
+        	<div class="col-md-8">
+            	<div id="tareas"></div>
+        	</div>
+			<div class="col-md-2"></div>
+		</div>
+    </div>
+
+    <!-- Datos iniciales -->
+    <!--
+        Incluir los datos en la misma página para evitar una petición, tiene la ventaja
+        de que evita una petición pero la desventaja de que impide cachear la página.
+    -->
+    <!--        
+    <script type="text/javascript" >
+        var tareas = ${tareasJSON};
+    </script>
+    -->
+</body>
+</html>

@@ -1,0 +1,82 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+import org.gradle.api.tasks.Exec
+
+description = 'BackboneReact'
+version = '0.1'
+
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'tomcat'
+
+[tomcatRun, tomcatStop]*.stopKey = 'stopKey'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:0.9.9'
+    }
+}
+
+repositories {	
+	maven {
+    	name 'JBoss Thirdparty'
+    	url 'https://repository.jboss.org/nexus/content/repositories/thirdparty-releases'
+    }
+    mavenCentral()
+}
+
+dependencies {
+	compile 'org.apache.tapestry:tapestry5-annotations:5.3.7'
+	compile 'org.apache.tapestry:tapestry-core:5.3.7'
+	
+	compile 'org.jboss.resteasy:jaxrs-api:2.3.5.Final'
+	compile 'org.jboss.resteasy:resteasy-jaxrs:2.3.5.Final'
+	compile 'org.jboss.resteasy:resteasy-jsapi:2.3.5.Final'
+	compile 'org.jboss.resteasy:resteasy-jaxb-provider:2.3.5.Final'
+	compile 'org.jboss.resteasy:resteasy-jackson-provider:2.3.5.Final'
+	
+	compile 'com.google.code.gson:gson:2.2.2'
+	
+	providedCompile 'javax.servlet:servlet-api:2.5'
+	
+    // Tomcat
+    tomcat 'org.apache.tomcat.embed:tomcat-embed-core:7.0.52'
+    tomcat 'org.apache.tomcat.embed:tomcat-embed-logging-juli:7.0.52'
+    tomcat('org.apache.tomcat.embed:tomcat-embed-jasper:7.0.52') {
+        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+    }
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '1.10'
+}
+
+task jasmine(type: GruntTask) {
+    gruntArgs = "jasmine:requirejs"
+}
+
+task r(type:Exec) {
+	workingDir './'
+
+	commandLine 'node', 'r.js', '-o', 'build.js'
+}
+
+class GruntTask extends Exec {
+	private String gruntExecutable = Os.isFamily(Os.FAMILY_WINDOWS) ? "grunt.cmd" : "grunt"
+	private String switches = "--gruntfile grunt.js"
+
+	String gruntArgs = "" 
+
+	public GruntTask() {
+		super()
+		this.setExecutable(gruntExecutable)
+	}
+
+	public void setGruntArgs(String gruntArgs) {
+		this.args = "$switches $gruntArgs".trim().split(" ") as List
+	}
+}
