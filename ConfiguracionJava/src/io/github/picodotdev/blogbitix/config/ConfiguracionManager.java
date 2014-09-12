@@ -1,4 +1,4 @@
-package io.github.picodotdev.config;
+package io.github.picodotdev.blogbitix.config;
 
 import java.io.FileReader;
 import java.io.Reader;

@@ -1,4 +1,4 @@
-package io.github.picodotdev.config;
+package io.github.picodotdev.blogbitix.config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class Main1 {
 
 	public static void main(String[] args) throws Exception {
 		// Definir la clase
-		String[] sources = new String[] { "package io.github.picodotdev.config;",
+		String[] sources = new String[] { "package io.github.picodotdev.blogbitix.config;",
 				"import java.util.HashMap;",
 				"import java.util.Map;",
 				"public class AppConfiguracion implements Configuracion {",
@@ -27,7 +27,7 @@ public class Main1 {
 				"}" };
 
 		String source = join(sources);
-		String name = "io.github.picodotdev.config.AppConfiguracion";
+		String name = "io.github.picodotdev.blogbitix.config.AppConfiguracion";
 	
 		// Compilar la clase
 		JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();

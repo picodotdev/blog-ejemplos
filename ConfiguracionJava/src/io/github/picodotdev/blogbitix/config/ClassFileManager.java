@@ -1,4 +1,4 @@
-package io.github.picodotdev.config;
+package io.github.picodotdev.blogbitix.config;
 
 import java.io.IOException;
 import java.security.SecureClassLoader;

@@ -1,4 +1,4 @@
-package io.github.picodotdev.config;
+package io.github.picodotdev.blogbitix.config;
 
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
@@ -6,7 +6,7 @@ import java.nio.file.Path;
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-		Path path = FileSystems.getDefault().getPath("src/io/github/picodotdev/config/AppConfiguracion.java");
+		Path path = FileSystems.getDefault().getPath("src/io/github/picodotdev/blogbitix/config/AppConfiguracion.java");
 		ConfiguracionManager manager = new ConfiguracionManager("io.github.picodotdev.config.AppConfiguracion", path).load().monitor();
 		
 		int n = 0;
