@@ -63,10 +63,8 @@ public class ConfiguracionManager {
 		Runnable task = new Runnable() {
 			@Override
 			public void run() {
-				WatchService watchService = null;
-				try {
-					while (!closed) {
-						watchService = FileSystems.getDefault().newWatchService();
+				while (!closed) {
+					try (WatchService watchService = FileSystems.getDefault().newWatchService()) {
 						path.getParent().register(watchService, StandardWatchEventKinds.ENTRY_MODIFY);
 						WatchKey watchKey = watchService.take();
 						if (watchKey == null) {
@@ -79,14 +77,9 @@ public class ConfiguracionManager {
 								load();
 							}
 						}
+					} catch (Exception e) {
+						throw new RuntimeException(e);
 					}
-				} catch (Exception e) {
-					throw new RuntimeException(e);
-				} finally {
-					try {
-						if (watchService != null)
-							watchService.close();
-					} catch (Exception e) {}
 				}
 			}
 		};

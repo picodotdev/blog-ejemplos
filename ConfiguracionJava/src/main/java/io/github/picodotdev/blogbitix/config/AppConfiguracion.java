@@ -10,7 +10,7 @@ public class AppConfiguracion implements Configuracion {
 
 	static {
 		config = new HashMap<>();
-		config.put("propiedad", 1);
+		config.put("propiedad", 5);
 	}
 
 	public Map get() {
