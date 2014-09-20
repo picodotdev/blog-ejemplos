@@ -6,8 +6,8 @@ import java.nio.file.Path;
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-		Path path = FileSystems.getDefault().getPath("src/io/github/picodotdev/blogbitix/config/AppConfiguracion.java");
-		ConfiguracionManager manager = new ConfiguracionManager("io.github.picodotdev.config.AppConfiguracion", path).load().monitor();
+		Path path = FileSystems.getDefault().getPath("src/main/java/io/github/picodotdev/blogbitix/config/AppConfiguracion.java");
+		ConfiguracionManager manager = new ConfiguracionManager("io.github.picodotdev.blogbitix.config.AppConfiguracion", path).load().monitor();
 		
 		int n = 0;
 		while (n < 20) {

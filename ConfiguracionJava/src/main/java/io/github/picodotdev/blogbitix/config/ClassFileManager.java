@@ -2,6 +2,8 @@ package io.github.picodotdev.blogbitix.config;
 
 import java.io.IOException;
 import java.security.SecureClassLoader;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.tools.FileObject;
 import javax.tools.ForwardingJavaFileManager;
@@ -10,10 +12,8 @@ import javax.tools.JavaFileObject.Kind;
 import javax.tools.StandardJavaFileManager;
 
 public class ClassFileManager extends ForwardingJavaFileManager {
-	/**
-	 * Instance of JavaClassObject that will store the compiled bytecode of our class
-	 */
-	private JavaClassObject object;
+
+	private Map<String, Object> classes;
 
 	/**
 	 * Will initialize the manager with the specified standard java file manager
@@ -22,6 +22,7 @@ public class ClassFileManager extends ForwardingJavaFileManager {
 	 */
 	public ClassFileManager(StandardJavaFileManager standardManager) {
 		super(standardManager);
+		classes = new HashMap<>();
 	}
 
 	/**
@@ -33,9 +34,19 @@ public class ClassFileManager extends ForwardingJavaFileManager {
 	public ClassLoader getClassLoader(Location location) {
 		return new SecureClassLoader() {
 			@Override
-			protected Class<?> findClass(String name) throws ClassNotFoundException {
-				byte[] b = object.getBytes();
-				return super.defineClass(name, object.getBytes(), 0, b.length);
+			public Class<?> loadClass(String name) throws ClassNotFoundException {
+				Object o = classes.get(name);
+				if (o instanceof Class) {
+					return (Class) o;
+				} else if (o instanceof JavaClassObject) {
+					JavaClassObject object = (JavaClassObject) o;
+					byte[] b = object.getBytes();
+					Class<?> clazz = defineClass(name, object.getBytes(), 0, b.length);
+					classes.put(name, clazz);
+					return clazz;
+				} else {
+					return super.loadClass(name);					
+				} 
 			}
 		};
 	}
@@ -46,7 +57,8 @@ public class ClassFileManager extends ForwardingJavaFileManager {
 	 */
 	@Override
 	public JavaFileObject getJavaFileForOutput(Location location, String className, Kind kind, FileObject sibling) throws IOException {
-		object = new JavaClassObject(className, kind);
+		JavaClassObject object = new JavaClassObject(className, kind);
+		classes.put(className, object);
 		return object;
 	}
 }
