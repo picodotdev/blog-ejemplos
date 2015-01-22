@@ -34,7 +34,7 @@ public class AppModule {
 		configuration.add(SymbolConstants.COMBINE_SCRIPTS, production);
 		configuration.add(SymbolConstants.MINIFICATION_ENABLED, production);
 		configuration.add(SymbolConstants.COMPACT_JSON, production);
-		configuration.add(SymbolConstants.SUPPORTED_LOCALES, "es");
+		configuration.add(SymbolConstants.SUPPORTED_LOCALES, "es,en");
 
 		// Contribuciones que definirán las rutas en las que el filtro de
 		// RESTEasy atenderá las peticiones REST

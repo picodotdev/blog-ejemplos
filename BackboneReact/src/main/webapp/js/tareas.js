@@ -1,4 +1,4 @@
-define('tareas', [ 'jquery', 'underscore', 'backbone', 'react', 'mustache', 'plantillas', 'i18n!i18n/nls/mensajes' ], function($, _, Backbone, React, Mustache, Plantillas, Mensajes) {
+define('tareas', [ 'jquery', 'underscore', 'backbone', 'react', 'mustache', 'plantillas', 'i18next' ], function($, _, Backbone, React, Mustache, Plantillas, i18n) {
 	function render(plantilla, datos, mensajes) {
 		var d = datos || {};
 		var m = mensajes || {};
@@ -109,14 +109,14 @@ define('tareas', [ 'jquery', 'underscore', 'backbone', 'react', 'mustache', 'pla
 		render: function() {
 			var d = this.getData();
 			var m = {
-				'COMPLETADAS_tareas_de_TOTAL_completadas': Mustache.render(Mensajes.COMPLETADAS_tareas_de_TOTAL_completadas, d),
-				'Muy_bien_has_completado_todas_las_tareas': Mensajes.Muy_bien_has_completado_todas_las_tareas,
+				'COMPLETADAS_tareas_completadas_de_TOTAL': i18n.t('COMPLETADAS_tareas_completadas_de_TOTAL', d),
+				'Muy_bien_has_completado_todas_las_tareas': i18n.t('Muy_bien_has_completado_todas_las_tareas'),
 			};
 			var estado = render('estado', d, m);
 //			return (
-//				<span className="estado">{estado}</span>
+//				<div className="estado">{estado}</div>
 //			);
-			return React.DOM.span({className:'estado'}, estado);
+			return React.DOM.div({className:'estado'}, estado);
 		},
 		// Métodos
 		getData: function() {
@@ -124,6 +124,7 @@ define('tareas', [ 'jquery', 'underscore', 'backbone', 'react', 'mustache', 'pla
 			var total = this.props.tareas.length;
 
 			return {
+				count: completadas,
 				completadas: completadas,
 				total: total
 			};
@@ -175,21 +176,19 @@ define('tareas', [ 'jquery', 'underscore', 'backbone', 'react', 'mustache', 'pla
 		render: function() {
 //			return (
 //				<div>
-//					<h2>{Mensajes.Lista_de_tareas}</h2>
-//					<input type="text" name="nuevaTarea" className="form-control" placeholder={Mensajes.Introduce_una_nueva_tarea} />
+//					<h2>{i18n.t('Lista_de_tareas')}</h2>
+//					<input type="text" name="nuevaTarea" className="form-control" placeholder={i18n.t('Introduce_una_nueva_tarea')} />
 //					<TareasComponent tareas={this.state.tareas} />
 //					<EstadoComponent tareas={this.state.tareas} />
-//					<br/>
-//					<input type="button" name="limpiar" value={Mensajes.Limpiar} disabled={(this.isTareasCompletadas())?null:'disabled'} className="btn" />
+//					<input type="button" name="limpiar" value={i18n.t('Limpiar')} disabled={(this.isTareasCompletadas())?null:'disabled'} className="btn" />
 //				</div>
 //			);
 			return React.DOM.div(null,
-					React.DOM.h2(null, Mensajes.Lista_de_tareas),
-					React.DOM.input({type:'text', name:'nuevaTarea', className:'form-control', placeholder:Mensajes.Introduce_una_nueva_tarea}),
+					React.DOM.h2(null, i18n.t('Lista_de_tareas')),
+					React.DOM.input({type:'text', name:'nuevaTarea', className:'form-control', placeholder:i18n.t('Introduce_una_nueva_tarea')}),
 					TareasComponent({tareas:this.state.tareas}),
 					EstadoComponent({tareas:this.state.tareas}),
-					React.DOM.br(),
-					React.DOM.input({type:'button', name:'limpiar', value:Mensajes.Limpiar, disabled:(this.isTareasCompletadas())?'':'disabled', className:'btn'})
+					React.DOM.input({type:'button', name:'limpiar', value:i18n.t('Limpiar'), disabled:(this.isTareasCompletadas())?'':'disabled', className:'btn btn-primary'})
 			);
 		},
 		// Métodos

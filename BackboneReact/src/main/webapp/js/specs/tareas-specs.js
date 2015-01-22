@@ -1,4 +1,24 @@
-define(['jquery', 'jasmine-html', 'sinon', 'react', 'tareas'], function($, jasmine, sinon, React, tareas) {
+define(['jquery', 'jasmine-html', 'sinon', 'react', 'i18next', 'tareas'], function($, jasmine, sinon, React, i18n, tareas) {
+	var resources = {
+		dev: {
+			translation: {
+				"Lista_de_tareas": "Lista de tareas",
+			    "COMPLETADAS_tareas_completadas_de_TOTAL": "{{completadas}} tarea completada de {{total}}",
+			    "COMPLETADAS_tareas_completadas_de_TOTAL_plural": "{{completadas}} tareas completadas de {{total}}",
+			    "Muy_bien_has_completado_todas_las_tareas": "¡Muy bien! has completado todas las tareas",
+			    "Limpiar": "Limpiar",
+			    "Introduce_una_nueva_tarea": "Introduce una nueva tarea"
+			}
+		}
+	};
+	i18n.init({ 
+		lng: 'es',
+		getAsync: false,
+	    interpolationPrefix: '{{',
+	    interpolationSuffix: '}}',
+	    resStore: resources 
+	});
+	
 	var Utils = {
 		render: function(instance) {
 			var el = document.createElement('div');
@@ -99,7 +119,7 @@ define(['jquery', 'jasmine-html', 'sinon', 'react', 'tareas'], function($, jasmi
 					app.resetTareas([tareaNoCompletada, tareaCompletada]);					
 
 					expect(2).toEqual($('li', app.getDOMNode()).length);
-					expect('1 tareas de 2 completadas<br>').toEqual($('span.estado', app.getDOMNode()).html().trim());
+					expect('1 tarea completada de 2<br>').toEqual($('div.estado', app.getDOMNode()).html().trim());
 				});
 				it('añadir una tarea', function() {
 					app.addTarea(tareaNoCompletada);

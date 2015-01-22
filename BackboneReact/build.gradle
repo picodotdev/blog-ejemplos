@@ -14,10 +14,11 @@ apply plugin: 'tomcat'
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
     }
 
     dependencies {
-        classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:0.9.9'
+        classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:1.2.4'
     }
 }
 
@@ -30,8 +31,8 @@ repositories {
 }
 
 dependencies {
-	compile 'org.apache.tapestry:tapestry5-annotations:5.3.7'
-	compile 'org.apache.tapestry:tapestry-core:5.3.7'
+	compile 'org.apache.tapestry:tapestry5-annotations:5.3.8'
+	compile 'org.apache.tapestry:tapestry-core:5.3.8'
 	
 	compile 'org.jboss.resteasy:jaxrs-api:2.3.5.Final'
 	compile 'org.jboss.resteasy:resteasy-jaxrs:2.3.5.Final'
@@ -41,7 +42,9 @@ dependencies {
 	
 	compile 'com.google.code.gson:gson:2.2.2'
 	
-	providedCompile 'javax.servlet:servlet-api:2.5'
+	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+	
+	runtime 'org.slf4j:slf4j-log4j12:1.7.5'
 	
     // Tomcat
     tomcat 'org.apache.tomcat.embed:tomcat-embed-core:7.0.52'
@@ -52,7 +55,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '1.10'
+	gradleVersion = '2.2.1'
 }
 
 task jasmine(type: GruntTask) {

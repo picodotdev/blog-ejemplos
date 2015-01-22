@@ -1,0 +1,8 @@
+{
+	"Lista_de_tareas": "Tasks List",
+    "COMPLETADAS_tareas_completadas_de_TOTAL": "__completadas__ task completed of __total__",
+    "COMPLETADAS_tareas_completadas_de_TOTAL_plural": "__completadas__ tasks completed of __total__",
+    "Muy_bien_has_completado_todas_las_tareas": "¡Perfect! You have done all tasks",
+    "Limpiar": "Clean",
+    "Introduce_una_nueva_tarea": "Type a new task"
+}
