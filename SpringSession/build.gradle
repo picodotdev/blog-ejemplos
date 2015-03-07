@@ -1,0 +1,37 @@
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'com.bmuschko.tomcat'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.0'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile 'org.springframework:spring-web:4.1.4.RELEASE'
+	compile 'org.springframework:spring-webmvc:4.1.4.RELEASE'
+	compile 'org.springframework.session:spring-session-data-redis:1.0.0.RELEASE'
+
+	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+	runtime 'javax.servlet:jstl:1.2'
+	
+    tomcat('org.apache.tomcat.embed:tomcat-embed-core:7.0.57')
+    tomcat('org.apache.tomcat.embed:tomcat-embed-logging-juli:7.0.57')
+    tomcat('org.apache.tomcat.embed:tomcat-embed-jasper:7.0.57') {
+        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+    }
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.3'
+}
