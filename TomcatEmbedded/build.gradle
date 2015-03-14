@@ -1,0 +1,33 @@
+description = 'TomcatEmbedded'
+version = '0.1'
+
+apply plugin: 'application'
+apply plugin: 'eclipse'
+apply plugin: 'java'
+
+mainClassName = 'io.github.picodotdev.blogbitix.tomcatEmbedded.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile('org.apache.tomcat.embed:tomcat-embed-core:8.0.20')
+	compile('org.apache.tomcat.embed:tomcat-embed-logging-log4j:8.0.20')
+	compile('org.apache.tomcat.embed:tomcat-embed-jasper:8.0.20')
+	compile('junit:junit:4.12')
+}
+
+jar {
+    manifest {
+        attributes('Main-Class': 'io.github.picodotdev.blogbitix.tomcatEmbedded.Main')
+    }
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.3'
+}
+
+applicationDistribution.from('tomcat/webapps/PlugInTapestry-1.2.war') {
+    into "tomcat/webapps/"
+}
