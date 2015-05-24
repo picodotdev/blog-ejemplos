@@ -5,4 +5,4 @@ Este repositorio de Git contiene el código fuente de los ejemplos que he explic
 [Blog Bitix](http://picodotdev.github.io/blog-bitix/) y que puedes probar en tu propio
 equipo.
 
-Más ejemplos en el repositorio de [El blog de pico.dev](http://elblogdepicodev.blogspot.com.es/), anterior blog de Blog Bitix.
+Más ejemplos en el [repositorio](https://github.com/picodotdev/elblogdepicodev) de [El blog de pico.dev](http://elblogdepicodev.blogspot.com.es/), anterior blog de Blog Bitix.
