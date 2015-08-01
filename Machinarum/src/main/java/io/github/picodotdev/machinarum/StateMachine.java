@@ -80,9 +80,4 @@ public class StateMachine<S, T, O extends Subject<S>, M> {
             }
         }
     }
-
-    @Override
-    public String toString() {
-        return null;
-    }
 }
