@@ -1,0 +1,13 @@
+description = 'ServiceLoader'
+version = '0.1'
+
+apply plugin: 'eclipse'
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.5'
+}
