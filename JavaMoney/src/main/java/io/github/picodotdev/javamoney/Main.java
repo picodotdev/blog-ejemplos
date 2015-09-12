@@ -155,12 +155,15 @@ public class Main {
 		System.out.printf("Máximo %s, mínimo %s, suma %s\n", max.get(), min.get(), sum.get());
 		
 		// exchange rates		
-		ExchangeRateProvider exchangeRateProvider = MonetaryConversions.getExchangeRateProvider("ECB");
-		ExchangeRate exchangeRate = exchangeRateProvider.getExchangeRate("USD", "EUR");
+		ExchangeRateProvider exchangeRateProviderECB = MonetaryConversions.getExchangeRateProvider("ECB");
+		ExchangeRateProvider exchangeRateProviderOER = MonetaryConversions.getExchangeRateProvider("OER");
+		ExchangeRate exchangeRateECB = exchangeRateProviderECB.getExchangeRate("USD", "EUR");
+		ExchangeRate exchangeRateOER = exchangeRateProviderOER.getExchangeRate("USD", "EUR");
 		
 		System.out.println();
 		System.out.println("exchange rates");
-		System.out.printf("Ratio de conversión de USD a EUR: %f\n", exchangeRate.getFactor().doubleValue());
+		System.out.printf("Ratio de conversión de USD a EUR (ECB): %f\n", exchangeRateECB.getFactor().doubleValue());
+		System.out.printf("Ratio de conversión de USD a EUR (OER): %f\n", exchangeRateOER.getFactor().doubleValue());
 		
 		// conversion
 		CurrencyConversion toEuro = MonetaryConversions.getConversion("EUR");		
