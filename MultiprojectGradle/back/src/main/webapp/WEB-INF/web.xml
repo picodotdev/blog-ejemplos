@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+    version="3.0">
+    <display-name>Back Tapestry 5 Application</display-name>
+    <context-param>
+        <!-- The only significant configuration for Tapestry 5, this informs Tapestry of where to look for pages, components and mixins. -->
+        <param-name>tapestry.app-package</param-name>
+        <param-value>io.github.picodotdev.gradle.back</param-value>
+    </context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:/applicationContext.xml</param-value>
+    </context-param>
+    <filter>
+        <filter-name>app</filter-name>
+        <filter-class>org.apache.tapestry5.spring.TapestrySpringFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>app</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error404</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error500</location>
+    </error-page>
+	<session-config>
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>
+</web-app>

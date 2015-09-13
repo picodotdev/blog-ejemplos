@@ -1,0 +1,45 @@
+apply plugin: 'war'
+apply plugin: 'com.bmuschko.tomcat'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()        
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.2.2'
+    }
+}
+
+dependencies {
+    compile project(":core")
+    compile project(":library")
+
+    // Tapestry
+    compile 'org.apache.tapestry:tapestry-core:5.4-beta-36'
+    compile 'org.apache.tapestry:tapestry-webresources:5.4-beta-36'
+    compile 'org.apache.tapestry:tapestry-javadoc:5.4-beta-36'
+    compile 'org.apache.tapestry:tapestry-beanvalidator:5.4-beta-36'
+    
+    // Spring
+    compile ('org.apache.tapestry:tapestry-spring:5.4-beta-36') { exclude(group: 'org.springframework') }
+    compile 'org.springframework:spring-jdbc:4.2.1.RELEASE'
+    compile 'org.springframework:spring-web:4.2.1.RELEASE'
+    compile 'org.springframework:spring-tx:4.2.1.RELEASE'
+    
+    compile 'commons-dbcp:commons-dbcp:1.4'
+    
+    // Tomcat embedded
+    tomcat 'org.apache.tomcat.embed:tomcat-embed-core:8.0.26'
+    tomcat 'org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.26'
+    tomcat 'org.apache.tomcat.embed:tomcat-embed-jasper:8.0.26'
+}
+
+tomcat {
+    httpPort = 9080
+    httpsPort = 9443
+    ajpPort = 9009
+    stopPort = 9081
+    enableSSL = true
+}

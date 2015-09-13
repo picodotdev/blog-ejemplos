@@ -1,0 +1,70 @@
+import org.jooq.util.GenerationTool
+import org.jooq.util.jaxb.Configuration
+import org.jooq.util.jaxb.CustomType
+import org.jooq.util.jaxb.Database
+import org.jooq.util.jaxb.ForcedType
+import org.jooq.util.jaxb.Generate
+import org.jooq.util.jaxb.Generator
+import org.jooq.util.jaxb.Jdbc
+import org.jooq.util.jaxb.Target
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    
+    dependencies {
+        classpath 'org.jooq:jooq-codegen:3.6.2'
+        classpath 'org.postgresql:postgresql:9.4-1202-jdbc41'
+    }
+}
+
+dependencies {
+	compile 'org.apache.commons:commons-lang3:3.4'
+	compile 'joda-time:joda-time:2.3'
+	
+    compile 'org.jooq:jooq:3.6.2'
+    compile 'org.jooq:jooq-meta:3.6.2'
+
+    runtime 'org.postgresql:postgresql:9.4-1202-jdbc41'
+    
+}
+
+task generateModels << {
+    Configuration configuration = new Configuration()
+        .withJdbc(new Jdbc()
+            .withDriver('org.postgresql.Driver')
+            .withUrl('jdbc:postgresql://localhost:5432/app')
+            .withUser('sa')
+            .withPassword('sa'))
+        .withGenerator(new Generator()
+            .withGenerate(new Generate()
+                .withInterfaces(true)
+                .withRelations(true))
+            .withName('org.jooq.util.DefaultGenerator')
+            .withDatabase(new Database()
+                .withCustomTypes([
+                    new CustomType()
+                        .withName('org.joda.time.DateTime')
+                        .withConverter('io.github.picodotdev.gradle.core.jooq.DateTimeConverter')
+                        
+                ])
+                .withForcedTypes([
+                    new ForcedType()
+                        .withName('org.joda.time.DateTime')
+                        .withTypes('TIMESTAMP')                     
+                ])
+                .withName('org.jooq.util.postgres.PostgresDatabase')
+                .withIncludes('.*')
+                .withExcludes('')
+                .withInputSchema('gradle'))
+            .withTarget(new Target()
+                .withPackageName('io.github.picodotdev.gradle.core.models')
+                .withDirectory('src/main/java')));
+
+    GenerationTool.main(configuration)
+}
+
+task updateDatabase(type:Exec) {
+    commandLine './liquibase.sh', 'update'
+}

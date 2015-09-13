@@ -1,0 +1,61 @@
+apply plugin: 'war'
+apply plugin: 'com.bmuschko.tomcat'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()        
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.2.2'
+    }
+}
+
+repositories {
+    mavenCentral()
+
+    // All things JBoss/Hibernate
+    maven {
+        name 'JBoss'
+        url 'http://repository.jboss.org/nexus/content/groups/public/'
+    }
+
+    // For access to Apache Staging (Preview) packages
+    maven {
+        name 'Apache Staging'
+        url 'https://repository.apache.org/content/groups/staging'
+    }
+}
+
+dependencies {
+    compile project(":core")
+    compile project(":library")
+
+    // Tapestry
+    compile 'org.apache.tapestry:tapestry-core:5.4-beta-36'
+    compile 'org.apache.tapestry:tapestry-webresources:5.4-beta-36'
+    compile 'org.apache.tapestry:tapestry-javadoc:5.4-beta-36'
+    compile 'org.apache.tapestry:tapestry-beanvalidator:5.4-beta-36'
+    
+    // Spring
+    compile ('org.apache.tapestry:tapestry-spring:5.4-beta-36') { exclude(group: 'org.springframework') }
+    compile 'org.springframework:spring-jdbc:4.2.1.RELEASE'
+    compile 'org.springframework:spring-web:4.2.1.RELEASE'
+    compile 'org.springframework:spring-tx:4.2.1.RELEASE'
+    
+    compile 'commons-dbcp:commons-dbcp:1.4'
+    
+    // Tomcat embedded
+    tomcat 'org.apache.tomcat.embed:tomcat-embed-core:8.0.26'
+    tomcat 'org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.26'
+    tomcat 'org.apache.tomcat.embed:tomcat-embed-jasper:8.0.26'
+}
+
+tomcat {
+    httpPort = 8080
+    httpsPort = 8443
+    ajpPort = 8009
+    stopPort = 8081
+    enableSSL = true
+}

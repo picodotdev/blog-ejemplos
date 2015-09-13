@@ -1,0 +1,14 @@
+dependencies {
+    compile project(":core")
+
+    // Tapestry
+    compile 'org.apache.tapestry:tapestry-core:5.4-beta-36'
+    compile 'org.apache.tapestry:tapestry-webresources:5.4-beta-36'
+    compile 'org.apache.tapestry:tapestry-javadoc:5.4-beta-36'
+}
+
+jar {
+    manifest {
+        attributes("Tapestry-Module-Classes": "io.github.picodotdev.gradle.library.services.LibraryModule")
+    }
+}

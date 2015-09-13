@@ -1,0 +1,16 @@
+postgresdb:
+  image: busybox
+  volumes:
+    - /var/lib/postgresql/data
+
+postgres:
+  name: postgres
+  image: postgres:9.4
+  hostname: postgres
+  volumes_from:
+    - postgresdb
+  ports:
+    - "5432:5432"
+  environment:
+    - POSTGRES_USER=sa
+    - POSTGRES_PASSWORD=sa

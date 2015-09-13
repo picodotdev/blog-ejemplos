@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<t:container xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter" xmlns:lib="tapestry-library:library">
+<div class="masthead">
+	<ul class="nav nav-pills pull-right">
+		<li><a t:type="pageLink" page="index">Inicio</a></li>
+	</ul>
+	<h3 class="muted">Multiproject <span style="color: red;">Gradle</span></h3>
+</div>
+</t:container>
