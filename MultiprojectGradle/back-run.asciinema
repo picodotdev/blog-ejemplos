@@ -1,0 +1,4294 @@
+{
+  "version": 1,
+  "width": 100,
+  "height": 24,
+  "duration": 33.394608,
+  "command": "/bin/bash",
+  "title": "",
+  "env": {
+    "TERM": "xterm-256color",
+    "SHELL": "/bin/bash"
+  },
+  "stdout": [
+    [
+      0.114384,
+      "\u001b]0;picodotdev@archlinux:~/Software/personal/git/blog-ejemplos/MultiprojectGradle\u0007"
+    ],
+    [
+      0.000420,
+      "[\u001b[01;34mpicodotdev\u001b[00m@\u001b[01;35marchlinux\u001b[00m MultiprojectGradle]$ "
+    ],
+    [
+      2.000000,
+      "./gradlew build"
+    ],
+    [
+      1.055338,
+      "\r\n"
+    ],
+    [
+      0.670989,
+      "\u001b"
+    ],
+    [
+      0.000008,
+      "[0m"
+    ],
+    [
+      0.770374,
+      "\u001b[1m\u003e Loading\u001b[22m"
+    ],
+    [
+      0.004277,
+      "\u001b[1m \u003e settings\u001b[22m"
+    ],
+    [
+      0.224898,
+      "\u001b[11D\u001b[0K"
+    ],
+    [
+      0.002074,
+      "\u001b[7D\u001b[1mConfiguring\u001b[22m"
+    ],
+    [
+      0.278383,
+      "\u001b[1m \u003e 0/5 projects\u001b[22m"
+    ],
+    [
+      0.027453,
+      "\u001b[1m \u003e root project\u001b[22m"
+    ],
+    [
+      1.676062,
+      "\u001b[15D\u001b[0K"
+    ],
+    [
+      0.000269,
+      "\u001b[12D\u001b[1m1/5 projects\u001b[22m"
+    ],
+    [
+      0.000457,
+      "\u001b[1m \u003e :back\u001b[22m"
+    ],
+    [
+      0.024454,
+      "\u001b[1m \u003e Resolving dependencies ':back:classpath'\u001b[22m"
+    ],
+    [
+      0.235404,
+      "\u001b[43D\u001b[0K"
+    ],
+    [
+      0.381590,
+      "\u001b[8D\u001b[0K"
+    ],
+    [
+      0.000193,
+      "\u001b[12D\u001b[1m2/5 projects\u001b[22m"
+    ],
+    [
+      0.015464,
+      "\u001b[1m \u003e :core\u001b[22m"
+    ],
+    [
+      0.015436,
+      "\u001b[1m \u003e Resolving dependencies ':core:classpath'\u001b[22m"
+    ],
+    [
+      0.046370,
+      "\u001b[43D\u001b[0K"
+    ],
+    [
+      0.043833,
+      "\u001b[8D\u001b[0K"
+    ],
+    [
+      0.000075,
+      "\u001b[12D\u001b[1m3/5 projects\u001b[22m"
+    ],
+    [
+      0.000431,
+      "\u001b[1m \u003e :library\u001b[22m"
+    ],
+    [
+      0.020099,
+      "\u001b[11D\u001b[0K"
+    ],
+    [
+      0.000104,
+      "\u001b[12D\u001b[1m4/5 projects\u001b[22m"
+    ],
+    [
+      0.000547,
+      "\u001b[1m \u003e :web\u001b[22m"
+    ],
+    [
+      0.015326,
+      "\u001b[1m \u003e Resolving dependencies ':web:classpath'\u001b[22m"
+    ],
+    [
+      0.004411,
+      "\u001b[42D\u001b[0K"
+    ],
+    [
+      0.031739,
+      "\u001b[7D\u001b[0K"
+    ],
+    [
+      0.000154,
+      "\u001b[12D\u001b[1m5/5 projects\u001b[22m"
+    ],
+    [
+      0.117339,
+      "\u001b[15D\u001b[0K"
+    ],
+    [
+      0.000121,
+      "\u001b[13D\u001b[0K"
+    ],
+    [
+      0.000714,
+      "\u001b[1m\u003e Building 0%\u001b[22m"
+    ],
+    [
+      0.016691,
+      "\u001b[1m \u003e :core:compileJava\u001b[22m"
+    ],
+    [
+      0.046504,
+      "\u001b[1m \u003e Resolving dependencies ':core:compile'\u001b[22m"
+    ],
+    [
+      0.039902,
+      "\u001b[41D\u001b[0K"
+    ],
+    [
+      1.260728,
+      "\u001b[20D\u001b[0K"
+    ],
+    [
+      0.001257,
+      "\u001b[13D\u001b[0K:core:compileJava\r\n"
+    ],
+    [
+      0.000006,
+      "\u001b[1m\u003e Building 0%\u001b[22m"
+    ],
+    [
+      0.000160,
+      "\u001b[2D\u001b[1m2%\u001b[22m"
+    ],
+    [
+      0.000521,
+      "\u001b[1m \u003e :core:processResources\u001b[22m"
+    ],
+    [
+      0.001481,
+      "\u001b[25D\u001b[0K"
+    ],
+    [
+      0.000134,
+      "\u001b[13D\u001b[0K:core:processResources \r\n"
+    ],
+    [
+      0.000043,
+      "\u001b[1m\u003e Building 2%\u001b[22m"
+    ],
+    [
+      0.001402,
+      "\u001b[13D\u001b[0K\u001b[1A\u001b[23C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000007,
+      "\u001b[1m\u003e Building 2%\u001b[22m"
+    ],
+    [
+      0.000105,
+      "\u001b[13D\u001b[0K\u001b[1A\u001b[33C\r\n\u001b[1m\u003e Building 2%\u001b[22m"
+    ],
+    [
+      0.000157,
+      "\u001b[2D\u001b[1m4%\u001b[22m"
+    ],
+    [
+      0.000455,
+      "\u001b[1m \u003e :core:classes\u001b[22m"
+    ],
+    [
+      0.001091,
+      "\u001b[16D\u001b[0K"
+    ],
+    [
+      0.000103,
+      "\u001b[13D\u001b[0K:core:classes\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 4%\u001b[22m"
+    ],
+    [
+      0.000136,
+      "\u001b[2D\u001b[1m6%\u001b[22m"
+    ],
+    [
+      0.000425,
+      "\u001b[1m \u003e :core:jar\u001b[22m"
+    ],
+    [
+      0.074974,
+      "\u001b[12D\u001b[0K"
+    ],
+    [
+      0.000091,
+      "\u001b[13D\u001b[0K:core:jar\r\n\u001b[1m\u003e Building 6%\u001b[22m"
+    ],
+    [
+      0.000101,
+      "\u001b[2D\u001b[1m9%\u001b[22m"
+    ],
+    [
+      0.000322,
+      "\u001b[1m \u003e :library:compileJava\u001b[22m"
+    ],
+    [
+      0.007738,
+      "\u001b[1m \u003e Resolving dependencies ':library:compile'\u001b[22m"
+    ],
+    [
+      0.109063,
+      "\u001b[44D\u001b[0K"
+    ],
+    [
+      0.326282,
+      "\u001b[23D\u001b[0K"
+    ],
+    [
+      0.000172,
+      "\u001b[13D\u001b[0K:library:compileJava\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 9%\u001b[22m"
+    ],
+    [
+      0.000173,
+      "\u001b[2D\u001b[1m11%\u001b[22m"
+    ],
+    [
+      0.000861,
+      "\u001b[1m \u003e :library:processResources\u001b[22m"
+    ],
+    [
+      0.023037,
+      "\u001b[28D\u001b[0K"
+    ],
+    [
+      0.000127,
+      "\u001b[14D\u001b[0K:library:processResources\r\n"
+    ],
+    [
+      0.000049,
+      "\u001b[1m\u003e Building 11%\u001b[22m"
+    ],
+    [
+      0.000117,
+      "\u001b[2D\u001b[1m3%\u001b[22m"
+    ],
+    [
+      0.000310,
+      "\u001b[1m \u003e :library:classes\u001b[22m"
+    ],
+    [
+      0.000385,
+      "\u001b[19D\u001b[0K"
+    ],
+    [
+      0.000070,
+      "\u001b[14D\u001b[0K:library:classes\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 13%\u001b[22m"
+    ],
+    [
+      0.000094,
+      "\u001b[2D\u001b[1m5%\u001b[22m"
+    ],
+    [
+      0.002217,
+      "\u001b[1m \u003e :library:jar\u001b[22m"
+    ],
+    [
+      0.022083,
+      "\u001b[15D\u001b[0K"
+    ],
+    [
+      0.000086,
+      "\u001b[14D\u001b[0K:library:jar\r\n\u001b[1m\u003e Building 15%\u001b[22m"
+    ],
+    [
+      0.000101,
+      "\u001b[2D\u001b[1m8%\u001b[22m"
+    ],
+    [
+      0.000333,
+      "\u001b[1m \u003e :back:compileJava\u001b[22m"
+    ],
+    [
+      0.009414,
+      "\u001b[1m \u003e Resolving dependencies ':back:compile'\u001b[22m"
+    ],
+    [
+      0.105262,
+      "\u001b[41D\u001b[0K"
+    ],
+    [
+      0.318927,
+      "\u001b[20D\u001b[0K"
+    ],
+    [
+      0.000122,
+      "\u001b[14D\u001b[0K:back:compileJava\r\n\u001b[1m\u003e Building 18%\u001b[22m"
+    ],
+    [
+      0.000051,
+      "\u001b[3D\u001b[1m20%\u001b[22m"
+    ],
+    [
+      0.000384,
+      "\u001b[1m \u003e :back:processResources\u001b[22m"
+    ],
+    [
+      0.018001,
+      "\u001b[25D\u001b[0K"
+    ],
+    [
+      0.000080,
+      "\u001b[14D\u001b[0K:back:processResources\r\n\u001b[1m\u003e Building 20%\u001b[22m"
+    ],
+    [
+      0.000104,
+      "\u001b[2D\u001b[1m2%\u001b[22m"
+    ],
+    [
+      0.000327,
+      "\u001b[1m \u003e :back:classes\u001b[22m"
+    ],
+    [
+      0.000319,
+      "\u001b[16D\u001b[0K"
+    ],
+    [
+      0.000065,
+      "\u001b[14D\u001b[0K:back:classes\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 22%\u001b[22m"
+    ],
+    [
+      0.000087,
+      "\u001b[2D\u001b[1m5%\u001b[22m"
+    ],
+    [
+      0.000263,
+      "\u001b[1m \u003e :back:war\u001b[22m"
+    ],
+    [
+      0.001326,
+      "\u001b[1m \u003e Resolving dependencies ':back:runtime'\u001b[22m"
+    ],
+    [
+      0.033562,
+      "\u001b[41D\u001b[0K"
+    ],
+    [
+      0.005004,
+      "\u001b[1m \u003e Resolving dependencies ':back:providedRuntime'\u001b[22m"
+    ],
+    [
+      0.003224,
+      "\u001b[49D\u001b[0K"
+    ],
+    [
+      1.313134,
+      "\u001b[12D\u001b[0K"
+    ],
+    [
+      0.000026,
+      "\u001b[14D\u001b[0K:back:war\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 25%\u001b[22m"
+    ],
+    [
+      0.000076,
+      "\u001b[2D\u001b[1m7%\u001b[22m"
+    ],
+    [
+      0.000274,
+      "\u001b[1m \u003e :back:assemble\u001b[22m"
+    ],
+    [
+      0.000182,
+      "\u001b[17D\u001b[0K"
+    ],
+    [
+      0.000052,
+      "\u001b[14D\u001b[0K:back:assemble\r\n"
+    ],
+    [
+      0.000002,
+      "\u001b[1m\u003e Building 27%\u001b[22m"
+    ],
+    [
+      0.000099,
+      "\u001b[2D\u001b[1m9%\u001b[22m"
+    ],
+    [
+      0.000292,
+      "\u001b[1m \u003e :back:compileTestJava\u001b[22m"
+    ],
+    [
+      0.000613,
+      "\u001b[24D\u001b[0K"
+    ],
+    [
+      0.000055,
+      "\u001b[14D\u001b[0K:back:compileTestJava \r\n\u001b[1m\u003e Building 29%\u001b[22m"
+    ],
+    [
+      0.000049,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[22C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 29%\u001b[22m"
+    ],
+    [
+      0.000036,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[32C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 29%\u001b[22m"
+    ],
+    [
+      0.000064,
+      "\u001b[3D\u001b[1m31%\u001b[22m"
+    ],
+    [
+      0.000209,
+      "\u001b[1m \u003e :back:processTestResources\u001b[22m"
+    ],
+    [
+      0.000611,
+      "\u001b[29D\u001b[0K"
+    ],
+    [
+      0.000054,
+      "\u001b[14D\u001b[0K:back:processTestResources \r\n\u001b[1m\u003e Building 31%\u001b[22m"
+    ],
+    [
+      0.000042,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[27C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 31%\u001b[22m"
+    ],
+    [
+      0.000039,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[37C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 31%\u001b[22m"
+    ],
+    [
+      0.000069,
+      "\u001b[2D\u001b[1m4%\u001b[22m"
+    ],
+    [
+      0.000212,
+      "\u001b[1m \u003e :back:testClasses\u001b[22m"
+    ],
+    [
+      0.000187,
+      "\u001b[20D\u001b[0K"
+    ],
+    [
+      0.000047,
+      "\u001b[14D\u001b[0K:back:testClasses \r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 34%\u001b[22m"
+    ],
+    [
+      0.000055,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[18C\u001b[33mUP-TO-DATE\u001b[39m\r\n\u001b[1m\u003e Building 34%\u001b[22m"
+    ],
+    [
+      0.000035,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[28C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 34%\u001b[22m"
+    ],
+    [
+      0.000065,
+      "\u001b[2D\u001b[1m6%\u001b[22m"
+    ],
+    [
+      0.000162,
+      "\u001b[1m \u003e :back:test\u001b[22m"
+    ],
+    [
+      0.000419,
+      "\u001b[13D\u001b[0K"
+    ],
+    [
+      0.000055,
+      "\u001b[14D\u001b[0K:back:test \r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 36%\u001b[22m"
+    ],
+    [
+      0.000043,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[11C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 36%\u001b[22m"
+    ],
+    [
+      0.000040,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[21C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 36%\u001b[22m"
+    ],
+    [
+      0.000067,
+      "\u001b[2D\u001b[1m8%\u001b[22m"
+    ],
+    [
+      0.000189,
+      "\u001b[1m \u003e :back:check\u001b[22m"
+    ],
+    [
+      0.000160,
+      "\u001b[14D\u001b[0K"
+    ],
+    [
+      0.000044,
+      "\u001b[14D\u001b[0K:back:check \r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 38%\u001b[22m"
+    ],
+    [
+      0.000047,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[12C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 38%\u001b[22m"
+    ],
+    [
+      0.000040,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[22C\r\n\u001b[1m\u003e Building 38%\u001b[22m"
+    ],
+    [
+      0.000060,
+      "\u001b[3D\u001b[1m40%\u001b[22m"
+    ],
+    [
+      0.000165,
+      "\u001b[1m \u003e :back:build\u001b[22m"
+    ],
+    [
+      0.000152,
+      "\u001b[14D\u001b[0K"
+    ],
+    [
+      0.000049,
+      "\u001b[14D\u001b[0K:back:build\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 40%\u001b[22m"
+    ],
+    [
+      0.000069,
+      "\u001b[2D\u001b[1m3%\u001b[22m"
+    ],
+    [
+      0.000161,
+      "\u001b[1m \u003e :core:assemble\u001b[22m"
+    ],
+    [
+      0.000141,
+      "\u001b[17D\u001b[0K"
+    ],
+    [
+      0.000048,
+      "\u001b[14D\u001b[0K:core:assemble\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 43%\u001b[22m"
+    ],
+    [
+      0.000062,
+      "\u001b[2D\u001b[1m5%\u001b[22m"
+    ],
+    [
+      0.000173,
+      "\u001b[1m \u003e :core:compileTestJava\u001b[22m"
+    ],
+    [
+      0.000506,
+      "\u001b[24D\u001b[0K"
+    ],
+    [
+      0.000048,
+      "\u001b[14D\u001b[0K:core:compileTestJava \r\n\u001b[1m\u003e Building 45%\u001b[22m"
+    ],
+    [
+      0.000043,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[22C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 45%\u001b[22m"
+    ],
+    [
+      0.000041,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[32C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 45%\u001b[22m"
+    ],
+    [
+      0.000063,
+      "\u001b[2D\u001b[1m7%\u001b[22m"
+    ],
+    [
+      0.000168,
+      "\u001b[1m \u003e :core:processTestResources\u001b[22m"
+    ],
+    [
+      0.000536,
+      "\u001b[29D\u001b[0K"
+    ],
+    [
+      0.000047,
+      "\u001b[14D\u001b[0K:core:processTestResources \r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 47%\u001b[22m"
+    ],
+    [
+      0.000046,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[27C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 47%\u001b[22m"
+    ],
+    [
+      0.000064,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[37C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 47%\u001b[22m"
+    ],
+    [
+      0.000066,
+      "\u001b[3D\u001b[1m50%\u001b[22m"
+    ],
+    [
+      0.000338,
+      "\u001b[1m \u003e :core:testClasses\u001b[22m"
+    ],
+    [
+      0.000215,
+      "\u001b[20D\u001b[0K"
+    ],
+    [
+      0.000048,
+      "\u001b[14D\u001b[0K:core:testClasses \r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 50%\u001b[22m"
+    ],
+    [
+      0.000052,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[18C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 50%\u001b[22m"
+    ],
+    [
+      0.000038,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[28C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 50%\u001b[22m"
+    ],
+    [
+      0.000065,
+      "\u001b[2D\u001b[1m2%\u001b[22m"
+    ],
+    [
+      0.000233,
+      "\u001b[1m \u003e :core:test\u001b[22m"
+    ],
+    [
+      0.000443,
+      "\u001b[13D\u001b[0K"
+    ],
+    [
+      0.000050,
+      "\u001b[14D\u001b[0K:core:test \r\n\u001b[1m\u003e Building 52%\u001b[22m"
+    ],
+    [
+      0.000043,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[11C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 52%\u001b[22m"
+    ],
+    [
+      0.000037,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[21C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 52%\u001b[22m"
+    ],
+    [
+      0.000062,
+      "\u001b[2D\u001b[1m4%\u001b[22m"
+    ],
+    [
+      0.000203,
+      "\u001b[1m \u003e :core:check\u001b[22m"
+    ],
+    [
+      0.000165,
+      "\u001b[14D\u001b[0K"
+    ],
+    [
+      0.000043,
+      "\u001b[14D\u001b[0K:core:check \r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 54%\u001b[22m"
+    ],
+    [
+      0.000045,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[12C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 54%\u001b[22m"
+    ],
+    [
+      0.000035,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[22C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 54%\u001b[22m"
+    ],
+    [
+      0.000062,
+      "\u001b[2D\u001b[1m6%\u001b[22m"
+    ],
+    [
+      0.000180,
+      "\u001b[1m \u003e :core:build\u001b[22m"
+    ],
+    [
+      0.000197,
+      "\u001b[14D\u001b[0K"
+    ],
+    [
+      0.001220,
+      "\u001b[14D\u001b[0K:core:build\r\n\u001b[1m\u003e Building 56%\u001b[22m\u001b[2D\u001b[1m9%\u001b[22m\u001b[1m \u003e :library:assemble\u001b[22m\u001b[20D\u001b[0K\u001b[14D\u001b[0K:library:assemble\r\n\u001b[1m\u003e Building 59%\u001b[22m\u001b[3D\u001b[1m61%\u001b[22m\u001b[1m \u003e :library:compileTestJava\u001b[22m"
+    ],
+    [
+      0.000042,
+      "\u001b[27D\u001b[0K"
+    ],
+    [
+      0.000047,
+      "\u001b[14D\u001b[0K:library:compileTestJava \r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 61%\u001b[22m"
+    ],
+    [
+      0.000054,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[25C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 61%\u001b[22m"
+    ],
+    [
+      0.000038,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[35C\r\n\u001b[1m\u003e Building 61%\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[2D\u001b[1m3%\u001b[22m"
+    ],
+    [
+      0.000187,
+      "\u001b[1m \u003e :library:processTestResources\u001b[22m"
+    ],
+    [
+      0.000660,
+      "\u001b[32D\u001b[0K"
+    ],
+    [
+      0.000062,
+      "\u001b[14D\u001b[0K:library:processTestResources \r\n\u001b[1m\u003e Building 63%\u001b[22m"
+    ],
+    [
+      0.000041,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[30C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 63%\u001b[22m"
+    ],
+    [
+      0.000034,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[40C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 63%\u001b[22m"
+    ],
+    [
+      0.000066,
+      "\u001b[2D\u001b[1m5%\u001b[22m"
+    ],
+    [
+      0.000244,
+      "\u001b[1m \u003e :library:testClasses\u001b[22m"
+    ],
+    [
+      0.000201,
+      "\u001b[23D\u001b[0K"
+    ],
+    [
+      0.000046,
+      "\u001b[14D\u001b[0K:library:testClasses \r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 65%\u001b[22m"
+    ],
+    [
+      0.000049,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[21C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 65%\u001b[22m"
+    ],
+    [
+      0.000035,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[31C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 65%\u001b[22m"
+    ],
+    [
+      0.000065,
+      "\u001b[2D\u001b[1m8%\u001b[22m"
+    ],
+    [
+      0.000183,
+      "\u001b[1m \u003e :library:test\u001b[22m"
+    ],
+    [
+      0.000467,
+      "\u001b[16D\u001b[0K"
+    ],
+    [
+      0.000051,
+      "\u001b[14D\u001b[0K:library:test \r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 68%\u001b[22m"
+    ],
+    [
+      0.000046,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[14C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 68%\u001b[22m"
+    ],
+    [
+      0.000035,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[24C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 68%\u001b[22m"
+    ],
+    [
+      0.000089,
+      "\u001b[3D\u001b[1m70%\u001b[22m"
+    ],
+    [
+      0.000255,
+      "\u001b[1m \u003e :library:check\u001b[22m"
+    ],
+    [
+      0.000162,
+      "\u001b[17D\u001b[0K"
+    ],
+    [
+      0.000042,
+      "\u001b[14D\u001b[0K:library:check \r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 70%\u001b[22m"
+    ],
+    [
+      0.000087,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[15C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 70%\u001b[22m"
+    ],
+    [
+      0.000042,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[25C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 70%\u001b[22m"
+    ],
+    [
+      0.000068,
+      "\u001b[2D\u001b[1m2%\u001b[22m"
+    ],
+    [
+      0.000183,
+      "\u001b[1m \u003e :library:build\u001b[22m"
+    ],
+    [
+      0.000137,
+      "\u001b[17D\u001b[0K"
+    ],
+    [
+      0.000045,
+      "\u001b[14D\u001b[0K:library:build\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 72%\u001b[22m"
+    ],
+    [
+      0.000063,
+      "\u001b[2D\u001b[1m5%\u001b[22m"
+    ],
+    [
+      0.000150,
+      "\u001b[1m \u003e :web:compileJava\u001b[22m"
+    ],
+    [
+      0.004798,
+      "\u001b[1m \u003e Resolving dependencies ':web:compile'\u001b[22m"
+    ],
+    [
+      0.030469,
+      "\u001b[40D\u001b[0K"
+    ],
+    [
+      0.170291,
+      "\u001b[19D\u001b[0K"
+    ],
+    [
+      0.000093,
+      "\u001b[14D\u001b[0K:web:compileJava\r\n"
+    ],
+    [
+      0.000008,
+      "\u001b[1m\u003e Building 75%\u001b[22m"
+    ],
+    [
+      0.000100,
+      "\u001b[2D\u001b[1m7%\u001b[22m"
+    ],
+    [
+      0.000313,
+      "\u001b[1m \u003e :web:processResources\u001b[22m"
+    ],
+    [
+      0.015327,
+      "\u001b[24D\u001b[0K"
+    ],
+    [
+      0.000105,
+      "\u001b[14D\u001b[0K:web:processResources\r\n\u001b[1m\u003e Building 77%\u001b[22m"
+    ],
+    [
+      0.000086,
+      "\u001b[2D\u001b[1m9%\u001b[22m"
+    ],
+    [
+      0.000271,
+      "\u001b[1m \u003e :web:classes\u001b[22m"
+    ],
+    [
+      0.000261,
+      "\u001b[15D\u001b[0K"
+    ],
+    [
+      0.000072,
+      "\u001b[14D\u001b[0K:web:classes\r\n"
+    ],
+    [
+      0.000016,
+      "\u001b[1m\u003e Building 79%\u001b[22m"
+    ],
+    [
+      0.000078,
+      "\u001b[3D\u001b[1m81%\u001b[22m"
+    ],
+    [
+      0.000291,
+      "\u001b[1m \u003e :web:war\u001b[22m"
+    ],
+    [
+      0.001025,
+      "\u001b[1m \u003e Resolving dependencies ':web:runtime'\u001b[22m"
+    ],
+    [
+      0.028858,
+      "\u001b[40D\u001b[0K"
+    ],
+    [
+      0.003532,
+      "\u001b[1m \u003e Resolving dependencies ':web:providedRuntime'\u001b[22m"
+    ],
+    [
+      0.000157,
+      "\u001b[48D\u001b[0K"
+    ],
+    [
+      1.086644,
+      "\u001b[11D\u001b[0K"
+    ],
+    [
+      0.000007,
+      "\u001b[14D\u001b[0K:web:war\r\n"
+    ],
+    [
+      0.000016,
+      "\u001b[1m\u003e Building 81%\u001b[22m"
+    ],
+    [
+      0.000056,
+      "\u001b[2D\u001b[1m4%\u001b[22m"
+    ],
+    [
+      0.000404,
+      "\u001b[1m \u003e :web:assemble\u001b[22m"
+    ],
+    [
+      0.000403,
+      "\u001b[16D\u001b[0K"
+    ],
+    [
+      0.000061,
+      "\u001b[14D\u001b[0K:web:assemble\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 84%\u001b[22m"
+    ],
+    [
+      0.000098,
+      "\u001b[2D\u001b[1m6%\u001b[22m"
+    ],
+    [
+      0.000251,
+      "\u001b[1m \u003e :web:compileTestJava\u001b[22m"
+    ],
+    [
+      0.000546,
+      "\u001b[23D\u001b[0K"
+    ],
+    [
+      0.000050,
+      "\u001b[14D\u001b[0K:web:compileTestJava \r\n"
+    ],
+    [
+      0.000021,
+      "\u001b[1m\u003e Building 86%\u001b[22m"
+    ],
+    [
+      0.000065,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[21C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 86%\u001b[22m"
+    ],
+    [
+      0.000067,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[31C\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 86%\u001b[22m"
+    ],
+    [
+      0.000097,
+      "\u001b[2D\u001b[1m8%\u001b[22m"
+    ],
+    [
+      0.000337,
+      "\u001b[1m \u003e :web:processTestResources\u001b[22m"
+    ],
+    [
+      0.000849,
+      "\u001b[28D\u001b[0K"
+    ],
+    [
+      0.000083,
+      "\u001b[14D\u001b[0K:web:processTestResources \r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 88%\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[26C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 88%\u001b[22m"
+    ],
+    [
+      0.000136,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[36C\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 88%\u001b[22m"
+    ],
+    [
+      0.000088,
+      "\u001b[3D\u001b[1m90%\u001b[22m"
+    ],
+    [
+      0.000279,
+      "\u001b[1m \u003e :web:testClasses\u001b[22m"
+    ],
+    [
+      0.000281,
+      "\u001b[19D\u001b[0K"
+    ],
+    [
+      0.000056,
+      "\u001b[14D\u001b[0K:web:testClasses \r\n\u001b[1m\u003e Building 90%\u001b[22m"
+    ],
+    [
+      0.000040,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[17C\u001b[33mUP-TO-DATE\u001b[39m\r\n\u001b[1m\u003e Building 90%\u001b[22m"
+    ],
+    [
+      0.000032,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[27C\r\n\u001b[1m\u003e Building 90%\u001b[22m"
+    ],
+    [
+      0.000059,
+      "\u001b[2D\u001b[1m3%\u001b[22m"
+    ],
+    [
+      0.000192,
+      "\u001b[1m \u003e :web:test\u001b[22m"
+    ],
+    [
+      0.000391,
+      "\u001b[12D\u001b[0K"
+    ],
+    [
+      0.000056,
+      "\u001b[14D\u001b[0K:web:test \r\n\u001b[1m\u003e Building 93%\u001b[22m"
+    ],
+    [
+      0.000046,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[10C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 93%\u001b[22m"
+    ],
+    [
+      0.000035,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[20C\r\n\u001b[1m\u003e Building 93%\u001b[22m"
+    ],
+    [
+      0.000080,
+      "\u001b[2D\u001b[1m5%\u001b[22m"
+    ],
+    [
+      0.000218,
+      "\u001b[1m \u003e :web:check\u001b[22m"
+    ],
+    [
+      0.000180,
+      "\u001b[13D\u001b[0K"
+    ],
+    [
+      0.000044,
+      "\u001b[14D\u001b[0K:web:check \r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 95%\u001b[22m"
+    ],
+    [
+      0.000043,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[11C\u001b[33mUP-TO-DATE\u001b[39m\r\n\u001b[1m\u003e Building 95%\u001b[22m"
+    ],
+    [
+      0.000034,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[21C\r\n\u001b[1m\u003e Building 95%\u001b[22m"
+    ],
+    [
+      0.000043,
+      "\u001b[2D\u001b[1m7%\u001b[22m"
+    ],
+    [
+      0.000190,
+      "\u001b[1m \u003e :web:build\u001b[22m"
+    ],
+    [
+      0.000176,
+      "\u001b[13D\u001b[0K"
+    ],
+    [
+      0.000047,
+      "\u001b[14D\u001b[0K:web:build\r\n\u001b[1m\u003e Building 97%\u001b[22m"
+    ],
+    [
+      0.000049,
+      "\u001b[3D\u001b[1m100%\u001b[22m"
+    ],
+    [
+      0.000444,
+      "\u001b[15D\u001b[0K\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 100%\u001b[22m"
+    ],
+    [
+      0.000727,
+      "\u001b[15D\u001b[0KBUILD SUCCESSFUL\r\n"
+    ],
+    [
+      0.000005,
+      "\u001b[1m\u003e Building 100%\u001b[22m"
+    ],
+    [
+      0.000067,
+      "\u001b[15D\u001b[0K\u001b[1A\u001b[16C\r\n\u001b[1m\u003e Building 100%\u001b[22m"
+    ],
+    [
+      0.000043,
+      "\u001b[15D\u001b[0K\r\n\u001b[1m\u003e Building 100%\u001b[22m"
+    ],
+    [
+      0.000112,
+      "\u001b[15D\u001b[0KTotal time: 9.673 secs\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 100%\u001b[22m"
+    ],
+    [
+      0.000103,
+      "\u001b[15D\u001b[0K"
+    ],
+    [
+      0.006993,
+      "\r\n"
+    ],
+    [
+      0.000140,
+      "This build could be faster, please consider using the Gradle Daemon: https://docs.gradle.org/2.6/userguide/gradle_daemon.html\r\n"
+    ],
+    [
+      0.001022,
+      "\u001b"
+    ],
+    [
+      0.000007,
+      "[0m"
+    ],
+    [
+      0.330462,
+      "\u001b]0;picodotdev@archlinux:~/Software/personal/git/blog-ejemplos/MultiprojectGradle\u0007"
+    ],
+    [
+      0.000414,
+      "[\u001b[01;34mpicodotdev\u001b[00m@\u001b[01;35marchlinux\u001b[00m MultiprojectGradle]$ "
+    ],
+    [
+      0.673510,
+      "cd back"
+    ],
+    [
+      0.904713,
+      "\r\n\u001b]0;picodotdev@archlinux:~/Software/personal/git/blog-ejemplos/MultiprojectGradle/back\u0007[\u001b[01;34mpicodotdev\u001b[00m@\u001b[01;35marchlinux\u001b[00m back]$ "
+    ],
+    [
+      2.000000,
+      "./gradlew tomcatRun"
+    ],
+    [
+      0.777682,
+      "\r\n"
+    ],
+    [
+      0.682361,
+      "\u001b"
+    ],
+    [
+      0.000007,
+      "[0m"
+    ],
+    [
+      0.787965,
+      "\u001b[1m\u003e Loading\u001b[22m"
+    ],
+    [
+      0.006008,
+      "\u001b[1m \u003e settings\u001b[22m"
+    ],
+    [
+      0.246436,
+      "\u001b[11D\u001b[0K"
+    ],
+    [
+      0.002179,
+      "\u001b[7D\u001b[1mConfiguring\u001b[22m"
+    ],
+    [
+      0.212025,
+      "\u001b[1m \u003e 0/5 projects\u001b[22m"
+    ],
+    [
+      0.018208,
+      "\u001b[1m \u003e root project\u001b[22m"
+    ],
+    [
+      1.827341,
+      "\u001b[15D\u001b[0K"
+    ],
+    [
+      0.000217,
+      "\u001b[12D\u001b[1m1/5 projects\u001b[22m"
+    ],
+    [
+      0.000434,
+      "\u001b[1m \u003e :back\u001b[22m"
+    ],
+    [
+      0.024941,
+      "\u001b[1m \u003e Resolving dependencies ':back:classpath'\u001b[22m"
+    ],
+    [
+      0.319360,
+      "\u001b[43D\u001b[0K"
+    ],
+    [
+      0.426943,
+      "\u001b[8D\u001b[0K"
+    ],
+    [
+      0.000260,
+      "\u001b[12D\u001b[1m2/5 projects\u001b[22m"
+    ],
+    [
+      0.011138,
+      "\u001b[1m \u003e :core\u001b[22m"
+    ],
+    [
+      0.016674,
+      "\u001b[1m \u003e Resolving dependencies ':core:classpath'\u001b[22m"
+    ],
+    [
+      0.034535,
+      "\u001b[43D\u001b[0K"
+    ],
+    [
+      0.048969,
+      "\u001b[8D\u001b[0K"
+    ],
+    [
+      0.000194,
+      "\u001b[12D\u001b[1m3/5 projects\u001b[22m"
+    ],
+    [
+      0.000642,
+      "\u001b[1m \u003e :library\u001b[22m"
+    ],
+    [
+      0.024791,
+      "\u001b[11D\u001b[0K"
+    ],
+    [
+      0.000139,
+      "\u001b[12D\u001b[1m4/5 projects\u001b[22m"
+    ],
+    [
+      0.000634,
+      "\u001b[1m \u003e :web\u001b[22m"
+    ],
+    [
+      0.016293,
+      "\u001b[1m \u003e Resolving dependencies ':web:classpath'\u001b[22m"
+    ],
+    [
+      0.004326,
+      "\u001b[42D\u001b[0K"
+    ],
+    [
+      0.031915,
+      "\u001b[7D\u001b[0K"
+    ],
+    [
+      0.000127,
+      "\u001b[12D\u001b[1m5/5 projects\u001b[22m"
+    ],
+    [
+      0.126613,
+      "\u001b[15D\u001b[0K"
+    ],
+    [
+      0.000113,
+      "\u001b[13D\u001b[0K"
+    ],
+    [
+      0.000762,
+      "\u001b[1m\u003e Building 0%\u001b[22m"
+    ],
+    [
+      0.023354,
+      "\u001b[1m \u003e :core:compileJava\u001b[22m"
+    ],
+    [
+      0.056152,
+      "\u001b[1m \u003e Resolving dependencies ':core:compile'\u001b[22m"
+    ],
+    [
+      0.042850,
+      "\u001b[41D\u001b[0K"
+    ],
+    [
+      0.022512,
+      "\u001b[20D\u001b[0K"
+    ],
+    [
+      0.001182,
+      "\u001b[13D\u001b[0K:core:compileJava \r\n"
+    ],
+    [
+      0.000005,
+      "\u001b[1m\u003e Building 0%\u001b[22m"
+    ],
+    [
+      0.001169,
+      "\u001b[13D\u001b[0K\u001b[1A\u001b[18C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000005,
+      "\u001b[1m\u003e Building 0%\u001b[22m"
+    ],
+    [
+      0.000071,
+      "\u001b[13D\u001b[0K\u001b[1A\u001b[28C\r\n"
+    ],
+    [
+      0.000037,
+      "\u001b[1m\u003e Building 0%\u001b[22m"
+    ],
+    [
+      0.000142,
+      "\u001b[2D\u001b[1m8%\u001b[22m"
+    ],
+    [
+      0.000572,
+      "\u001b[1m \u003e :core:processResources\u001b[22m"
+    ],
+    [
+      0.002828,
+      "\u001b[25D\u001b[0K"
+    ],
+    [
+      0.000079,
+      "\u001b[13D\u001b[0K:core:processResources \r\n"
+    ],
+    [
+      0.000007,
+      "\u001b[1m\u003e Building 8%\u001b[22m"
+    ],
+    [
+      0.000096,
+      "\u001b[13D\u001b[0K\u001b[1A\u001b[23C\u001b[33mUP-TO-DATE\u001b[39m\r\n\u001b[1m\u003e Building 8%\u001b[22m"
+    ],
+    [
+      0.000066,
+      "\u001b[13D\u001b[0K\u001b[1A\u001b[33C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 8%\u001b[22m"
+    ],
+    [
+      0.000116,
+      "\u001b[2D\u001b[1m16%\u001b[22m"
+    ],
+    [
+      0.000415,
+      "\u001b[1m \u003e :core:classes\u001b[22m"
+    ],
+    [
+      0.000564,
+      "\u001b[16D\u001b[0K"
+    ],
+    [
+      0.000074,
+      "\u001b[14D\u001b[0K:core:classes \r\n"
+    ],
+    [
+      0.000038,
+      "\u001b[1m\u003e Building 16%\u001b[22m"
+    ],
+    [
+      0.000043,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[14C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000038,
+      "\u001b[1m\u003e Building 16%\u001b[22m"
+    ],
+    [
+      0.000031,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[24C\r\n"
+    ],
+    [
+      0.000028,
+      "\u001b[1m\u003e Building 16%\u001b[22m"
+    ],
+    [
+      0.000120,
+      "\u001b[3D\u001b[1m25%\u001b[22m"
+    ],
+    [
+      0.000463,
+      "\u001b[1m \u003e :core:jar\u001b[22m"
+    ],
+    [
+      0.011429,
+      "\u001b[12D\u001b[0K"
+    ],
+    [
+      0.000075,
+      "\u001b[14D\u001b[0K:core:jar \r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 25%\u001b[22m"
+    ],
+    [
+      0.000067,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[10C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000009,
+      "\u001b[1m\u003e Building 25%\u001b[22m"
+    ],
+    [
+      0.000057,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[20C\r\n"
+    ],
+    [
+      0.000095,
+      "\u001b[1m\u003e Building 25%\u001b[22m"
+    ],
+    [
+      0.000130,
+      "\u001b[3D\u001b[1m33%\u001b[22m"
+    ],
+    [
+      0.000363,
+      "\u001b[1m \u003e :library:compileJava\u001b[22m"
+    ],
+    [
+      0.010298,
+      "\u001b[1m \u003e Resolving dependencies ':library:compile'\u001b[22m"
+    ],
+    [
+      0.132020,
+      "\u001b[44D\u001b[0K"
+    ],
+    [
+      0.015760,
+      "\u001b[23D\u001b[0K"
+    ],
+    [
+      0.000080,
+      "\u001b[14D\u001b[0K:library:compileJava \r\n"
+    ],
+    [
+      0.000010,
+      "\u001b[1m\u003e Building 33%\u001b[22m"
+    ],
+    [
+      0.000087,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[21C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 33%\u001b[22m"
+    ],
+    [
+      0.000063,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[31C\r\n"
+    ],
+    [
+      0.000036,
+      "\u001b[1m\u003e Building 33%\u001b[22m"
+    ],
+    [
+      0.000092,
+      "\u001b[3D\u001b[1m41%\u001b[22m"
+    ],
+    [
+      0.000759,
+      "\u001b[1m \u003e :library:processResources\u001b[22m"
+    ],
+    [
+      0.010059,
+      "\u001b[28D\u001b[0K"
+    ],
+    [
+      0.000067,
+      "\u001b[14D\u001b[0K:library:processResources \r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 41%\u001b[22m"
+    ],
+    [
+      0.000050,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[26C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 41%\u001b[22m"
+    ],
+    [
+      0.000056,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[36C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 41%\u001b[22m"
+    ],
+    [
+      0.000112,
+      "\u001b[3D\u001b[1m50%\u001b[22m"
+    ],
+    [
+      0.000260,
+      "\u001b[1m \u003e :library:classes\u001b[22m"
+    ],
+    [
+      0.000329,
+      "\u001b[19D\u001b[0K"
+    ],
+    [
+      0.000054,
+      "\u001b[14D\u001b[0K:library:classes \r\n"
+    ],
+    [
+      0.000016,
+      "\u001b[1m\u003e Building 50%\u001b[22m"
+    ],
+    [
+      0.000070,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[17C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 50%\u001b[22m"
+    ],
+    [
+      0.000063,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[27C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 50%\u001b[22m"
+    ],
+    [
+      0.000115,
+      "\u001b[2D\u001b[1m8%\u001b[22m"
+    ],
+    [
+      0.000309,
+      "\u001b[1m \u003e :library:jar\u001b[22m"
+    ],
+    [
+      0.007286,
+      "\u001b[15D\u001b[0K"
+    ],
+    [
+      0.000106,
+      "\u001b[14D\u001b[0K:library:jar \r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 58%\u001b[22m"
+    ],
+    [
+      0.000078,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[13C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000010,
+      "\u001b[1m\u003e Building 58%\u001b[22m"
+    ],
+    [
+      0.000080,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[23C\r\n"
+    ],
+    [
+      0.000009,
+      "\u001b[1m\u003e Building 58%\u001b[22m"
+    ],
+    [
+      0.000127,
+      "\u001b[3D\u001b[1m66%\u001b[22m"
+    ],
+    [
+      0.000333,
+      "\u001b[1m \u003e :back:compileJava\u001b[22m"
+    ],
+    [
+      0.008788,
+      "\u001b[1m \u003e Resolving dependencies ':back:compile'\u001b[22m"
+    ],
+    [
+      0.102723,
+      "\u001b[41D\u001b[0K"
+    ],
+    [
+      0.019358,
+      "\u001b[20D\u001b[0K"
+    ],
+    [
+      0.000112,
+      "\u001b[14D\u001b[0K:back:compileJava \r\n\u001b[1m\u003e Building 66%\u001b[22m"
+    ],
+    [
+      0.000162,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[18C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 66%\u001b[22m"
+    ],
+    [
+      0.000052,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[28C\r\n"
+    ],
+    [
+      0.000006,
+      "\u001b[1m\u003e Building 66%\u001b[22m"
+    ],
+    [
+      0.000096,
+      "\u001b[3D\u001b[1m75%\u001b[22m"
+    ],
+    [
+      0.000243,
+      "\u001b[1m \u003e :back:processResources\u001b[22m"
+    ],
+    [
+      0.006115,
+      "\u001b[25D\u001b[0K"
+    ],
+    [
+      0.000929,
+      "\u001b[14D\u001b[0K:back:processResources \r\n\u001b[1m\u003e Building 75%\u001b[22m\u001b[14D\u001b[0K\u001b[1A\u001b[23C\u001b[33mUP-TO-DATE\u001b[39m\r\n\u001b[1m\u003e Building 75%\u001b[22m\u001b[14D\u001b[0K\u001b[1A\u001b[33C\r\n\u001b[1m\u003e Building 75%\u001b[22m\u001b[3D\u001b[1m83%\u001b[22m\u001b[1m \u003e :back:classes\u001b[22m\u001b[16D\u001b[0K"
+    ],
+    [
+      0.000011,
+      "\u001b[14D\u001b[0K:back:classes \r\n\u001b[1m\u003e Building 83%\u001b[22m"
+    ],
+    [
+      0.000078,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[14C\u001b[33mUP-TO-DATE\u001b[39m\r\n"
+    ],
+    [
+      0.000007,
+      "\u001b[1m\u003e Building 83%\u001b[22m"
+    ],
+    [
+      0.000051,
+      "\u001b[14D\u001b[0K\u001b[1A\u001b[24C\r\n"
+    ],
+    [
+      0.000009,
+      "\u001b[1m\u003e Building 83%\u001b[22m"
+    ],
+    [
+      0.000082,
+      "\u001b[3D\u001b[1m91%\u001b[22m"
+    ],
+    [
+      0.000504,
+      "\u001b[1m \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.029996,
+      "\u001b[1m \u003e Resolving dependencies ':back:tomcat'\u001b[22m"
+    ],
+    [
+      0.025537,
+      "\u001b[40D\u001b[0K"
+    ],
+    [
+      0.378676,
+      "\u001b[1m \u003e Resolving dependencies ':back:runtime'\u001b[22m"
+    ],
+    [
+      0.032098,
+      "\u001b[41D\u001b[0K"
+    ],
+    [
+      0.004684,
+      "\u001b[1m \u003e Resolving dependencies ':back:providedRuntime'\u001b[22m"
+    ],
+    [
+      0.003720,
+      "\u001b[49D\u001b[0K"
+    ],
+    [
+      2.000000,
+      "\u001b[32D\u001b[0K:back:tomcatRun\r\n"
+    ],
+    [
+      0.000006,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000109,
+      "\u001b[32D\u001b[0K17:44:37.507 [localhost-startStop-1] INFO  org.apache.tapestry5.ioc.RegistryBuilder - Adding module definition for class org.apache.tapestry5.ioc.modules.TapestryIOCModule\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.089252,
+      "\u001b[32D\u001b[0K17:44:37.598 [localhost-startStop-1] INFO  org.apache.tapestry5.ioc.RegistryBuilder - Adding module definition for clas"
+    ],
+    [
+      0.000007,
+      "s io.github.picodotdev.gradle.library.services.LibraryModule\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.002249,
+      "\u001b[32D\u001b[0K17:44:37.600 [localhost-startStop-1] INFO  org.apache.tapestry5.ioc.RegistryBuilder - Adding module definition for clas"
+    ],
+    [
+      0.000006,
+      "s org.apache.tapestry5.webresources.modules.WebResourcesModule\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.009480,
+      "\u001b[32D\u001b[0K17:44:37.609 [localhost-startStop-1] INFO  org.apache.tapestry5.ioc.RegistryBuilder - Adding module definition for class org.apache.tapestry5.beanvalidator.modules.BeanValidatorModule\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.009540,
+      "\u001b[32D\u001b[0K17:44:37.619 [localhost-startStop-1] INFO  org.apache.tapestry5.ioc.RegistryBuilder - Adding module definition for clas"
+    ],
+    [
+      0.000006,
+      "s org.apache.tapestry5.spring.modules.SpringModule\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.006668,
+      "\u001b[32D\u001b[0K17:44:37.626 [localhost-startStop-1] INFO  org.apache.tapestry5.ioc.RegistryBuilder - Adding module definition for clas"
+    ],
+    [
+      0.000006,
+      "s org.apache.tapestry5.json.modules.JSONModule\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.007182,
+      "\u001b[32D\u001b[0K17:44:37.633 [localhost-startStop-1] INFO  org.apache.tapestry5.ioc.RegistryBuilder - Adding module definition for clas"
+    ],
+    [
+      0.000006,
+      "s org.apache.tapestry5.modules.TapestryModule\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.130564,
+      "\u001b[32D\u001b[0K17:44:37.764 [localhost-startStop-1] INFO  org.apache.tapestry5.ioc.RegistryBuilder - Adding module definition for class org.apache.tapestry5.modules.InternalModule\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.031658,
+      "\u001b[32D\u001b[0K17:44:37.796 [localhost-startStop-1] INFO  org.apache.tapestry5.ioc.RegistryBuilder - Adding module definition for clas"
+    ],
+    [
+      0.000006,
+      "s org.apache.tapestry5.modules.AssetsModule\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.020888,
+      "\u001b[32D\u001b[0K17:44:37.816 [localhost-startStop-1] INFO  org.apache.tapestry5.ioc.RegistryBuilder - Adding module definition for clas"
+    ],
+    [
+      0.000007,
+      "s org.apache.tapestry5.modules.PageLoadModule\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.005330,
+      "\u001b[32D\u001b[0K17:44:37.822 [localhost-startStop-1] INFO  org.apache.tapestry5.ioc.RegistryBuilder - Adding module definition for clas"
+    ],
+    [
+      0.000006,
+      "s org.apache.tapestry5.modules.JavaScriptModule\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.009007,
+      "\u001b[32D\u001b[0K17:44:37.831 [localhost-startStop-1] INFO  org.apache.tapestry5.ioc.RegistryBuilder - Adding module definition for clas"
+    ],
+    [
+      0.000007,
+      "s org.apache.tapestry5.modules.CompatibilityModule\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.002562,
+      "\u001b[32D\u001b[0K17:44:37.833 [localhost-startStop-1] INFO  org.apache.tapestry5.ioc.RegistryBuilder - Adding module definition for clas"
+    ],
+    [
+      0.000006,
+      "s org.apache.tapestry5.modules.DashboardModule\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.002626,
+      "\u001b[32D\u001b[0K17:44:37.836 [localhost-startStop-1] INFO  org.apache.tapestry5.ioc.RegistryBuilder - Adding module definition for clas"
+    ],
+    [
+      0.000007,
+      "s io.github.picodotdev.gradle.back.services.AppModule\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.925839,
+      "\u001b[32D\u001b[0K17:44:38.762 [localhost-startStop-1] INFO  org.apache.tapestry5.internal.spring.SpringModuleDef.ApplicationContext - St"
+    ],
+    [
+      0.000007,
+      "arting Spring (version 4.2.1.RELEASE)\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      1.895892,
+      "\u001b[32D\u001b[0K17:44:40.656 [localhost-startStop-1] INFO  org.apache.tapestry5.spring.modules.SpringModule - Spring version 4.2.1.RELE"
+    ],
+    [
+      0.000006,
+      "ASE with 22 defined beans.\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.098948,
+      "\u001b[32D\u001b[0K17:44:40.757 [localhost-startStop-1] INFO  org.apache.tapestry5.modules.TapestryModule.ComponentClassResolver - Availab"
+    ],
+    [
+      0.000006,
+      "le pages (8):\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000123,
+      "\u001b[32D\u001b[0K              (blank): io.github.picodotdev.gradle.back.pages.Index\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000106,
+      "\u001b[32D\u001b[0K   ComponentLibraries: org.apache.tapestry5.corelib.pages.ComponentLibraries\r\n"
+    ],
+    [
+      0.000038,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000091,
+      "\u001b[32D\u001b[0K      ExceptionReport: org.apache.tapestry5.corelib.pages.ExceptionReport\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000081,
+      "\u001b[32D\u001b[0K                Index: io.github.picodotdev.gradle.back.pages.Index\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000069,
+      "\u001b[32D\u001b[0K          PageCatalog: org.apache.tapestry5.corelib.pages.PageCatalog\r\n"
+    ],
+    [
+      0.000007,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000096,
+      "\u001b[32D\u001b[0KPropertyDisplayBlocks: org.apache.tapestry5.corelib.pages.PropertyDisplayBlocks\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000090,
+      "\u001b[32D\u001b[0K   PropertyEditBlocks: org.apache.tapestry5.corelib.pages.PropertyEditBlocks\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000070,
+      "\u001b[32D\u001b[0K        ServiceStatus: org.apache.tapestry5.corelib.pages.ServiceStatus\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000104,
+      "\u001b[32D\u001b[0K          T5Dashboard: org.apache.tapestry5.corelib.pages.T5Dashboard\r\n"
+    ],
+    [
+      0.000032,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000057,
+      "\u001b[32D\u001b[0K\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.001297,
+      "\u001b[32D\u001b[0K17:44:40.759 [localhost-startStop-1] INFO  org.apache.tapestry5.modules.TapestryModule.ComponentClassResolver - Availab"
+    ],
+    [
+      0.000006,
+      "le components (59):\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000101,
+      "\u001b[32D\u001b[0K        ActionLink: org.apache.tapestry5.corelib.components.ActionLink\r\n"
+    ],
+    [
+      0.000032,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000074,
+      "\u001b[32D\u001b[0K        AddRowLink: org.apache.tapestry5.corelib.components.AddRowLink\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000069,
+      "\u001b[32D\u001b[0K      AjaxFormLoop: org.apache.tapestry5.corelib.components.AjaxFormLoop\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000095,
+      "\u001b[32D\u001b[0K            Alerts: org.apache.tapestry5.corelib.components.Alerts\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000121,
+      "\u001b[32D\u001b[0K               Any: org.apache.tapestry5.corelib.components.Any\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000111,
+      "\u001b[32D\u001b[0K       BeanDisplay: org.apache.tapestry5.corelib.components.BeanDisplay\r\n"
+    ],
+    [
+      0.000033,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000081,
+      "\u001b[32D\u001b[0K      BeanEditForm: org.apache.tapestry5.corelib.components.BeanEditForm\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000097,
+      "\u001b[32D\u001b[0K        BeanEditor: org.apache.tapestry5.corelib.components.BeanEditor\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000072,
+      "\u001b[32D\u001b[0K          Checkbox: org.apache.tapestry5.corelib.components.Checkbox\r\n"
+    ],
+    [
+      0.000033,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000068,
+      "\u001b[32D\u001b[0K         Checklist: org.apache.tapestry5.corelib.components.Checklist\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000077,
+      "\u001b[32D\u001b[0K         DateField: org.apache.tapestry5.corelib.components.DateField\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000102,
+      "\u001b[32D\u001b[0K          Delegate: org.apache.tapestry5.corelib.components.Delegate\r\n"
+    ],
+    [
+      0.000032,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000073,
+      "\u001b[32D\u001b[0K           DevTool: org.apache.tapestry5.corelib.components.DevTool\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000093,
+      "\u001b[32D\u001b[0K           Doctype: org.apache.tapestry5.corelib.components.Doctype\r\n"
+    ],
+    [
+      0.000038,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000067,
+      "\u001b[32D\u001b[0K           Dynamic: org.apache.tapestry5.corelib.components.Dynamic\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000102,
+      "\u001b[32D\u001b[0K             Error: org.apache.tapestry5.corelib.components.Error\r\n"
+    ],
+    [
+      0.000033,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000067,
+      "\u001b[32D\u001b[0K            Errors: org.apache.tapestry5.corelib.components.Errors\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000095,
+      "\u001b[32D\u001b[0K         EventLink: org.apache.tapestry5.corelib.components.EventLink\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000094,
+      "\u001b[32D\u001b[0K  ExceptionDisplay: org.apache.tapestry5.corelib.components.ExceptionDisplay\r\n"
+    ],
+    [
+      0.000032,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000066,
+      "\u001b[32D\u001b[0K              Form: org.apache.tapestry5.corelib.components.Form\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000075,
+      "\u001b[32D\u001b[0K      FormFragment: org.apache.tapestry5.corelib.components.FormFragment\r\n"
+    ],
+    [
+      0.000036,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000070,
+      "\u001b[32D\u001b[0K         Glyphicon: org.apache.tapestry5.corelib.components.Glyphicon\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000092,
+      "\u001b[32D\u001b[0K              Grid: org.apache.tapestry5.corelib.components.Grid\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000073,
+      "\u001b[32D\u001b[0K          GridCell: org.apache.tapestry5.corelib.components.GridCell\r\n"
+    ],
+    [
+      0.000032,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000077,
+      "\u001b[32D\u001b[0K       GridColumns: org.apache.tapestry5.corelib.components.GridColumns\r\n"
+    ],
+    [
+      0.000010,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000096,
+      "\u001b[32D\u001b[0K         GridPager: org.apache.tapestry5.corelib.components.GridPager\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000077,
+      "\u001b[32D\u001b[0K          GridRows: org.apache.tapestry5.corelib.components.GridRows\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000073,
+      "\u001b[32D\u001b[0K            Hidden: org.apache.tapestry5.corelib.components.Hidden\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000092,
+      "\u001b[32D\u001b[0K                If: org.apache.tapestry5.corelib.components.If\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000066,
+      "\u001b[32D\u001b[0K             Label: org.apache.tapestry5.corelib.components.Label\r\n"
+    ],
+    [
+      0.000029,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000073,
+      "\u001b[32D\u001b[0K        LinkSubmit: org.apache.tapestry5.corelib.components.LinkSubmit\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000064,
+      "\u001b[32D\u001b[0K         LocalDate: org.apache.tapestry5.corelib.components.LocalDate\r\n"
+    ],
+    [
+      0.000006,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000100,
+      "\u001b[32D\u001b[0K              Loop: org.apache.tapestry5.corelib.components.Loop\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000070,
+      "\u001b[32D\u001b[0K            Output: org.apache.tapestry5.corelib.components.Output\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000070,
+      "\u001b[32D\u001b[0K         OutputRaw: org.apache.tapestry5.corelib.components.OutputRaw\r\n"
+    ],
+    [
+      0.000036,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000077,
+      "\u001b[32D\u001b[0K          PageLink: org.apache.tapestry5.corelib.components.PageLink\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000111,
+      "\u001b[32D\u001b[0K           Palette: org.apache.tapestry5.corelib.components.Palette\r\n"
+    ],
+    [
+      0.000046,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000077,
+      "\u001b[32D\u001b[0K     PasswordField: org.apache.tapestry5.corelib.components.PasswordField\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000096,
+      "\u001b[32D\u001b[0KProgressiveDisplay: org.apache.tapestry5.corelib.components.ProgressiveDisplay\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000078,
+      "\u001b[32D\u001b[0K   PropertyDisplay: org.apache.tapestry5.corelib.components.PropertyDisplay\r\n"
+    ],
+    [
+      0.000039,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000067,
+      "\u001b[32D\u001b[0K    PropertyEditor: org.apache.tapestry5.corelib.components.PropertyEditor\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000106,
+      "\u001b[32D\u001b[0K             Radio: org.apache.tapestry5.corelib.components.Radio\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000094,
+      "\u001b[32D\u001b[0K        RadioGroup: org.apache.tapestry5.corelib.components.RadioGroup\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000074,
+      "\u001b[32D\u001b[0K     RemoveRowLink: org.apache.tapestry5.corelib.components.RemoveRowLink\r\n"
+    ],
+    [
+      0.000033,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000064,
+      "\u001b[32D\u001b[0K      RenderObject: org.apache.tapestry5.corelib.components.RenderObject\r\n"
+    ],
+    [
+      0.000005,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000096,
+      "\u001b[32D\u001b[0K            Select: org.apache.tapestry5.corelib.components.Select\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000065,
+      "\u001b[32D\u001b[0K            Submit: org.apache.tapestry5.corelib.components.Submit\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000071,
+      "\u001b[32D\u001b[0K    SubmitNotifier: org.apache.tapestry5.corelib.components.SubmitNotifier\r\n"
+    ],
+    [
+      0.000036,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000062,
+      "\u001b[32D\u001b[0K          TextArea: org.apache.tapestry5.corelib.components.TextArea\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000068,
+      "\u001b[32D\u001b[0K         TextField: org.apache.tapestry5.corelib.components.TextField\r\n"
+    ],
+    [
+      0.000008,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000095,
+      "\u001b[32D\u001b[0K        TextOutput: org.apache.tapestry5.corelib.components.TextOutput\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000075,
+      "\u001b[32D\u001b[0K      TimeInterval: org.apache.tapestry5.corelib.components.TimeInterval\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000080,
+      "\u001b[32D\u001b[0K              Tree: org.apache.tapestry5.corelib.components.Tree\r\n"
+    ],
+    [
+      0.000005,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000120,
+      "\u001b[32D\u001b[0K           Trigger: org.apache.tapestry5.corelib.components.Trigger\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000093,
+      "\u001b[32D\u001b[0K            Unless: org.apache.tapestry5.corelib.components.Unless\r\n"
+    ],
+    [
+      0.000007,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000093,
+      "\u001b[32D\u001b[0K              Zone: org.apache.tapestry5.corelib.components.Zone\r\n"
+    ],
+    [
+      0.000036,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000075,
+      "\u001b[32D\u001b[0K    library/Footer: io.github.picodotdev.gradle.library.components.Footer\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000089,
+      "\u001b[32D\u001b[0K    library/Header: io.github.picodotdev.gradle.library.components.Header\r\n"
+    ],
+    [
+      0.000028,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000070,
+      "\u001b[32D\u001b[0K    library/Layout: io.github.picodotdev.gradle.library.components.Layout\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000104,
+      "\u001b[32D\u001b[0K\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000780,
+      "\u001b[32D\u001b[0K17:44:40.766 [localhost-startStop-1] INFO  org.apache.tapestry5.modules.TapestryModule.ComponentClassResolver - Availab"
+    ],
+    [
+      0.000005,
+      "le mixins (13):\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000200,
+      "\u001b[32D\u001b[0K      Autocomplete: org.apache.tapestry5.corelib.mixins.Autocomplete\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000012,
+      "\u001b[32D\u001b[0K           Confirm: org.apache.tapestry5.corelib.mixins.Confirm\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000076,
+      "\u001b[32D\u001b[0K       DiscardBody: org.apache.tapestry5.corelib.mixins.DiscardBody\r\n"
+    ],
+    [
+      0.000032,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000068,
+      "\u001b[32D\u001b[0K    FormFieldFocus: org.apache.tapestry5.corelib.mixins.FormFieldFocus\r\n"
+    ],
+    [
+      0.000036,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000090,
+      "\u001b[32D\u001b[0K         FormGroup: org.apache.tapestry5.corelib.mixins.FormGroup\r\n"
+    ],
+    [
+      0.002761,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K          NotEmpty: org.apache.tapestry5.corelib.mixins.NotEmpty\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0KOverrideFieldFocus: org.apache.tapestry5.corelib.mixins.OverrideFieldFocus\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K    RenderClientId: org.apache.tapestry5.corelib.mixins.RenderClientId\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K    RenderDisabled: org.apache.tapestry5.corelib.mixins.RenderDisabled\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K   RenderInformals: org.apache.tapestry5.corelib.mixins.RenderInformals\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0KRenderNotification: org.apache.tapestry5.corelib.mixins.RenderNotification\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K   TriggerFragment: org.apache.tapestry5.corelib.mixins.TriggerFragment\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K       ZoneRefresh: org.apache.tapestry5.corelib.mixins.ZoneRefresh\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.042401,
+      "\u001b[32D\u001b[0K17:44:40.812 [localhost-startStop-1] INFO  org.apache.tapestry5.TapestryFilter - Startup status:\r\n"
+    ],
+    [
+      0.000008,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000104,
+      "\u001b[32D\u001b[0K\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000078,
+      "\u001b[32D\u001b[0KServices:\r\n"
+    ],
+    [
+      0.000033,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000049,
+      "\u001b[32D\u001b[0K\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000068,
+      "\u001b[32D\u001b[0K          AjaxComponentEventRequestHandler: DEFINED\r\n"
+    ],
+    [
+      0.000004,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000086,
+      "\u001b[32D\u001b[0K         AjaxComponentEventResultProcessor: DEFINED\r\n"
+    ],
+    [
+      0.000038,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000068,
+      "\u001b[32D\u001b[0K                  AjaxFormUpdateController: DEFINED\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000096,
+      "\u001b[32D\u001b[0K               AjaxPartialResponseRenderer: DEFINED\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000081,
+      "\u001b[32D\u001b[0K                      AjaxResponseRenderer: DEFINED\r\n"
+    ],
+    [
+      0.000032,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000069,
+      "\u001b[32D\u001b[0K                              AlertManager: VIRTUAL\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000062,
+      "\u001b[32D\u001b[0K                        ApplicationContext: REAL\r\n"
+    ],
+    [
+      0.000038,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000053,
+      "\u001b[32D\u001b[0K              ApplicationContextCustomizer: REAL\r\n"
+    ],
+    [
+      0.000048,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000052,
+      "\u001b[32D\u001b[0K                       ApplicationDefaults: REAL\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000067,
+      "\u001b[32D\u001b[0K                        ApplicationGlobals: REAL\r\n"
+    ],
+    [
+      0.000033,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000071,
+      "\u001b[32D\u001b[0K                    ApplicationInitializer: REAL\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000063,
+      "\u001b[32D\u001b[0K                   ApplicationStateManager: DEFINED\r\n"
+    ],
+    [
+      0.000032,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000070,
+      "\u001b[32D\u001b[0K ApplicationStatePersistenceStrategySource: DEFINED\r\n"
+    ],
+    [
+      0.000037,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000057,
+      "\u001b[32D\u001b[0K                           AspectDecorator: VIRTUAL\r\n"
+    ],
+    [
+      0.000037,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000054,
+      "\u001b[32D\u001b[0K                       AssetBindingFactory: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000054,
+      "\u001b[32D\u001b[0K                    AssetChecksumGenerator: DEFINED\r\n"
+    ],
+    [
+      0.000037,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000054,
+      "\u001b[32D\u001b[0K                           AssetDispatcher: DEFINED\r\n"
+    ],
+    [
+      0.000037,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000053,
+      "\u001b[32D\u001b[0K                       AssetObjectProvider: REAL\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000054,
+      "\u001b[32D\u001b[0K                      AssetPathConstructor: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000054,
+      "\u001b[32D\u001b[0K                        AssetPathConverter: DEFINED\r\n"
+    ],
+    [
+      0.000007,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000108,
+      "\u001b[32D\u001b[0K                               AssetSource: VIRTUAL\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000100,
+      "\u001b[32D\u001b[0K                             BaseURLSource: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000075,
+      "\u001b[32D\u001b[0K                   BeanBlockOverrideSource: DEFINED\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000080,
+      "\u001b[32D\u001b[0K                           BeanBlockSource: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000336,
+      "\u001b[32D\u001b[0K           BeanFieldValidatorDefaultSource: VIRTUAL\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                           BeanModelSource: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                             BeanValidator: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000033,
+      "\u001b[32D\u001b[0K                  BeanValidatorGroupSource: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000083,
+      "\u001b[32D\u001b[0K                       BeanValidatorSource: DEFINED\r\n"
+    ],
+    [
+      0.000009,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000083,
+      "\u001b[32D\u001b[0K                             BindingSource: DEFINED\r\n"
+    ],
+    [
+      0.000008,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000085,
+      "\u001b[32D\u001b[0K                              ChainBuilder: REAL\r\n"
+    ],
+    [
+      0.000038,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000052,
+      "\u001b[32D\u001b[0K                          ClassNameLocator: REAL\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000061,
+      "\u001b[32D\u001b[0K                ClasspathAssetAliasManager: DEFINED\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000061,
+      "\u001b[32D\u001b[0K                     ClasspathAssetFactory: DEFINED\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000055,
+      "\u001b[32D\u001b[0K                          ClasspathScanner: REAL\r\n"
+    ],
+    [
+      0.000036,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000054,
+      "\u001b[32D\u001b[0K                     ClasspathURLConverter: REAL\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000057,
+      "\u001b[32D\u001b[0K                     ClientBehaviorSupport: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000072,
+      "\u001b[32D\u001b[0K          ClientConstraintDescriptorSource: DEFINED\r\n"
+    ],
+    [
+      0.000007,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000094,
+      "\u001b[32D\u001b[0K                         ClientDataEncoder: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000064,
+      "\u001b[32D\u001b[0K              ClientPersistentFieldStorage: DEFINED\r\n"
+    ],
+    [
+      0.000029,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000065,
+      "\u001b[32D\u001b[0K             ClientPersistentFieldStrategy: DEFINED\r\n"
+    ],
+    [
+      0.000028,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000065,
+      "\u001b[32D\u001b[0K                           ClientWhitelist: DEFINED\r\n"
+    ],
+    [
+      0.000033,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000056,
+      "\u001b[32D\u001b[0K                             Compatibility: DEFINED\r\n"
+    ],
+    [
+      0.000040,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000070,
+      "\u001b[32D\u001b[0K                       ComponentClassCache: DEFINED\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000089,
+      "\u001b[32D\u001b[0K                    ComponentClassResolver: REAL\r\n"
+    ],
+    [
+      0.002634,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K             ComponentClassTransformWorker: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K      ComponentClassesInvalidationEventHub: REAL\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                  ComponentDefaultProvider: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                 ComponentEventLinkEncoder: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K             ComponentEventLinkTransformer: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K              ComponentEventRequestHandler: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K             ComponentEventResultProcessor: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K          ComponentInstanceResultProcessor: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K               ComponentInstantiatorSource: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                ComponentLibraryInfoSource: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K     ComponentMessagesInvalidationEventHub: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                   ComponentMessagesSource: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                      ComponentModelSource: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                         ComponentOverride: REAL\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K       ComponentPageElementResourcesSource: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                     ComponentProxyFactory: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                   ComponentRequestHandler: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K          ComponentRequestSelectorAnalyzer: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                  ComponentResourceLocator: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                           ComponentSource: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                  ComponentTemplateLocator: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                   ComponentTemplateSource: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K    ComponentTemplatesInvalidationEventHub: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                       CompressionAnalyzer: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K                       ContentTypeAnalyzer: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000205,
+      "\u001b[32D\u001b[0K                                   Context: DEFINED\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000098,
+      "\u001b[32D\u001b[0K                       ContextAssetFactory: DEFINED\r\n"
+    ],
+    [
+      0.000009,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000093,
+      "\u001b[32D\u001b[0K                     ContextBindingFactory: DEFINED\r\n"
+    ],
+    [
+      0.000009,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000092,
+      "\u001b[32D\u001b[0K                        ContextPathEncoder: DEFINED\r\n"
+    ],
+    [
+      0.000012,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000093,
+      "\u001b[32D\u001b[0K                       ContextValueEncoder: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000068,
+      "\u001b[32D\u001b[0K                                CookieSink: DEFINED\r\n"
+    ],
+    [
+      0.000009,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000091,
+      "\u001b[32D\u001b[0K                              CookieSource: DEFINED\r\n"
+    ],
+    [
+      0.000009,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000086,
+      "\u001b[32D\u001b[0K                                   Cookies: DEFINED\r\n"
+    ],
+    [
+      0.000009,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000132,
+      "\u001b[32D\u001b[0K                       CoreJavaScriptStack: DEFINED\r\n"
+    ],
+    [
+      0.000009,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000090,
+      "\u001b[32D\u001b[0K                          DashboardManager: DEFINED\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000089,
+      "\u001b[32D\u001b[0K                          DataTypeAnalyzer: DEFINED\r\n"
+    ],
+    [
+      0.000008,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000083,
+      "\u001b[32D\u001b[0K                             DateUtilities: DEFINED\r\n"
+    ],
+    [
+      0.000043,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000062,
+      "\u001b[32D\u001b[0K                   DefaultDataTypeAnalyzer: DEFINED\r\n"
+    ],
+    [
+      0.000013,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000077,
+      "\u001b[32D\u001b[0K              DefaultImplementationBuilder: VIRTUAL\r\n"
+    ],
+    [
+      0.000009,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000086,
+      "\u001b[32D\u001b[0K                         DeferredExecution: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000067,
+      "\u001b[32D\u001b[0K                        DeprecationWarning: DEFINED\r\n"
+    ],
+    [
+      0.000033,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000059,
+      "\u001b[32D\u001b[0K                     DynamicTemplateParser: VIRTUAL\r\n"
+    ],
+    [
+      0.000036,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000056,
+      "\u001b[32D\u001b[0K                      EndOfRequestEventHub: REAL\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000055,
+      "\u001b[32D\u001b[0K                               Environment: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000055,
+      "\u001b[32D\u001b[0K                EnvironmentalShadowBuilder: VIRTUAL\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K                         ExceptionAnalyzer: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000059,
+      "\u001b[32D\u001b[0K                     ExceptionReportWriter: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K                         ExceptionReporter: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K                          ExceptionTracker: DEFINED\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000089,
+      "\u001b[32D\u001b[0K                           FactoryDefaults: REAL\r\n"
+    ],
+    [
+      0.000036,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000054,
+      "\u001b[32D\u001b[0K                     FieldTranslatorSource: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000070,
+      "\u001b[32D\u001b[0K                    FieldValidationSupport: DEFINED\r\n"
+    ],
+    [
+      0.000008,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000084,
+      "\u001b[32D\u001b[0K               FieldValidatorDefaultSource: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000065,
+      "\u001b[32D\u001b[0K                      FieldValidatorSource: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000060,
+      "\u001b[32D\u001b[0K                    FormControlNameManager: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000062,
+      "\u001b[32D\u001b[0K                               FormSupport: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000065,
+      "\u001b[32D\u001b[0K                                 Heartbeat: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000068,
+      "\u001b[32D\u001b[0K                  HiddenFieldLocationRules: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000056,
+      "\u001b[32D\u001b[0K                              Html5Support: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000057,
+      "\u001b[32D\u001b[0K                        HttpServletRequest: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000060,
+      "\u001b[32D\u001b[0K                 HttpServletRequestHandler: VIRTUAL\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000055,
+      "\u001b[32D\u001b[0K                       HttpServletResponse: DEFINED\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K                        IgnoredPathsFilter: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000116,
+      "\u001b[32D\u001b[0K                         InjectionProvider: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000069,
+      "\u001b[32D\u001b[0K     InternalComponentInvalidationEventHub: REAL\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000098,
+      "\u001b[32D\u001b[0K                   InternalJavaScriptStack: DEFINED\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000078,
+      "\u001b[32D\u001b[0K                    InternalRequestGlobals: DEFINED\r\n"
+    ],
+    [
+      0.000028,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000067,
+      "\u001b[32D\u001b[0K                  JavaScriptStackAssembler: DEFINED\r\n"
+    ],
+    [
+      0.000029,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000067,
+      "\u001b[32D\u001b[0K            JavaScriptStackPathConstructor: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000068,
+      "\u001b[32D\u001b[0K                     JavaScriptStackSource: DEFINED\r\n"
+    ],
+    [
+      0.000009,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000093,
+      "\u001b[32D\u001b[0K                         JavaScriptSupport: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000079,
+      "\u001b[32D\u001b[0K                               LazyAdvisor: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000061,
+      "\u001b[32D\u001b[0K                           LinkCreationHub: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000060,
+      "\u001b[32D\u001b[0K                                LinkSource: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000061,
+      "\u001b[32D\u001b[0K                           LinkTransformer: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000064,
+      "\u001b[32D\u001b[0K                        LocalizationSetter: DEFINED\r\n"
+    ],
+    [
+      0.000028,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000071,
+      "\u001b[32D\u001b[0K                          LocationRenderer: DEFINED\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000057,
+      "\u001b[32D\u001b[0K                              LoggerSource: BUILTIN\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000081,
+      "\u001b[32D\u001b[0K                            LoggingAdvisor: DEFINED\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000085,
+      "\u001b[32D\u001b[0K                          LoggingDecorator: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000068,
+      "\u001b[32D\u001b[0K                            MarkupRenderer: DEFINED\r\n"
+    ],
+    [
+      0.000032,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000060,
+      "\u001b[32D\u001b[0K                       MarkupWriterFactory: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000056,
+      "\u001b[32D\u001b[0K                          MasterDispatcher: DEFINED\r\n"
+    ],
+    [
+      0.000033,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K                      MasterObjectProvider: REAL\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000057,
+      "\u001b[32D\u001b[0K           MasterStackTraceElementAnalyzer: DEFINED\r\n"
+    ],
+    [
+      0.000033,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000062,
+      "\u001b[32D\u001b[0K                     MessageBindingFactory: DEFINED\r\n"
+    ],
+    [
+      0.000032,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000064,
+      "\u001b[32D\u001b[0K                           MetaDataLocator: DEFINED\r\n"
+    ],
+    [
+      0.000009,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000085,
+      "\u001b[32D\u001b[0K                                MetaWorker: DEFINED\r\n"
+    ],
+    [
+      0.000029,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000066,
+      "\u001b[32D\u001b[0K                             ModuleManager: DEFINED\r\n"
+    ],
+    [
+      0.000029,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000063,
+      "\u001b[32D\u001b[0K           NullFieldStrategyBindingFactory: DEFINED\r\n"
+    ],
+    [
+      0.000029,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000061,
+      "\u001b[32D\u001b[0K                   NullFieldStrategySource: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000061,
+      "\u001b[32D\u001b[0K                  NumericTranslatorSupport: DEFINED\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000059,
+      "\u001b[32D\u001b[0K                            ObjectRenderer: DEFINED\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000060,
+      "\u001b[32D\u001b[0K                          OperationAdvisor: DEFINED\r\n"
+    ],
+    [
+      0.000036,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000056,
+      "\u001b[32D\u001b[0K            PageActivationContextCollector: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K                             PageActivator: DEFINED\r\n"
+    ],
+    [
+      0.000033,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000063,
+      "\u001b[32D\u001b[0K                   PageContentTypeAnalyzer: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000057,
+      "\u001b[32D\u001b[0K                     PageDocumentGenerator: DEFINED\r\n"
+    ],
+    [
+      0.000033,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000059,
+      "\u001b[32D\u001b[0K                        PageElementFactory: DEFINED\r\n"
+    ],
+    [
+      0.000041,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000057,
+      "\u001b[32D\u001b[0K                                PageLoader: DEFINED\r\n"
+    ],
+    [
+      0.000033,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000064,
+      "\u001b[32D\u001b[0K                        PageMarkupRenderer: DEFINED\r\n"
+    ],
+    [
+      0.000009,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000080,
+      "\u001b[32D\u001b[0K                             PagePreloader: VIRTUAL\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K                      PageRenderLinkSource: DEFINED\r\n"
+    ],
+    [
+      0.000028,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000075,
+      "\u001b[32D\u001b[0K                 PageRenderLinkTransformer: DEFINED\r\n"
+    ],
+    [
+      0.000036,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000054,
+      "\u001b[32D\u001b[0K                           PageRenderQueue: DEFINED\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K                  PageRenderRequestHandler: DEFINED\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000064,
+      "\u001b[32D\u001b[0K                      PageResponseRenderer: DEFINED\r\n"
+    ],
+    [
+      0.000010,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000081,
+      "\u001b[32D\u001b[0K                                PageSource: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000068,
+      "\u001b[32D\u001b[0K                     PartialMarkupRenderer: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000059,
+      "\u001b[32D\u001b[0K                   PartialTemplateRenderer: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000066,
+      "\u001b[32D\u001b[0K                           PathConstructor: DEFINED\r\n"
+    ],
+    [
+      0.000037,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000053,
+      "\u001b[32D\u001b[0K                          PeriodicExecutor: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000056,
+      "\u001b[32D\u001b[0K                    PersistentFieldManager: DEFINED\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000056,
+      "\u001b[32D\u001b[0K                          PersistentLocale: DEFINED\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000056,
+      "\u001b[32D\u001b[0K                          PerthreadManager: BUILTIN\r\n"
+    ],
+    [
+      0.000035,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K                           PipelineBuilder: REAL\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000063,
+      "\u001b[32D\u001b[0K                       PlasticProxyFactory: BUILTIN\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000059,
+      "\u001b[32D\u001b[0K                        PropBindingFactory: DEFINED\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000059,
+      "\u001b[32D\u001b[0K                      PropertiesFileParser: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000065,
+      "\u001b[32D\u001b[0K                            PropertyAccess: VIRTUAL\r\n"
+    ],
+    [
+      0.000029,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000073,
+      "\u001b[32D\u001b[0K                     PropertyConduitSource: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000073,
+      "\u001b[32D\u001b[0K                     PropertyShadowBuilder: VIRTUAL\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000064,
+      "\u001b[32D\u001b[0K                       RegistryShutdownHub: BUILTIN\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000057,
+      "\u001b[32D\u001b[0K                           RegistryStartup: REAL\r\n"
+    ],
+    [
+      0.000029,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000061,
+      "\u001b[32D\u001b[0K                              ReloadHelper: REAL\r\n"
+    ],
+    [
+      0.000029,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000125,
+      "\u001b[32D\u001b[0K                                   Request: VIRTUAL\r\n"
+    ],
+    [
+      0.000032,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000079,
+      "\u001b[32D\u001b[0K                   RequestExceptionHandler: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000121,
+      "\u001b[32D\u001b[0K                            RequestGlobals: DEFINED\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000085,
+      "\u001b[32D\u001b[0K                            RequestHandler: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000061,
+      "\u001b[32D\u001b[0K                          RequestPageCache: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K                    RequestSecurityManager: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000061,
+      "\u001b[32D\u001b[0K                     ResourceChangeTracker: DEFINED\r\n"
+    ],
+    [
+      0.000037,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000052,
+      "\u001b[32D\u001b[0K                   ResourceDigestGenerator: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000079,
+      "\u001b[32D\u001b[0K                     ResourceDigestManager: DEFINED\r\n"
+    ],
+    [
+      0.000032,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K                         ResourceMinimizer: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000060,
+      "\u001b[32D\u001b[0K                          ResourceStreamer: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000062,
+      "\u001b[32D\u001b[0K                ResourceTransformerFactory: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000060,
+      "\u001b[32D\u001b[0K                                  Response: VIRTUAL\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K               ResponseCompressionAnalyzer: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000076,
+      "\u001b[32D\u001b[0K                          ResponseRenderer: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000059,
+      "\u001b[32D\u001b[0K                        SelectModelFactory: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K                 ServiceActivityScoreboard: BUILTIN\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000064,
+      "\u001b[32D\u001b[0K           ServiceConfigurationListenerHub: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000066,
+      "\u001b[32D\u001b[0K                    ServiceLifecycleSource: REAL\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000060,
+      "\u001b[32D\u001b[0K                           ServiceOverride: REAL\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000059,
+      "\u001b[32D\u001b[0K             ServletApplicationInitializer: REAL\r\n"
+    ],
+    [
+      0.000029,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000076,
+      "\u001b[32D\u001b[0KSessionApplicationStatePersistenceStrategy: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000059,
+      "\u001b[32D\u001b[0K            SessionPersistedObjectAnalyzer: DEFINED\r\n"
+    ],
+    [
+      0.000029,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000062,
+      "\u001b[32D\u001b[0K                           StrategyBuilder: VIRTUAL\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000065,
+      "\u001b[32D\u001b[0K                  StreamableResourceSource: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000065,
+      "\u001b[32D\u001b[0K                            StringInterner: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000059,
+      "\u001b[32D\u001b[0K                      SymbolBindingFactory: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000065,
+      "\u001b[32D\u001b[0K                              SymbolSource: REAL\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000060,
+      "\u001b[32D\u001b[0K                    TapestrySessionFactory: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K                            TemplateParser: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000064,
+      "\u001b[32D\u001b[0K                              ThreadLocale: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000073,
+      "\u001b[32D\u001b[0K                              ThunkCreator: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000072,
+      "\u001b[32D\u001b[0K                   TranslateBindingFactory: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000063,
+      "\u001b[32D\u001b[0K                TranslatorAlternatesSource: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000064,
+      "\u001b[32D\u001b[0K                          TranslatorSource: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000063,
+      "\u001b[32D\u001b[0K                               TypeCoercer: REAL\r\n"
+    ],
+    [
+      0.000033,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K                                URLEncoder: DEFINED\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000062,
+      "\u001b[32D\u001b[0K           UnknownActivationContextHandler: DEFINED\r\n"
+    ],
+    [
+      0.000032,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000057,
+      "\u001b[32D\u001b[0K                         UpdateListenerHub: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000068,
+      "\u001b[32D\u001b[0K                    ValidateBindingFactory: DEFINED\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000078,
+      "\u001b[32D\u001b[0K             ValidationConstraintGenerator: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000066,
+      "\u001b[32D\u001b[0K                ValidationDecoratorFactory: DEFINED\r\n"
+    ],
+    [
+      0.000029,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000066,
+      "\u001b[32D\u001b[0K                          ValidatorFactory: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000060,
+      "\u001b[32D\u001b[0K                            ValidatorMacro: DEFINED\r\n"
+    ],
+    [
+      0.000042,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000063,
+      "\u001b[32D\u001b[0K                        ValueEncoderSource: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000061,
+      "\u001b[32D\u001b[0K                        ValueLabelProvider: DEFINED\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000049,
+      "\u001b[32D\u001b[0K\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000057,
+      "\u001b[32D\u001b[0K86,11% unrealized services (186/216)\r\n"
+    ],
+    [
+      0.000031,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000048,
+      "\u001b[32D\u001b[0K\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000074,
+      "\u001b[32D\u001b[0KApplication 'app' (version 0.0.1) startup time: 253 ms to build IoC Registry, 3.213 ms overall.\r\n"
+    ],
+    [
+      0.000030,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000052,
+      "\u001b[32D\u001b[0K\r\n"
+    ],
+    [
+      0.000029,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000060,
+      "\u001b[32D\u001b[0K ______                  __             ____\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000090,
+      "\u001b[32D\u001b[0K/_  __/__ ____  ___ ___ / /_______ __  / __/\r\n"
+    ],
+    [
+      0.000034,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000058,
+      "\u001b[32D\u001b[0K / / / _ `/ _ \\/ -_|_-\u003c/ __/ __/ // / /__ \\ \r\n"
+    ],
+    [
+      0.001203,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K/_/  \\_,_/ .__/\\__/___/\\__/_/  \\_, / /____/\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K        /_/                   /___/  5.4-beta-36 (development mode)\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m\u001b[32D\u001b[0K\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.071530,
+      "\u001b[32D\u001b[0KStarted Tomcat Server\r\n"
+    ],
+    [
+      0.000006,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000075,
+      "\u001b[32D\u001b[0K\u001b[1A\u001b[21C\r\n\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.002257,
+      "\u001b[32D\u001b[0KThe Server is running at http://localhost:9080/back\r\n"
+    ],
+    [
+      0.001551,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      0.000066,
+      "\u001b[32D\u001b[0K\u001b[1A\u001b[51C\r\n"
+    ],
+    [
+      0.000003,
+      "\u001b[1m\u003e Building 91% \u003e :back:tomcatRun\u001b[22m"
+    ],
+    [
+      2.000000,
+      "^C"
+    ],
+    [
+      0.004219,
+      "\u001b[0m"
+    ],
+    [
+      0.467087,
+      "\u001b]0;picodotdev@archlinux:~/Software/personal/git/blog-ejemplos/MultiprojectGradle/back\u0007"
+    ],
+    [
+      0.000143,
+      "[\u001b[01;34mpicodotdev\u001b[00m@\u001b[01;35marchlinux\u001b[00m back]$ "
+    ],
+    [
+      0.781512,
+      "e"
+    ],
+    [
+      0.325161,
+      "x"
+    ],
+    [
+      0.239319,
+      "i"
+    ],
+    [
+      0.131561,
+      "t"
+    ],
+    [
+      0.623126,
+      "\r\nexit\r\n"
+    ]
+  ]
+}

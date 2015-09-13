@@ -1,0 +1,27 @@
+subprojects {
+    apply plugin: 'eclipse'
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+
+        // For access to Apache Staging (Preview) packages
+        maven {
+            name 'Apache Staging'
+            url 'https://repository.apache.org/content/groups/staging'
+        }
+    }
+
+    dependencies {
+        compile 'org.slf4j:slf4j-api:1.7.12'
+        compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.3'
+        compile 'org.apache.logging.log4j:log4j-api:2.3'
+        compile 'org.apache.logging.log4j:log4j-core:2.3'
+
+        testCompile 'junit:junit:4.12'
+    }
+
+    task wrapper(type: Wrapper) {
+        gradleVersion = '2.6'
+    }
+}
