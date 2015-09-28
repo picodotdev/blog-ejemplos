@@ -1,1 +1,1 @@
-include ':web', ':back', ':library', ':core'
+include 'web', 'back', 'library', 'core'
