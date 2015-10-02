@@ -5,7 +5,7 @@ apply plugin: 'application'
 apply plugin: 'eclipse'
 apply plugin: 'java'
 
-mainClassName = 'io.github.picodotdev.blogbitix.javafx.HolaMundo'
+mainClassName = 'io.github.picodotdev.javafx.HelloWorld'
 
 repositories {
     mavenCentral()
@@ -13,7 +13,7 @@ repositories {
 
 jar {
     manifest {
-        attributes('Main-Class': 'io.github.picodotdev.blogbitix.javafx.HolaMundo')
+        attributes('Main-Class': 'io.github.picodotdev.javafx.HelloWorld')
     }
 }
 
