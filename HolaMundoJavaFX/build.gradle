@@ -1,0 +1,22 @@
+description = 'HolaMundoJavaFX'
+version = '0.1'
+
+apply plugin: 'application'
+apply plugin: 'eclipse'
+apply plugin: 'java'
+
+mainClassName = 'io.github.picodotdev.blogbitix.javafx.HolaMundo'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes('Main-Class': 'io.github.picodotdev.blogbitix.javafx.HolaMundo')
+    }
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.7'
+}
