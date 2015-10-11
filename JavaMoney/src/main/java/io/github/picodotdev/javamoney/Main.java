@@ -154,7 +154,7 @@ public class Main {
 		System.out.println("reduction");
 		System.out.printf("Máximo %s, mínimo %s, suma %s\n", max.get(), min.get(), sum.get());
 		
-		// exchange rates		
+		// exchange rates
 		ExchangeRateProvider exchangeRateProviderECB = MonetaryConversions.getExchangeRateProvider("ECB");
 		ExchangeRateProvider exchangeRateProviderOER = MonetaryConversions.getExchangeRateProvider("OER");
 		ExchangeRate exchangeRateECB = exchangeRateProviderECB.getExchangeRate("USD", "EUR");
@@ -162,16 +162,19 @@ public class Main {
 		
 		System.out.println();
 		System.out.println("exchange rates");
-		System.out.printf("Ratio de conversión de USD a EUR (ECB): %f\n", exchangeRateECB.getFactor().doubleValue());
-		System.out.printf("Ratio de conversión de USD a EUR (OER): %f\n", exchangeRateOER.getFactor().doubleValue());
+		System.out.printf("Ratio de conversión de USD a EUR (ECB, European Central Bank): %f\n", exchangeRateECB.getFactor().doubleValue());
+		System.out.printf("Ratio de conversión de USD a EUR (OER, Open Exchange Rates): %f\n", exchangeRateOER.getFactor().doubleValue());
 		
 		// conversion
-		CurrencyConversion toEuro = MonetaryConversions.getConversion("EUR");		
-		MonetaryAmount tenDollarToEuro = tenDollar.with(toEuro);
+		CurrencyConversion toEuroECB = MonetaryConversions.getConversion("EUR", "ECB");
+		CurrencyConversion toEuroOER = MonetaryConversions.getConversion("EUR", "OER");
+		MonetaryAmount tenDollarToEuroECB = tenDollar.with(toEuroECB);
+		MonetaryAmount tenDollarToEuroOER = tenDollar.with(toEuroOER);
 		
 		System.out.println();
 		System.out.println("conversion");
-		System.out.printf("10 USD son %s EUR\n", tenDollarToEuro);
+		System.out.printf("10 USD son %s EUR (ECB)\n", tenDollarToEuroECB);
+		System.out.printf("10 USD son %s EUR (OER)\n", tenDollarToEuroOER);
 
 		// formating
 		MonetaryAmountFormat spainFormat = MonetaryFormats.getAmountFormat(new Locale("es", "ES"));
