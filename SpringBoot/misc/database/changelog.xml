@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+    
+    <property name="schema" value="jooq"/>
+    
+    <changeSet id="1" author="picodotdev">
+        <comment>Creación de la base de datos</comment>
+        <sql>create schema ${schema}</sql>
+        <createTable tableName="employee" schemaName="${schema}">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="name" type="VARCHAR(256)" />
+            <column name="surname" type="VARCHAR(256)" />
+            <column name="birthday" type="DATETIME" />
+        </createTable>
+        <createTable tableName="department" schemaName="${schema}">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="name" type="VARCHAR(256)" />
+        </createTable>
+        <createTable tableName="employee_department" schemaName="${schema}">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="employee_id" type="BIGINT">
+                <constraints references="${schema}.employee(id)" foreignKeyName="employee_id"/>
+            </column>
+            <column name="department_id" type="BIGINT">
+                <constraints references="${schema}.department(id)" foreignKeyName="department_id"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="picodotdev">
+        <insert tableName="employee" schemaName="${schema}">
+            <column name="id" value="1" />
+            <column name="name" value="Epi" />            
+            <column name="surname" value="Sésamo" />
+            <column name="birthday" valueDate="1970-03-10" />
+        </insert>
+        <insert tableName="employee" schemaName="${schema}">
+            <column name="id" value="2" />
+            <column name="name" value="Blas" />
+            <column name="surname" value="Sésamo" />
+            <column name="birthday" valueDate="1970-03-11" />
+        </insert>
+        <insert tableName="department" schemaName="${schema}">
+            <column name="id" value="1" />
+            <column name="name" value="IT" />
+        </insert>
+        <insert tableName="department" schemaName="${schema}">
+            <column name="id" value="2" />
+            <column name="name" value="Finnancial" />
+        </insert>
+        <insert tableName="employee_department" schemaName="${schema}">
+            <column name="employee_id" value="1" />
+            <column name="department_id" value="1" />
+        </insert>
+        <insert tableName="employee_department" schemaName="${schema}">
+            <column name="employee_id" value="1" />
+            <column name="department_id" value="2" />
+        </insert>
+        <insert tableName="employee_department" schemaName="${schema}">
+            <column name="employee_id" value="2" />
+            <column name="department_id" value="1" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

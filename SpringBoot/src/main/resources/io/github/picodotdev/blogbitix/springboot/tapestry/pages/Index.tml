@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<t:container xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter" xmlns:lib="tapestry-library:library">
+<html t:type="layout" title="Main | jOOQ">
+ 
+    Número empleados: ${numEmployees}<br/>
+    Número departamentos: ${numDepartments}<br/>
+	<t:grid source="containers"/>
+
+</html>
+</t:container>

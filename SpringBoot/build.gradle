@@ -1,0 +1,155 @@
+import org.jooq.util.GenerationTool
+import org.jooq.util.jaxb.Configuration
+import org.jooq.util.jaxb.CustomType
+import org.jooq.util.jaxb.Database
+import org.jooq.util.jaxb.ForcedType
+import org.jooq.util.jaxb.Generate
+import org.jooq.util.jaxb.Generator
+import org.jooq.util.jaxb.Jdbc
+import org.jooq.util.jaxb.Target
+
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'spring-boot'
+
+mainClassName = 'io.github.picodotdev.blogbitix.springboot.Main'
+
+buildscript {
+    repositories {
+        mavenCentral()        
+    }
+   
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.6.RELEASE")
+        classpath 'org.jooq:jooq-codegen:3.7.0'
+        classpath 'com.h2database:h2:1.4.189'
+        classpath 'org.postgresql:postgresql:9.4-1203-jdbc41'
+        classpath 'mysql:mysql-connector-java:5.1.36'
+    }
+}
+
+repositories {
+    mavenCentral()
+    
+    // For access to Apache Staging (Preview) packages
+    maven {
+        name 'Apache Staging'
+        url 'https://repository.apache.org/content/groups/staging'
+    }
+}
+
+dependencies {
+	// Spring
+	compile 'org.springframework:spring-context:4.2.1.RELEASE'	
+	compile 'org.springframework:spring-jdbc:4.2.1.RELEASE'
+	compile 'org.springframework:spring-tx:4.2.1.RELEASE'
+	compile('org.springframework.boot:spring-boot-starter:1.2.6.RELEASE') { exclude(group: 'ch.qos.logback') }
+	compile('org.springframework.boot:spring-boot-starter-web:1.2.6.RELEASE') { exclude(group: 'ch.qos.logback') }
+    compile('org.hibernate:hibernate-validator:5.2.2.Final')
+
+    // Tapestry
+    compile 'org.apache.tapestry:tapestry-core:5.4-beta-36'
+    compile 'org.apache.tapestry:tapestry-webresources:5.4-beta-36'
+    compile 'org.apache.tapestry:tapestry-javadoc:5.4-beta-36'
+    compile 'org.apache.tapestry:tapestry-beanvalidator:5.4-beta-36'
+    compile ('org.apache.tapestry:tapestry-spring:5.4-beta-36') { exclude(group: 'org.springframework') }
+	
+	// Database	
+    compile 'org.jooq:jooq:3.7.0'
+    compile 'org.jooq:jooq-meta:3.7.0'
+    compile 'commons-dbcp:commons-dbcp:1.4'
+	runtime 'com.h2database:h2:1.4.189'
+    runtime 'org.postgresql:postgresql:9.4-1203-jdbc41'
+    runtime 'mysql:mysql-connector-java:5.1.36'
+
+	// Logging
+    compile 'org.slf4j:slf4j-api:1.7.12'
+    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.3'
+    compile 'org.apache.logging.log4j:log4j-api:2.3'
+    compile 'org.apache.logging.log4j:log4j-core:2.3'
+
+	// Misc
+  	compile 'org.apache.commons:commons-lang3:3.4'
+	compile 'joda-time:joda-time:2.8.2'
+	compile 'javax.servlet:javax.servlet-api:3.1.0'
+}
+
+task generateModels << {
+/*
+    Configuration configuration = new Configuration()
+        .withJdbc(new Jdbc()
+            .withDriver('com.mysql.jdbc.Driver')
+            .withUrl('jdbc:mysql://localhost:3306/app')
+            .withUser('root')
+            .withPassword(''))
+        .withGenerator(new Generator()
+            .withGenerate(new Generate()
+                .withInterfaces(true)
+                .withRelations(true)
+                .withValidationAnnotations(true))
+            .withName('org.jooq.util.DefaultGenerator')
+            .withDatabase(new Database()
+                .withCustomTypes([
+                    new CustomType()
+                        .withName('org.joda.time.DateTime')
+                        .withConverter('io.github.picodotdev.blogbitix.springboot.misc.DateTimeConverter')
+                        
+                ])
+                .withForcedTypes([
+                    new ForcedType()
+                        .withName('org.joda.time.DateTime')
+                        .withTypes('TIMESTAMP')                     
+                ])
+                .withName('org.jooq.util.mysql.MySQLDatabase')
+                .withIncludes('.*')
+                .withExcludes('')
+                .withInputSchema('app'))
+            .withTarget(new Target()
+                .withPackageName('io.github.picodotdev.blogbitix.springboot.jooq')
+                .withDirectory('src/main/java')));
+*/
+    Configuration configuration = new Configuration()
+        .withJdbc(new Jdbc()
+            .withDriver('org.h2.Driver')
+            .withUrl('jdbc:h2:./misc/database/app')
+            .withUser('sa')
+            .withPassword('sa'))
+        .withGenerator(new Generator()
+            .withGenerate(new Generate()
+                .withInterfaces(true)
+                .withPojos(true)
+                .withRelations(true)
+                .withValidationAnnotations(true))
+            .withName('org.jooq.util.DefaultGenerator')
+            .withDatabase(new Database()
+                .withCustomTypes([
+                    new CustomType()
+                        .withName('org.joda.time.DateTime')
+                        .withConverter('io.github.picodotdev.blogbitix.springboot.misc.DateTimeConverter')
+                        
+                ])
+                .withForcedTypes([
+                    new ForcedType()
+                        .withName('org.joda.time.DateTime')
+                        .withTypes('TIMESTAMP')                     
+                ])
+                .withName('org.jooq.util.h2.H2Database')
+                .withIncludes('.*')
+                .withExcludes('')
+                .withInputSchema('JOOQ'))
+            .withTarget(new Target()
+                .withPackageName('io.github.picodotdev.blogbitix.springboot.jooq')
+                .withDirectory('src/main/java')));
+
+    GenerationTool.main(configuration)
+}
+
+task updateDatabase(type:Exec) {
+	commandLine "misc/liquibase-3.4.1/liquibase", '--classpath=misc/libs/h2-1.4.189.jar', '--driver=org.h2.Driver',
+		'--changeLogFile=misc/database/changelog.xml', '--url=jdbc:h2:./misc/database/app', '--username=sa', '--password=sa', 'update'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.7'
+}

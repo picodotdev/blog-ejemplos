@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<t:container xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter" xmlns:lib="tapestry-library:library">
+<html t:type="layout" title="Error 404 | jOOQ">
+ 
+	Oooops! Page not found.
+
+</html>
+</t:container>
