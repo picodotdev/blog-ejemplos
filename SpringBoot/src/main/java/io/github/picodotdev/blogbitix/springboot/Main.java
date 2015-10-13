@@ -26,10 +26,6 @@ public class Main implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-	    if (1 == 1) {
-	        return;
-	    }
-	    
 		System.out.printf("Number employees: %d%n", dao.countEmployees());
 		System.out.printf("Number departments: %d%n", dao.countDepartments());
 		
