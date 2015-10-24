@@ -5,14 +5,6 @@ import java.util.Observable;
 
 public class Producto {
 
-    public enum EventoObservable {
-        PRECIO
-    }
-    
-    public enum ParamsObservable {
-        EVENTO, PRODUCTO, PRECIO_ANTIGUO, PRECIO_NUEVO
-    }
-    
     public class PrecioEvent {
         
         private Producto producto;
