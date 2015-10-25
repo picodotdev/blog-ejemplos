@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+    
+    <property name="schema" value="inventory"/>
+    
+    <changeSet id="1" author="picodotdev">
+        <comment>Creación de la base de datos</comment>
+        <sql>create schema ${schema}</sql>
+        <createTable tableName="item" schemaName="${schema}">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="creationDate" type="TIMESTAMP" />
+            <column name="name" type="VARCHAR(256)" />
+            <column name="description" type="TEXT" />
+            <column name="stock" type="BIGINT" />
+            <column name="price" type="DECIMAL(7,2)" />
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
