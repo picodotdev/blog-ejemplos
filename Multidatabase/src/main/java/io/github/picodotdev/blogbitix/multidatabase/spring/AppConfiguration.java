@@ -21,9 +21,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.support.ResourceTransactionManager;
 
 import io.github.picodotdev.blogbitix.multidatabase.service.InventoryService;
-import io.github.picodotdev.blogbitix.multidatabase.service.InventoryServiceImpl;
+import io.github.picodotdev.blogbitix.multidatabase.service.DefaultInventoryService;
 import io.github.picodotdev.blogbitix.multidatabase.service.PurchasesService;
-import io.github.picodotdev.blogbitix.multidatabase.service.PurchasesServiceImpl;
+import io.github.picodotdev.blogbitix.multidatabase.service.DefaultPurchasesService;
 
 @Configuration
 @ComponentScan({ "io.github.picodotdev.blogbitix.jooq" })
@@ -117,11 +117,11 @@ public class AppConfiguration {
 
     @Bean
     public InventoryService inventoryService(@Qualifier("inventoryDSLContext") DSLContext context) {
-        return new InventoryServiceImpl(context);
+        return new DefaultInventoryService(context);
     }
 
     @Bean
     public PurchasesService purchasesService(@Qualifier("purchasesDSLContext") DSLContext context, InventoryService inventory) {
-        return new PurchasesServiceImpl(context, inventory);
+        return new DefaultPurchasesService(context, inventory);
     }
 }

@@ -7,12 +7,12 @@ import io.github.picodotdev.blogbitix.multidatabase.jooq.inventory.tables.record
 import io.github.picodotdev.blogbitix.multidatabase.jooq.purchases.Tables;
 import io.github.picodotdev.blogbitix.multidatabase.jooq.purchases.tables.records.PurchaseRecord;
 
-public class PurchasesServiceImpl implements PurchasesService {
+public class DefaultPurchasesService implements PurchasesService {
 
     private DSLContext context;
     private InventoryService inventory;
 
-    public PurchasesServiceImpl(DSLContext context, InventoryService inventory) {
+    public DefaultPurchasesService(DSLContext context, InventoryService inventory) {
         this.context = context;
         this.inventory = inventory;
     }

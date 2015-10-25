@@ -6,11 +6,11 @@ import io.github.picodotdev.blogbitix.multidatabase.jooq.inventory.Tables;
 import io.github.picodotdev.blogbitix.multidatabase.jooq.inventory.tables.interfaces.IItem;
 import io.github.picodotdev.blogbitix.multidatabase.jooq.inventory.tables.records.ItemRecord;
 
-public class InventoryServiceImpl implements InventoryService {
+public class DefaultInventoryService implements InventoryService {
 
     private DSLContext context;
 
-    public InventoryServiceImpl(DSLContext context) {
+    public DefaultInventoryService(DSLContext context) {
 		this.context = context;
 	}
 
