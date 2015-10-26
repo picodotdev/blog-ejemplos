@@ -4,13 +4,13 @@
 package io.github.picodotdev.blogbitix.springboot.jooq.tables.pojos;
 
 
+import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IEmployee;
+
+import java.time.LocalDateTime;
+
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import org.joda.time.DateTime;
-
-import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IEmployee;
 
 
 /**
@@ -26,12 +26,12 @@ import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IEmploye
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Employee implements IEmployee {
 
-	private static final long serialVersionUID = -1592215580;
+	private static final long serialVersionUID = -925886335;
 
-	private Long     id;
-	private String   name;
-	private String   surname;
-	private DateTime birthday;
+	private Long          id;
+	private String        name;
+	private String        surname;
+	private LocalDateTime birthday;
 
 	public Employee() {}
 
@@ -43,10 +43,10 @@ public class Employee implements IEmployee {
 	}
 
 	public Employee(
-		Long     id,
-		String   name,
-		String   surname,
-		DateTime birthday
+		Long          id,
+		String        name,
+		String        surname,
+		LocalDateTime birthday
 	) {
 		this.id = id;
 		this.name = name;
@@ -88,12 +88,12 @@ public class Employee implements IEmployee {
 	}
 
 	@Override
-	public DateTime getBirthday() {
+	public LocalDateTime getBirthday() {
 		return this.birthday;
 	}
 
 	@Override
-	public void setBirthday(DateTime birthday) {
+	public void setBirthday(LocalDateTime birthday) {
 		this.birthday = birthday;
 	}
 

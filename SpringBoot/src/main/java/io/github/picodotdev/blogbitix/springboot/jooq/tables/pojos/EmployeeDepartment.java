@@ -4,10 +4,10 @@
 package io.github.picodotdev.blogbitix.springboot.jooq.tables.pojos;
 
 
+import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IEmployeeDepartment;
+
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
-
-import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IEmployeeDepartment;
 
 
 /**
@@ -23,7 +23,7 @@ import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IEmploye
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class EmployeeDepartment implements IEmployeeDepartment {
 
-	private static final long serialVersionUID = 2133384595;
+	private static final long serialVersionUID = -222050845;
 
 	private Long id;
 	private Long employeeId;

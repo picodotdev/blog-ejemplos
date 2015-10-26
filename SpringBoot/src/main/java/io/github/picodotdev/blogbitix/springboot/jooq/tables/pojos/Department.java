@@ -4,11 +4,11 @@
 package io.github.picodotdev.blogbitix.springboot.jooq.tables.pojos;
 
 
+import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IDepartment;
+
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IDepartment;
 
 
 /**
@@ -24,7 +24,7 @@ import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IDepartm
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Department implements IDepartment {
 
-	private static final long serialVersionUID = -74238019;
+	private static final long serialVersionUID = -2014995091;
 
 	private Long   id;
 	private String name;

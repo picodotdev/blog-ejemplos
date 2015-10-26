@@ -4,6 +4,10 @@
 package io.github.picodotdev.blogbitix.springboot.jooq;
 
 
+import io.github.picodotdev.blogbitix.springboot.jooq.tables.Department;
+import io.github.picodotdev.blogbitix.springboot.jooq.tables.Employee;
+import io.github.picodotdev.blogbitix.springboot.jooq.tables.EmployeeDepartment;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,10 +17,6 @@ import javax.annotation.Generated;
 import org.jooq.Sequence;
 import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
-
-import io.github.picodotdev.blogbitix.springboot.jooq.tables.Department;
-import io.github.picodotdev.blogbitix.springboot.jooq.tables.Employee;
-import io.github.picodotdev.blogbitix.springboot.jooq.tables.EmployeeDepartment;
 
 
 /**
@@ -32,7 +32,7 @@ import io.github.picodotdev.blogbitix.springboot.jooq.tables.EmployeeDepartment;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Jooq extends SchemaImpl {
 
-	private static final long serialVersionUID = 1373329704;
+	private static final long serialVersionUID = -2043029272;
 
 	/**
 	 * The reference instance of <code>JOOQ</code>

@@ -5,12 +5,11 @@ package io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces;
 
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import org.joda.time.DateTime;
 
 
 /**
@@ -62,12 +61,12 @@ public interface IEmployee extends Serializable {
 	/**
 	 * Setter for <code>JOOQ.EMPLOYEE.BIRTHDAY</code>.
 	 */
-	public void setBirthday(DateTime value);
+	public void setBirthday(LocalDateTime value);
 
 	/**
 	 * Getter for <code>JOOQ.EMPLOYEE.BIRTHDAY</code>.
 	 */
-	public DateTime getBirthday();
+	public LocalDateTime getBirthday();
 
 	// -------------------------------------------------------------------------
 	// FROM and INTO

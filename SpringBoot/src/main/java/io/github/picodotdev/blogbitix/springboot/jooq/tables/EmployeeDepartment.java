@@ -4,6 +4,10 @@
 package io.github.picodotdev.blogbitix.springboot.jooq.tables;
 
 
+import io.github.picodotdev.blogbitix.springboot.jooq.Jooq;
+import io.github.picodotdev.blogbitix.springboot.jooq.Keys;
+import io.github.picodotdev.blogbitix.springboot.jooq.tables.records.EmployeeDepartmentRecord;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,10 +20,6 @@ import org.jooq.Table;
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
 import org.jooq.impl.TableImpl;
-
-import io.github.picodotdev.blogbitix.springboot.jooq.Jooq;
-import io.github.picodotdev.blogbitix.springboot.jooq.Keys;
-import io.github.picodotdev.blogbitix.springboot.jooq.tables.records.EmployeeDepartmentRecord;
 
 
 /**
@@ -35,7 +35,7 @@ import io.github.picodotdev.blogbitix.springboot.jooq.tables.records.EmployeeDep
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class EmployeeDepartment extends TableImpl<EmployeeDepartmentRecord> {
 
-	private static final long serialVersionUID = -1652428410;
+	private static final long serialVersionUID = -161976538;
 
 	/**
 	 * The reference instance of <code>JOOQ.EMPLOYEE_DEPARTMENT</code>

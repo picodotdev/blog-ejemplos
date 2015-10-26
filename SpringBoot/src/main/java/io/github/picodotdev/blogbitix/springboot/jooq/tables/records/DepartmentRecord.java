@@ -4,6 +4,9 @@
 package io.github.picodotdev.blogbitix.springboot.jooq.tables.records;
 
 
+import io.github.picodotdev.blogbitix.springboot.jooq.tables.Department;
+import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IDepartment;
+
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -13,9 +16,6 @@ import org.jooq.Record1;
 import org.jooq.Record2;
 import org.jooq.Row2;
 import org.jooq.impl.UpdatableRecordImpl;
-
-import io.github.picodotdev.blogbitix.springboot.jooq.tables.Department;
-import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IDepartment;
 
 
 /**
@@ -31,7 +31,7 @@ import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IDepartm
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DepartmentRecord extends UpdatableRecordImpl<DepartmentRecord> implements Record2<Long, String>, IDepartment {
 
-	private static final long serialVersionUID = -411875;
+	private static final long serialVersionUID = -1755687243;
 
 	/**
 	 * Setter for <code>JOOQ.DEPARTMENT.ID</code>.

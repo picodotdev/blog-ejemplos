@@ -4,11 +4,11 @@
 package io.github.picodotdev.blogbitix.springboot.jooq;
 
 
-import javax.annotation.Generated;
-
 import io.github.picodotdev.blogbitix.springboot.jooq.tables.Department;
 import io.github.picodotdev.blogbitix.springboot.jooq.tables.Employee;
 import io.github.picodotdev.blogbitix.springboot.jooq.tables.EmployeeDepartment;
+
+import javax.annotation.Generated;
 
 
 /**

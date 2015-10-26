@@ -71,44 +71,10 @@ dependencies {
 
 	// Misc
   	compile 'org.apache.commons:commons-lang3:3.4'
-	compile 'joda-time:joda-time:2.8.2'
 	compile 'javax.servlet:javax.servlet-api:3.1.0'
 }
 
 task generateModels << {
-/*
-    Configuration configuration = new Configuration()
-        .withJdbc(new Jdbc()
-            .withDriver('com.mysql.jdbc.Driver')
-            .withUrl('jdbc:mysql://localhost:3306/app')
-            .withUser('root')
-            .withPassword(''))
-        .withGenerator(new Generator()
-            .withGenerate(new Generate()
-                .withInterfaces(true)
-                .withRelations(true)
-                .withValidationAnnotations(true))
-            .withName('org.jooq.util.DefaultGenerator')
-            .withDatabase(new Database()
-                .withCustomTypes([
-                    new CustomType()
-                        .withName('org.joda.time.DateTime')
-                        .withConverter('io.github.picodotdev.blogbitix.springboot.misc.DateTimeConverter')
-                        
-                ])
-                .withForcedTypes([
-                    new ForcedType()
-                        .withName('org.joda.time.DateTime')
-                        .withTypes('TIMESTAMP')                     
-                ])
-                .withName('org.jooq.util.mysql.MySQLDatabase')
-                .withIncludes('.*')
-                .withExcludes('')
-                .withInputSchema('app'))
-            .withTarget(new Target()
-                .withPackageName('io.github.picodotdev.blogbitix.springboot.jooq')
-                .withDirectory('src/main/java')));
-*/
     Configuration configuration = new Configuration()
         .withJdbc(new Jdbc()
             .withDriver('org.h2.Driver')
@@ -125,13 +91,13 @@ task generateModels << {
             .withDatabase(new Database()
                 .withCustomTypes([
                     new CustomType()
-                        .withName('org.joda.time.DateTime')
-                        .withConverter('io.github.picodotdev.blogbitix.springboot.misc.DateTimeConverter')
+                        .withName('java.time.LocalDateTime')
+                        .withConverter('io.github.picodotdev.blogbitix.springboot.misc.TimestampConverter')
                         
                 ])
                 .withForcedTypes([
                     new ForcedType()
-                        .withName('org.joda.time.DateTime')
+                        .withName('java.time.LocalDateTime')
                         .withTypes('TIMESTAMP')                     
                 ])
                 .withName('org.jooq.util.h2.H2Database')
@@ -151,5 +117,5 @@ task updateDatabase(type:Exec) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.7'
+    gradleVersion = '2.8'
 }

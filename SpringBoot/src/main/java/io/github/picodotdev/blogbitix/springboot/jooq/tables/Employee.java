@@ -4,23 +4,23 @@
 package io.github.picodotdev.blogbitix.springboot.jooq.tables;
 
 
+import io.github.picodotdev.blogbitix.springboot.jooq.Jooq;
+import io.github.picodotdev.blogbitix.springboot.jooq.Keys;
+import io.github.picodotdev.blogbitix.springboot.jooq.tables.records.EmployeeRecord;
+import io.github.picodotdev.blogbitix.springboot.misc.TimestampConverter;
+
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Generated;
 
-import org.joda.time.DateTime;
 import org.jooq.Field;
 import org.jooq.Identity;
 import org.jooq.Table;
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
 import org.jooq.impl.TableImpl;
-
-import io.github.picodotdev.blogbitix.springboot.jooq.Jooq;
-import io.github.picodotdev.blogbitix.springboot.jooq.Keys;
-import io.github.picodotdev.blogbitix.springboot.jooq.tables.records.EmployeeRecord;
-import io.github.picodotdev.blogbitix.springboot.misc.DateTimeConverter;
 
 
 /**
@@ -36,7 +36,7 @@ import io.github.picodotdev.blogbitix.springboot.misc.DateTimeConverter;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Employee extends TableImpl<EmployeeRecord> {
 
-	private static final long serialVersionUID = -706457458;
+	private static final long serialVersionUID = -993679724;
 
 	/**
 	 * The reference instance of <code>JOOQ.EMPLOYEE</code>
@@ -69,7 +69,7 @@ public class Employee extends TableImpl<EmployeeRecord> {
 	/**
 	 * The column <code>JOOQ.EMPLOYEE.BIRTHDAY</code>.
 	 */
-	public final TableField<EmployeeRecord, DateTime> BIRTHDAY = createField("BIRTHDAY", org.jooq.impl.SQLDataType.TIMESTAMP, this, "", new DateTimeConverter());
+	public final TableField<EmployeeRecord, LocalDateTime> BIRTHDAY = createField("BIRTHDAY", org.jooq.impl.SQLDataType.TIMESTAMP, this, "", new TimestampConverter());
 
 	/**
 	 * Create a <code>JOOQ.EMPLOYEE</code> table reference

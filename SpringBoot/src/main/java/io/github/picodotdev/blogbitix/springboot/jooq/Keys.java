@@ -4,19 +4,19 @@
 package io.github.picodotdev.blogbitix.springboot.jooq;
 
 
-import javax.annotation.Generated;
-
-import org.jooq.ForeignKey;
-import org.jooq.Identity;
-import org.jooq.UniqueKey;
-import org.jooq.impl.AbstractKeys;
-
 import io.github.picodotdev.blogbitix.springboot.jooq.tables.Department;
 import io.github.picodotdev.blogbitix.springboot.jooq.tables.Employee;
 import io.github.picodotdev.blogbitix.springboot.jooq.tables.EmployeeDepartment;
 import io.github.picodotdev.blogbitix.springboot.jooq.tables.records.DepartmentRecord;
 import io.github.picodotdev.blogbitix.springboot.jooq.tables.records.EmployeeDepartmentRecord;
 import io.github.picodotdev.blogbitix.springboot.jooq.tables.records.EmployeeRecord;
+
+import javax.annotation.Generated;
+
+import org.jooq.ForeignKey;
+import org.jooq.Identity;
+import org.jooq.UniqueKey;
+import org.jooq.impl.AbstractKeys;
 
 
 /**

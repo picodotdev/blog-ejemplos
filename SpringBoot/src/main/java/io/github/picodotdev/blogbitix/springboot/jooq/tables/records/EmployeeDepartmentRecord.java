@@ -4,6 +4,9 @@
 package io.github.picodotdev.blogbitix.springboot.jooq.tables.records;
 
 
+import io.github.picodotdev.blogbitix.springboot.jooq.tables.EmployeeDepartment;
+import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IEmployeeDepartment;
+
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
 
@@ -12,9 +15,6 @@ import org.jooq.Record1;
 import org.jooq.Record3;
 import org.jooq.Row3;
 import org.jooq.impl.UpdatableRecordImpl;
-
-import io.github.picodotdev.blogbitix.springboot.jooq.tables.EmployeeDepartment;
-import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IEmployeeDepartment;
 
 
 /**
@@ -30,7 +30,7 @@ import io.github.picodotdev.blogbitix.springboot.jooq.tables.interfaces.IEmploye
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class EmployeeDepartmentRecord extends UpdatableRecordImpl<EmployeeDepartmentRecord> implements Record3<Long, Long, Long>, IEmployeeDepartment {
 
-	private static final long serialVersionUID = 1952546495;
+	private static final long serialVersionUID = -1604205865;
 
 	/**
 	 * Setter for <code>JOOQ.EMPLOYEE_DEPARTMENT.ID</code>.
