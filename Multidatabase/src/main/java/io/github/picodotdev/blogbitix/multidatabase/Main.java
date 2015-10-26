@@ -1,8 +1,8 @@
 package io.github.picodotdev.blogbitix.multidatabase;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -29,7 +29,7 @@ public class Main implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Insertando datos...");        
-        ItemRecord item = inventoryService.create(new Item(null, new DateTime(), "Libro", "Un gran libro", 10l, new BigDecimal("7.99")));
+        ItemRecord item = inventoryService.create(new Item(null, LocalDateTime.now(), "Libro", "Un gran libro", 10l, new BigDecimal("7.99")));
         PurchaseRecord purchase = purchasesService.create(item, 2);        
 
         System.out.printf("Número productos: %d%n", inventoryService.count());

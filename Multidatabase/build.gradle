@@ -56,7 +56,6 @@ dependencies {
 
 	// Misc
   	compile 'org.apache.commons:commons-lang3:3.4'
-	compile 'joda-time:joda-time:2.8.2'
 }
 
 task generateModels << {
@@ -76,13 +75,13 @@ task generateModels << {
             .withDatabase(new Database()
                 .withCustomTypes([
                     new CustomType()
-                        .withName('org.joda.time.DateTime')
-                        .withConverter('io.github.picodotdev.blogbitix.multidatabase.misc.DateTimeConverter')
+                        .withName('java.time.LocalDateTime')
+                        .withConverter('io.github.picodotdev.blogbitix.multidatabase.misc.TimestampConverter')
                         
                 ])
                 .withForcedTypes([
                     new ForcedType()
-                        .withName('org.joda.time.DateTime')
+                        .withName('java.time.LocalDateTime')
                         .withTypes('TIMESTAMP')                     
                 ])
                 .withName('org.jooq.util.h2.H2Database')

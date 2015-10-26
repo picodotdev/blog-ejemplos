@@ -1,6 +1,7 @@
 package io.github.picodotdev.blogbitix.multidatabase.service;
 
-import org.joda.time.DateTime;
+import java.time.LocalDateTime;
+
 import org.jooq.DSLContext;
 
 import io.github.picodotdev.blogbitix.multidatabase.jooq.inventory.tables.records.ItemRecord;
@@ -27,7 +28,7 @@ public class DefaultPurchasesService implements PurchasesService {
         inventory.changeStock(item, -quantity);
 
         PurchaseRecord record = context.newRecord(Tables.PURCHASE);
-        record.setCreationdate(new DateTime());
+        record.setCreationdate(LocalDateTime.now());
         record.setQuantity(quantity);
         record.setPrice(item.getPrice());
         record.setItemId(item.getId());

@@ -7,11 +7,10 @@ package io.github.picodotdev.blogbitix.multidatabase.jooq.purchases.tables.pojos
 import io.github.picodotdev.blogbitix.multidatabase.jooq.purchases.tables.interfaces.IPurchase;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
-
-import org.joda.time.DateTime;
 
 
 /**
@@ -27,13 +26,13 @@ import org.joda.time.DateTime;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Purchase implements IPurchase {
 
-	private static final long serialVersionUID = -1225887135;
+	private static final long serialVersionUID = 1478018264;
 
-	private Long       id;
-	private DateTime   creationdate;
-	private Long       quantity;
-	private BigDecimal price;
-	private Long       itemId;
+	private Long          id;
+	private LocalDateTime creationdate;
+	private Long          quantity;
+	private BigDecimal    price;
+	private Long          itemId;
 
 	public Purchase() {}
 
@@ -46,11 +45,11 @@ public class Purchase implements IPurchase {
 	}
 
 	public Purchase(
-		Long       id,
-		DateTime   creationdate,
-		Long       quantity,
-		BigDecimal price,
-		Long       itemId
+		Long          id,
+		LocalDateTime creationdate,
+		Long          quantity,
+		BigDecimal    price,
+		Long          itemId
 	) {
 		this.id = id;
 		this.creationdate = creationdate;
@@ -71,12 +70,12 @@ public class Purchase implements IPurchase {
 	}
 
 	@Override
-	public DateTime getCreationdate() {
+	public LocalDateTime getCreationdate() {
 		return this.creationdate;
 	}
 
 	@Override
-	public void setCreationdate(DateTime creationdate) {
+	public void setCreationdate(LocalDateTime creationdate) {
 		this.creationdate = creationdate;
 	}
 

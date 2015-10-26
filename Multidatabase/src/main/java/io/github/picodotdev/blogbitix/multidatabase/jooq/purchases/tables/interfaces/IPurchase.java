@@ -6,11 +6,10 @@ package io.github.picodotdev.blogbitix.multidatabase.jooq.purchases.tables.inter
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
-
-import org.joda.time.DateTime;
 
 
 /**
@@ -40,12 +39,12 @@ public interface IPurchase extends Serializable {
 	/**
 	 * Setter for <code>PURCHASES.PURCHASE.CREATIONDATE</code>.
 	 */
-	public void setCreationdate(DateTime value);
+	public void setCreationdate(LocalDateTime value);
 
 	/**
 	 * Getter for <code>PURCHASES.PURCHASE.CREATIONDATE</code>.
 	 */
-	public DateTime getCreationdate();
+	public LocalDateTime getCreationdate();
 
 	/**
 	 * Setter for <code>PURCHASES.PURCHASE.QUANTITY</code>.

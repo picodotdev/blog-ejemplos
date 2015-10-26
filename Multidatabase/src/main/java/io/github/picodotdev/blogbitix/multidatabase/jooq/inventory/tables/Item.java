@@ -7,15 +7,15 @@ package io.github.picodotdev.blogbitix.multidatabase.jooq.inventory.tables;
 import io.github.picodotdev.blogbitix.multidatabase.jooq.inventory.Inventory;
 import io.github.picodotdev.blogbitix.multidatabase.jooq.inventory.Keys;
 import io.github.picodotdev.blogbitix.multidatabase.jooq.inventory.tables.records.ItemRecord;
-import io.github.picodotdev.blogbitix.multidatabase.misc.DateTimeConverter;
+import io.github.picodotdev.blogbitix.multidatabase.misc.TimestampConverter;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Generated;
 
-import org.joda.time.DateTime;
 import org.jooq.Field;
 import org.jooq.Identity;
 import org.jooq.Table;
@@ -37,7 +37,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Item extends TableImpl<ItemRecord> {
 
-	private static final long serialVersionUID = 563687186;
+	private static final long serialVersionUID = -1313983264;
 
 	/**
 	 * The reference instance of <code>INVENTORY.ITEM</code>
@@ -60,7 +60,7 @@ public class Item extends TableImpl<ItemRecord> {
 	/**
 	 * The column <code>INVENTORY.ITEM.CREATIONDATE</code>.
 	 */
-	public final TableField<ItemRecord, DateTime> CREATIONDATE = createField("CREATIONDATE", org.jooq.impl.SQLDataType.TIMESTAMP, this, "", new DateTimeConverter());
+	public final TableField<ItemRecord, LocalDateTime> CREATIONDATE = createField("CREATIONDATE", org.jooq.impl.SQLDataType.TIMESTAMP, this, "", new TimestampConverter());
 
 	/**
 	 * The column <code>INVENTORY.ITEM.NAME</code>.

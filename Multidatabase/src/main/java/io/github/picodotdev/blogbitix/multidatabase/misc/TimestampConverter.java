@@ -1,28 +1,28 @@
 package io.github.picodotdev.blogbitix.multidatabase.misc;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
-import org.joda.time.DateTime;
 import org.jooq.Converter;
 
-public class DateTimeConverter implements Converter<Timestamp, DateTime> {
+public class TimestampConverter implements Converter<Timestamp, LocalDateTime> {
 
 	private static final long serialVersionUID = 3505707535773076376L;
 
 	@Override
-    public DateTime from(Timestamp timestamp) {
+    public LocalDateTime from(Timestamp timestamp) {
 		if (timestamp == null) {
 			return null;
 		}
-        return new DateTime(timestamp);
+        return timestamp.toLocalDateTime();
     }
 
     @Override
-    public Timestamp to(DateTime datetime) {
-    	if (datetime == null) {
+    public Timestamp to(LocalDateTime dateTime) {
+    	if (dateTime == null) {
     		return null;
     	}
-        return new Timestamp(datetime.getMillis());
+        return Timestamp.valueOf(dateTime);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class DateTimeConverter implements Converter<Timestamp, DateTime> {
     }
 
     @Override
-    public Class<DateTime> toType() {
-        return DateTime.class;
+    public Class<LocalDateTime> toType() {
+        return LocalDateTime.class;
     }
 }

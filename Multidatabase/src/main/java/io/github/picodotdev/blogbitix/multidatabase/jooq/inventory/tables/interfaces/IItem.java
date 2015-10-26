@@ -6,12 +6,11 @@ package io.github.picodotdev.blogbitix.multidatabase.jooq.inventory.tables.inter
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import org.joda.time.DateTime;
 
 
 /**
@@ -41,12 +40,12 @@ public interface IItem extends Serializable {
 	/**
 	 * Setter for <code>INVENTORY.ITEM.CREATIONDATE</code>.
 	 */
-	public void setCreationdate(DateTime value);
+	public void setCreationdate(LocalDateTime value);
 
 	/**
 	 * Getter for <code>INVENTORY.ITEM.CREATIONDATE</code>.
 	 */
-	public DateTime getCreationdate();
+	public LocalDateTime getCreationdate();
 
 	/**
 	 * Setter for <code>INVENTORY.ITEM.NAME</code>.

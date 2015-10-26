@@ -7,12 +7,11 @@ package io.github.picodotdev.blogbitix.multidatabase.jooq.inventory.tables.pojos
 import io.github.picodotdev.blogbitix.multidatabase.jooq.inventory.tables.interfaces.IItem;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import org.joda.time.DateTime;
 
 
 /**
@@ -28,14 +27,14 @@ import org.joda.time.DateTime;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Item implements IItem {
 
-	private static final long serialVersionUID = 1172610886;
+	private static final long serialVersionUID = -534929875;
 
-	private Long       id;
-	private DateTime   creationdate;
-	private String     name;
-	private String     description;
-	private Long       stock;
-	private BigDecimal price;
+	private Long          id;
+	private LocalDateTime creationdate;
+	private String        name;
+	private String        description;
+	private Long          stock;
+	private BigDecimal    price;
 
 	public Item() {}
 
@@ -49,12 +48,12 @@ public class Item implements IItem {
 	}
 
 	public Item(
-		Long       id,
-		DateTime   creationdate,
-		String     name,
-		String     description,
-		Long       stock,
-		BigDecimal price
+		Long          id,
+		LocalDateTime creationdate,
+		String        name,
+		String        description,
+		Long          stock,
+		BigDecimal    price
 	) {
 		this.id = id;
 		this.creationdate = creationdate;
@@ -76,12 +75,12 @@ public class Item implements IItem {
 	}
 
 	@Override
-	public DateTime getCreationdate() {
+	public LocalDateTime getCreationdate() {
 		return this.creationdate;
 	}
 
 	@Override
-	public void setCreationdate(DateTime creationdate) {
+	public void setCreationdate(LocalDateTime creationdate) {
 		this.creationdate = creationdate;
 	}
 

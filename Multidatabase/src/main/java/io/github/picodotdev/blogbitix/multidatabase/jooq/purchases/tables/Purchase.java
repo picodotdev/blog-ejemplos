@@ -7,15 +7,15 @@ package io.github.picodotdev.blogbitix.multidatabase.jooq.purchases.tables;
 import io.github.picodotdev.blogbitix.multidatabase.jooq.purchases.Keys;
 import io.github.picodotdev.blogbitix.multidatabase.jooq.purchases.Purchases;
 import io.github.picodotdev.blogbitix.multidatabase.jooq.purchases.tables.records.PurchaseRecord;
-import io.github.picodotdev.blogbitix.multidatabase.misc.DateTimeConverter;
+import io.github.picodotdev.blogbitix.multidatabase.misc.TimestampConverter;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Generated;
 
-import org.joda.time.DateTime;
 import org.jooq.Field;
 import org.jooq.ForeignKey;
 import org.jooq.Identity;
@@ -38,7 +38,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Purchase extends TableImpl<PurchaseRecord> {
 
-	private static final long serialVersionUID = -851432315;
+	private static final long serialVersionUID = 1777135095;
 
 	/**
 	 * The reference instance of <code>PURCHASES.PURCHASE</code>
@@ -61,7 +61,7 @@ public class Purchase extends TableImpl<PurchaseRecord> {
 	/**
 	 * The column <code>PURCHASES.PURCHASE.CREATIONDATE</code>.
 	 */
-	public final TableField<PurchaseRecord, DateTime> CREATIONDATE = createField("CREATIONDATE", org.jooq.impl.SQLDataType.TIMESTAMP, this, "", new DateTimeConverter());
+	public final TableField<PurchaseRecord, LocalDateTime> CREATIONDATE = createField("CREATIONDATE", org.jooq.impl.SQLDataType.TIMESTAMP, this, "", new TimestampConverter());
 
 	/**
 	 * The column <code>PURCHASES.PURCHASE.QUANTITY</code>.
