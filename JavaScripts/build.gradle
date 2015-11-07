@@ -1,0 +1,75 @@
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'io.github.picodotdev.blogbitix.javascripts.Script1'
+
+repositories {
+    mavenCentral()    
+}
+
+dependencies {
+}
+
+task runScript1(type: JavaExec, dependsOn: ':build') {
+  main = 'io.github.picodotdev.blogbitix.javascripts.Script1'
+  classpath = sourceSets.main.runtimeClasspath
+}
+
+task runScript2(type: JavaExec, dependsOn: ':build') {
+  main = 'io.github.picodotdev.blogbitix.javascripts.Script2'
+  classpath = sourceSets.main.runtimeClasspath
+}
+
+task runScript3(type: JavaExec, dependsOn: ':build') {
+  main = 'io.github.picodotdev.blogbitix.javascripts.Script3'
+  classpath = sourceSets.main.runtimeClasspath
+}
+
+task createStartScripts1(type: CreateStartScripts) {
+  outputDir = file('.')
+  mainClassName = 'io.github.picodotdev.blogbitix.javascripts.Script1'
+  applicationName = 'script1'
+  classpath = files('build/libs/JavaScripts.jar')
+  // See https://discuss.gradle.org/t/classpath-in-application-plugin-is-building-always-relative-to-app-home-lib-directory/2012
+  doLast {
+    def windowsScriptFile = file getWindowsScript()
+    def unixScriptFile = file getUnixScript()
+    windowsScriptFile.text = windowsScriptFile.text.replace('%APP_HOME%\\lib\\JavaScripts.jar', '%SAVED%\\build\\libs\\JavaScripts.jar')
+    unixScriptFile.text = unixScriptFile.text.replace('$APP_HOME/lib/JavaScripts.jar', '$SAVED/build/libs/JavaScripts.jar')
+  }
+}
+
+task createStartScripts2(type: CreateStartScripts) {
+  outputDir = file('.')
+  mainClassName = 'io.github.picodotdev.blogbitix.javascripts.Script2'
+  applicationName = 'script2'
+  classpath = files('build/libs/JavaScripts.jar')
+  // See https://discuss.gradle.org/t/classpath-in-application-plugin-is-building-always-relative-to-app-home-lib-directory/2012
+  doLast {
+    def windowsScriptFile = file getWindowsScript()
+    def unixScriptFile = file getUnixScript()
+    windowsScriptFile.text = windowsScriptFile.text.replace('%APP_HOME%\\lib\\JavaScripts.jar', '%SAVED%\\build\\libs\\JavaScripts.jar')
+    unixScriptFile.text = unixScriptFile.text.replace('$APP_HOME/lib/JavaScripts.jar', '$SAVED/build/libs/JavaScripts.jar')
+  }
+}
+
+task createStartScripts3(type: CreateStartScripts) {
+  outputDir = file('.')
+  mainClassName = 'io.github.picodotdev.blogbitix.javascripts.Script3'
+  applicationName = 'script3'
+  classpath = files('build/libs/JavaScripts.jar')
+  // See https://discuss.gradle.org/t/classpath-in-application-plugin-is-building-always-relative-to-app-home-lib-directory/2012
+  doLast {
+    def windowsScriptFile = file getWindowsScript()
+    def unixScriptFile = file getUnixScript()
+    windowsScriptFile.text = windowsScriptFile.text.replace('%APP_HOME%\\lib\\JavaScripts.jar', '%SAVED%\\build\\libs\\JavaScripts.jar')
+    unixScriptFile.text = unixScriptFile.text.replace('$APP_HOME/lib/JavaScripts.jar', '$SAVED/build/libs/JavaScripts.jar')
+  }
+}
+
+task createStartScripts(dependsOn: ['createStartScripts1', 'createStartScripts2', 'createStartScripts3'])
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.8'
+}
