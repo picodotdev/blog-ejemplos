@@ -18,10 +18,7 @@ dependencies {
         main = "io.github.picodotdev.blogbitix.javascripts.Script${id}"
         classpath = sourceSets.main.runtimeClasspath
     }
-}
 
-3.times { i ->
-    def id = i + 1
     task "createStartScripts${id}"(type: CreateStartScripts) {
         outputDir = file('.')
         mainClassName = "io.github.picodotdev.blogbitix.javascripts.Script${id}"
