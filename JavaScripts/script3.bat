@@ -69,7 +69,7 @@ set CMD_LINE_ARGS=%$
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%SAVED%\build\libs\JavaScripts.jar
+set CLASSPATH=%SAVED%\build\libs\*
 
 @rem Execute script3
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %SCRIPT3_OPTS%  -classpath "%CLASSPATH%" io.github.picodotdev.blogbitix.javascripts.Script3 %CMD_LINE_ARGS%
