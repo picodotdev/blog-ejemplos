@@ -13,28 +13,28 @@ dependencies {
 }
 
 3.times { i ->
-  def id = i + 1
-  task "runScript${id}"(type: JavaExec, dependsOn: ':build') {
-    main = "io.github.picodotdev.blogbitix.javascripts.Script${id}"
-    classpath = sourceSets.main.runtimeClasspath
-  }
+    def id = i + 1
+    task "runScript${id}"(type: JavaExec, dependsOn: ':build') {
+        main = "io.github.picodotdev.blogbitix.javascripts.Script${id}"
+        classpath = sourceSets.main.runtimeClasspath
+    }
 }
 
 3.times { i ->
-  def id = i + 1
-  task "createStartScripts${id}"(type: CreateStartScripts) {
-    outputDir = file('.')
-	mainClassName = "io.github.picodotdev.blogbitix.javascripts.Script${id}"
-	applicationName = "script${id}"
-	classpath = files('build/libs/*')
-	// See https://discuss.gradle.org/t/classpath-in-application-plugin-is-building-always-relative-to-app-home-lib-directory/2012
-	doLast {
-	  def windowsScriptFile = file getWindowsScript()
-	  def unixScriptFile = file getUnixScript()
-	  windowsScriptFile.text = windowsScriptFile.text.replace('%APP_HOME%\\lib\\*', '%SAVED%\\build\\libs\\*')
-	  unixScriptFile.text = unixScriptFile.text.replace('$APP_HOME/lib/*', '$SAVED/build/libs/*')
-	}
-  }
+    def id = i + 1
+    task "createStartScripts${id}"(type: CreateStartScripts) {
+        outputDir = file('.')
+        mainClassName = "io.github.picodotdev.blogbitix.javascripts.Script${id}"
+        applicationName = "script${id}"
+        classpath = files('build/libs/*')
+        // See https://discuss.gradle.org/t/classpath-in-application-plugin-is-building-always-relative-to-app-home-lib-directory/2012
+        doLast {
+            def windowsScriptFile = file getWindowsScript()
+            def unixScriptFile = file getUnixScript()
+            windowsScriptFile.text = windowsScriptFile.text.replace('%APP_HOME%\\lib\\*', '%SAVED%\\build\\libs\\*')
+            unixScriptFile.text = unixScriptFile.text.replace('$APP_HOME/lib/*', '$SAVED/build/libs/*')
+        }
+    }
 }
 
 task createStartScripts(dependsOn: ['createStartScripts1', 'createStartScripts2', 'createStartScripts3'])
