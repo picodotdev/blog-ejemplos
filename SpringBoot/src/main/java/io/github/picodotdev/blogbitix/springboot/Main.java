@@ -34,7 +34,7 @@ public class Main implements CommandLineRunner {
         System.out.printf("Number departments: %d%n", service.countDepartments());
 
         System.out.println();
-        System.out.println("# Relations (1+N)");
+        System.out.println("# Relations (with 1+N problem)");
         DepartmentRecord department = service.findDepartment(1l);
         List<EmployeeDepartmentRecord> eds = department.fetchChildren(Keys.DEPARTMENT_ID);
         for (EmployeeDepartmentRecord ed : eds) {

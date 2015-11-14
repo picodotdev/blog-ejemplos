@@ -17,13 +17,13 @@ import io.github.picodotdev.blogbitix.springboot.jooq.tables.records.EmployeeRec
 import io.github.picodotdev.blogbitix.springboot.misc.RecordContainer;
 import io.github.picodotdev.blogbitix.springboot.validator.EmployeeValidator;
 
-public class AppServiceImpl implements AppService {
+public class DefaultAppService implements AppService {
 
 		private DSLContext context;
 		private javax.validation.Validator validator;
 		private List<Validator> validators;
 
-		public AppServiceImpl(DSLContext context, javax.validation.Validator validator, EmployeeValidator employeeValidator) {
+		public DefaultAppService(DSLContext context, javax.validation.Validator validator, EmployeeValidator employeeValidator) {
 			this.context = context;
 			this.validator = validator;
 			this.validators = new ArrayList<Validator>();

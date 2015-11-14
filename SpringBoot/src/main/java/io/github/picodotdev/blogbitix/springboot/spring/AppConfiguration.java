@@ -40,7 +40,7 @@ import org.springframework.transaction.support.ResourceTransactionManager;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import io.github.picodotdev.blogbitix.springboot.service.AppService;
-import io.github.picodotdev.blogbitix.springboot.service.AppServiceImpl;
+import io.github.picodotdev.blogbitix.springboot.service.DefaultAppService;
 import io.github.picodotdev.blogbitix.springboot.validator.EmployeeValidator;
 
 @Configuration
@@ -143,6 +143,6 @@ public class AppConfiguration {
 
     @Bean
     public AppService appService(DSLContext context, Validator validator, EmployeeValidator employeeValidator) {
-        return new AppServiceImpl(context, validator, employeeValidator);
+        return new DefaultAppService(context, validator, employeeValidator);
     }
 }
