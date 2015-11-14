@@ -77,12 +77,11 @@ task generateModels << {
                     new CustomType()
                         .withName('java.time.LocalDateTime')
                         .withConverter('io.github.picodotdev.blogbitix.multidatabase.misc.TimestampConverter')
-                        
                 ])
                 .withForcedTypes([
                     new ForcedType()
                         .withName('java.time.LocalDateTime')
-                        .withTypes('TIMESTAMP')                     
+                        .withTypes('TIMESTAMP')
                 ])
                 .withName('org.jooq.util.h2.H2Database')
                 .withIncludes('.*')

@@ -2,12 +2,15 @@
 *.war
 *.ear
 
+*.db
+
 bin/
 build/
 .gradle/
 .settings/
 .classpath
 .project
+.Trash*
 
 node_modules/
 .resourceCache/
