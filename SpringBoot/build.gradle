@@ -21,7 +21,7 @@ buildscript {
     }
    
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.6.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE")
         classpath 'org.jooq:jooq-codegen:3.7.0'
         classpath 'com.h2database:h2:1.4.189'
         classpath 'org.postgresql:postgresql:9.4-1203-jdbc41'
@@ -44,16 +44,16 @@ dependencies {
 	compile 'org.springframework:spring-context:4.2.1.RELEASE'	
 	compile 'org.springframework:spring-jdbc:4.2.1.RELEASE'
 	compile 'org.springframework:spring-tx:4.2.1.RELEASE'
-	compile('org.springframework.boot:spring-boot-starter:1.2.6.RELEASE') { exclude(group: 'ch.qos.logback') }
-	compile('org.springframework.boot:spring-boot-starter-web:1.2.6.RELEASE') { exclude(group: 'ch.qos.logback') }
+	compile('org.springframework.boot:spring-boot-starter:1.2.7.RELEASE') { exclude(group: 'ch.qos.logback') }
+	compile('org.springframework.boot:spring-boot-starter-web:1.2.7.RELEASE') { exclude(group: 'ch.qos.logback') }
     compile('org.hibernate:hibernate-validator:5.2.2.Final')
 
     // Tapestry
-    compile 'org.apache.tapestry:tapestry-core:5.4-beta-36'
-    compile 'org.apache.tapestry:tapestry-webresources:5.4-beta-36'
-    compile 'org.apache.tapestry:tapestry-javadoc:5.4-beta-36'
-    compile 'org.apache.tapestry:tapestry-beanvalidator:5.4-beta-36'
-    compile ('org.apache.tapestry:tapestry-spring:5.4-beta-36') { exclude(group: 'org.springframework') }
+    compile 'org.apache.tapestry:tapestry-core:5.4-rc-1'
+    compile 'org.apache.tapestry:tapestry-webresources:5.4-rc-1'
+    compile 'org.apache.tapestry:tapestry-javadoc:5.4-rc-1'
+    compile 'org.apache.tapestry:tapestry-beanvalidator:5.4-rc-1'
+    compile ('org.apache.tapestry:tapestry-spring:5.4-rc-1') { exclude(group: 'org.springframework') }
 	
 	// Database	
     compile 'org.jooq:jooq:3.7.0'

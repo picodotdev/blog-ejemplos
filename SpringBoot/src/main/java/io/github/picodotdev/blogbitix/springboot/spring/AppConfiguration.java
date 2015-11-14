@@ -44,21 +44,13 @@ import io.github.picodotdev.blogbitix.springboot.service.AppServiceImpl;
 import io.github.picodotdev.blogbitix.springboot.validator.EmployeeValidator;
 
 @Configuration
-@ComponentScan({ "io.github.picodotdev.blogbitix.jooq" })
+@ComponentScan({ "io.github.picodotdev.blogbitix.springboot" })
 @EnableTransactionManagement
 public class AppConfiguration {
 
     @Bean(destroyMethod = "close")
     public DataSource dataSource() {
         BasicDataSource ds = new BasicDataSource();
-        // ds.setDriverClassName("org.postgresql.Driver");
-        // ds.setUrl("jdbc:postgresql://localhost:5432/app");
-        // ds.setUsername("sa");
-        // ds.setPassword("sa");
-        // ds.setDriverClassName("com.mysql.jdbc.Driver");
-        // ds.setUrl("jdbc:mysql://localhost:3306/app");
-        // ds.setUsername("root");
-        // ds.setPassword("");
         ds.setDriverClassName("org.h2.Driver");
         ds.setUrl("jdbc:h2:./misc/database/app");
         ds.setUsername("sa");
@@ -80,8 +72,6 @@ public class AppConfiguration {
     public org.jooq.Configuration config(ConnectionProvider connectionProvider) {
         DefaultConfiguration config = new DefaultConfiguration();
         config.set(connectionProvider);
-        // config.set(SQLDialect.POSTGRES_9_4);
-        // config.set(SQLDialect.MYSQL);
         config.set(SQLDialect.H2);
         return config;
     }

@@ -39,6 +39,11 @@ public class AppServiceImpl implements AppService {
 		public long countDepartments() {
 			return context.selectCount().from(Tables.DEPARTMENT).fetchOneInto(Long.class);
 		}
+		
+		@Override
+		public DepartmentRecord findDepartment(long id) {
+		    return context.select().from(Tables.DEPARTMENT).where(Tables.DEPARTMENT.ID.eq(id)).fetchOneInto(DepartmentRecord.class);
+		}
 
 		@Override
 		public Errors validate(Object object) {
@@ -54,9 +59,9 @@ public class AppServiceImpl implements AppService {
 		}
 
 		@Override
-		public List<RecordContainer> findEmployeeDepartments(Long id) {
-			return context.select().from(Tables.EMPLOYEE).join(Tables.EMPLOYEE_DEPARTMENT).on(Tables.EMPLOYEE.ID.eq(Tables.EMPLOYEE_DEPARTMENT.EMPLOYEE_ID))
-				.join(Tables.DEPARTMENT).on(Tables.DEPARTMENT.ID.eq(Tables.EMPLOYEE_DEPARTMENT.DEPARTMENT_ID)).where(Tables.EMPLOYEE.ID.eq(id))
+		public List<RecordContainer> findDepartmentEmployees(Long id) {
+			return context.select().from(Tables.DEPARTMENT).join(Tables.EMPLOYEE_DEPARTMENT).on(Tables.DEPARTMENT.ID.eq(Tables.EMPLOYEE_DEPARTMENT.DEPARTMENT_ID))
+				.join(Tables.EMPLOYEE).on(Tables.EMPLOYEE.ID.eq(Tables.EMPLOYEE_DEPARTMENT.EMPLOYEE_ID)).where(Tables.DEPARTMENT.ID.eq(id))
 				.fetch((Record record) -> {
 					RecordContainer container = new RecordContainer();
 					container.setEmployee(record.into(EmployeeRecord.class));
@@ -64,4 +69,16 @@ public class AppServiceImpl implements AppService {
 					return container;
 			});
 		}
+		
+        @Override
+        public List<RecordContainer> findDepartmentsEmployees() {
+            return context.select().from(Tables.DEPARTMENT).join(Tables.EMPLOYEE_DEPARTMENT).on(Tables.DEPARTMENT.ID.eq(Tables.EMPLOYEE_DEPARTMENT.DEPARTMENT_ID))
+                .join(Tables.EMPLOYEE).on(Tables.EMPLOYEE.ID.eq(Tables.EMPLOYEE_DEPARTMENT.EMPLOYEE_ID))
+                .fetch((Record record) -> {
+                    RecordContainer container = new RecordContainer();
+                    container.setEmployee(record.into(EmployeeRecord.class));
+                    container.setDepartment(record.into(DepartmentRecord.class));
+                    return container;
+            });
+        }
 }

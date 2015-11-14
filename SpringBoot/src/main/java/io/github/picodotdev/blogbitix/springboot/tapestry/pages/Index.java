@@ -11,7 +11,7 @@ import io.github.picodotdev.blogbitix.springboot.service.AppService;
 public class Index {
 
     @Inject
-    private AppService appService;
+    private AppService service;
 
     @Property
     private Long numEmployees;
@@ -21,10 +21,13 @@ public class Index {
 
     @Property
     private List<RecordContainer> containers;
+    
+    @Property
+    private RecordContainer container;
 
     void setupRender() {
-        numEmployees = appService.countEmployees();
-        numDepartments = appService.countDepartments();
-        containers = appService.findEmployeeDepartments(1l);
+        numEmployees = service.countEmployees();
+        numDepartments = service.countDepartments();
+        containers = service.findDepartmentsEmployees();
     }
 }
