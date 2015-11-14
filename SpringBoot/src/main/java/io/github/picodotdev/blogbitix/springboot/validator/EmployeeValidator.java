@@ -21,9 +21,6 @@ public class EmployeeValidator implements Validator {
     		return;
     	}
     	IEmployee o = (IEmployee) target;
-    	if (StringUtils.isBlank(o.getName())) {
-    		errors.rejectValue("name", "NotNull", new Object[] { o.getName() }, "name cannot be null");
-    	}
     	if (o.getBirthday() != null && o.getBirthday().isAfter(LocalDateTime.now())) {
     		errors.rejectValue("birthday", "invalid", new Object[]{ o.getBirthday() }, "birthday cannot be after now");
     	}

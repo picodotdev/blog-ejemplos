@@ -44,6 +44,7 @@ public interface IEmployee extends Serializable {
 	/**
 	 * Getter for <code>JOOQ.EMPLOYEE.NAME</code>.
 	 */
+	@NotNull
 	@Size(max = 256)
 	public String getName();
 

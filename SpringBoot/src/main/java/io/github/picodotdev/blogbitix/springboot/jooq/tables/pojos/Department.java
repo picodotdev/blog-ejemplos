@@ -24,7 +24,7 @@ import javax.validation.constraints.Size;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Department implements IDepartment {
 
-	private static final long serialVersionUID = -2014995091;
+	private static final long serialVersionUID = 1694540916;
 
 	private Long   id;
 	private String name;
@@ -55,6 +55,7 @@ public class Department implements IDepartment {
 		this.id = id;
 	}
 
+	@NotNull
 	@Size(max = 256)
 	@Override
 	public String getName() {

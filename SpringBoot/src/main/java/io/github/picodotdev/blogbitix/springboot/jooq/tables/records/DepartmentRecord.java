@@ -31,7 +31,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DepartmentRecord extends UpdatableRecordImpl<DepartmentRecord> implements Record2<Long, String>, IDepartment {
 
-	private static final long serialVersionUID = -1755687243;
+	private static final long serialVersionUID = 1407660750;
 
 	/**
 	 * Setter for <code>JOOQ.DEPARTMENT.ID</code>.
@@ -61,6 +61,7 @@ public class DepartmentRecord extends UpdatableRecordImpl<DepartmentRecord> impl
 	/**
 	 * Getter for <code>JOOQ.DEPARTMENT.NAME</code>.
 	 */
+	@NotNull
 	@Size(max = 256)
 	@Override
 	public String getName() {

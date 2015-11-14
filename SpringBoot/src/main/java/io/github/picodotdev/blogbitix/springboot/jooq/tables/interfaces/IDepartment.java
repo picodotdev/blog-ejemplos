@@ -43,6 +43,7 @@ public interface IDepartment extends Serializable {
 	/**
 	 * Getter for <code>JOOQ.DEPARTMENT.NAME</code>.
 	 */
+	@NotNull
 	@Size(max = 256)
 	public String getName();
 

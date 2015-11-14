@@ -26,7 +26,7 @@ import javax.validation.constraints.Size;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Employee implements IEmployee {
 
-	private static final long serialVersionUID = -925886335;
+	private static final long serialVersionUID = -135317734;
 
 	private Long          id;
 	private String        name;
@@ -65,6 +65,7 @@ public class Employee implements IEmployee {
 		this.id = id;
 	}
 
+	@NotNull
 	@Size(max = 256)
 	@Override
 	public String getName() {

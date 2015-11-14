@@ -11,7 +11,9 @@
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" />
             </column>
-            <column name="name" type="VARCHAR(256)" />
+            <column name="name" type="VARCHAR(256)">
+				<constraints nullable="false"/>
+			</column>
             <column name="surname" type="VARCHAR(256)" />
             <column name="birthday" type="DATETIME" />
         </createTable>
@@ -19,7 +21,9 @@
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" />
             </column>
-            <column name="name" type="VARCHAR(256)" />
+            <column name="name" type="VARCHAR(256)">
+				<constraints nullable="false"/>
+			</column>
         </createTable>
         <createTable tableName="employee_department" schemaName="${schema}">
             <column autoIncrement="true" name="id" type="BIGINT">

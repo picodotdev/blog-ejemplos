@@ -33,7 +33,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class EmployeeRecord extends UpdatableRecordImpl<EmployeeRecord> implements Record4<Long, String, String, LocalDateTime>, IEmployee {
 
-	private static final long serialVersionUID = 1255507311;
+	private static final long serialVersionUID = -1664692746;
 
 	/**
 	 * Setter for <code>JOOQ.EMPLOYEE.ID</code>.
@@ -63,6 +63,7 @@ public class EmployeeRecord extends UpdatableRecordImpl<EmployeeRecord> implemen
 	/**
 	 * Getter for <code>JOOQ.EMPLOYEE.NAME</code>.
 	 */
+	@NotNull
 	@Size(max = 256)
 	@Override
 	public String getName() {

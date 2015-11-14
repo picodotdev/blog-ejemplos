@@ -34,7 +34,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Department extends TableImpl<DepartmentRecord> {
 
-	private static final long serialVersionUID = 848841181;
+	private static final long serialVersionUID = 1075434620;
 
 	/**
 	 * The reference instance of <code>JOOQ.DEPARTMENT</code>
@@ -57,7 +57,7 @@ public class Department extends TableImpl<DepartmentRecord> {
 	/**
 	 * The column <code>JOOQ.DEPARTMENT.NAME</code>.
 	 */
-	public final TableField<DepartmentRecord, String> NAME = createField("NAME", org.jooq.impl.SQLDataType.VARCHAR.length(256), this, "");
+	public final TableField<DepartmentRecord, String> NAME = createField("NAME", org.jooq.impl.SQLDataType.VARCHAR.length(256).nullable(false), this, "");
 
 	/**
 	 * Create a <code>JOOQ.DEPARTMENT</code> table reference
