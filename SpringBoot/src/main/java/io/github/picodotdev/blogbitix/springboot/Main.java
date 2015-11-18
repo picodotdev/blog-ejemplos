@@ -22,14 +22,14 @@ import io.github.picodotdev.blogbitix.springboot.service.AppService;
 @SpringBootApplication
 public class Main implements CommandLineRunner {
 
-	@Autowired
-	private DSLContext context;
-	
-	@Autowired
-	private AppService service;
+    @Autowired
+    private DSLContext context;
 
-	@Override
-	public void run(String... args) {
+    @Autowired
+    private AppService service;
+
+    @Override
+    public void run(String... args) {
         System.out.printf("Number employees: %d%n", service.countEmployees());
         System.out.printf("Number departments: %d%n", service.countDepartments());
 
@@ -37,10 +37,10 @@ public class Main implements CommandLineRunner {
         System.out.println("# Relations (with 1+N problem)");
         DepartmentRecord department = service.findDepartment(1l);
         List<EmployeeDepartmentRecord> eds = department.fetchChildren(Keys.DEPARTMENT_ID);
-        for (EmployeeDepartmentRecord ed : eds) {
-            EmployeeRecord employee = ed.fetchParent(Keys.EMPLOYEE_ID);    
+        eds.stream().forEach(ed -> {
+            EmployeeRecord employee = ed.fetchParent(Keys.EMPLOYEE_ID);
             System.out.printf("%s %s%n", employee.getName(), department.getName());
-        }
+        });
 
         System.out.println();
         System.out.println("# Multipletables (no 1+N)");
@@ -60,12 +60,12 @@ public class Main implements CommandLineRunner {
         errors.getGlobalErrors().stream().forEach(error -> {
             System.out.printf("%s, %s, %s%n", error.getObjectName(), error.getCode(), error.getArguments());
         });
-	}
+    }
 
-	public static void main(String[] args) throws Exception {
-		SpringApplication application = new SpringApplication(Main.class);
-		//application.setApplicationContextClass(AnnotationConfigApplicationContext.class);
-		application.setApplicationContextClass(AnnotationConfigWebApplicationContext.class);
-		SpringApplication.run(Main.class, args);
-	}
+    public static void main(String[] args) throws Exception {
+        SpringApplication application = new SpringApplication(Main.class);
+        // application.setApplicationContextClass(AnnotationConfigApplicationContext.class);
+        application.setApplicationContextClass(AnnotationConfigWebApplicationContext.class);
+        SpringApplication.run(Main.class, args);
+    }
 }
