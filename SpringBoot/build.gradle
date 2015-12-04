@@ -15,17 +15,35 @@ apply plugin: 'spring-boot'
 
 mainClassName = 'io.github.picodotdev.blogbitix.springboot.Main'
 
+def versions = [
+    'gradle':              '2.9',
+    'tapestry':            '5.4-rc-1',
+    'spring':              '4.2.3.RELEASE',
+    'spring_boot':         '1.3.0.RELEASE',
+    'hibernate_validator': '5.2.2.Final',
+    'jooq':                '3.7.1',
+    'guava':               '18.0',
+    'h2':                  '1.4.190',
+    'slf4j':               '1.7.13',
+    'log4j2':              '2.4.1',
+    'servlet_api':         '3.1.0'
+]
+
 buildscript {
+    def versions = [
+        'spring_boot':           '1.3.0.RELEASE',
+        'jooq':                  '3.7.1',
+        'h2':                    '1.4.190'
+    ]
+
     repositories {
-        mavenCentral()        
+        mavenCentral()
     }
    
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE")
-        classpath 'org.jooq:jooq-codegen:3.7.0'
-        classpath 'com.h2database:h2:1.4.189'
-        classpath 'org.postgresql:postgresql:9.4-1203-jdbc41'
-        classpath 'mysql:mysql-connector-java:5.1.36'
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$versions.spring_boot")
+        classpath "org.jooq:jooq-codegen:$versions.jooq"
+        classpath "com.h2database:h2:$versions.h2"
     }
 }
 
@@ -41,37 +59,36 @@ repositories {
 
 dependencies {
     // Spring
-    compile 'org.springframework:spring-context:4.2.1.RELEASE'	
-    compile 'org.springframework:spring-jdbc:4.2.1.RELEASE'
-    compile 'org.springframework:spring-tx:4.2.1.RELEASE'
-    compile('org.springframework.boot:spring-boot-starter:1.2.7.RELEASE') { exclude(group: 'ch.qos.logback') }
-    compile('org.springframework.boot:spring-boot-starter-web:1.2.7.RELEASE') { exclude(group: 'ch.qos.logback') }
-    compile('org.hibernate:hibernate-validator:5.2.2.Final')
+    compile "org.springframework:spring-context:$versions.spring"
+    compile "org.springframework:spring-jdbc:$versions.spring"
+    compile "org.springframework:spring-tx:$versions.spring"
+    compile("org.springframework.boot:spring-boot-starter:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
+    compile("org.springframework.boot:spring-boot-starter-web:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
+    compile("org.springframework.boot:spring-boot-starter-actuator:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
+    compile "org.hibernate:hibernate-validator:$versions.hibernate_validator"
     
     // Tapestry
-    compile 'org.apache.tapestry:tapestry-core:5.4-rc-1'
-    compile 'org.apache.tapestry:tapestry-webresources:5.4-rc-1'
-    compile 'org.apache.tapestry:tapestry-javadoc:5.4-rc-1'
-    compile 'org.apache.tapestry:tapestry-beanvalidator:5.4-rc-1'
-    compile ('org.apache.tapestry:tapestry-spring:5.4-rc-1') { exclude(group: 'org.springframework') }
+    compile "org.apache.tapestry:tapestry-core:$versions.tapestry"
+    compile "org.apache.tapestry:tapestry-webresources:$versions.tapestry"
+    compile "org.apache.tapestry:tapestry-javadoc:$versions.tapestry"
+    compile "org.apache.tapestry:tapestry-beanvalidator:$versions.tapestry"
+    compile("org.apache.tapestry:tapestry-spring:$versions.tapestry") { exclude(group: 'org.springframework') }
     
     // Database	
-    compile 'org.jooq:jooq:3.7.0'
-    compile 'org.jooq:jooq-meta:3.7.0'
-    compile 'commons-dbcp:commons-dbcp:1.4'
-    runtime 'com.h2database:h2:1.4.189'
-    runtime 'org.postgresql:postgresql:9.4-1203-jdbc41'
-    runtime 'mysql:mysql-connector-java:5.1.36'
+    compile "org.jooq:jooq:$versions.jooq"
+    compile "org.jooq:jooq-meta:$versions.jooq"
+    compile "commons-dbcp:commons-dbcp:1.4"
+    runtime "com.h2database:h2:$versions.h2"
     
     // Logging
-    compile 'org.slf4j:slf4j-api:1.7.12'
-    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.3'
-    compile 'org.apache.logging.log4j:log4j-api:2.3'
-    compile 'org.apache.logging.log4j:log4j-core:2.3'
+    compile "org.slf4j:slf4j-api:$versions.slf4j"
+    compile "org.apache.logging.log4j:log4j-slf4j-impl:$versions.log4j2"
+    compile "org.apache.logging.log4j:log4j-api:$versions.log4j2"
+    compile "org.apache.logging.log4j:log4j-core:$versions.log4j2"
     
     // Misc
-    compile 'org.apache.commons:commons-lang3:3.4'
-    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile "org.apache.commons:commons-lang3:3.4"
+    compile "javax.servlet:javax.servlet-api:$versions.servlet_api"
 }
 
 task generateModels << {
@@ -117,5 +134,5 @@ task updateDatabase(type:Exec) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.8'
+    gradleVersion = versions.gradle
 }

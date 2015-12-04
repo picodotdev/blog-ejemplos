@@ -1,0 +1,9 @@
+endpoints:
+    metrics:
+        sensitive: false
+    shutdown:
+        enabled: true
+        
+management:
+    port: 8090
+    context-path: '/management'
