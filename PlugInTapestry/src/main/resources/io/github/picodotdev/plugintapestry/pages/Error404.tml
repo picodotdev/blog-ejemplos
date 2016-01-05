@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html t:type="layout" titulo="Página o recurso no encontrado" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+
+<div>
+	<h1 class="error">Página o recurso no encontrado</h1>
+
+	<h7> <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes" target="_blank">Error 404</a> </h7>
+
+	<p>
+		Oooops! Parece que lo que estás buscando ya no se encuentra en su sitio prueba a encontrarlo desde la <a t:type="pageLink" page="index">página Inicio</a>.
+	</p>
+
+	<t:if test="!productionMode">
+		<div>
+			<h2>Información</h2>
+			<t:renderobject object="request" />
+		</div>
+	</t:if>
+</div>
+</html>

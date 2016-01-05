@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+
+No tienes permisos pare realizar la operación.
+<br />
+<br />
+<t:pagelink page="index">Volver la la página Index</t:pagelink>
+
+</html>

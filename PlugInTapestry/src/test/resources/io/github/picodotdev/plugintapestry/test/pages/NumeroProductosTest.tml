@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+<head></head>
+<body>
+	<div id="componente">
+		<t:numeroProductos />
+	</div>
+</body>
+</html>

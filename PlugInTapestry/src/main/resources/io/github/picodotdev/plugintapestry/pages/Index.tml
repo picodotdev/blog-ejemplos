@@ -1,0 +1,183 @@
+<html t:type="layout" t:titulo="message:PlugIn_Tapestry" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter"
+	xmlns:s="tapestry-library:security">
+
+<div class="jumbotron">
+	<h1>
+		PlugIn <span style="color: red;">Tapestry</span>
+	</h1>
+	<p class="lead">
+		Pequeños ejemplos simples, avanzados y prácticos del libro <a href="http://muko.eu01.aws.af.cm/plugin">PlugIn Tapestry</a> que son una muestra muy reducida de como se hacen con el framework <a
+			href="http://tapestry.apache.org/">Apache Tapestry</a> unas cuantas cosas habituales en toda aplicación o página web.
+	</p>
+	<p>
+		<img src="${context:images/tapestry.png}" alt="Apache Tapestry" title="Apache Tapestry" />
+	</p>
+</div>
+
+<hr />
+
+<div class="row">
+	<div class="col-lg-6">
+		<h4>Componentes básicos</h4>
+		<p>
+			<t:holaMundo>[Texto que no se mostrará]</t:holaMundo>
+			(Componente sin plantilla)
+		</p>
+		<p>
+			<t:holaMundoTemplate />
+			(Componente con plantilla)
+		</p>
+		<p>
+			<span id="holaMundoJavascript"></span> (Componente que hace uso del soporte javascript con RequireJS)
+			<t:javascript selector="literal:#holaMundoJavascript" mensaje="literal:¡Hola mundo! (javascript)" />
+		</p>
+        <p>
+            Colores: <span id="holaMundoAjax">Cargando...</span> (Ajax/Json)
+            <t:ajax selector="#holaMundoAjax"/>
+        </p>
+
+		<h4>Páginas de error personalizadas</h4>
+		<p>
+			<a t:id="informeError" t:type="actionLink">Informe de error</a>
+		</p>
+		<p>
+			<a t:type="pageLink" t:page="error404">Error 404</a>
+		</p>
+
+		<h4>Persistencia web</h4>
+		<p>
+			Cuenta: <t:zone t:id="zone" id="zone" elementName="span">${cuenta}</t:zone> <br />
+			<a t:id="sumar1Cuenta" t:type="actionLink">Sumar uno a la cuenta</a> <br/>
+			<a t:id="sumar1CuentaAjax" t:type="actionLink" t:zone="zone">Sumar uno a la cuenta (Ajax)</a>
+		</p>
+
+		<h4>Seguridad</h4>
+		<p>
+			<a t:id="reiniciarCuenta" t:type="actionLink" class="btn btn-primary btn-mini" style="color: white;">Reiniciar cuenta</a>
+		</p>
+		<p>
+			<s:user>
+                Has iniciado sesión como ${subject.principal} <br />
+				<a t:id="cerrarSesion" t:type="actionLink" class="btn btn-primary btn-mini" style="color: white;">Cerrar sesión</a>
+			</s:user>
+			<s:guest>
+                Aún no has iniciado sesión (para reiniciar la cuenta deberás hacerlo, root/password)<br />
+				<a t:type="pageLink" page="login" class="btn btn-primary btn-mini" style="color: white;">Iniciar sesión</a>
+			</s:guest>
+		</p>
+		
+		<h4>Pruebas</h4>
+		<p>
+			Unitarias con <a href="http://junit.org/">JUnit</a> y <a href="https://code.google.com/p/mockito/">Mockito</a> o simplemente con <a href="https://code.google.com/p/spock/">Spock</a>
+			y de integración con <a href="http://www.gebish.org/">Geb</a> y Spock (ver <a href="https://github.com/picodotdev/elblogdepicodev/PlugInTapestry">código fuente</a>).
+		</p>
+		
+		<h4>Estado de la aplicación</h4>
+		<p><a t:type="pagelink" page="T5Dashboard">Dashboard</a></p>
+	</div>
+
+	<div class="col-lg-6">
+		<h4>Internacionalización (i18n) y localizacion (l10n)</h4>
+		<p>
+			${message:Este_mensaje_esta_localizado_}<br />
+			<t:outputraw value="getMensajeFormasPlurales('Este_mensaje_esta_localizado_formas_plurales', 0)"/><br />
+			<t:outputraw value="getMensajeFormasPlurales('Este_mensaje_esta_localizado_formas_plurales', 1)"/><br />
+			<t:outputraw value="getMensajeFormasPlurales('Este_mensaje_esta_localizado_formas_plurales', 2)"/><br />
+			Prueba a cambiar al idioma inglés (en) en las preferencias de tu nevegador.
+		</p>
+
+		<h4>Formularios, mantenimiento CRUD</h4>
+		<p>
+			<a t:type="pageLink" page="admin/producto">Mantenimiento CRUD</a> de una entidad persistente en una base de datos relacional.
+		</p>
+		
+		<h4>Componente selector de elementos *</h4>
+		<p>
+			<t:form t:id="coloresForm" clientValidation="none" class="well" role="form">
+				<t:errors class="literal:alert alert-danger" />
+
+				<div class="form-group">
+					<t:listselect values="colores" model="['Rojo','Azul','Verde']"/>
+				</div>
+				<div class="form-group">
+					Colores seleccionados: ${colores}
+				</div>
+				<t:submit value="Seleccionar"/>
+			</t:form>
+			
+			* Ver componente <a href="http://tapestry.apache.org/current/apidocs/org/apache/tapestry5/corelib/components/Checklist.html">CheckList</a> que ya 
+			tiene una funcionalidad	similar y más completa.
+		</p>
+		
+		<h4>Solución al doble o N clic con Mixin</h4>
+		<p>
+        	Cuenta: <t:zone t:id="submitOneZone" id="submitOneZone" elementName="span">${cuenta}</t:zone>
+        	
+        	<p>Prueba a hacer clic varias veces en los botones y enlaces y fíjate en como aumenta la cuenta en cada caso. Tienes 3 segundos para
+        	pulsarlos varias veces.</p>
+        	
+        	<div class="row">
+      			<div class="col-md-4">
+					<h5><b>Sin</b> mixin <br/> en form (ajax)</h5>
+        			<form t:id="submitOneForm1" t:type="form" t:zone="submitOneZone">
+            			<input t:type="submit" value="Sumar 1"/>
+        			</form>
+        		</div>
+				<div class="col-md-4">
+					<h5><b>Sin</b> mixin <br/> en enlace (ajax)</h5>
+					<a t:type="eventlink" t:event="sumar1CuentaAjaxSubmitOne" t:zone="submitOneZone">Sumar 1</a>
+				</div>
+				<div class="col-md-4">
+					<h5><b>Sin</b> mixin en <br/> enlace (no ajax)</h5>
+					<a t:type="eventlink" t:event="sumar1CuentaSubmitOne">Sumar 1</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<h5><b>Con</b> mixin en <br/> form (ajax)</h5>
+        			<form t:id="submitOneForm2" t:type="form" t:zone="submitOneZone" t:mixins="submitOne">
+            			<input t:type="submit" value="Sumar 1"/>
+        			</form>
+        		</div>
+        		<div class="col-md-4">
+					<h5><b>Con</b> mixin en <br/> botón (ajax)</h5>
+        			<form t:id="submitOneForm3" t:type="form" t:zone="submitOneZone">
+            			<input t:type="submit" value="Sumar 1" t:mixins="submitOne"/>
+        			</form>
+        		</div>
+        		<div class="col-md-4">
+					<h5><b>Con</b> mixin en <br/> enlace (ajax)</h5>
+					<a t:type="eventlink" t:event="sumar1CuentaAjaxSubmitOne" t:zone="submitOneZone" t:mixins="submitOne">Sumar 1</a>
+				</div>
+			</div>
+		</p>
+		
+		<h4>Solución al CSRF</h4>
+		<p>
+			Cuenta: <t:zone t:id="csrfZone" id="csrfZone" elementName="span">${cuenta}</t:zone>
+
+			<div class="row">
+				<div class="col-md-4">
+					<h5>En formulario</h5>
+					<form t:id="csrfForm" t:type="form" t:zone="csrfZone" t:mixins="csrf">
+            			<input t:type="submit" value="Sumar 1"/>
+        			</form>
+        		</div>
+        		<div class="col-md-4">
+					<h5>En enlace</h5>
+					<a t:type="eventlink" t:event="sumar1CuentaCsrf" t:zone="csrfZone" t:mixins="csrf">Sumar 1</a>
+				</div>
+        		<div class="col-md-4">
+					<h5>Fallo seguridad</h5>
+					<a t:type="eventlink" t:event="sumar1CuentaCsrf" t:zone="csrfZone" t:parameters="prop:{'t:sid':'dummy-attack'}">Sumar 1</a>
+				</div>
+        	</div>
+		</p>
+
+		<h4>Más ejemplos</h4>
+		<p>
+			Estos son solo es unos pocos, si quieres ver más ejemplos accede a la aplicación <a href="http://jumpstart.doublenegative.com.au/jumpstart/">JumpStart</a>.
+		</p>
+	</div>
+</div>
+</html>

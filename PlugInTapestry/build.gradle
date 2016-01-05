@@ -1,0 +1,247 @@
+import org.jooq.util.GenerationTool
+import org.jooq.util.jaxb.Configuration
+import org.jooq.util.jaxb.CustomType
+import org.jooq.util.jaxb.Database
+import org.jooq.util.jaxb.ForcedType
+import org.jooq.util.jaxb.Generate
+import org.jooq.util.jaxb.Generator
+import org.jooq.util.jaxb.Jdbc
+import org.jooq.util.jaxb.Target
+
+description = 'PlugInTapestry application'
+group = 'io.github.picodotdev.plugintapestry'
+version = '1.4'
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'war'
+apply plugin: 'application'
+apply plugin: 'spring-boot'
+apply plugin: 'project-report'
+
+mainClassName = 'io.github.picodotdev.plugintapestry.Main'
+
+def versions = [
+    'gradle':              '2.10',
+    'tapestry':            '5.4.0',
+    'tapestry_security':   '0.6.2',
+    'tapestry_testify':    '1.0.4',
+    'tapestry_xpath':      '1.0.1',
+    'spring':              '4.2.3.RELEASE',
+    'spring_boot':         '1.3.0.RELEASE',
+    'hibernate':           '4.3.10.Final',
+    'hibernate_validator': '5.2.2.Final',
+    'jooq':                '3.7.2',
+    'shiro':               '1.2.4',
+    'guava':               '18.0',
+    'h2':                  '1.4.190',
+    'slf4j':               '1.7.13',
+    'log4j2':              '2.4.1',
+    'junit':               '4.12',
+    'mockito':             '1.10.19',
+    'geb':                 '0.12.2',
+    'selenium':            '2.48.2',
+    'servlet_api':         '3.1.0',
+    'spock':               '1.0-groovy-2.4',
+    'jboss_vfs':           '3.2.11.Final',
+    'jboss_logging':       '3.3.0.Final'
+]
+
+buildscript {
+	def versions = [
+        'spring_boot':       '1.3.0.RELEASE',
+        'jooq':              '3.7.1',
+        'h2':                '1.4.190'
+    ]
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$versions.spring_boot"
+        classpath "org.jooq:jooq-codegen:$versions.jooq"
+        classpath "com.h2database:h2:$versions.h2"
+    }
+}
+
+repositories {
+    mavenCentral()
+
+    // All things JBoss/Hibernate
+	maven {
+    	name 'JBoss'
+    	url 'http://repository.jboss.org/nexus/content/groups/public/'
+    }
+
+    // For access to Apache Staging (Preview) packages
+    maven {
+    	name 'Apache Staging'
+    	url 'https://repository.apache.org/content/groups/staging'
+    }
+}
+
+// This simulates Maven's 'provided' scope, until it is officially supported by Gradle
+// See http://jira.codehaus.org/browse/GRADLE-784
+configurations {
+    provided
+    providedRuntime
+    appJavadoc    
+}
+
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+    }
+    test {
+        compileClasspath += configurations.provided
+        runtimeClasspath += configurations.provided
+    }
+}
+
+dependencies {
+    // Tapestry
+    compile "org.apache.tapestry:tapestry-core:$versions.tapestry"
+    compile "org.apache.tapestry:tapestry-hibernate:$versions.tapestry"
+    compile "org.apache.tapestry:tapestry-beanvalidator:$versions.tapestry"
+
+    // Compresión automática de javascript y css en el modo producción
+    compile "org.apache.tapestry:tapestry-webresources:$versions.tapestry"
+    appJavadoc "org.apache.tapestry:tapestry-javadoc:$versions.tapestry"
+    
+    // Spring
+    compile ("org.apache.tapestry:tapestry-spring:$versions.tapestry") { exclude(group: 'org.springframework') }
+    compile "org.springframework:spring-jdbc:$versions.spring"
+    compile "org.springframework:spring-orm:$versions.spring"
+    compile "org.springframework:spring-tx:$versions.spring"
+
+	// Spring Boot
+    compile("org.springframework.boot:spring-boot-starter:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
+    compile("org.springframework.boot:spring-boot-starter-web:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
+    compile("org.springframework.boot:spring-boot-autoconfigure:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
+    compile("org.springframework.boot:spring-boot-starter-actuator:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
+
+    // Persistencia
+    compile "org.hibernate:hibernate-core:$versions.hibernate"
+    compile "org.hibernate:hibernate-validator:$versions.hibernate_validator"
+    compile "com.h2database:h2:$versions.h2"
+    compile "org.jooq:jooq:$versions.jooq"
+    compile 'commons-dbcp:commons-dbcp:1.4'
+    
+    // Seguridad
+    compile("org.tynamo:tapestry-security:$versions.tapestry_security") { exclude(group: 'org.apache.shiro') }
+    compile "org.apache.shiro:shiro-all:$versions.shiro"
+    
+    // Logging
+    compile "org.slf4j:slf4j-api:$versions.slf4j"
+    compile "org.apache.logging.log4j:log4j-slf4j-impl:$versions.log4j2"
+    runtime "org.apache.logging.log4j:log4j-api:$versions.log4j2"
+    runtime "org.apache.logging.log4j:log4j-core:$versions.log4j2"    
+    
+    // Pruebas unitarias
+    testCompile("org.apache.tapestry:tapestry-test:$versions.tapestry") { exclude(group: 'org.testng'); exclude(group: 'org.seleniumhq.selenium') }
+    testCompile "net.sourceforge.tapestrytestify:tapestry-testify:$versions.tapestry_testify"
+    testCompile "net.sourceforge.tapestryxpath:tapestry-xpath:$versions.tapestry_xpath"
+    testCompile "org.seleniumhq.selenium:selenium-java:$versions.selenium"
+    testCompile "org.seleniumhq.selenium:selenium-server:$versions.selenium"
+    testCompile "junit:junit:$versions.junit"
+    testCompile "org.mockito:mockito-all:$versions.mockito"
+    testCompile "org.spockframework:spock-core:$versions.spock"
+    testCompile "org.spockframework:spock-spring:$versions.spock"
+ 
+    // Pruebas de integración
+    testCompile "org.gebish:geb-spock:$versions.geb"
+    testCompile "org.gebish:geb-junit4:$versions.geb"
+    testCompile "org.springframework.boot:spring-boot-starter-test:$versions.spring_boot"
+
+	// Otras
+	compile "com.google.guava:guava:$versions.guava"
+	providedCompile "org.jboss:jboss-vfs:$versions.jboss_vfs"
+    providedCompile "javax.servlet:javax.servlet-api:$versions.servlet_api"
+    runtime "org.jboss.logging:jboss-logging:$versions.jboss_logging"
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = versions.gradle
+}
+
+test {
+    // Excluir de los teses unitarios los teses de integración
+    exclude '**/*IntegrationTest.*'
+    exclude '**/*Spec.*'
+}
+
+task integrationTest(type: Test) {
+    // Incluir los teses de integración
+    include '**/*IntegrationTest.*'
+    include '**/*Spec.*'
+}
+
+task appJavadoc(type: Javadoc) {
+    classpath = sourceSets.main.compileClasspath
+    source = sourceSets.main.allJava
+    destinationDir = reporting.file('appJavadoc')
+    options.tagletPath = configurations.appJavadoc.files.asType(List)
+    options.taglets = ['org.apache.tapestry5.javadoc.TapestryDocTaglet']
+    
+    doLast {
+        copy {
+            from sourceSets.main.java.srcDirs
+            into appJavadoc.destinationDir
+            exclude '**/*.java'
+            exclude '**/*.xdoc'
+            exclude '**/package.html'
+        }
+
+        copy {
+            from file('src/javadoc/images')
+            into appJavadoc.destinationDir
+        }
+    }
+}
+
+task generateModels << {
+    Configuration configuration = new Configuration()
+        .withJdbc(new Jdbc()
+            .withDriver('org.h2.Driver')
+            .withUrl('jdbc:h2:./misc/database/app')
+            .withUser('sa')
+            .withPassword('sa'))
+        .withGenerator(new Generator()
+            .withGenerate(new Generate()
+                .withInterfaces(true)
+                .withPojos(true)
+                .withRelations(true)
+                .withValidationAnnotations(true))
+            .withName('org.jooq.util.DefaultGenerator')
+            .withDatabase(new Database()
+                .withCustomTypes([
+                    new CustomType()
+                        .withName('java.time.LocalDateTime')
+                        .withConverter('io.github.picodotdev.plugintapestry.misc.TimestampConverter')
+                        
+                ])
+                .withForcedTypes([
+                    new ForcedType()
+                        .withName('java.time.LocalDateTime')
+                        .withTypes('TIMESTAMP')                     
+                ])
+                .withName('org.jooq.util.h2.H2Database')
+                .withIncludes('.*')
+                .withExcludes('')
+                .withInputSchema('PLUGINTAPESTRY'))
+            .withTarget(new Target()
+                .withPackageName('io.github.picodotdev.plugintapestry.entities.jooq')
+                .withDirectory('src/main/java')));
+
+    GenerationTool.main(configuration)
+}
+
+task updateDatabase(type:Exec) {
+    def LIQUIBASE_HOME = System.getenv('LIQUIBASE_HOME')
+    commandLine "$LIQUIBASE_HOME/liquibase", '--classpath=misc/libs/h2-1.4.190.jar', '--driver=org.h2.Driver',
+        '--changeLogFile=misc/database/changelog.xml', '--url=jdbc:h2:./misc/database/app', '--username=sa', '--password=sa', 'update'
+}

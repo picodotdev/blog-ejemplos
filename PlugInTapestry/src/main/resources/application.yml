@@ -1,0 +1,16 @@
+server:
+    port: 8443
+    ssl:
+        key-store: classpath:keystore.jks
+        key-store-password: secret
+        key-password: secret
+
+management:
+    port: 8090
+    context-path: '/management'
+    
+endpoints:
+    metrics:
+        sensitive: true
+    shutdown:
+        enabled: true

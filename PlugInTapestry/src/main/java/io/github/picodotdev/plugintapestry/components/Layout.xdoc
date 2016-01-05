@@ -1,0 +1,17 @@
+<document>
+<body>
+	<section name="Ejemplo">
+		<p>En este ejemplo se muestra como usar el componente en una página.</p>
+		<subsection name="Index.tml">
+    		<source>
+            <![CDATA[
+<!DOCTYPE html>
+<html t:type="layout" t:titulo="message:PlugIn_Tapestry" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter"
+    xmlns:s="tapestry-library:security">
+...
+</html>]]>
+            </source>
+        </subsection>
+    </section>
+</body>
+</document>

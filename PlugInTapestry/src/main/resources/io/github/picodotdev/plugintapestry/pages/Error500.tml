@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html t:type="layout" titulo="Error en el servidor" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+
+<h1 class="error">Error en el servidor</h1>
+
+<h7><a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes" target="_blank">Error 500</a></h7>
+
+<p>
+	Oooops! Se ha producido un error en el servidor, puedes volver a la <a t:type="pageLink" page="index">página Inicio</a>.
+</p>
+
+<t:if test="!productionMode">
+	<div>
+		<h2>Información</h2>
+		<t:renderobject object="request" />
+	</div>
+</t:if>
+</html>
