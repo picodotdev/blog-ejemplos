@@ -4,12 +4,19 @@
 
 *.db
 
+*.iml
+*.ipr
+*.iws
+
 bin/
 build/
+target/
+
 .gradle/
 .settings/
 .classpath
 .project
+.idea
 .Trash*
 
 node_modules/
