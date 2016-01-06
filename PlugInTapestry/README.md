@@ -24,7 +24,7 @@ cd elblogdepicodev/PlugInTapestry/
 </code></pre>
 
 ###### Mensajes del inicio del servidor de aplicaciones
-![Inicio servidor de aplicaciones](/misc/inicio-rapido-5.png)
+![Inicio servidor de aplicaciones](https://github.com/picodotdev/blog-ejemplos/blob/master/PlugInTapestry/misc/inicio-rapido-5.png)
 
 ###### Captura de la aplicación
-![Inicio servidor de aplicaciones](/misc/PlugInTapestry.png)
+![Inicio servidor de aplicaciones](https://github.com/picodotdev/blog-ejemplos/blob/master/PlugInTapestry/misc/PlugInTapestry.png)
