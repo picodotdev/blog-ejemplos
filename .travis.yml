@@ -3,3 +3,4 @@ jdk:
   - oraclejdk8
 script:
   - cd Machinarum && ./gradlew check
+  - cd PlugInTapestry && ./gradlew test integrationTest
