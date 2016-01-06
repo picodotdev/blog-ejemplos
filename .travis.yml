@@ -2,5 +2,5 @@ language: java
 jdk:
   - oraclejdk8
 script:
-  - cd Machinarum && ./gradlew check
-  - cd PlugInTapestry && ./gradlew test integrationTest
+  - cd Machinarum && ./gradlew check && cd ..
+  - cd PlugInTapestry && ./gradlew test integrationTest && cd ..
