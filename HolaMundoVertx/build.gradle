@@ -1,0 +1,33 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+
+sourceCompatibility = '1.8'
+
+//mainClassName = 'io.github.picodotdev.blogbitix.vertx.helloworld.Main'
+//mainClassName = 'io.github.picodotdev.blogbitix.vertx.helloworld.Server'
+mainClassName = 'io.github.picodotdev.blogbitix.vertx.helloworld.Web'
+
+def versions = [
+    gradle: '2.10',
+    vertx: '3.2.0',
+    slf4j: '1.7.13',
+    junit: '4.12'
+]
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "io.vertx:vertx-core:$versions.vertx"
+    compile "io.vertx:vertx-web:$versions.vertx"
+    compile "io.vertx:vertx-web-templ-thymeleaf:$versions.vertx"
+    compile "org.slf4j:slf4j-api:$versions.slf4j"
+
+    testCompile "junit:junit:$versions.junit"
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = versions.gradle
+}
