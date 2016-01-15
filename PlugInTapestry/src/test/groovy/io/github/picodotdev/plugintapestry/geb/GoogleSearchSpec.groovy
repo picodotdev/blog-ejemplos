@@ -4,7 +4,7 @@ import geb.Page
 import geb.spock.GebSpec
  
 class GoogleHomePage extends Page {
-    static url = 'http://google.es/'
+    static url = 'https://www.google.es/'
     static at = { title == 'Google' }
     static content = {
         searchField { $("input[name=q]") }
@@ -15,7 +15,7 @@ class GoogleHomePage extends Page {
 class GoogleResultsPage extends Page {
     static at = { waitFor { title.endsWith("Buscar con Google") } }
     static content = {
-        results(wait: true) { $("li.g") }
+        results(wait: true) { $("div.g") }
         result { index -> return results[index] }
         resultLink { index -> result(index).find("h3.r a") }
     }
