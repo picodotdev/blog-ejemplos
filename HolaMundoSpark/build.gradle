@@ -1,0 +1,20 @@
+description = 'HolaMundoSpark'
+version = '0.1'
+
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'io.github.picodotdev.blogbitix.spark.HolaMundoSpark'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile 'com.sparkjava:spark-core:2.3'
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.10'
+}
