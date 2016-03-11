@@ -1,0 +1,19 @@
+description = 'JavaProcess'
+version = '0.1'
+
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'io.github.picodotdev.blogbitix.javaprocess.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.11'
+}
