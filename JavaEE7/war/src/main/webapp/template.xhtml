@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title><ui:insert name="title">Supermarket</ui:insert></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link type="text/css"  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet"/>
+    <h:outputStylesheet name="css/main.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.min.js"></script>
+    <script type="text/javascript" src="javascript/requirejs-config.js"></script>
+    <ui:insert name="script"></ui:insert>
+</h:head>
+<h:body>
+    <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+                  <ui:insert name="top">
+                       <div class="jumbotron">
+                           <h:graphicImage value="image/java-ee.png" alt="Java EE 7" title="Java EE 7"/>
+                           <h1>Supermarket with Java EE 7</h1>
+                            <p>#{indexBean.products.size()} products.</p>
+                       </div>
+                  </ui:insert>
+             </div>
+         </div>
+		 <div class="row">
+              <div class="col-md-12">
+                   <ui:insert name="content"></ui:insert>
+              </div>
+		 </div>
+	</div>
+</h:body>
+</html>

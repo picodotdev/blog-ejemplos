@@ -1,0 +1,3 @@
+dependencies {
+    compile 'javax:javaee-api:7.0'
+}

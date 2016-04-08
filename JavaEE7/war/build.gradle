@@ -1,0 +1,7 @@
+apply plugin: 'war'
+
+dependencies {
+	providedCompile project(':ejb')	
+    providedCompile 'javax:javaee-api:7.0'
+    providedCompile 'javax.servlet:jstl:1.2'
+}
