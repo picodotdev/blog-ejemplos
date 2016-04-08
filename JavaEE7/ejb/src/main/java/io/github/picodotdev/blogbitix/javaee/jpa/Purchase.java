@@ -19,7 +19,7 @@ public class Purchase implements Serializable {
     private Date date;
 
     @NotNull
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<Item> items;
     @NotNull
     @ManyToOne

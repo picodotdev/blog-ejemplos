@@ -5,8 +5,8 @@ mainClassName = 'io.github.picodotdev.blogbitix.javaee.jar.SupermarketClient'
 dependencies {
     compile project(':ejb')
     compile 'javax:javaee-api:7.0'
-    
-    runtime 'org.jboss:jboss-ejb-client:2.1.4.Final'        
+
+    runtime 'org.jboss:jboss-ejb-client:2.1.4.Final'
     runtime 'org.jboss:jboss-remote-naming:2.0.4.Final'
     runtime 'org.jboss.logging:jboss-logging:3.3.0.Final'
     runtime 'org.jboss.marshalling:jboss-marshalling:1.4.9.Final'
@@ -17,6 +17,8 @@ dependencies {
     runtime 'org.jboss.spec.javax.ejb:jboss-ejb-api_3.2_spec:1.0.0.Final'
     runtime 'org.jboss.xnio:xnio-api:3.3.5.Final'
     runtime 'org.jboss.xnio:xnio-nio:3.3.5.Final'
+
+    runtime 'org.hibernate:hibernate-core:5.0.7.Final'
 }
 
 run {

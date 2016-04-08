@@ -1,15 +1,15 @@
 package io.github.picodotdev.blogbitix.javaee.jar;
 
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-
 import io.github.picodotdev.blogbitix.javaee.ejb.SupermarketRemote;
 import io.github.picodotdev.blogbitix.javaee.jpa.Product;
 import io.github.picodotdev.blogbitix.javaee.jpa.Purchase;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class SupermarketClient {
 
@@ -28,19 +28,19 @@ public class SupermarketClient {
         BigDecimal maxPriceProduct = products.stream().map(a -> {
             return a.getPrice();
         }).sorted((a, b) -> {
-            return a.compareTo(b);
+            return b.compareTo(a);
         }).findFirst().orElse(new BigDecimal("0"));
         BigDecimal minPriceProduct = products.stream().map(a -> {
             return a.getPrice();
         }).sorted((a, b) -> {
-            return b.compareTo(a);
+            return a.compareTo(b);
         }).findFirst().orElse(new BigDecimal("0"));
         BigDecimal sumPriceProduct = products.stream().map(p -> p.getPrice()).collect(Collectors.reducing(new BigDecimal("0"), (result, element) -> {
             return result.add(element);
         }));
-        BigDecimal avgPriceProduct = (products.size() == 0) ? new BigDecimal("0") : sumPriceProduct.divide(new BigDecimal(products.size()));
+        BigDecimal avgPriceProduct = (products.size() == 0) ? new BigDecimal("0") : sumPriceProduct.divide(new BigDecimal(products.size()), RoundingMode.HALF_UP);
         Double avgStockProduct = products.stream().collect(Collectors.averagingDouble(p -> {
-            return p.getPrice().doubleValue();
+            return p.getStock();
         }));
         System.out.printf("Products summary(count: %d, maxPrice: %.2f, minPrice: %.2f, avgPrice: %.2f, avgStock: %.2f%n", products.size(), maxPriceProduct, minPriceProduct,
                 avgPriceProduct, avgStockProduct);
@@ -51,21 +51,18 @@ public class SupermarketClient {
         BigDecimal maxPriceProduct = purchases.stream().map(a -> {
             return a.getPrice();
         }).sorted((a, b) -> {
-            return a.compareTo(b);
+            return b.compareTo(a);
         }).findFirst().orElse(new BigDecimal("0"));
         BigDecimal minPriceProduct = purchases.stream().map(a -> {
             return a.getPrice();
         }).sorted((a, b) -> {
-            return b.compareTo(a);
+            return a.compareTo(b);
         }).findFirst().orElse(new BigDecimal("0"));
         BigDecimal sumPriceProduct = purchases.stream().map(p -> p.getPrice()).collect(Collectors.reducing(new BigDecimal("0"), (result, element) -> {
             return result.add(element);
         }));
-        BigDecimal avgPriceProduct = (purchases.size() == 0) ? new BigDecimal("0") : sumPriceProduct.divide(new BigDecimal(numProducts));
-        Double avgStockProduct = purchases.stream().collect(Collectors.averagingDouble(p -> {
-            return p.getPrice().doubleValue();
-        }));
-        System.out.printf("Purchases summary(count: %d, maxPrice: %.2f, minPrice: %.2f, avgPrice: %.2f, avgStock: %.2f%n", purchases.size(),
-                maxPriceProduct, minPriceProduct, avgPriceProduct, avgStockProduct);
+        BigDecimal avgPriceProduct = (purchases.size() == 0) ? new BigDecimal("0") : sumPriceProduct.divide(new BigDecimal(numProducts), RoundingMode.HALF_UP);
+        System.out.printf("Purchases summary(count: %d, maxPrice: %.2f, minPrice: %.2f, avgPrice: %.2f", purchases.size(),
+                maxPriceProduct, minPriceProduct, avgPriceProduct);
     }
 }
