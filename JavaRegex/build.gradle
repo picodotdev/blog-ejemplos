@@ -1,4 +1,4 @@
-description = 'Java'
+description = 'JavaRegex'
 version = '0.1'
 
 apply plugin: 'eclipse'
