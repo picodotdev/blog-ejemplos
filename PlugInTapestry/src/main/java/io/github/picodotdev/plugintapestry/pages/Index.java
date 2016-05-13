@@ -1,10 +1,7 @@
 package io.github.picodotdev.plugintapestry.pages;
 
-import java.text.ChoiceFormat;
-import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.List;
-
+import io.github.picodotdev.plugintapestry.misc.Globals;
+import io.github.picodotdev.plugintapestry.services.annotation.Csrf;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.web.subject.support.WebDelegatingSubject;
@@ -17,7 +14,10 @@ import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.ajax.AjaxResponseRenderer;
 
-import io.github.picodotdev.plugintapestry.services.annotation.Csrf;
+import java.text.ChoiceFormat;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @tapestrydoc
@@ -60,6 +60,9 @@ public class Index {
 	 * renderización de la página.
 	 */
 	void setupRender() {
+		// ThreadLocal example
+		System.out.printf("Host (from page): %s%n", Globals.HOST.get());
+
 		if (cuenta == null) {
 			// Iniciarlizar el valor de la cuenta al cargar la página
 			cuenta = 0l;

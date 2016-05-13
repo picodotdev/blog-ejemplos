@@ -1,22 +1,22 @@
 package io.github.picodotdev.plugintapestry.services.dao;
 
-import static io.github.picodotdev.plugintapestry.entities.jooq.tables.Producto.PRODUCTO;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
+import io.github.picodotdev.plugintapestry.entities.jooq.Tables;
+import io.github.picodotdev.plugintapestry.entities.jooq.tables.pojos.Producto;
+import io.github.picodotdev.plugintapestry.entities.jooq.tables.records.ProductoRecord;
+import io.github.picodotdev.plugintapestry.misc.Direction;
+import io.github.picodotdev.plugintapestry.misc.Globals;
+import io.github.picodotdev.plugintapestry.misc.Pagination;
+import io.github.picodotdev.plugintapestry.misc.Sort;
 import org.jooq.DSLContext;
 import org.jooq.Field;
 import org.jooq.SortField;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import io.github.picodotdev.plugintapestry.entities.jooq.Tables;
-import io.github.picodotdev.plugintapestry.entities.jooq.tables.pojos.Producto;
-import io.github.picodotdev.plugintapestry.entities.jooq.tables.records.ProductoRecord;
-import io.github.picodotdev.plugintapestry.misc.Direction;
-import io.github.picodotdev.plugintapestry.misc.Pagination;
-import io.github.picodotdev.plugintapestry.misc.Sort;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static io.github.picodotdev.plugintapestry.entities.jooq.tables.Producto.PRODUCTO;
 
 public class DefaultJooqProductoDAO implements GenericDAO<Producto>, JooqProductoDAO {
 
@@ -29,6 +29,9 @@ public class DefaultJooqProductoDAO implements GenericDAO<Producto>, JooqProduct
     @Override
     @Transactional(readOnly = true)
     public Producto findById(Long id) {
+        // ThreadLocal example
+        System.out.printf("Host (from service): %s%n", Globals.HOST.get());
+
         return context.selectFrom(PRODUCTO).where(PRODUCTO.ID.eq(id)).fetchOneInto(Producto.class);
     }
 

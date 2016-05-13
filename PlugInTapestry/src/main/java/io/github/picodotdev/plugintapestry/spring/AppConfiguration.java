@@ -1,17 +1,12 @@
 package io.github.picodotdev.plugintapestry.spring;
 
-import java.io.IOException;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-
-import javax.servlet.DispatcherType;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.SessionTrackingMode;
-import javax.sql.DataSource;
-
+import io.github.picodotdev.plugintapestry.misc.AppFilter;
+import io.github.picodotdev.plugintapestry.services.dao.DefaultHibernateProductoDAO;
+import io.github.picodotdev.plugintapestry.services.dao.DefaultJooqProductoDAO;
+import io.github.picodotdev.plugintapestry.services.dao.HibernateProductoDAO;
+import io.github.picodotdev.plugintapestry.services.dao.JooqProductoDAO;
+import io.github.picodotdev.plugintapestry.services.hibernate.ProductoEventAdapter;
+import io.github.picodotdev.plugintapestry.services.spring.DummyService;
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.catalina.connector.Request;
@@ -42,12 +37,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import io.github.picodotdev.plugintapestry.services.dao.DefaultHibernateProductoDAO;
-import io.github.picodotdev.plugintapestry.services.dao.DefaultJooqProductoDAO;
-import io.github.picodotdev.plugintapestry.services.dao.HibernateProductoDAO;
-import io.github.picodotdev.plugintapestry.services.dao.JooqProductoDAO;
-import io.github.picodotdev.plugintapestry.services.hibernate.ProductoEventAdapter;
-import io.github.picodotdev.plugintapestry.services.spring.DummyService;
+import javax.servlet.DispatcherType;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.SessionTrackingMode;
+import javax.sql.DataSource;
+import java.io.IOException;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
 @Configuration
 @ComponentScan({ "io.github.picodotdev.plugintapestry" })
@@ -111,6 +110,7 @@ public class AppConfiguration {
             public void onStartup(ServletContext servletContext) throws ServletException {
                 servletContext.setInitParameter("tapestry.app-package", "io.github.picodotdev.plugintapestry");
                 servletContext.setInitParameter("tapestry.use-external-spring-context", "true");
+                servletContext.addFilter("filter", AppFilter.class).addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ERROR), false, "/*");
                 servletContext.addFilter("app", TapestrySpringFilter.class).addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.ERROR), false, "/*");
                 servletContext.setSessionTrackingModes(EnumSet.of(SessionTrackingMode.COOKIE));
             }

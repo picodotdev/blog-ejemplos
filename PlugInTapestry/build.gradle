@@ -10,7 +10,7 @@ import org.jooq.util.jaxb.Target
 
 description = 'PlugInTapestry application'
 group = 'io.github.picodotdev.plugintapestry'
-version = '1.4'
+version = '1.5'
 
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -24,8 +24,8 @@ apply plugin: 'project-report'
 mainClassName = 'io.github.picodotdev.plugintapestry.Main'
 
 def versions = [
-    'gradle':              '2.10',
-    'tapestry':            '5.4.0',
+    'gradle':              '2.13',
+    'tapestry':            '5.4.1',
     'tapestry_security':   '0.6.2',
     'tapestry_testify':    '1.0.4',
     'tapestry_xpath':      '1.0.1',
