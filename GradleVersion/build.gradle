@@ -1,0 +1,44 @@
+import io.github.picodotdev.blogbitix.gradleversion.build.ProjectVersion
+
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'application'
+
+version = new ProjectVersion(major: 1, minor: 0, build: System.env.BUILD_NUMBER, hash: "git log -n 1 --format=%h".execute().text.trim())
+mainClassName = 'io.github.picodotdev.blogbitix.gradleversion.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    runtime 'org.apache.logging.log4j:log4j-api:2.5'
+    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.5'
+    runtime 'org.apache.logging.log4j:log4j-core:2.5'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
+}
+
+task createBuildInfoFile << {
+    def file = new File("$buildDir/build-info.properties")
+    Properties props = new Properties()
+    props.setProperty('version', project.version.toString())
+    props.setProperty('timestamp', new Date().toString())
+    props.store(file.newWriter(), null)
+}
+
+jar {
+    dependsOn createBuildInfoFile
+
+    manifest {
+        attributes 'Main-Class': project.mainClassName
+    }
+
+    from(buildDir) {
+        include 'build-info.properties'
+    }
+}
