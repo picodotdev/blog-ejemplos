@@ -8,6 +8,8 @@
 *.ipr
 *.iws
 
+*.xls
+
 bin/
 build/
 target/
