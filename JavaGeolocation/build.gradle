@@ -1,0 +1,26 @@
+description = 'JavaGeolocation'
+version = '0.1'
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'io.github.picodotdev.blogbitix.javageolocation.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.maxmind.geoip2:geoip2:2.7.0'
+
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    runtime 'org.apache.logging.log4j:log4j-api:2.5'
+    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.5'
+    runtime 'org.apache.logging.log4j:log4j-core:2.5'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
+}
