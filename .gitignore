@@ -9,6 +9,7 @@
 *.iws
 
 *.xls
+*.mmdb
 
 bin/
 build/
