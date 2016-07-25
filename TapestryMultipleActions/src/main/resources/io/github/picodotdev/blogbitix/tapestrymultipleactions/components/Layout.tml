@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+<head>
+<title>${title}</title>
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css"/>
+<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<t:body />
+		</div>
+	</div>
+</body>
+</html>

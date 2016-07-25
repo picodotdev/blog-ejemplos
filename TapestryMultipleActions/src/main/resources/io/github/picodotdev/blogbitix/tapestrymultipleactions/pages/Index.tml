@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html t:type="layout" title="Products" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+
+<h1>Products</h1>
+<t:grid t:id="grid" source="products" row="product" model="model" rowsPerPage="10" lean="true" class="table table-hover">
+    <p:selectCell>
+        <input t:type="any" type="checkbox" name="product" value="prop:product.id" data-product-actions="prop:getActions(product)"/>
+    </p:selectCell>
+    <p:nameCell>
+        ${product.name}
+    </p:nameCell>
+    <p:actionCell>
+        <t:actions product="product"/>
+    </p:actionCell>
+    <p:empty>
+        <p>No products.</p>
+    </p:empty>
+</t:grid>
+<div class="btn-toolbar">
+    <t:actions type="literal:product"/>
+</div>
+
+<t:disableProductsModal/>
+
+</html>

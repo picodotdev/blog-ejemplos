@@ -1,0 +1,88 @@
+description = 'TapestryMultipleActions'
+group = 'io.github.picodotdev.blogbitix.tapestrymultipleactions'
+version = '0.1'
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'application'
+apply plugin: 'spring-boot'
+
+mainClassName = 'io.github.picodotdev.blogbitix.tapestrymultipleactions.Main'
+
+def versions = [
+    'gradle':              '2.14',
+    'tapestry':            '5.4.1',
+    'spring_boot':         '1.3.6.RELEASE',
+    'slf4j':               '1.7.13',
+    'log4j2':              '2.4.1',
+    'servlet_api':         '3.1.0',
+    'commons_lang':        '3.4',
+
+]
+
+buildscript {
+	def versions = [
+        'spring_boot':       '1.3.6.RELEASE',
+    ]
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$versions.spring_boot"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+// This simulates Maven's 'provided' scope, until it is officially supported by Gradle
+// See http://jira.codehaus.org/browse/GRADLE-784
+configurations {
+    provided
+    providedRuntime
+    appJavadoc    
+}
+
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+    }
+}
+
+dependencies {
+    // Tapestry
+    compile "org.apache.tapestry:tapestry-core:$versions.tapestry"
+    compile "org.apache.tapestry:tapestry-beanvalidator:$versions.tapestry"
+
+    // Compresión automática de javascript y css en el modo producción
+    compile "org.apache.tapestry:tapestry-webresources:$versions.tapestry"
+    
+    // Spring
+    compile ("org.apache.tapestry:tapestry-spring:$versions.tapestry") { exclude(group: 'org.springframework') }
+
+	// Spring Boot
+    compile("org.springframework.boot:spring-boot-starter:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
+    compile("org.springframework.boot:spring-boot-starter-web:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
+    compile("org.springframework.boot:spring-boot-autoconfigure:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
+    compile("org.springframework.boot:spring-boot-starter-actuator:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
+
+    // Logging
+    compile "org.slf4j:slf4j-api:$versions.slf4j"
+    compile "org.apache.logging.log4j:log4j-slf4j-impl:$versions.log4j2"
+    runtime "org.apache.logging.log4j:log4j-api:$versions.log4j2"
+    runtime "org.apache.logging.log4j:log4j-core:$versions.log4j2"    
+    
+	// Otras
+    compile "org.apache.commons:commons-lang3:$versions.commons_lang"
+    providedCompile "javax.servlet:javax.servlet-api:$versions.servlet_api"
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = versions.gradle
+}

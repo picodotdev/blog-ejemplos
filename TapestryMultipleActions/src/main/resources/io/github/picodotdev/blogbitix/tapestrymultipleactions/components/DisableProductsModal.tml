@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<t:container xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+
+<div t:type="any" id="disableProductsModal" data-url="prop:url" class="modal fade" tabindex="-1" role="dialog">
+    <t:zone t:id="zone" id="disableProductsModalZone">
+        <t:if test="render">
+            <div class="modal-dialog">
+                <t:form t:id="form" zone="disableProductsModalZone" class="form-horizontal">
+                    <t:hidden id="ids" value="ids"/>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Disable products</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="errors">
+                                <t:errors/>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Products</label>
+                                <div class="col-sm-10">
+                                    <p class="form-control-static">${productsLabel}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <t:label for="select" class="col-sm-2 control-label"/>
+                                <div class="col-sm-10">
+                                    <t:select t:id="select" value="reason" model="model" label="Reason" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <t:submit class="btn btn-primary" value="Save"/>
+                        </div>
+                    </div>
+                </t:form>
+            </div>
+        </t:if>
+    </t:zone>
+</div>
+
+<t:block t:id="reloadBlock">
+    <script type="text/javascript">window.location.reload();</script>
+</t:block>
+
+</t:container>

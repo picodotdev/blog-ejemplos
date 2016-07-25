@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<t:container xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+
+<t:delegate to="block" />
+
+<t:block t:id="productActionsBlock">
+    <t:form t:id="productForm">
+        <t:hidden id="id" value="product"/>
+        <input t:type="any" type="submit" value="Enable" disabled="prop:getEnabled(product)" data-product-action="enable" class="btn btn-primary btn-xs"/>
+        <input t:type="any" type="button" value="Disable" disabled="prop:getDisabled(product)" data-product-action="disable" class="btn btn-danger btn-xs"/>
+    </t:form>
+</t:block>
+
+<t:block t:id="productsActionsBlock">
+    <t:form t:id="productsForm">
+        <t:hidden id="ids" value="ids"/>
+        <input t:type="any" type="button" value="Enable" disabled="disabled" data-products-action="enable" class="btn btn-primary"/>
+        <input t:type="any" type="button" value="Disable" disabled="disabled" data-products-action="disable" class="btn btn-danger"/>
+    </t:form>
+</t:block>
+
+</t:container>
