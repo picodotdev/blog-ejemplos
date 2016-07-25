@@ -47,12 +47,13 @@ public class Actions {
     private JavaScriptSupport javascriptSupport;
 
     void afterRender() {
-        javascriptSupport.require("app/actions");
+        if (product != null || type == Type.PRODUCT) {
+            javascriptSupport.require("app/actions");
+        }
     }
 
     void onSuccessFromProductForm() {
         repository.enable(product);
-        throw new RuntimeException();
     }
 
     void onSuccessFromProductsForm() {
