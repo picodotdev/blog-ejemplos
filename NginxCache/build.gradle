@@ -1,0 +1,36 @@
+description = 'NginxCache'
+version = '0.1'
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'io.github.picodotdev.blogbitix.cache.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile 'com.sparkjava:spark-core:2.5'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': project.mainClassName
+    }
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.14'
+}
+
+task copyToLib(type: Copy) {
+    into "$buildDir/libs"
+    from configurations.runtime
+}
+
+build << {
+    tasks.copyToLib.execute()
+}
