@@ -1,0 +1,21 @@
+description = 'DateTimeDatabase'
+version = '0.1'
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'io.github.picodotdev.blogbitix.datetimedatabase.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile 'org.postgresql:postgresql:9.4.1209.jre7'
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.14'
+}
