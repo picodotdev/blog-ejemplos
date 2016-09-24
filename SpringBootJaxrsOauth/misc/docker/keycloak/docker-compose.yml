@@ -1,0 +1,7 @@
+keycloak:
+    image: jboss/keycloak
+    ports:
+        - 9080:8080
+    environment:
+        - KEYCLOAK_USER=admin
+        - KEYCLOAK_PASSWORD=admin

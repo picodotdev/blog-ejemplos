@@ -1,0 +1,22 @@
+server:
+    port: 8443
+    ssl:
+        key-store: classpath:keystore.jks
+        key-store-password: secret
+        key-password: secret
+
+keycloak:
+  realm: springbootjaxrs
+  realmKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkTsyao42k7UyRE5LLlHXUaA7yM5MIMdQYqhaypZCOC5tOX8c+QlbBVzyhS55sDqmar5pelKyHT/6Zpr40GtxCnOqTBJ1pI28QXdOnPC8OVXJSNttuyeb2b3PK6xstm/jCpi1Dduw7fVmQDBKUXhmQwTdoOGQe8F3O0OaL2ht/H3Tu+LcvobWGtfN2vj1LACfUCO4qom9soWS755Km7KqE2xNnOPaEZ+IxDfTNJu7VHekak+OjbjM3EZdhOWkhw6M3+pnQ+9FKgHczPfYHiIG3wRlQm2ly7FQUnW1LKnvrMsjdaTlebCDnSmCcn6ByT+vC53URbGdb8a0+UAh+66kowIDAQAB
+  bearer-only: true
+  auth-server-url: http://localhost:9080/auth
+  ssl-required: external
+  resource: client
+  use-resource-role-mappings: true
+  securityConstraints[0]:
+      securityCollections[0]:
+          name: api
+          authRoles:
+              - api
+          patterns:
+              - /api/*
