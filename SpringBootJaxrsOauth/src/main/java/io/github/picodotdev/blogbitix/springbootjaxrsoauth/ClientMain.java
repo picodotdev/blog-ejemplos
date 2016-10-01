@@ -25,22 +25,22 @@ public class ClientMain {
                 .setSSLSocketFactory(new SSLConnectionSocketFactory(SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).build(), NoopHostnameVerifier.INSTANCE))
                 .build();
 
-        //curl -i http://localhost:9080/auth/realms/keycloak/.well-known/openid-configuration
+        //curl -i http://localhost:9080/auth/realms/springbootjaxrs/.well-known/openid-configuration
         System.out.println("Getting configuration...");
-        HttpGet configurationRequest = new HttpGet("http://localhost:9080/auth/realms/keycloak/.well-known/openid-configuration");
+        HttpGet configurationRequest = new HttpGet("http://localhost:9080/auth/realms/springbootjaxrs/.well-known/openid-configuration");
         CloseableHttpResponse configurationResponse = client.execute(configurationRequest);
 
         JsonObject configurarionObject = Json.createReader(configurationResponse.getEntity().getContent()).readObject();
         String tokenEndpoint = configurarionObject.getString("token_endpoint");
         configurationResponse.close();
 
-        //curl -i http://localhost:9080/auth/realms/keycloak/protocol/openid-connect/token -d "grant_type=client_credentials&client_id=api&client_secret=15f788d4-3e50-45e8-bd7e-86b53abe2b67"
+        //curl -i http://localhost:9080/auth/realms/springbootjaxrs/protocol/openid-connect/token -d "grant_type=client_credentials&client_id=client&client_secret=06212c72-8734-4cd7-898d-7c4afb17e0a2"
         System.out.println("Getting an access token...");
         HttpPost tokenRequest = new HttpPost(tokenEndpoint);
         List<NameValuePair> data = new ArrayList<NameValuePair>();
         data.add(new BasicNameValuePair("grant_type", "client_credentials"));
-        data.add(new BasicNameValuePair("client_id", "api"));
-        data.add(new BasicNameValuePair("client_secret", "15f788d4-3e50-45e8-bd7e-86b53abe2b67"));
+        data.add(new BasicNameValuePair("client_id", "client"));
+        data.add(new BasicNameValuePair("client_secret", "06212c72-8734-4cd7-898d-7c4afb17e0a2"));
         tokenRequest.setEntity(new UrlEncodedFormEntity(data));
         CloseableHttpResponse tokenResponse = client.execute(tokenRequest);
 
