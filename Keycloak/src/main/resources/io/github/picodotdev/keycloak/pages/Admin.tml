@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+<head>
+	<title>Keycloak</title>
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css"/>
+	<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <img t:type="any" src="context:images/keycloak.png"/>
+                    <img t:type="any" src="context:images/apache-tapestry.png"/>
+                </div>
+            </div>
+         </div>
+        <div class="row">
+            <div class="col-md-12">
+                ¡Hola administrador!, <t:pagelink page="index">página de inicio</t:pagelink>
+            </div>
+         </div>
+    </div>
+</body>
+</html>

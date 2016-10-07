@@ -1,0 +1,39 @@
+server:
+    port: 8443
+    ssl:
+        key-store: classpath:keystore.jks
+        key-store-password: secret
+        key-password: secret
+
+management:
+    port: 8090
+    context-path: '/management'
+    
+endpoints:
+    metrics:
+        sensitive: true
+    shutdown:
+        enabled: true
+
+keycloak:
+    realm: keycloak
+    realmKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArx9/6b9koplCBta5vy0/GEYVUYaYSUcHIiTyE2utfSUlfL8Px//0haNgk5FFfeTuSa/Ha2mO+kP5qTBN5Muov+1ytONrkbGOSCkOH9rVRjsZfpdW3Z+wYdZ8tAiEzUcjbCYxPszgT00Pxr/NJ6nLJoPT5s+8osl4c2j0JyR2qYV9e7loeJs2ciJe/ZzHNptz4JrExhzxTJGjo6ZNuBtIfyoK6EFA4VKzj2152FrQSYIafOmTBM/42cyd2kyxx04TogCZYzj7Pe78aT6uxPoGsk8PK1YkAtINROJVqJZsLTsso2kB9R8UkjF1MEYHPrdoXVveeLv/1Ci6uWNbgDMCywIDAQAB
+    auth-server-url: http://localhost:9080/auth
+    ssl-required: external
+    resource: web
+    credentials.secret: 6db55aa0-5466-4432-aca7-97c2ab2246ee
+    use-resource-role-mappings: true
+    securityConstraints[0]:
+        securityCollections[0]:
+            name: user
+            authRoles:
+                - user
+            patterns:
+                - /user
+    securityConstraints[1]:
+        securityCollections[0]:
+            name: admin
+            authRoles:
+                - admin
+            patterns:
+                - /admin
