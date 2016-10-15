@@ -1,22 +1,32 @@
 package io.github.picodotdev.plugintapestry.pages;
 
+import io.github.picodotdev.plugintapestry.misc.AppOptionGroupModel;
+import io.github.picodotdev.plugintapestry.misc.AppOptionModel;
 import io.github.picodotdev.plugintapestry.misc.Globals;
 import io.github.picodotdev.plugintapestry.services.annotation.Csrf;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.web.subject.support.WebDelegatingSubject;
+import org.apache.tapestry5.OptionGroupModel;
+import org.apache.tapestry5.OptionModel;
 import org.apache.tapestry5.PersistenceConstants;
+import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.Component;
+import org.apache.tapestry5.annotations.Environmental;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Zone;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.ajax.AjaxResponseRenderer;
+import org.apache.tapestry5.services.javascript.JavaScriptSupport;
+import org.apache.tapestry5.util.AbstractSelectModel;
 
 import java.text.ChoiceFormat;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -32,6 +42,14 @@ public class Index {
 	@Persist(value = PersistenceConstants.FLASH)
 	private List colores;
 
+	@Property
+	@Persist(value = PersistenceConstants.FLASH)
+	private String pais;
+
+	@Property
+	@Persist(value = PersistenceConstants.FLASH)
+	private List coloresSelect;
+
 	@Component
 	private Zone zone;
 
@@ -46,6 +64,9 @@ public class Index {
 	
 	@Inject
 	private Messages messages;
+
+	@Environmental
+	private JavaScriptSupport javascriptSupport;
 
 	// Ciclo de vida
 	Object onActivate(String context) {
@@ -70,6 +91,13 @@ public class Index {
 		if (colores == null) {
 			colores = new ArrayList();			
 		}
+		if (coloresSelect == null) {
+			coloresSelect = new ArrayList();
+		}
+	}
+
+	void afterRender() {
+		javascriptSupport.require("app/index").invoke("init");
 	}
 
 	// Eventos
@@ -112,6 +140,7 @@ public class Index {
 	
     void onPrepareForSubmitFromColoresForm() {
     	colores = new ArrayList();
+		coloresSelect = new ArrayList();
     }
 
 	void onSumar1CuentaSubmitOne() throws Exception {
@@ -191,5 +220,34 @@ public class Index {
 
 	    // Realizar la interpolación de variables
 	    return MessageFormat.format(pluralized, num);
+	}
+
+	public SelectModel getPaisesSelectModel() {
+		return new AbstractSelectModel() {
+			@Override
+			public List<OptionGroupModel> getOptionGroups() {
+				OptionModel espana = new AppOptionModel("España", false, "espana", Collections.EMPTY_MAP);
+				OptionModel francia = new AppOptionModel("Francia", false, "francia", Collections.EMPTY_MAP);
+				OptionModel alemania = new AppOptionModel("Alemania", false, "alemania", Collections.EMPTY_MAP);
+
+				OptionModel eeuu = new AppOptionModel("EEUU", false, "eeuu", Collections.EMPTY_MAP);
+				OptionModel mexico = new AppOptionModel("Mexico", false, "mexico", Collections.EMPTY_MAP);
+				OptionModel argentina = new AppOptionModel("Argentina", false, "argentina", Collections.EMPTY_MAP);
+
+				OptionModel china = new AppOptionModel("China", false, "china", Collections.EMPTY_MAP);
+				OptionModel japon = new AppOptionModel("Japón", false, "japon", Collections.EMPTY_MAP);
+				OptionModel india = new AppOptionModel("India", true, "india", Collections.EMPTY_MAP);
+
+				OptionGroupModel europa = new AppOptionGroupModel("Europa", false, Collections.EMPTY_MAP, Arrays.asList(espana, francia, alemania));
+				OptionGroupModel america = new AppOptionGroupModel("América", false, Collections.EMPTY_MAP, Arrays.asList(eeuu, mexico, argentina));
+				OptionGroupModel asia = new AppOptionGroupModel("Asia", false, Collections.EMPTY_MAP, Arrays.asList(china, japon, india));
+				return Arrays.asList(europa, america, asia);
+			}
+
+			@Override
+			public List<OptionModel> getOptions() {
+				return null;
+			}
+		};
 	}
 }

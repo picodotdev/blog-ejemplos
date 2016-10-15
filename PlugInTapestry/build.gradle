@@ -24,16 +24,16 @@ apply plugin: 'project-report'
 mainClassName = 'io.github.picodotdev.plugintapestry.Main'
 
 def versions = [
-    'gradle':              '2.13',
+    'gradle':              '3.1',
     'tapestry':            '5.4.1',
     'tapestry_security':   '0.6.2',
     'tapestry_testify':    '1.0.4',
     'tapestry_xpath':      '1.0.1',
-    'spring':              '4.2.3.RELEASE',
-    'spring_boot':         '1.3.0.RELEASE',
+    'spring':              '4.3.3.RELEASE',
+    'spring_boot':         '1.4.0.RELEASE',
     'hibernate':           '4.3.10.Final',
     'hibernate_validator': '5.2.2.Final',
-    'jooq':                '3.7.2',
+    'jooq':                '3.8.4',
     'shiro':               '1.2.4',
     'guava':               '18.0',
     'h2':                  '1.4.190',
@@ -51,7 +51,7 @@ def versions = [
 
 buildscript {
 	def versions = [
-        'spring_boot':       '1.3.0.RELEASE',
+        'spring_boot':       '1.4.0.RELEASE',
         'jooq':              '3.7.1',
         'h2':                '1.4.190'
     ]
