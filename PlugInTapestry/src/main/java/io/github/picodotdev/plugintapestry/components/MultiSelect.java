@@ -5,7 +5,6 @@ import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.SupportsInformalParameters;
 import org.apache.tapestry5.corelib.base.AbstractField;
 import org.apache.tapestry5.internal.util.SelectModelRenderer;
-import org.apache.tapestry5.json.JSONArray;
 
 import java.util.Collection;
 
@@ -62,10 +61,8 @@ public class MultiSelect extends AbstractField {
 
     @Override
     protected void processSubmission(String controlName) {
-        String[] parameterValue = request.getParameters(controlName);
-        parameterValue = (parameterValue == null) ? new String[0]: parameterValue;
-
-        JSONArray values = new JSONArray((Object[]) parameterValue);
+        String[] values = request.getParameters(controlName);
+        values = (values == null) ? new String[0]: values;
 
         // Use a couple of local variables to cut down on access via bindings
 
@@ -75,10 +72,7 @@ public class MultiSelect extends AbstractField {
 
         ValueEncoder encoder = this.encoder;
 
-        int count = values.length();
-        for (int i = 0; i < count; i++) {
-            String value = values.getString(i);
-
+        for (String value : values) {
             Object objectValue = toValue(value);
 
             selected.add(objectValue);
@@ -98,7 +92,7 @@ public class MultiSelect extends AbstractField {
     }
 
     void beginRender(MarkupWriter writer) {
-        writer.element("select", "name", getControlName(), "id", getClientId(), "multiple", "multiple", "disabled", getDisabledValue(), "class", "form-control");
+        writer.element("select", "name", getControlName(), "id", getClientId(), "multiple", "multiple", "disabled", getDisabledValue(), "class", cssClass);
 
         putPropertyNameIntoBeanValidationContext("selected");
 
