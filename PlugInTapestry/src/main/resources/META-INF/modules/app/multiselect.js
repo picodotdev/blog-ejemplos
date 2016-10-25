@@ -18,6 +18,7 @@ define("app/multiselect", ["jquery"], function($) {
                 buttons += (i % 2 == 1 || i + 1 == tokensSelectors.length) ? '</div>' : '';
             });
             $('button[data-id="' + spec.clientId + '"] + div[role="combobox"] div.bs-actionsbox').append(buttons);
+            that.select.trigger('change');
 
             $('button[data-id="' + spec.clientId + '"] + div[role="combobox"] div.bs-actionsbox').on('click', 'button.bs-select-custom', function (event) {
                 event.preventDefault();

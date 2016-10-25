@@ -145,6 +145,7 @@ public class Index {
     void onPrepareForSubmitFromColoresForm() {
     	colores = new ArrayList();
 		coloresSelect = new ArrayList();
+		paises = new ArrayList();
     }
 
 	void onSumar1CuentaSubmitOne() throws Exception {
