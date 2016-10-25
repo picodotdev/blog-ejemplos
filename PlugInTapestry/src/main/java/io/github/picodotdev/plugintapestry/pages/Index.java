@@ -45,6 +45,10 @@ public class Index {
 
 	@Property
 	@Persist(value = PersistenceConstants.FLASH)
+	private List paises;
+
+	@Property
+	@Persist(value = PersistenceConstants.FLASH)
 	private List coloresSelect;
 
 	@Component
@@ -90,6 +94,9 @@ public class Index {
 		}
 		if (coloresSelect == null) {
 			coloresSelect = new ArrayList();
+		}
+		if (paises == null) {
+			paises = new ArrayList();
 		}
 	}
 
@@ -223,22 +230,29 @@ public class Index {
 		return new AbstractSelectModel() {
 			@Override
 			public List<OptionGroupModel> getOptionGroups() {
-				OptionModel espana = new AppOptionModel("España", false, "espana", Collections.EMPTY_MAP);
-				OptionModel francia = new AppOptionModel("Francia", false, "francia", Collections.EMPTY_MAP);
-				OptionModel alemania = new AppOptionModel("Alemania", false, "alemania", Collections.EMPTY_MAP);
+				Map<String,String> europe = new HashMap<String, String>();
+				Map<String,String> america = new HashMap<String, String>();
+				Map<String,String> asia = new HashMap<String, String>();
+				europe.put("data-tokens", "europa");
+				america.put("data-tokens", "america");
+				asia.put("data-tokens", "asia");
 
-				OptionModel eeuu = new AppOptionModel("EEUU", false, "eeuu", Collections.EMPTY_MAP);
-				OptionModel mexico = new AppOptionModel("Mexico", false, "mexico", Collections.EMPTY_MAP);
-				OptionModel argentina = new AppOptionModel("Argentina", false, "argentina", Collections.EMPTY_MAP);
+				OptionModel espana = new AppOptionModel("España", false, "espana", europe);
+				OptionModel francia = new AppOptionModel("Francia", false, "francia", europe);
+				OptionModel alemania = new AppOptionModel("Alemania", false, "alemania", europe);
 
-				OptionModel china = new AppOptionModel("China", false, "china", Collections.EMPTY_MAP);
-				OptionModel japon = new AppOptionModel("Japón", false, "japon", Collections.EMPTY_MAP);
-				OptionModel india = new AppOptionModel("India", true, "india", Collections.EMPTY_MAP);
+				OptionModel eeuu = new AppOptionModel("EEUU", false, "eeuu", america);
+				OptionModel mexico = new AppOptionModel("Mexico", false, "mexico", america);
+				OptionModel argentina = new AppOptionModel("Argentina", false, "argentina", america);
 
-				OptionGroupModel europa = new AppOptionGroupModel("Europa", false, Collections.EMPTY_MAP, Arrays.asList(espana, francia, alemania));
-				OptionGroupModel america = new AppOptionGroupModel("América", false, Collections.EMPTY_MAP, Arrays.asList(eeuu, mexico, argentina));
-				OptionGroupModel asia = new AppOptionGroupModel("Asia", false, Collections.EMPTY_MAP, Arrays.asList(china, japon, india));
-				return Arrays.asList(europa, america, asia);
+				OptionModel china = new AppOptionModel("China", false, "china", asia);
+				OptionModel japon = new AppOptionModel("Japón", false, "japon", asia);
+				OptionModel india = new AppOptionModel("India", true, "india", asia);
+
+				OptionGroupModel europaGroup = new AppOptionGroupModel("Europa", false, Collections.EMPTY_MAP, Arrays.asList(espana, francia, alemania));
+				OptionGroupModel americaGroup = new AppOptionGroupModel("América", false, Collections.EMPTY_MAP, Arrays.asList(eeuu, mexico, argentina));
+				OptionGroupModel asiaGroup = new AppOptionGroupModel("Asia", false, Collections.EMPTY_MAP, Arrays.asList(china, japon, india));
+				return Arrays.asList(europaGroup, americaGroup, asiaGroup);
 			}
 
 			@Override

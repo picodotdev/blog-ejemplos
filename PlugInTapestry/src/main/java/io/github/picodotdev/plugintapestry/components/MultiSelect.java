@@ -5,6 +5,7 @@ import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.SupportsInformalParameters;
 import org.apache.tapestry5.corelib.base.AbstractField;
 import org.apache.tapestry5.internal.util.SelectModelRenderer;
+import org.apache.tapestry5.json.JSONObject;
 
 import java.util.Collection;
 
@@ -105,6 +106,10 @@ public class MultiSelect extends AbstractField {
         decorateInsideField();
 
         mainRenderer.render(writer);
+
+        JSONObject spec = new JSONObject();
+        spec.put("clientId", getClientId());
+        javaScriptSupport.require("app/multiselect").invoke("init").with(spec);
     }
 
     void afterRender(MarkupWriter writer) {

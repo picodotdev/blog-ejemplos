@@ -103,12 +103,16 @@
 					<t:multiselect selected="coloresSelect" model="coloresSelectModel" class="selectpicker show-menu-arrow" size="3" data-none-selected-text="Nada seleccionado" data-actions-box="true" data-select-all-text="Todos" data-deselect-all-text="Ninguno" data-selected-text-format="count > 2" data-count-selected-text="{0} de {1} seleccionados" data-show-tick="true"/>
 				</div>
 				<div class="form-group">
-					<t:select value="pais" model="paisesSelectModel" class="selectpicker show-menu-arrow" data-size="6" data-none-selected-text="Nada seleccionado"/>
+					<t:select value="pais" model="paisesSelectModel" class="selectpicker show-menu-arrow" data-none-selected-text="Nada seleccionado"/>
+				</div>
+				<div class="form-group">
+					<t:multiselect selected="paises" model="paisesSelectModel" class="selectpicker show-menu-arrow" data-size="6" data-none-selected-text="Nada seleccionado" data-actions-box="true" data-select-all-text="Todos" data-deselect-all-text="Ninguno" data-selected-text-format="count > 2" data-count-selected-text="{0} de {1} seleccionados" data-show-tick="true" data-tokens-selectors="europa,america,asia"/>
 				</div>
 				<div class="form-group">
 					Colores seleccionados: ${colores}<br/>
 					Colores seleccionados (select): ${coloresSelect}<br/>
-					País seleccionado: ${pais}
+					País seleccionado: ${pais}<br/>
+					Paises seleccionados: ${paises}
 				</div>
 				<t:submit value="Seleccionar"/>
 			</t:form>
