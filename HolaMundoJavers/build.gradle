@@ -1,0 +1,38 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'application'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+mainClassName = 'io.github.picodotdev.blogbitix.holamundojavers.Main'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter:1.4.1.RELEASE')
+	compile('org.javers:javers-core:2.3.0')
+	compile('org.javers:javers-persistence-sql:2.3.0')
+    compile('javax:javaee-api:7.0')
+
+	runtime('org.postgresql:postgresql:9.4.1211')
+    runtime('org.hibernate:hibernate-validator:5.2.4.Final')
+    runtime('javax.activation:activation:1.1.1')
+    runtime('org.slf4j:jcl-over-slf4j:1.7.21')
+}
