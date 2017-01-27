@@ -1,0 +1,14 @@
+plugins {
+    id 'application'
+    id 'org.springframework.boot' version '1.4.4.RELEASE'
+}
+
+mainClassName = 'io.github.picodotdev.blogbitix.springcloud.client.Main'
+
+dependencies {
+	compile 'org.springframework:spring-context:4.3.6.RELEASE'
+	compile('org.springframework.boot:spring-boot-starter:1.4.4.RELEASE') { exclude(group: 'ch.qos.logback') }
+	compile('org.springframework.boot:spring-boot-starter-web:1.4.4.RELEASE') { exclude(group: 'ch.qos.logback') }
+	compile('org.springframework.boot:spring-boot-starter-actuator:1.4.4.RELEASE') { exclude(group: 'ch.qos.logback') }
+	compile('org.springframework.cloud:spring-cloud-starter-consul-all:1.1.2.RELEASE') { exclude(group: 'ch.qos.logback') }
+}
