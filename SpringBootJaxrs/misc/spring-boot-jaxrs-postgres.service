@@ -1,0 +1,12 @@
+[Unit]
+Description=Spring Boot application
+Requires=postgres.service
+After=postgres.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/java -jar /var/apps/SpringBootJaxrs-0.0.1-SNAPSHOT.jar
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
