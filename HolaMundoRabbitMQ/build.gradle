@@ -1,0 +1,22 @@
+description = 'HolaMundoRabbitMQ'
+version = '0.1'
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile 'com.rabbitmq:amqp-client:4.0.2'
+}
+
+task receive(type:JavaExec) {
+    main = 'io.github.picodotdev.blogbitix.rabbitmq.Receive'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task send(type:JavaExec) {
+    main = 'io.github.picodotdev.blogbitix.rabbitmq.Send'
+    classpath = sourceSets.main.runtimeClasspath
+}
