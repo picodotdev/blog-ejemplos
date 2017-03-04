@@ -1,0 +1,83 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile files('misc/libs/diozero-core-0.9-SNAPSHOT.jar', 'misc/libs/diozero-provider-pigpio-0.9-SNAPSHOT.jar', 'misc/libs/pigpioj-java-1.0.1.jar', 'misc/libs/commons-math3-3.6.1.jar', 'misc/libs/tinylog-1.1.jar')
+}
+
+task javah1(type:Exec) {
+    commandLine "javah", "-d", "src/main/c", "-classpath", sourceSets.main.output.classesDir, "io.github.picodotdev.blogbitix.javaraspberrypi.JniHelloWorld"
+}
+
+task javah2(type:Exec) {
+    commandLine "javah", "-d", "src/main/c", "-classpath", sourceSets.main.output.classesDir, "io.github.picodotdev.blogbitix.javaraspberrypi.Dht11"
+}
+
+task javah(dependsOn: ['javah1', 'javah2']){
+}
+
+task gcc1(type:Exec, dependsOn: 'javah') {
+    commandLine "gcc", "-shared", "-fPIC", "-I/usr/lib/jvm/java-8-openjdk/include", "-I/usr/lib/jvm/java-8-openjdk/include/linux", "-o", "build/libs/libjnihelloworld.so", "src/main/c/JniHelloWorld.c"
+}
+
+task gcc(dependsOn: ['gcc1']){
+}
+
+task copyDependencies(type: Copy) {
+    into "$buildDir/libs"
+    from configurations.runtime
+}
+
+jar { dependsOn copyDependencies }
+
+task upload(type: Exec, dependsOn: ['jar']) {
+    commandLine 'rsync', '-arPL', '--delete', '-e', 'ssh', 'build/libs/', 'raspberrypi@192.168.1.101:/home/raspberrypi/scripts/javaraspberrypi/'
+}
+
+task executeHelloWorld(type: Exec, dependsOn: 'upload') {
+    commandLine 'ansible', '-i', 'hosts', 'raspberrypi', '-m', 'command', '-a', 'chdir=/home/raspberrypi/scripts/javaraspberrypi java -classpath "*" io.github.picodotdev.blogbitix.javaraspberrypi.HelloWorld'
+}
+
+task executeJniHelloWorld(type: Exec, dependsOn: 'upload') {
+    commandLine 'ansible', '-i', 'hosts', 'raspberrypi', '-m', 'command', '-a', 'chdir=/home/raspberrypi/scripts/javaraspberrypi java -classpath "*" -Djava.library.path=. io.github.picodotdev.blogbitix.javaraspberrypi.JniHelloWorld'
+}
+
+task executeJniHelloWorldLocal(type: JavaExec, dependsOn: ['build', 'gcc']) {
+    main = 'io.github.picodotdev.blogbitix.javaraspberrypi.JniHelloWorld'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task executePinBlink(type: Exec, dependsOn: 'upload') {
+    commandLine 'ansible', '-i', 'hosts', 'raspberrypi', '--sudo', '--ask-sudo-pass', '-m', 'command', '-a', 'chdir=/home/raspberrypi/scripts/javaraspberrypi java -classpath "*" io.github.picodotdev.blogbitix.javaraspberrypi.PinBlink'
+    standardInput System.in
+}
+
+task executeLcd(type: Exec, dependsOn: 'upload') {
+    commandLine 'ansible', '-i', 'hosts', 'raspberrypi', '--sudo', '--ask-sudo-pass', '-m', 'command', '-a', 'chdir=/home/raspberrypi/scripts/javaraspberrypi java -classpath "*" io.github.picodotdev.blogbitix.javaraspberrypi.Lcd'
+    standardInput System.in
+}
+
+task executeDht11(type: Exec, dependsOn: 'upload') {
+    commandLine 'ansible', '-i', 'hosts', 'raspberrypi', '--sudo', '--ask-sudo-pass', '-m', 'command', '-a', 'chdir=/home/raspberrypi/scripts/javaraspberrypi java -classpath "*" io.github.picodotdev.blogbitix.javaraspberrypi.Dht11'
+    standardInput System.in
+}
+
+task executeTemperatureHumidity(type: Exec, dependsOn: 'upload') {
+    commandLine 'ansible', '-i', 'hosts', 'raspberrypi', '--sudo', '--ask-sudo-pass', '-m', 'command', '-a', 'chdir=/home/raspberrypi/scripts/javaraspberrypi java -classpath "*" io.github.picodotdev.blogbitix.javaraspberrypi.TemperatureHumidity'
+    standardInput System.in
+}
+
+task executeButtonLedBuzzer(type: Exec, dependsOn: 'upload') {
+    commandLine 'ansible', '-i', 'hosts', 'raspberrypi', '--sudo', '--ask-sudo-pass', '-m', 'command', '-a', 'chdir=/home/raspberrypi/scripts/javaraspberrypi java -classpath "*" io.github.picodotdev.blogbitix.javaraspberrypi.ButtonLedBuzzer'
+    standardInput System.in
+}
+
+// gcc -I"/usr/lib/jvm/java-8-openjdk/include" -I"/usr/lib/jvm/java-8-openjdk/include/linux" -shared -fPIC -L/usr/lib -lwiringPi -o libdht11-arm.so Dht11.c
+// java -classpath "*" -Djava.library.path=. io.github.picodotdev.blogbitix.javaraspberrypi.Dht11

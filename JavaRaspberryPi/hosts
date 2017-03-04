@@ -1,0 +1,2 @@
+raspberrypi ansible_host=192.168.1.101 ansible_port=22 ansible_user=raspberrypi ansible_private_key_file=~/.ssh/pico.dev@gmail.com
+
