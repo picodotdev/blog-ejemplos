@@ -79,5 +79,21 @@ task executeButtonLedBuzzer(type: Exec, dependsOn: 'upload') {
     standardInput System.in
 }
 
+task executeTilt(type: Exec, dependsOn: 'upload') {
+    commandLine 'ansible', '-i', 'hosts', 'raspberrypi', '--sudo', '--ask-sudo-pass', '-m', 'command', '-a', 'chdir=/home/raspberrypi/scripts/javaraspberrypi java -classpath "*" io.github.picodotdev.blogbitix.javaraspberrypi.Tilt'
+    standardInput System.in
+}
+
+task executeMotion(type: Exec, dependsOn: 'upload') {
+    commandLine 'ansible', '-i', 'hosts', 'raspberrypi', '--sudo', '--ask-sudo-pass', '-m', 'command', '-a', 'chdir=/home/raspberrypi/scripts/javaraspberrypi java -classpath "*" io.github.picodotdev.blogbitix.javaraspberrypi.Motion'
+    standardInput System.in
+}
+
+task executeServo1(type: Exec, dependsOn: 'upload') {
+    commandLine 'ansible', '-i', 'hosts', 'raspberrypi', '--sudo', '--ask-sudo-pass', '-m', 'command', '-a', 'chdir=/home/raspberrypi/scripts/javaraspberrypi java -classpath "*" io.github.picodotdev.blogbitix.javaraspberrypi.Servo1'
+    standardInput System.in
+}
+
 // gcc -I"/usr/lib/jvm/java-8-openjdk/include" -I"/usr/lib/jvm/java-8-openjdk/include/linux" -shared -fPIC -L/usr/lib -lwiringPi -o libdht11-arm.so Dht11.c
 // java -classpath "*" -Djava.library.path=. io.github.picodotdev.blogbitix.javaraspberrypi.Dht11
+// ssh -t 192.168.1.101 'cd /home/raspberrypi/scripts/javaraspberrypi && sudo java -classpath "*" io.github.picodotdev.blogbitix.javaraspberrypi.Servo1'
