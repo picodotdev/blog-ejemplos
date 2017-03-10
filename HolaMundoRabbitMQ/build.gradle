@@ -8,15 +8,15 @@ repositories {
 }
 
 dependencies {
-	compile 'com.rabbitmq:amqp-client:4.0.2'
+    compile 'com.rabbitmq:amqp-client:4.0.2'
 }
 
-task receive(type:JavaExec) {
-    main = 'io.github.picodotdev.blogbitix.rabbitmq.Receive'
+task receive(type: JavaExec) {
+    main = 'io.github.picodotdev.blogbitix.holamundorabbitmq.Receive'
     classpath = sourceSets.main.runtimeClasspath
 }
 
-task send(type:JavaExec) {
-    main = 'io.github.picodotdev.blogbitix.rabbitmq.Send'
+task send(type: JavaExec) {
+    main = 'io.github.picodotdev.blogbitix.holamundorabbitmq.Send'
     classpath = sourceSets.main.runtimeClasspath
 }
