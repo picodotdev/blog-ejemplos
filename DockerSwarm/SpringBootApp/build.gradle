@@ -1,0 +1,22 @@
+plugins {
+  id 'org.springframework.boot' version '1.5.2.RELEASE'
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+version = '1.0'
+sourceCompatibility = 1.8
+
+mainClassName = 'io.github.picodotdev.blogbitix.dockerswarm.Main'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile('org.springframework.boot:spring-boot-starter:1.5.2.RELEASE')
+  compile('org.springframework.boot:spring-boot-starter-actuator:1.5.2.RELEASE')
+  compile('org.springframework.boot:spring-boot-starter-web:1.5.2.RELEASE')
+  compile('org.springframework.boot:spring-boot-starter-jersey:1.5.2.RELEASE')
+}
