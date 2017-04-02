@@ -25,7 +25,7 @@ public class TemperatureHumidity {
                         System.out.printf("Temperature: %dºC, Humidity: %d%%, Date: %s%n", sensor.getTemperature().get(), sensor.getHumidity().get(), sensor.getDate().get().format(DateTimeFormatter.ISO_DATE_TIME));
 
                         if (sensor.getTemperature().isPresent() && sensor.getHumidity().isPresent() && sensor.getDate().isPresent()) {
-                            lcd.setText(0, String.format("%dC %d%% ", sensor.getTemperature().get(), sensor.getHumidity().get()));
+                            lcd.setText(0, String.format("T: %dC, H: %d%% ", sensor.getTemperature().get(), sensor.getHumidity().get()));
                             lcd.setText(1, String.format("%s", sensor.getDate().get().format(DateTimeFormatter.ofPattern("HH:mm:ss"))));
                         } else {
                             lcd.setText(0, String.format("No data"));

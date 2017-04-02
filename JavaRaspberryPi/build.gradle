@@ -24,7 +24,7 @@ task javah(dependsOn: ['javah1', 'javah2']){
 }
 
 task gcc1(type:Exec, dependsOn: 'javah') {
-    commandLine "gcc", "-shared", "-fPIC", "-I/usr/lib/jvm/java-8-openjdk/include", "-I/usr/lib/jvm/java-8-openjdk/include/linux", "-o", "build/libs/libjnihelloworld.so", "src/main/c/JniHelloWorld.c"
+    commandLine "gcc", "-shared", "-fPIC", "-I/usr/lib/jvm/java-8-openjdk/include", "-I/usr/lib/jvm/java-8-openjdk/include/linux", "-o", "src/main/resources/libjnihelloworld-amd64.so", "src/main/c/JniHelloWorld.c"
 }
 
 task gcc(dependsOn: ['gcc1']){
@@ -96,4 +96,4 @@ task executeServo1(type: Exec, dependsOn: 'upload') {
 
 // gcc -I"/usr/lib/jvm/java-8-openjdk/include" -I"/usr/lib/jvm/java-8-openjdk/include/linux" -shared -fPIC -L/usr/lib -lwiringPi -o libdht11-arm.so Dht11.c
 // java -classpath "*" -Djava.library.path=. io.github.picodotdev.blogbitix.javaraspberrypi.Dht11
-// ssh -t 192.168.1.101 'cd /home/raspberrypi/scripts/javaraspberrypi && sudo java -classpath "*" io.github.picodotdev.blogbitix.javaraspberrypi.Servo1'
+// ssh -t 192.168.1.101 'cd /home/raspberrypi/scripts/javaraspberrypi && java -classpath "*" io.github.picodotdev.blogbitix.javaraspberrypi.JniHelloWorld'
