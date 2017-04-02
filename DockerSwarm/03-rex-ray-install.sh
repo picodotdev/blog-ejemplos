@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export MACHINE_STORAGE_PATH="/run/media/picodotdev/BMOVE ROJO/docker-machine/"
+#export MACHINE_STORAGE_PATH="/run/media/picodotdev/BMOVE ROJO/docker-machine/"
 
 #sudo ufw allow to any port 18083 from 192.168.0.0/16  
 
