@@ -1,5 +1,6 @@
 package io.github.picodotdev.blogbitix.dockerswarm;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -13,14 +14,23 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 @SpringBootApplication
-public class Main {
+public class Main implements CommandLineRunner {
 
-	public static void main(String[] args) throws Exception {
+	@Override
+	public void run(String... args) throws Exception {
 		Path file = FileSystems.getDefault().getPath("/data/timestamp");
 
-		System.out.printf("Último inicio %s", Files.lines(file).limit(1).collect(Collectors.joining("\n")));
-		Files.write(file, Arrays.asList(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME)), Charset.forName("UTF-8"));
+		if (file.toFile().exists()) {
+			System.out.printf("Último inicio %s\n", Files.lines(file).limit(1).collect(Collectors.joining("\n")));
+		} else {
+			System.out.println("No hay información de último inicio ");
+		}
+		if (file.getParent().toFile().exists() && file.getParent().toFile().canWrite()) {
+			Files.write(file, Arrays.asList(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME)), Charset.forName("UTF-8"));
+		}
+	}
 
+	public static void main(String[] args) {
 		SpringApplication.run(Main.class, args);
 	}
 }

@@ -1,0 +1,18 @@
+# Stack de servicios para cluster de Docker Swarm
+
+# https://docs.docker.com/engine/swarm/stack-deploy/
+# https://docs.docker.com/compose/compose-file/
+
+version: "3.1"
+
+services:
+  registry:
+    image: registry:latest
+    ports:
+      - 5000:5000
+    volumes:
+      - registry:/var/lib/registry
+volumes:
+  registry:
+    driver: rexray
+    external: true

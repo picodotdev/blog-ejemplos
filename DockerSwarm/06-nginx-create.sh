@@ -12,8 +12,11 @@ sleep 1m
 docker service create --name util --network nginx --mode global alpine sleep 1000000000
 sleep 1m
 
+echo -e "\n# Cluster services"
 docker service ls
+echo -e "\n# Nginx service tasks"
 docker service ps nginx
+echo -e "\n# Util service tasks"
 docker service ps util
 
 UTIL_CONTAINER_ID=$(docker ps -q --filter label=com.docker.swarm.service.name=util)
@@ -24,6 +27,7 @@ docker service rm util
 sleep 5s
 
 for i in "01" "02" "03"; do
+	echo -e "\n# Node $i containers"
 	eval $(docker-machine env node-$i)
 	docker ps
 done
@@ -32,6 +36,7 @@ eval $(docker-machine env node-01)
 sleep 5
 
 for i in "01" "02" "03"; do
+	echo -e "\n# Node $i request"
     NODE_IP=$(docker-machine ip node-$i)
     curl http://$NODE_IP/
 done

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#export MACHINE_STORAGE_PATH="/run/media/picodotdev/BMOVE ROJO/docker-machine/"
+export MACHINE_STORAGE_PATH="/run/media/picodotdev/BMOVE ROJO/docker-machine/"
 
 for i in "01" "02" "03"; do
 	docker-machine create -d virtualbox node-$i
@@ -23,5 +23,7 @@ done
 
 eval $(docker-machine env node-01)
 
+echo -e "\n# Machines"
 docker-machine ls
+echo -e "\n# Nodes"
 docker node ls

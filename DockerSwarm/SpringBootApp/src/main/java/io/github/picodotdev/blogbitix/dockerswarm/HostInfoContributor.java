@@ -3,9 +3,15 @@ package io.github.picodotdev.blogbitix.dockerswarm;
 import org.springframework.boot.actuate.info.Info;
 import org.springframework.boot.actuate.info.InfoContributor;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.net.Inet4Address;
 import java.nio.file.FileSystems;
+import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -20,20 +26,25 @@ public class HostInfoContributor implements InfoContributor {
         Map<String, Object> details = new HashMap<>();
         try {
             details.put("ip", Inet4Address.getLocalHost().getHostAddress());
-            details.put("host", Inet4Address.getLocalHost().getHostName());
+            details.put("hostname", Inet4Address.getLocalHost().getHostName());
 
-            Path path = FileSystems.getDefault().getPath("/run/secrets/");
-            path.forEach((Path file) -> {
+            RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+            RequestContextHolder.getRequestAttributes();
+            HttpServletRequest servletRequest = ((ServletRequestAttributes) requestAttributes).getRequest();
+            details.put("Host", servletRequest.getHeader("Host"));
+            details.put("X-Real-IP", servletRequest.getHeader("X-Real-IP"));
+
+            File[] secrets = FileSystems.getDefault().getPath("/run/secrets/").toFile().listFiles();
+            for(File file : secrets) {
                 try {
-                    String content = Files.lines(file).collect(Collectors.joining("\n"));
-                    details.put(file.getFileName().toString(), content);
+                    String content = Files.lines(file.toPath()).collect(Collectors.joining("\n"));
+                    details.put(file.getName().toString(), content);
                 } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
-            });
+            }
         } catch (Exception e) {
-            details.put("ip", "unknown");
-            details.put("host", "unknown");
+            e.printStackTrace();
         }
         builder.withDetails(details);
     }

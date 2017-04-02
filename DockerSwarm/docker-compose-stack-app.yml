@@ -1,0 +1,40 @@
+version: "3.1"
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - proxy
+    secrets:
+      - nginx.conf
+      - localhost.pem
+      - localhost.key
+    command: sh -c "exec nginx -c /run/secrets/nginx.conf -g 'daemon off;'"
+  app:
+    image: localhost:5000/spring-boot-app:1.0
+    ports:
+      - "8080:8080"
+    networks:
+      - proxy
+    volumes:
+      - app:/data
+    secrets:
+      - message.txt
+networks:
+  proxy:
+volumes:
+  app:
+    driver: rexray
+    external: true
+secrets:
+  nginx.conf:
+    file: ./nginx.conf
+  localhost.pem:
+    file: ./localhost.pem
+  localhost.key:
+    file: ./localhost.key
+  message.txt:
+    file: ./message.txt

@@ -3,5 +3,5 @@
 #export MACHINE_STORAGE_PATH="/run/media/picodotdev/BMOVE ROJO/docker-machine/"
 eval $(docker-machine env node-01)
 
-(cd ./SpringBootApp; gradlew build)
-(cd ./SpringBootApp/misc; docker build .)
+docker stack rm registry
+docker volume rm registry
