@@ -8,6 +8,8 @@ public class Tilt {
     public static void main(String[] args) throws InterruptedException {
         try (LED led = new LED(18); DigitalInputDevice tilt = new DigitalInputDevice(21)) {
             led.on();
+            Thread.sleep(2000);
+            led.off();
 
             tilt.whenActivated(() -> {
                 led.on();
@@ -16,7 +18,7 @@ public class Tilt {
                 led.off();
             });
 
-            Thread.sleep(60000);
+            Thread.sleep(30000);
         }
     }
 }

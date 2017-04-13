@@ -9,17 +9,16 @@ public class Motion {
         try (LED led = new LED(18); MotionSensor motion = new MotionSensor(21)) {
             led.on();
             Thread.sleep(2000);
+            led.off();
 
             motion.whenActivated(() -> {
-                System.out.println("on");
                 led.on();
             });
             motion.whenDeactivated(() ->  {
-                System.out.println("off");
                 led.off();
             });
 
-            Thread.sleep(60000);
+            Thread.sleep(30000);
         }
     }
 }
