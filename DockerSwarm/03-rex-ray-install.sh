@@ -22,9 +22,3 @@ EOF
 	docker-machine ssh node-$i "sudo rexray start"
 done
 
-#http://rexray.readthedocs.io/en/stable/user-guide/demo/
-#docker volume create --driver rexray --opt size=1 --name myvolume
-#docker run -it --rm --name nginx --volume-driver=rexray -v myvolume:/xxx nginx:stable-alpine
-#docker run -it --rm --volume-driver=rexray -v myvolume1:/myvolume --name busybox busybox /bin/bash
-#docker run -tid --volume-driver=rexray -v myvolume:/myvolume --name temp01 busybox
-#docker-machine ssh node-$i "sudo cat /var/log/rexray/rexray.log"
