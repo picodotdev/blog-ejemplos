@@ -27,7 +27,6 @@ networks:
   proxy:
 volumes:
   app:
-    driver: rexray
     external: true
 secrets:
   nginx.conf:

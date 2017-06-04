@@ -9,5 +9,4 @@ services:
       - postgres:/var/lib/postgresql/data
 volumes:
   postgres:
-    driver: rexray
     external: true
