@@ -1,0 +1,33 @@
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+
+description = 'HolaMundoRedis'
+version = '0.1'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+mainClassName = 'io.github.picodotdev.blogbitix.holamundoredis.Main'
+
+buildscript {
+	ext {
+		springBootVersion = '1.5.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter'
+	compile 'redis.clients:jedis:2.9.0'
+}
