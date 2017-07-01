@@ -1,0 +1,8 @@
+<!DOCTYPE liferay-portlet-app PUBLIC "-//Liferay//DTD Portlet Application 7.0.0//EN" "http://www.liferay.com/dtd/liferay-portlet-app_7_0_0.dtd">
+<liferay-portlet-app>
+	<portlet>
+		<portlet-name>hola-mundo-portlet</portlet-name>
+		<icon>/icon.png</icon>
+		<instanceable>true</instanceable>
+	</portlet>
+</liferay-portlet-app>

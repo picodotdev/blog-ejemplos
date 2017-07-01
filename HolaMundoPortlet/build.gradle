@@ -1,0 +1,17 @@
+description = 'HolaMundoPortlet'
+group = 'io.github.picodotdev.blogbitix.portlet'
+version = '0.1'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	providedCompile "javax.portlet:portlet-api:2.0"
+}
