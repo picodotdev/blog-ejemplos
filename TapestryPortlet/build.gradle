@@ -1,0 +1,27 @@
+description = 'TapestryPortlet'
+group = 'io.github.picodotdev.blogbitix.tapestry.portlet'
+version = '0.1'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+	flatDir { dirs 'libs' }
+    mavenCentral()
+}
+
+dependencies {
+	compile "org.apache.tapestry:tapestry-core:5.4.3"
+    compile "org.apache.tapestry.portlet:tapestry5-portlet:5.4.0"
+
+	compile "org.apache.logging.log4j:log4j-slf4j-impl:2.4.1"
+	compile "org.apache.logging.log4j:log4j-api:2.4.1"
+	compile "org.apache.logging.log4j:log4j-core:2.4.1"
+
+	providedCompile 'javax:javaee-api:7.0'
+	providedCompile "javax.portlet:portlet-api:2.0"
+}
+

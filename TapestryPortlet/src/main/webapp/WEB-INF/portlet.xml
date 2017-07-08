@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portlet-app xmlns="http://xmlns.jcp.org/xml/ns/portlet" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/portlet http://xmlns.jcp.org/xml/ns/portlet/portlet-app_3_0.xsd">
+	<portlet>
+		<portlet-name>Index</portlet-name>
+		<portlet-class>org.apache.tapestry5.portlet.ApplicationPortlet</portlet-class>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>Tapestry Portlet</title>
+			<short-title>Tapestry Portlet</short-title>
+			<keywords>Tapestry Portlet</keywords>
+		</portlet-info>
+		<supported-public-render-parameter>publicParam</supported-public-render-parameter>
+	</portlet>
+	<default-namespace>http://localhost:8080</default-namespace>
+	<public-render-parameter>
+		<identifier>publicParam</identifier>
+		<name>publicParam</name>
+	</public-render-parameter>
+</portlet-app>

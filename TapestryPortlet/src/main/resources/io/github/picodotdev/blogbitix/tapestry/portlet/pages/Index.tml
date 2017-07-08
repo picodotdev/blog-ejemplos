@@ -1,0 +1,5 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+<body>
+	${mensaje} <t:if test="autenticado">(Usa la página de preferencias para cambiar este mensaje)</t:if>
+</body>
+</html>

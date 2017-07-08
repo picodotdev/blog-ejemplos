@@ -1,0 +1,7 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+<body>
+	<t:form t:id="preferences" class="form-inline">
+	    <t:label for="nombre"/>: <t:textfield t:id="nombre" value="nombre" label="Nombre"/> <t:submit value="Enviar"/>
+	</t:form>
+</body>
+</html>
