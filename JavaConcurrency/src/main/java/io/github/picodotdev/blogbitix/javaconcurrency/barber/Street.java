@@ -12,12 +12,8 @@ public class Street implements Runnable {
 
     private BarberShop shop;
 
-    private Iterator<Long> times;
-
     public Street(BarberShop shop) {
         this.shop = shop;
-
-        this.times = new Random().longs(1500, 3500).iterator();
     }
 
     @Override
@@ -27,20 +23,9 @@ public class Street implements Runnable {
                 Client client = new Client(shop);
                 logger.info("New client {}", client.getName());
                 new Thread(client).start();
-
-                long time = getTime();
-                spendTime(time);
             } catch (Exception e) {
                 logger.error(e.getMessage(), e);
             }
         }
-    }
-
-    private long getTime() throws InterruptedException {
-        return times.next();
-    }
-
-    private void spendTime(long time) throws InterruptedException {
-        Thread.sleep(time);
     }
 }
