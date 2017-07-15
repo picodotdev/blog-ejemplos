@@ -20,7 +20,7 @@ public class Main {
 
         {
             long start = System.currentTimeMillis();
-            logger.info("Executing secuential...");
+            logger.info("Executing sequential...");
 
             List<UUID> results = new ArrayList<>();
             for (Callable<UUID> task : tasks) {
@@ -32,7 +32,7 @@ public class Main {
             }
 
             long end = System.currentTimeMillis();
-            logger.info("Secuential time ({} ms)...", end - start);
+            logger.info("Sequential time ({} ms)...", end - start);
         }
 
         {
