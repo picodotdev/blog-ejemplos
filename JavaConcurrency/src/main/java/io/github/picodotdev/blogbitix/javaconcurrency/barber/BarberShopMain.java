@@ -18,6 +18,6 @@ public class BarberShopMain {
 
         ExecutorService executorService = Executors.newFixedThreadPool(barbers.size() + 1);
         executorService.submit(street);
-        barbers.stream().forEach(barber -> executorService.submit(barber));
+        barbers.forEach(executorService::submit);
     }
 }

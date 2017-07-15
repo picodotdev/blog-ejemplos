@@ -4,34 +4,29 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class BarberShop {
 
     private static Logger logger = LoggerFactory.getLogger(BarberShop.class);
 
+    private ArrayBlockingQueue<Client> clients;
     private Semaphore chairs;
-    private List<Client> clients;
     private List<Barber> barbers;
 
     private Iterator<Long> times;
-    private ExecutorService pingExecutorService;
 
-    public BarberShop(int numChairs, int numBarbers) {
-        this.chairs = new Semaphore(numChairs);
-        this.clients = Collections.synchronizedList(new ArrayList<>());
+    public BarberShop(int capacity, int numBarbers) {
+        this.clients = new ArrayBlockingQueue<Client>(capacity);
+        this.chairs = new Semaphore(numBarbers);
+
         this.barbers = new ArrayList<>();
         for (int i = 0; i < numBarbers; ++i) {
-            Barber barber = new Barber(this);
+            Barber barber = new Barber("Barber " + (i + 1), this);
             barbers.add(barber);
         }
 
         this.times = new Random().longs(1000, 4000).iterator();
-        this.pingExecutorService = Executors.newFixedThreadPool(numBarbers);
-        this.ping();
     }
 
     public List<Barber> getBarbers() {
@@ -39,37 +34,18 @@ public class BarberShop {
     }
 
     public boolean enter(Client client) throws InterruptedException {
-        boolean entered = chairs.tryAcquire(1, TimeUnit.SECONDS);
+        boolean entered = clients.offer(client, 1, TimeUnit.SECONDS);
         if (!entered) {
             return false;
         }
-        clients.add(client);
         logger.info("{} awaiting to barber ({})", client.getName(), clients.size());
-        ping();
+        chairs.acquire();
         client.awaitShave();
         return true;
     }
 
-    public Optional<Client> next() {
-        synchronized (clients) {
-            if (clients.size() == 0) {
-                return Optional.empty();
-            }
-            chairs.release();
-            return Optional.of(clients.remove(0));
-        }
-    }
-
-    private void ping() {
-        barbers.stream().forEach(barber -> {
-            pingExecutorService.submit(() -> {
-                try {
-                    barber.ping();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
-        });
+    public Client next() throws InterruptedException {
+        return clients.take();
     }
 
     private long getTime() throws InterruptedException {

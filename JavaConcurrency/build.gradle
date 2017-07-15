@@ -4,9 +4,9 @@ version = '0.1'
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = 'io.github.picodotdev.blogbitix.javaconcurrency.threadpool.Main'
+//mainClassName = 'io.github.picodotdev.blogbitix.javaconcurrency.threadpool.Main'
 //mainClassName = 'io.github.picodotdev.blogbitix.javaconcurrency.philosophers.PhilosophersMain'
-//mainClassName = 'io.github.picodotdev.blogbitix.javaconcurrency.barber.BarberShopMain'
+mainClassName = 'io.github.picodotdev.blogbitix.javaconcurrency.barber.BarberShopMain'
 
 repositories {
     mavenCentral()

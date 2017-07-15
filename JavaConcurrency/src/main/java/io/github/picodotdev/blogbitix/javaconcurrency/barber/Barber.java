@@ -19,15 +19,11 @@ public class Barber implements Runnable {
     private BarberShop shop;
 
     private Iterator<Long> times;
-    private Semaphore sleep;
-    private Lock turn;
 
-    public Barber(BarberShop shop) {
-        this.name = UUID.randomUUID().toString().split("-")[0];
+    public Barber(String name, BarberShop shop) {
+        this.name = name;
         this.shop = shop;
 
-        this.sleep = new Semaphore(0);
-        this.turn = new ReentrantLock();
         this.times = new Random().longs(2000, 7000).iterator();
     }
 
@@ -39,39 +35,13 @@ public class Barber implements Runnable {
         client.shaved();
     }
 
-    public void ping() throws InterruptedException {
-        turn.lock();
-        sleep.release();
-        turn.unlock();
-    }
-
-    public void awaked() throws InterruptedException {
-        logger.info("{} awaked", name);
-    }
-
-    public void sleep() throws InterruptedException {
-        logger.info("{} sleeping", name);
-        sleep.acquire();
-    }
-
     @Override
     public void run() {
         while (true) {
             try {
-                Client client = null;
-                turn.lock();
-                Optional<Client> next = shop.next();
-                client = (next.isPresent()) ? next.get() : null;
-                if (client == null) {
-                    sleep.drainPermits();
-                }
-                turn.unlock();
-                if (client != null) {
-                    shave(client);
-                } else {
-                    sleep();
-                    awaked();
-                }
+                logger.info("{} awaiting client", name);
+                Client client = shop.next();
+                shave(client);
             } catch (Exception e) {
                 logger.error(e.getMessage(), e);
             }

@@ -19,8 +19,8 @@ public class Client implements Runnable {
 
     private Semaphore shave;
 
-    public Client(BarberShop shop) {
-        this.name = UUID.randomUUID().toString().split("-")[0];
+    public Client(String name, BarberShop shop) {
+        this.name = name;
         this.shop = shop;
 
         this.shave = new Semaphore(0);
