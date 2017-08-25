@@ -1,0 +1,17 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.ehcache:ehcache:3.3.1'
+    runtime 'org.slf4j:slf4j-api:1.7.25'
+    runtime 'org.apache.logging.log4j:log4j-api:2.8.2'
+    runtime 'org.apache.logging.log4j:log4j-core:2.8.2'
+    runtime 'org.apache.logging.log4j:log4j-slf4j-impl:2.8.2'
+}
+
+mainClassName = 'io.github.picodotdev.blogbitix.javacache.Main'
+
