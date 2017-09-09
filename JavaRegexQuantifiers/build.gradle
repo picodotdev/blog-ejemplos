@@ -1,0 +1,14 @@
+description = 'JavaRegexQuantifiers'
+version = '0.1'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'io.github.picodotdev.blogbitix.javaregexquantifiers.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
