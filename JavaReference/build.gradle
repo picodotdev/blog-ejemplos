@@ -1,0 +1,14 @@
+description = 'JavaReference'
+version = '0.1'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'io.github.picodotdev.blogbitix.javareference.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
