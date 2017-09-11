@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+mainClassName = 'io.github.picodotdev.blogbitix.javadoc.Main'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+}
+
+javadoc {
+    options.charSet = 'UTF-8'
+    options.encoding = 'UTF-8'
+}
+
+task zipJavadoc(type: Zip) {
+    dependsOn javadoc
+    classifier 'javadoc'
+    from 'build/docs/javadoc/'
+}
+
+artifacts {
+    archives zipJavadoc
+}
