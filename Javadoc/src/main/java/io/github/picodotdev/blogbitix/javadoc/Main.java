@@ -8,8 +8,8 @@ package io.github.picodotdev.blogbitix.javadoc;
  * @author picodotdev
  * @version 1.0
  *
- * @todo <span style="text-decoration: line-through;">Implementar in taglet personalizado</span>
- * @todo Añadir estilos al javadoc
+ * @todo <span style="text-decoration: line-through;">Implement custom taglet</span>
+ * @todo Add custom styles to javadoc
  */
 public class Main {
 
