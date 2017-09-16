@@ -19,6 +19,9 @@ javadoc {
     options.encoding = 'UTF-8'
     options.tagletPath = [new File ('build/classes/java/main/')]
     options.taglets = ['io.github.picodotdev.blogbitix.javadoc.TodoTaglet']
+    options.stylesheetFile = new File('src/main/resources/stylesheet.css')
+	//options.footer = "Copyleft © 2017 Blog Bitix"
+	//options.bottom = "Copyleft © 2017 Blog Bitix"
 }
 
 task javadocZip(type: Zip) {

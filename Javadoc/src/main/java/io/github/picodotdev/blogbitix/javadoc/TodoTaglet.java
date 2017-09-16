@@ -67,7 +67,7 @@ public class TodoTaglet implements Taglet {
 
     @Override
     public String toString(Tag tag) {
-        return "<b>" + HEADER + "</b><span style=\"background-color: yellow;\">" + tag.text() + "</span>\n";
+        return "<span class=\"todoLabel\">" + HEADER + "</span><span class=\"todo\">" + tag.text() + "</span>\n";
     }
 
     @Override
@@ -76,7 +76,7 @@ public class TodoTaglet implements Taglet {
             return null;
         }
 
-        String result = "<b>" + HEADER + "</b><ul>" ;
+        String result = "<span class=\"todoLabel\">" + HEADER + "</span><ul class=\"todo\">" ;
         for (Tag tag : tags) {
             result += "<li><span style=\"background-color: yellow;\">" + tag.text() + "</span></li>";
         }
