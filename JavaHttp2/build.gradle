@@ -1,0 +1,33 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+ext.moduleName = 'blogbitix.http'
+mainClassName = "$moduleName/io.github.picodotdev.blogbitix.http.Main"
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+}
+
+compileJava {
+    inputs.property("moduleName", moduleName)
+    doFirst {
+        options.compilerArgs = [
+            '--module-path', classpath.asPath,
+        ]
+        classpath = files()  
+    }
+}
+
+run {
+    inputs.property("moduleName", moduleName)
+    doFirst {
+        jvmArgs = [
+            '--module-path', classpath.asPath,
+            '--module', mainClassName 
+        ]
+        classpath = files()
+    }
+}
