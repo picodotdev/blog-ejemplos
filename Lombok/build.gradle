@@ -1,0 +1,13 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.16.18'
+}
+
+mainClassName = 'io.github.picodotdev.blogbitix.lombok.Main'
+
