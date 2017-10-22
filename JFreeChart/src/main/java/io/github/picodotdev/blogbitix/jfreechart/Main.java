@@ -31,7 +31,7 @@ public class Main {
         renderer.setSeriesStroke( 1 , new BasicStroke( 2 ) );
         renderer.setSeriesStroke( 2 , new BasicStroke( 2 ) );
 
-        JFreeChart chart = ChartFactory.createXYLineChart("Borwser Quota", "Year", "Quota", dataset);
+        JFreeChart chart = ChartFactory.createXYLineChart("Browser Quota", "Year", "Quota", dataset);
         chart.getXYPlot().getRangeAxis().setRange(0, 100);
         ((NumberAxis) chart.getXYPlot().getRangeAxis()).setNumberFormatOverride(new DecimalFormat("#'%'"));
         chart.getXYPlot().setRenderer(renderer);
