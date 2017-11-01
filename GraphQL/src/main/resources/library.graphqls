@@ -1,0 +1,25 @@
+type Book {
+    id: Long
+    title: String
+    author: Author
+}
+
+type Author {
+    id: Long
+    name: String
+}
+
+type Query {
+    books: [Book]!
+    authors: [Author]!
+    author(id: Long): Author!
+}
+
+type Mutation {
+    addBook(title: String, author: Long): Book
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}

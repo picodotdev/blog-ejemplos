@@ -1,0 +1,36 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.8.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter')
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "com.graphql-java:graphql-java:5.0"
+    compile "com.graphql-java:graphql-java-servlet:4.4.0"
+    compile "com.graphql-java:graphql-java-tools:4.1.2"
+    compile "commons-io:commons-io:2.6"
+}
+
+mainClassName = 'io.github.picodotdev.blogbitix.graphql.Main'
+
+run {
+    systemProperty "tomcat.util.http.parser.HttpParser.requestTargetAllow", "|{}"
+}
+
