@@ -24,7 +24,6 @@ apply plugin: 'project-report'
 mainClassName = 'io.github.picodotdev.plugintapestry.Main'
 
 def versions = [
-    'gradle':              '3.1',
     'tapestry':            '5.4.1',
     'tapestry_security':   '0.6.2',
     'tapestry_testify':    '1.0.4',
@@ -32,7 +31,7 @@ def versions = [
     'spring':              '4.3.3.RELEASE',
     'spring_boot':         '1.4.0.RELEASE',
     'hibernate':           '4.3.10.Final',
-    'hibernate_validator': '5.2.2.Final',
+    'hibernate_validator': '5.4.2.Final',
     'jooq':                '3.8.4',
     'shiro':               '1.2.4',
     'guava':               '18.0',
@@ -164,10 +163,6 @@ dependencies {
     runtime "org.jboss.logging:jboss-logging:$versions.jboss_logging"
 }
 
-task wrapper(type: Wrapper) {
-	gradleVersion = versions.gradle
-}
-
 test {
     // Excluir de los teses unitarios los teses de integración
     exclude '**/*IntegrationTest.*'
@@ -203,41 +198,43 @@ task appJavadoc(type: Javadoc) {
     }
 }
 
-task generateModels << {
-    Configuration configuration = new Configuration()
-        .withJdbc(new Jdbc()
-            .withDriver('org.h2.Driver')
-            .withUrl('jdbc:h2:./misc/database/app')
-            .withUser('sa')
-            .withPassword('sa'))
-        .withGenerator(new Generator()
-            .withGenerate(new Generate()
-                .withInterfaces(true)
-                .withPojos(true)
-                .withRelations(true)
-                .withValidationAnnotations(true))
-            .withName('org.jooq.util.DefaultGenerator')
-            .withDatabase(new Database()
-                .withCustomTypes([
-                    new CustomType()
-                        .withName('java.time.LocalDateTime')
-                        .withConverter('io.github.picodotdev.plugintapestry.misc.TimestampConverter')
-                        
-                ])
-                .withForcedTypes([
-                    new ForcedType()
-                        .withName('java.time.LocalDateTime')
-                        .withTypes('TIMESTAMP')                     
-                ])
-                .withName('org.jooq.util.h2.H2Database')
-                .withIncludes('.*')
-                .withExcludes('')
-                .withInputSchema('PLUGINTAPESTRY'))
-            .withTarget(new Target()
-                .withPackageName('io.github.picodotdev.plugintapestry.entities.jooq')
-                .withDirectory('src/main/java')));
+task generateModels {
+	doLast {
+		Configuration configuration = new Configuration()
+		    .withJdbc(new Jdbc()
+		        .withDriver('org.h2.Driver')
+		        .withUrl('jdbc:h2:./misc/database/app')
+		        .withUser('sa')
+		        .withPassword('sa'))
+		    .withGenerator(new Generator()
+		        .withGenerate(new Generate()
+		            .withInterfaces(true)
+		            .withPojos(true)
+		            .withRelations(true)
+		            .withValidationAnnotations(true))
+		        .withName('org.jooq.util.DefaultGenerator')
+		        .withDatabase(new Database()
+		            .withCustomTypes([
+		                new CustomType()
+		                    .withName('java.time.LocalDateTime')
+		                    .withConverter('io.github.picodotdev.plugintapestry.misc.TimestampConverter')
+		                    
+		            ])
+		            .withForcedTypes([
+		                new ForcedType()
+		                    .withName('java.time.LocalDateTime')
+		                    .withTypes('TIMESTAMP')                     
+		            ])
+		            .withName('org.jooq.util.h2.H2Database')
+		            .withIncludes('.*')
+		            .withExcludes('')
+		            .withInputSchema('PLUGINTAPESTRY'))
+		        .withTarget(new Target()
+		            .withPackageName('io.github.picodotdev.plugintapestry.entities.jooq')
+		            .withDirectory('src/main/java')));
 
-    GenerationTool.main(configuration)
+		GenerationTool.main(configuration)
+	}
 }
 
 task updateDatabase(type:Exec) {
