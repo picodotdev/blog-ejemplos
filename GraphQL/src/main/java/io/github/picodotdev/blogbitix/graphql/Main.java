@@ -1,12 +1,8 @@
 package io.github.picodotdev.blogbitix.graphql;
 
 import com.coxautodev.graphql.tools.SchemaParser;
-import graphql.ErrorType;
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
-import graphql.execution.AsyncExecutionStrategy;
-import graphql.execution.DataFetcherExceptionHandler;
-import graphql.execution.DataFetcherExceptionHandlerParameters;
 import graphql.schema.GraphQLSchema;
 import graphql.servlet.*;
 import org.apache.commons.io.IOUtils;
@@ -20,13 +16,8 @@ import org.springframework.context.annotation.Bean;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -46,7 +37,7 @@ public class Main {
     public ServletRegistrationBean graphQLServletRegistrationBean(LibraryRepository libraryRepository) throws Exception {
         GraphQLSchema schema = SchemaParser.newParser()
                 .schemaString(IOUtils.resourceToString("/library.graphqls", Charset.forName("UTF-8")))
-                .resolvers(new Query(libraryRepository), new Mutation(libraryRepository))
+                .resolvers(new Query(libraryRepository), new Mutation(libraryRepository), new BookResolver())
                 .build()
                 .makeExecutableSchema();
 

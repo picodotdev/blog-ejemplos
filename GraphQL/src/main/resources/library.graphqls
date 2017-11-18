@@ -2,6 +2,7 @@ type Book {
     id: Long
     title: String
     author: Author
+    isbn: String
 }
 
 type Author {
