@@ -16,10 +16,6 @@ type Author {
     name: String
 }
 
-input BookFilter {
-    title: String
-}
-
 type CommentsConnection {
     edges: [CommentEdge]
     pageInfo: PageInfo
@@ -38,7 +34,6 @@ type PageInfo {
 
 type Query {
     books: [Book]!
-    findBooks(filter: BookFilter): [Book]!
     authors: [Author]!
     author(id: Long): Author!
 }

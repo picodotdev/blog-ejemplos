@@ -1,10 +1,7 @@
 package io.github.picodotdev.blogbitix.graphql;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import graphql.schema.DataFetchingEnvironment;
-
-import java.util.Collection;
 
 public class Mutation implements GraphQLMutationResolver {
 

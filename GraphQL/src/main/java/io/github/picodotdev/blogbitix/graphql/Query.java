@@ -2,7 +2,7 @@ package io.github.picodotdev.blogbitix.graphql;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 
-import java.util.Collection;
+import java.util.List;
 
 public class Query implements GraphQLQueryResolver {
     
@@ -12,11 +12,15 @@ public class Query implements GraphQLQueryResolver {
         this.libraryRepository = libraryRepository;
     }
 
-    public Collection<Book> books() {
+    public List<Book> books() {
         return libraryRepository.findBooks();
     }
 
-    public Collection<Author> authors() {
+    public List<Book> findBooks(BookFilter filter) {
+        return libraryRepository.findBooks(filter);
+    }
+
+    public List<Author> authors() {
         return libraryRepository.getAuthors();
     }
 

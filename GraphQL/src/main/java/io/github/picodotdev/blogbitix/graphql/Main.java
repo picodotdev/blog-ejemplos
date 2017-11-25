@@ -37,7 +37,7 @@ public class Main {
     public ServletRegistrationBean graphQLServletRegistrationBean(LibraryRepository libraryRepository) throws Exception {
         GraphQLSchema schema = SchemaParser.newParser()
                 .schemaString(IOUtils.resourceToString("/library.graphqls", Charset.forName("UTF-8")))
-                .resolvers(new Query(libraryRepository), new Mutation(libraryRepository), new BookResolver())
+                .resolvers(new Query(libraryRepository), new Mutation(libraryRepository), new BookResolver(libraryRepository))
                 .build()
                 .makeExecutableSchema();
 
