@@ -5,7 +5,7 @@ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import java.util.List;
 
 public class Query implements GraphQLQueryResolver {
-    
+
     private LibraryRepository libraryRepository;
 
     public Query(LibraryRepository libraryRepository) {
