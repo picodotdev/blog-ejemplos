@@ -1,8 +1,10 @@
 package io.github.picodotdev.blogbitix.graphql;
 
 import com.coxautodev.graphql.tools.GraphQLResolver;
+import graphql.execution.batched.Batched;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -46,5 +48,15 @@ public class BookResolver implements GraphQLResolver<Book> {
         boolean hasNextPage = commentsPlusOne.size() > comments.size();
 
         return new CommentsConnection(comments, new PageInfo(startCursor, endCursor, hasNextPage));
+    }
+
+    @Batched
+    public List<CommentsConnection> getBatchedComments(List<Book> books, List<String> after, List<Long> limit) {
+        List<CommentsConnection> ccs = new ArrayList<>();
+        for (int i = 0; i < books.size(); ++i) {
+            CommentsConnection cc = getComments(books.get(i), null, null);
+            ccs.add(cc);
+        }
+        return ccs;
     }
 }

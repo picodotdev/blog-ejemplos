@@ -4,6 +4,7 @@ type Book {
     author: Author
     isbn: String
     comments(after: String, limit: Long): CommentsConnection
+    batchedComments(after: String, limit: Long): CommentsConnection
 }
 
 type Comment {

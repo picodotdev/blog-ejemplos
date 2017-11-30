@@ -3,6 +3,7 @@ package io.github.picodotdev.blogbitix.graphql;
 import com.coxautodev.graphql.tools.SchemaParser;
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
+import graphql.execution.batched.BatchedExecutionStrategy;
 import graphql.schema.GraphQLSchema;
 import graphql.servlet.*;
 import org.apache.commons.io.IOUtils;
@@ -82,7 +83,7 @@ public class Main {
             }
         };
 
-        return new ServletRegistrationBean(new SimpleGraphQLServlet(schema, new DefaultExecutionStrategyProvider(), null, null, null, errorHandler, contextBuilder, null), "/library");
+        return new ServletRegistrationBean(new SimpleGraphQLServlet(schema, new DefaultExecutionStrategyProvider(new BatchedExecutionStrategy()), null, null, null, errorHandler, contextBuilder, null), "/library");
     }
 
     public static void main(String[] args) {
