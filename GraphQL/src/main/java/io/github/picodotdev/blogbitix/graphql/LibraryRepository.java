@@ -1,5 +1,6 @@
 package io.github.picodotdev.blogbitix.graphql;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -34,11 +35,11 @@ public class LibraryRepository {
 
         this.books.addAll(
             List.of(
-                new Book(nextId(), "Ojo en el cielo", a1, this.comments),
-                new Book(nextId(), "Muerte de la luz", a2, this.comments),
-                new Book(nextId(), "El nombre de la rosa", a3, this.comments),
-                new Book(nextId(), "Los tejedores de cabellos", a4, this.comments),
-                new Book(nextId(), "Ready Player One", a5, this.comments)
+                new Book(nextId(), "Ojo en el cielo", a1, LocalDate.of(1957, 1, 1), this.comments),
+                new Book(nextId(), "Muerte de la luz", a2, LocalDate.of(1977, 1, 1), this.comments),
+                new Book(nextId(), "El nombre de la rosa", a3, LocalDate.of(1980, 1, 1), this.comments),
+                new Book(nextId(), "Los tejedores de cabellos", a4, LocalDate.of(1995, 1, 1), this.comments),
+                new Book(nextId(), "Ready Player One", a5, LocalDate.of(2011, 1, 1), this.comments)
             )
         );
     }
@@ -47,12 +48,16 @@ public class LibraryRepository {
         return books.stream().filter(b -> b.getId().equals(id)).findFirst().orElse(null);
     }
 
-    public List<Book> findBooks() {
-        return books;
+    public List<Book> findBooks(BookFilter filter) {
+        Stream<Book> stream = books.stream();
+        if (filter != null) {
+            stream = stream.filter(b -> b.getTitle().matches(filter.getTitle()));
+        }
+        return stream.collect(Collectors.toList());
     }
 
-    public List<Book> findBooks(BookFilter filter) {
-        return books.stream().filter(b -> b.getTitle().matches(filter.getTitle())).collect(Collectors.toList());
+    public Optional<Book> findBookById(Long id) {
+        return books.stream().filter(b -> b.getId().equals(id)).findFirst();
     }
 
     public List<Comment> findComments(Long idBook, Long idAfter, Long limit) {
@@ -84,7 +89,7 @@ public class LibraryRepository {
             throw new ValidationException("Invalid author");
         }
 
-        Book book = new Book(nextId(), title, author.get(), Collections.EMPTY_LIST);
+        Book book = new Book(nextId(), title, author.get(), LocalDate.now(), Collections.EMPTY_LIST);
         books.add(book);
         return book;
     }

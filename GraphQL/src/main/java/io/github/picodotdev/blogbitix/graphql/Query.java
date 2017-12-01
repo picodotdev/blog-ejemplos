@@ -12,12 +12,12 @@ public class Query implements GraphQLQueryResolver {
         this.libraryRepository = libraryRepository;
     }
 
-    public List<Book> books() {
-        return libraryRepository.findBooks();
+    public List<Book> books(BookFilter filter) {
+        return libraryRepository.findBooks(filter);
     }
 
-    public List<Book> findBooks(BookFilter filter) {
-        return libraryRepository.findBooks(filter);
+    public Book book(Long id) {
+        return libraryRepository.findBookById(id).orElse(null);
     }
 
     public List<Author> authors() {

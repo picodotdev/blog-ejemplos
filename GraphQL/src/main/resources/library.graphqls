@@ -1,8 +1,11 @@
+scalar LocalDate
+
 type Book {
     id: Long
     title: String
     author: Author
     isbn: String
+    date: LocalDate
     comments(after: String, limit: Long): CommentsConnection
     batchedComments(after: String, limit: Long): CommentsConnection
 }
@@ -38,8 +41,8 @@ type PageInfo {
 }
 
 type Query {
-    books: [Book]!
-    findBooks(filter: BookFilter): [Book]!
+    books(filter: BookFilter): [Book]!
+    book(id: Long): Book!
     authors: [Author]!
     author(id: Long): Author!
 }

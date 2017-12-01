@@ -5,6 +5,7 @@ import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
 import graphql.execution.batched.BatchedExecutionStrategy;
 import graphql.schema.GraphQLSchema;
+import graphql.schema.GraphQLScalarType;
 import graphql.servlet.*;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -39,6 +40,7 @@ public class Main {
         GraphQLSchema schema = SchemaParser.newParser()
                 .schemaString(IOUtils.resourceToString("/library.graphqls", Charset.forName("UTF-8")))
                 .resolvers(new Query(libraryRepository), new Mutation(libraryRepository), new BookResolver(libraryRepository))
+                .scalars(new GraphQLScalarType("LocalDate", "LocalDate scalar", new LocalDateCoercing()))
                 .build()
                 .makeExecutableSchema();
 
