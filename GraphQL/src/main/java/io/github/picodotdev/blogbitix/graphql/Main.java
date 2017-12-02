@@ -85,7 +85,7 @@ public class Main {
             }
         };
 
-        return new ServletRegistrationBean(new SimpleGraphQLServlet(schema, new DefaultExecutionStrategyProvider(new BatchedExecutionStrategy()), null, null, null, errorHandler, contextBuilder, null), "/library");
+        return new ServletRegistrationBean(new SimpleGraphQLServlet(schema, new DefaultExecutionStrategyProvider(new BatchedExecutionStrategy()), null, null, null, errorHandler, contextBuilder, null, null), "/library");
     }
 
     public static void main(String[] args) {
