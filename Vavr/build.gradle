@@ -1,0 +1,13 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "io.vavr:vavr:0.9.2"
+}
+
+mainClassName = 'io.github.picodotdev.blogbitix.vavr.Main'
+
