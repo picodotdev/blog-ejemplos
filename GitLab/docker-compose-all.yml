@@ -1,0 +1,46 @@
+version: '3.3'
+
+services:
+  gitlab:
+    image: 'gitlab/gitlab-ce:latest'
+    container_name: gitlab
+    hostname: 'smaug'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://smaug'
+        nginx['ssl_certificate'] = '/etc/gitlab/ssl/smaug.crt'
+        nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/smaug.key'
+        pages_external_url 'https://smaug'
+        pages_nginx['redirect_http_to_https'] = true
+        pages_nginx['ssl_certificate'] = "/etc/gitlab/ssl/gitlab-pages.crt"
+        pages_nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/gitlab-pages.key"
+    networks:
+      gitlab:
+        aliases:
+         - smaug
+    ports:
+      - '22:22'
+      - '443:443'
+    volumes:
+      - '/run/media/picodotdev/BMOVE ROJO/docker-volumes/gitlab/config:/etc/gitlab'
+      - '/run/media/picodotdev/BMOVE ROJO/docker-volumes/gitlab/logs:/var/log/gitlab'
+      - '/run/media/picodotdev/BMOVE ROJO/docker-volumes/gitlab/data:/var/opt/gitlab'
+      - '/run/media/picodotdev/BMOVE ROJO/docker-volumes/gitlab/ssl:/etc/gitlab/ssl'
+
+  gitlab-runner:
+    image: 'gitlab/gitlab-runner:latest'
+    container_name: gitlab-runner
+    environment:
+      - 'DOCKER_NETWORK_MODE=gitlab_gitlab'
+    links:
+      - gitlab
+    networks:
+      - gitlab
+    volumes:
+      - '/run/media/picodotdev/BMOVE ROJO/docker-volumes/gitlab-runner/config:/etc/gitlab'
+      - '/run/media/picodotdev/BMOVE ROJO/docker-volumes/gitlab/ssl/smaug.crt:/etc/gitlab-runner/certs/ca.crt'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+
+networks:
+  gitlab:
+    driver: bridge

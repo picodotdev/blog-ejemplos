@@ -1,0 +1,10 @@
+image: openjdk:8-jdk-alpine
+
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - ./gradlew --no-daemon build
+    
