@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.4'
 
 services:
   gitlab:
@@ -7,16 +7,20 @@ services:
     hostname: 'localhost'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://localhost'
-        nginx['ssl_certificate'] = '/etc/gitlab/ssl/localhost.crt'
-        nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/localhost.key'
+        external_url 'https://gitlab'
+        nginx['ssl_certificate'] = '/etc/gitlab/ssl/gitlab.crt'
+        nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/gitlab.key'
     ports:
-      - '22:22'
-      - '80:80'
-      - '443:443'
+      - '8022:22'
+      - '8080:80'
+      - '8443:443'
     volumes:
-      - '/run/media/picodotdev/BMOVE ROJO/docker-volumes/gitlab/config:/etc/gitlab'
-      - '/run/media/picodotdev/BMOVE ROJO/docker-volumes/gitlab/logs:/var/log/gitlab'
-      - '/run/media/picodotdev/BMOVE ROJO/docker-volumes/gitlab/data:/var/opt/gitlab'
-      - '/run/media/picodotdev/BMOVE ROJO/docker-volumes/gitlab/ssl:/etc/gitlab/ssl'
+      - 'gitlab-config-volume:/etc/gitlab'
+      - 'gitlab-log-volume:/var/log/gitlab'
+      - 'gitlab-data-volume:/var/opt/gitlab'
+      - './docker-volumes/gitlab/ssl:/etc/gitlab/ssl'
 
+volumes:
+  gitlab-config-volume:
+  gitlab-log-volume:
+  gitlab-data-volume:

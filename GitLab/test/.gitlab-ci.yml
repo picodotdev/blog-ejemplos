@@ -6,5 +6,8 @@ stages:
 build:
   stage: build
   script:
-    - ./gradlew --no-daemon build
-    
+    - ./gradlew --no-daemon build javadoc
+  artifacts:
+    paths:
+      - build/distributions/gradle.zip
+      - build/docs/javadoc/

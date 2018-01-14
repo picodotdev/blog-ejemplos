@@ -21,6 +21,7 @@ target/
 .project
 .idea
 .Trash*
+.DS_Store
 
 node_modules/
 .resourceCache/
