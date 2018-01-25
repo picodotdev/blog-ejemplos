@@ -17,8 +17,13 @@ public class BookResolver implements GraphQLResolver<Book> {
         this.libraryRespository = libraryRespository;
     }
 
-    public String getIsbn(Book book) {
+    public String getIsbn(Book book) throws InterruptedException {
         return UUID.randomUUID().toString();
+    }
+
+    @Batched
+    public List<String> getBatchedIsbn(List<Book> books) throws InterruptedException {
+        return books.stream().map(b -> UUID.randomUUID().toString()).collect(Collectors.toList());
     }
 
     public CommentsConnection getComments(Book book, String after, Long limit) {

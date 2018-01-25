@@ -4,7 +4,7 @@ services:
   app:
     image: openjdk:9-slim
     ports:
-      - "8080:8080"
+      - "8090:8080"
     volumes:
       - .:/app
     command: bash -c "cd /app && ./gradlew run"
