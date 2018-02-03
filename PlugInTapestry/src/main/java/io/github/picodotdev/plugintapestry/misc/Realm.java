@@ -105,17 +105,17 @@ public class Realm extends AuthorizingRealm {
      */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		if (principals == null) throw new AuthorizationException("PrincipalCollection was null, which should not happen");
+		if (principals == null) { throw new AuthorizationException("PrincipalCollection was null, which should not happen"); }
 
-		if (principals.isEmpty()) return null;
+		if (principals.isEmpty()) { return null; }
 
-		if (principals.fromRealm(getName()).size() <= 0) return null;
+		if (principals.fromRealm(getName()).size() <= 0) { return null; }
 
 		// Obtener el usuario
 		String username = (String) principals.fromRealm(getName()).iterator().next();
-		if (username == null) return null;
+		if (username == null) { return null; }
 		Map<String, Object> user = findByUsername(username);
-		if (user == null) return null;
+		if (user == null) { return null; }
 		
 		// Obtener los roles
         Set<String> roles = (Set<String>) user.get("roles");

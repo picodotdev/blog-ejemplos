@@ -176,6 +176,11 @@ test {
     exclude '**/*Spec.*'
 }
 
+pmd {
+  ruleSets = ["java-basic", "java-braces"]
+  ruleSetFiles = files("misc/ruleset.xml")
+}
+
 task integrationTest(type: Test) {
     // Incluir los teses de integración
     include '**/*IntegrationTest.*'
