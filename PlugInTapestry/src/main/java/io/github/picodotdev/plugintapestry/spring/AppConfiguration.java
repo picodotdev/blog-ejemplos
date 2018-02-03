@@ -25,11 +25,12 @@ import org.jooq.impl.DataSourceConnectionProvider;
 import org.jooq.impl.DefaultConfiguration;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
-import org.springframework.boot.context.embedded.ErrorPage;
-import org.springframework.boot.context.embedded.ServletContextInitializer;
 import org.springframework.boot.context.embedded.tomcat.TomcatConnectorCustomizer;
 import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.ErrorPage;
+import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -68,7 +69,7 @@ public class AppConfiguration {
     public LocalSessionFactoryBean sessionFactoryBean(DataSource dataSource) {
         Map<String, Object> m = new HashMap<>();
         m.put("hibernate.dialect", H2Dialect.class.getCanonicalName());
-        m.put("hibernate.hbm2ddl.auto", "create");
+        m.put("hibernate.hbm2ddl.auto", "validate");
         // Debug
         m.put("hibernate.generate_statistics", true);
         m.put("hibernate.show_sql", true);

@@ -121,8 +121,8 @@ public class AppModule {
 	}
 
 	public static void contributeTranslatorSource(MappedConfiguration configuration) {
-		configuration.add(Date.class, new DateTranslator("dd/MM/yyyy"));
-		configuration.add(LocalDateTime.class, new LocalDateTimeTranslator("dd/MM/yyyy"));
+		configuration.add(Date.class, new DateTranslator("yyyy-MM-dd"));
+		configuration.add(LocalDateTime.class, new LocalDateTimeTranslator("yyyy-MM-dd"));
 	}
 
 	public static void contributeModuleManager(MappedConfiguration<String, Object> configuration, @Path("classpath:META-INF/assets/app/jquery-library.js") Resource jQuery) {

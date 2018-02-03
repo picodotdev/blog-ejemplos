@@ -4,7 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 import io.github.picodotdev.plugintapestry.spring.AppConfiguration;

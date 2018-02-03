@@ -17,7 +17,7 @@
             <column name="descripcion" type="VARCHAR(5000)">
                 <constraints nullable="false"/>
             </column>
-            <column name="cantidad" type="INTEGER" />
+            <column name="cantidad" type="BIGINT" />
             <column name="fecha" type="DATETIME" />
         </createTable>
     </changeSet>

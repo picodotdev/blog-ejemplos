@@ -3,11 +3,8 @@ package io.github.picodotdev.plugintapestry.geb
 import geb.Page
 import geb.spock.GebSpec
 
-import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.web.WebAppConfiguration
-import org.springframework.boot.test.SpringApplicationConfiguration
-import org.springframework.boot.test.SpringApplicationContextLoader
-import org.springframework.boot.test.IntegrationTest
+import org.springframework.boot.test.context.SpringBootTest
 
 import io.github.picodotdev.plugintapestry.spring.AppConfiguration
 
@@ -23,9 +20,8 @@ class IndexPage extends Page {
     }
 }
 
-@ContextConfiguration(loader = SpringApplicationContextLoader.class, classes = AppConfiguration.class)
+@SpringBootTest(classes = AppConfiguration.class)
 @WebAppConfiguration
-@IntegrationTest
 class IndexSpec extends GebSpec {
     def 'go to index'() {
         when:
