@@ -6,18 +6,18 @@ import java.util.regex.Pattern;
 public class Main {
 
     public static void main(String[] args) {
-		String text = "Lorem ipsum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat fugiat nulla pariatur. Excepteur sint sint occaecat cupidatat non proident proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        String text = "Lorem ipsum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat fugiat nulla pariatur. Excepteur sint sint occaecat cupidatat non proident proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
-		System.out.println("Palabras duplicadas:");
-		Pattern p = Pattern.compile("\\s([a-zA-Z]+)\\s\\1");
-		Matcher m = p.matcher(text);
-		while (m.find()) {
-			System.out.printf("* %s%n", m.group(1));
-		}
+        System.out.println("Palabras duplicadas:");
+        Pattern p = Pattern.compile("\\s([a-zA-Z]+)\\s\\1");
+        Matcher m = p.matcher(text);
+        while (m.find()) {
+            System.out.printf("* %s%n", m.group(1));
+        }
 
         System.out.println("");
-		System.out.println("Texto sin palabras duplicadas:");
-		System.out.println(text.replaceAll("\\s([a-zA-Z]+)\\s\\1", " $1"));
+        System.out.println("Texto sin palabras duplicadas:");
+        System.out.println(text.replaceAll("\\s([a-zA-Z]+)\\s\\1", " $1"));
 
         System.out.println("");
         String emails = "pedro@gmail.com\njuan@gmail.com\nsonia@gmail.com";
