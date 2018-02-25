@@ -47,7 +47,7 @@ public class Philosopher implements Runnable {
 
     public void think() throws InterruptedException {
         long time = getTime();
-        logger.info("{} thinkink during {}ms", name, time);
+        logger.info("{} thinking during {}ms", name, time);
         spendTime(time);
     }
 

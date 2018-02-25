@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class BarberShopMain {
+public class Main {
 
-    private static Logger logger = LoggerFactory.getLogger(BarberShopMain.class);
+    private static Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) throws InterruptedException {
         BarberShop shop = new BarberShop(5, 2);
