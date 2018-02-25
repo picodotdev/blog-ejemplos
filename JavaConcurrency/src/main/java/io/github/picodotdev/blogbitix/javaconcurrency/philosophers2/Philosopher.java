@@ -57,8 +57,13 @@ public class Philosopher implements Runnable {
     }
 
     private void dropForks() {
-        right.drop();
-        left.drop();
+        if (isLeftHanded) {
+            left.drop();
+            right.drop();
+        } else {
+            right.drop();
+            left.drop();
+        }
     }
 
     private void spendTime(long time) throws InterruptedException {
