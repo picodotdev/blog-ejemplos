@@ -6,11 +6,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class Table implements Runnable {
 
-    private ReentrantLock lock;
     private List<Fork> forks;
     private List<Philosopher> philosophers;
     private Iterator<Long> times;
@@ -20,7 +18,6 @@ public class Table implements Runnable {
             throw new IllegalArgumentException("There should be more than one philosopher");
         }
 
-        this.lock = new ReentrantLock();
         this.forks = new ArrayList();
         this.philosophers = new ArrayList();
         this.times = new Random().longs(2000, 7000).iterator();
@@ -38,14 +35,6 @@ public class Table implements Runnable {
             Philosopher p = new Philosopher("Philosopher " + (i + 1),this, left, right, isLeftHanded);
             philosophers.add(p);
         }
-    }
-
-    public void block() {
-        lock.lock();
-    }
-
-    public void signal() {
-        lock.unlock();
     }
 
     public synchronized long getTime() {
