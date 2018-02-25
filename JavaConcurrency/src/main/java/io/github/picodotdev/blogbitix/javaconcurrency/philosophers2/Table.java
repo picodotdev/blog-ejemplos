@@ -18,8 +18,8 @@ public class Table implements Runnable {
             throw new IllegalArgumentException("There should be more than one philosopher");
         }
 
-        this.forks = new ArrayList();
-        this.philosophers = new ArrayList();
+        this.forks = new ArrayList<>();
+        this.philosophers = new ArrayList<>();
         this.times = new Random().longs(2000, 7000).iterator();
 
         for (int i = 0; i < numPhilosophers; ++i) {
