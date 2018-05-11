@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+mainClassName = 'io.github.picodotdev.blogbitix.javaexception.Main'
+
+dependencies {
+    compile 'io.vavr:vavr:0.9.2'
+}
+
+repositories {
+    jcenter()
+}
