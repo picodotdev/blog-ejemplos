@@ -1,8 +1,10 @@
 package io.github.picodotdev.blogbitix.javaexception;
 
 import io.vavr.control.Either;
+import io.vavr.control.Try;
 
 import java.util.Optional;
+import java.util.concurrent.TransferQueue;
 
 public class Main {
 
@@ -14,13 +16,18 @@ public class Main {
         return (error) ? Optional.empty() : Optional.of(0);
     }
 
-    private static void exception(boolean error) throws Exception {
-        if (error) throw new Exception();
+    private static Integer exception(boolean error) throws Exception {
+        if (error) {
+            throw new Exception();
+        } else {
+            return 0;
+        }
     }
 
     private static Either<Exception, Integer> either(boolean error) {
         return (error) ? Either.left(new Exception()) : Either.right(1);
     }
+
 
     public static void main(String[] args) {
         int errorCode = errorCode(true);
@@ -43,5 +50,7 @@ public class Main {
         if (either.isLeft()) {
             System.out.printf("Either exception: %s%n", either.getLeft().getClass().getName());
         }
+
+        Try.<Integer>of(() -> exception(true)).onFailure(e -> System.out.printf("Try exception: %s%n", e.getClass().getName()));
     }
 }
