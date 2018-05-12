@@ -41,7 +41,7 @@ public class Main {
 
         Either<Exception, Integer> either = either(true);
         if (either.isLeft()) {
-            System.out.printf("Either exception: %s%n", either.left().getClass().getClass().getName());
+            System.out.printf("Either exception: %s%n", either.getLeft().getClass().getName());
         }
     }
 }
