@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   app:
-    image: openjdk:9-slim
+    image: openjdk:10-slim
     ports:
       - "8090:8080"
     volumes:

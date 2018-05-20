@@ -18,11 +18,17 @@ public class BookResolver implements GraphQLResolver<Book> {
     }
 
     public String getIsbn(Book book) throws InterruptedException {
+        System.out.printf("Getting ISBN %d...", book.getId());
+        Thread.sleep(3000);
+        System.out.printf("ok%n");
         return UUID.randomUUID().toString();
     }
 
     @Batched
     public List<String> getBatchedIsbn(List<Book> books) throws InterruptedException {
+        System.out.printf("Getting %d ISBNs...", books.size());
+        Thread.sleep(3000);
+        System.out.printf("ok%n");
         return books.stream().map(b -> UUID.randomUUID().toString()).collect(Collectors.toList());
     }
 
@@ -56,10 +62,10 @@ public class BookResolver implements GraphQLResolver<Book> {
     }
 
     @Batched
-    public List<CommentsConnection> getBatchedComments(List<Book> books, List<String> after, List<Long> limit) {
+    public List<CommentsConnection> getBatchedComments(List<Book> books, String after, Long limit) {
         List<CommentsConnection> ccs = new ArrayList<>();
         for (int i = 0; i < books.size(); ++i) {
-            CommentsConnection cc = getComments(books.get(i), null, null);
+            CommentsConnection cc = getComments(books.get(i), null, limit);
             ccs.add(cc);
         }
         return ccs;

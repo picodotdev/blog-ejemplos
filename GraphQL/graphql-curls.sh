@@ -17,7 +17,7 @@ curl -s "http://localhost:8090/library?query=\{books\{title+date\}authors\{name\
 
 ### Verbs: first GET, second POST
 curl -vs "http://localhost:8090/library?query=\{books\{title+date\}authors\{id+name\}\}" | jq
-curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{books{title}}"}' http://localhost:8080/library | jq
+curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{books{title}}"}' http://localhost:8090/library | jq
 
 ### On POST request multiple queries
 curl -s -XPOST -H "Content-Type: application/json" -d '[{"query": "query Books{books{title}authors{name}}"}]' http://localhost:8090/library | jq
