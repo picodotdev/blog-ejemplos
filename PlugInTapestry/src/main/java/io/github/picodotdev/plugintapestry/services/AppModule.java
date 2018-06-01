@@ -20,9 +20,14 @@ import org.apache.tapestry5.ioc.Resource;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.Local;
+import org.apache.tapestry5.ioc.annotations.Symbol;
 import org.apache.tapestry5.ioc.services.ClasspathURLConverter;
+import org.apache.tapestry5.services.BaseURLSource;
+import org.apache.tapestry5.services.Request;
+import org.apache.tapestry5.services.Core;
 import org.apache.tapestry5.services.javascript.JavaScriptModuleConfiguration;
 import org.apache.tapestry5.services.javascript.JavaScriptStack;
+import org.apache.tapestry5.services.javascript.StackExtension;
 import org.apache.tapestry5.services.transform.ComponentClassTransformWorker2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,7 +70,19 @@ public class AppModule {
 		return new HibernateSessionSourceImpl(context);
 	}
 
-	public static void contributeServiceOverride(MappedConfiguration<Class, Object> configuration, @Local HibernateSessionSource hibernateSessionSource) {
+	public static BaseURLSource buildAppBaseURLSource(ApplicationContext context, Request request, @Symbol(SymbolConstants.HOSTPORT) int hostport, @Symbol(SymbolConstants.HOSTPORT_SECURE) int hostportSecure) {
+		return new BaseURLSource() {
+			public String getBaseURL(boolean secure) {
+				String protocol = (secure || request.isSecure()) ? "https" : "http";
+				String host = request.getServerName();
+				int port = (secure || request.isSecure()) ? hostportSecure : hostport;
+				return String.format("%s://%s:%d", protocol, host, port);
+			}
+		};
+	}
+
+	public static void contributeServiceOverride(MappedConfiguration<Class, Object> configuration, @Local BaseURLSource baseURLSource, @Local HibernateSessionSource hibernateSessionSource) {
+		configuration.add(BaseURLSource.class, baseURLSource);
 		configuration.add(HibernateSessionSource.class, hibernateSessionSource);
 		// Servicio para usar un CDN lazy, pe. con Amazon CloudFront
 		//configuration.addInstance(AssetPathConverter.class, CDNAssetPathConverterImpl.class);
@@ -125,9 +142,17 @@ public class AppModule {
 		configuration.add(LocalDateTime.class, new LocalDateTimeTranslator("yyyy-MM-dd"));
 	}
 
-	public static void contributeModuleManager(MappedConfiguration<String, Object> configuration, @Path("classpath:META-INF/assets/app/jquery-library.js") Resource jQuery) {
-		configuration.override("jquery", new JavaScriptModuleConfiguration(jQuery));
+	@Core
+	@Contribute(JavaScriptStack.class)
+	public static void contributeJavaScriptStack(OrderedConfiguration<StackExtension> configuration) {
+		configuration.override("requirejs", StackExtension.library("classpath:/META-INF/resources/webjars/requirejs/2.3.5/require.js"));
+		configuration.override("jquery-library", StackExtension.library("classpath:/META-INF/resources/webjars/jquery/3.3.1-1/jquery.min.js"));
+		configuration.override("underscore-library", StackExtension.library("classpath:/META-INF/resources/webjars/underscore/1.9.0/underscore-min.js"));
 	}
+
+	public static void contributeClasspathAssetAliasManager(MappedConfiguration configuration) {
+        configuration.add("webjars", "META-INF/resources/webjars");
+    }
 
 	public static void contributeBeanValidatorSource(OrderedConfiguration<BeanValidatorConfigurer> configuration) {
 		configuration.add("AppConfigurer", new BeanValidatorConfigurer() {

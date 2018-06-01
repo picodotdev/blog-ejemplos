@@ -85,10 +85,6 @@ public class Index {
 		// ThreadLocal example
 		System.out.printf("Host (from page): %s%n", Globals.HOST.get());
 
-		if (cuenta == null) {
-			// Iniciarlizar el valor de la cuenta al cargar la página
-			cuenta = 0l;
-		}
 		if (colores == null) {
 			colores = new ArrayList();			
 		}
@@ -118,7 +114,7 @@ public class Index {
 	 * Evento que suma uno a la cuenta.
 	 */
 	void onActionFromSumar1Cuenta() {
-		cuenta += 1;
+		incrementCuenta();
 	}
 
 	/**
@@ -126,7 +122,7 @@ public class Index {
 	 * asociado a un determinado componente.
 	 */
 	void onSumar1Cuenta() {
-		cuenta += 1;
+		incrementCuenta();
 	}
 
 	/**
@@ -135,7 +131,7 @@ public class Index {
 	void onActionFromSumar1CuentaAjax() throws Exception {
 		// if (1 == 1) throw new Exception("Sí, ese enlace produce una excepción");
 
-		cuenta += 1;
+		incrementCuenta();
 		// Actualizar una zona
 		// return zone.getBody()
 		// Actualizar varias zonas
@@ -150,12 +146,12 @@ public class Index {
 
 	void onSumar1CuentaSubmitOne() throws Exception {
 		Thread.sleep(3000);
-		cuenta += 1;
+		incrementCuenta();
 	}
 
 	void onSumar1CuentaAjaxSubmitOne() throws Exception {
 		Thread.sleep(3000);
-		cuenta += 1;
+		incrementCuenta();
 		renderer.addRender("zone", zone).addRender("submitOneZone", submitOneZone).addRender("csrfZone", csrfZone);
 	}
 
@@ -173,19 +169,19 @@ public class Index {
 
 	private void onSubmitOne() throws Exception {
 		Thread.sleep(3000);
-		cuenta += 1;
+		incrementCuenta();
 		renderer.addRender("zone", zone).addRender("submitOneZone", submitOneZone).addRender("csrfZone", csrfZone);
 	}
 
 	@Csrf
 	void onSuccessFromCsrfForm() {
-		cuenta += 1;
+		incrementCuenta();
 		renderer.addRender("zone", zone).addRender("submitOneZone", submitOneZone).addRender("csrfZone", csrfZone);
 	}
 
 	@Csrf
 	void onSumar1CuentaCsrf() {
-		cuenta += 1;
+		incrementCuenta();
 		renderer.addRender("zone", zone).addRender("submitOneZone", submitOneZone).addRender("csrfZone", csrfZone);
 	}
 
@@ -278,5 +274,12 @@ public class Index {
 				return Arrays.asList(rojo, azul, verde);
 			}
 		};
+	}
+
+	private void incrementCuenta() {
+		if (cuenta == null) {
+			cuenta = 0l;
+		}
+		cuenta += 1;
 	}
 }
