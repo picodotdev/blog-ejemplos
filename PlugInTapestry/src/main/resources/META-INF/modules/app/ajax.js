@@ -1,4 +1,4 @@
-define("app/colores", ["jquery"], function($) {
+define("app/ajax", ["jquery"], function($) {
 	function Colores(spec) {
 		var _this = this;
 		
@@ -11,9 +11,9 @@ define("app/colores", ["jquery"], function($) {
 
 	Colores.prototype.getColores = function() {
 		var _this = this;
-		
-		$.ajax({
-			url: this.spec.link,
+
+        $.ajax({
+            url: this.spec.link,
 			success: function(colores) {
 				var c = colores.join();
 				$(_this.spec.selector).html(c);

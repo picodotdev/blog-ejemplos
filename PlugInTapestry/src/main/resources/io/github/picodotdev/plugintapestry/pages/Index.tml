@@ -35,6 +35,9 @@
             Colores: <span id="holaMundoAjax">Cargando...</span> (Ajax/Json)
             <t:ajax selector="#holaMundoAjax"/>
         </p>
+		<p>
+			<t:event/>
+		</p>
 
 		<h4>Páginas de error personalizadas</h4>
 		<p>
