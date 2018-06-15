@@ -1,0 +1,34 @@
+/*
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "org.wildfly.swarm:wildfly-swarm-gradle-plugin:2018.3.3"
+    }
+}
+*/
+
+apply plugin: 'java'
+apply plugin: 'war'
+/*
+apply plugin: 'wildfly-swarm'
+
+swarm {
+    properties {
+        swarm.hollow = true
+    }
+}
+*/
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'javax.json.bind:javax.json.bind-api:1.0'
+    compile 'org.eclipse:yasson:1.0'
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    providedCompile 'org.eclipse.microprofile:microprofile:1.3'
+}
