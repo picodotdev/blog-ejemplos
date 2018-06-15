@@ -85,6 +85,9 @@ public class Index {
 		// ThreadLocal example
 		System.out.printf("Host (from page): %s%n", Globals.HOST.get());
 
+		if (cuenta  == null) {
+			cuenta = 0l;
+		}
 		if (colores == null) {
 			colores = new ArrayList();			
 		}

@@ -147,7 +147,7 @@ public class AppModule {
 	public static void contributeJavaScriptStack(OrderedConfiguration<StackExtension> configuration) {
 		configuration.override("requirejs", StackExtension.library("classpath:/META-INF/resources/webjars/requirejs/2.3.5/require.js"));
 		configuration.override("jquery-library", StackExtension.library("classpath:/META-INF/resources/webjars/jquery/3.3.1-1/jquery.min.js"));
-		configuration.override("underscore-library", StackExtension.library("classpath:/META-INF/resources/webjars/underscore/1.9.0/underscore-min.js"));
+		configuration.override("underscore-library", StackExtension.library("classpath:/META-INF/resources/webjars/underscore/1.9.1/underscore-min.js"));
 	}
 
 	public static void contributeClasspathAssetAliasManager(MappedConfiguration configuration) {

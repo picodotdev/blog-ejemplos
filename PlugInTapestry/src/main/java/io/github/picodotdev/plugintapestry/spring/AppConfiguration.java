@@ -7,12 +7,9 @@ import io.github.picodotdev.plugintapestry.services.dao.HibernateProductoDAO;
 import io.github.picodotdev.plugintapestry.services.dao.JooqProductoDAO;
 import io.github.picodotdev.plugintapestry.services.hibernate.ProductoEventAdapter;
 import io.github.picodotdev.plugintapestry.services.spring.DummyService;
-import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
-import org.apache.catalina.connector.Request;
-import org.apache.catalina.connector.Response;
-import org.apache.catalina.valves.ValveBase;
 import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.coyote.http11.Http11NioProtocol;
 import org.apache.tapestry5.spring.TapestrySpringFilter;
 import org.h2.Driver;
 import org.hibernate.SessionFactory;
@@ -23,19 +20,15 @@ import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 import org.jooq.impl.DataSourceConnectionProvider;
 import org.jooq.impl.DefaultConfiguration;
-import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
-import org.springframework.boot.context.embedded.tomcat.TomcatConnectorCustomizer;
-import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
-import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.boot.web.servlet.ErrorPage;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
+import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.servlet.DispatcherType;
@@ -43,7 +36,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.SessionTrackingMode;
 import javax.sql.DataSource;
-import java.io.IOException;
+import java.time.Duration;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
@@ -120,49 +113,18 @@ public class AppConfiguration {
 
     // Tomcat
     @Bean
-    public EmbeddedServletContainerCustomizer containerCustomizer() {
-        return new EmbeddedServletContainerCustomizer() {
-            @Override
-            public void customize(ConfigurableEmbeddedServletContainer container) {
-                ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/error404");
-                ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/error500");
-                container.addErrorPages(error404Page, error500Page);
-            }
-        };
-    }
-
-    @Bean
-    public TomcatConnectorCustomizer connectorCustomizer() {
-        return new TomcatConnectorCustomizer() {
-            @Override
-            public void customize(Connector connector) {
-            }
-        };
-    }
-
-    @Bean
-    public TomcatContextCustomizer contextCustomizer() {
-        return new TomcatContextCustomizer() {
-            @Override
-            public void customize(Context context) {
-            }
-        };
-    }
-
-    @Bean
-    public TomcatEmbeddedServletContainerFactory containerFactory() {
+    public ConfigurableServletWebServerFactory webServerFactory() {
         Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+        Http11NioProtocol protocol = (Http11NioProtocol) connector.getProtocolHandler();
         connector.setScheme("http");
+        connector.setSecure(false);
         connector.setPort(8080);
-        
-        TomcatEmbeddedServletContainerFactory factory = new TomcatEmbeddedServletContainerFactory();
+
+        TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
         factory.addAdditionalTomcatConnectors(connector);
-        factory.addContextValves(new ValveBase() {
-            @Override
-            public void invoke(Request request, Response response) throws IOException, ServletException {
-                getNext().invoke(request, response);
-            }
-        });
+        factory.getSession().setTimeout(Duration.ofMinutes(10));
+        factory.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/error404"));
+        factory.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/error500"));
         return factory;
     }
 

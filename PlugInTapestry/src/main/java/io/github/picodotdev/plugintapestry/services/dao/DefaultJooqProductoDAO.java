@@ -79,7 +79,7 @@ public class DefaultJooqProductoDAO implements GenericDAO<Producto>, JooqProduct
 
     private List<SortField<?>> getSortFields(Pagination pagination) {
         return pagination.getSort().stream().map((Sort s) -> {
-            Field<?> field = PRODUCTO.field(s.getProperty());
+            Field<?> field = PRODUCTO.field(s.getProperty().toUpperCase());
             SortField<?> sortField = ((s.getDirection() == Direction.ASCENDING)) ? field.asc() : field.desc();
             return sortField;
         }).collect(Collectors.toList());

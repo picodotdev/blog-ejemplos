@@ -1,13 +1,12 @@
 package io.github.picodotdev.plugintapestry;
 
+import io.github.picodotdev.plugintapestry.spring.AppConfiguration;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-
-import io.github.picodotdev.plugintapestry.spring.AppConfiguration;
 
 @SpringBootApplication
 public class Main extends SpringBootServletInitializer implements CommandLineRunner {

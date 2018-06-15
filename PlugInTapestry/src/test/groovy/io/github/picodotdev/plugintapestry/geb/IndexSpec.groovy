@@ -11,7 +11,7 @@ import io.github.picodotdev.plugintapestry.spring.AppConfiguration
 // Definición de la página índice 
 class IndexPage extends Page {
     // Localización
-    static url = 'http://localhost:8080/'
+    static url = 'https://localhost:8443/'
     // Determinar que se cargó una página 
     static at = { title.startsWith('PlugIn') }
     // Definición de los elementos de la página
@@ -20,8 +20,7 @@ class IndexPage extends Page {
     }
 }
 
-@SpringBootTest(classes = AppConfiguration.class)
-@WebAppConfiguration
+@SpringBootTest(classes = AppConfiguration.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class IndexSpec extends GebSpec {
     def 'go to index'() {
         when:

@@ -30,10 +30,10 @@ def versions = [
     'tapestry_security':   '0.7.0',
     'tapestry_testify':    '1.0.4',
     'tapestry_xpath':      '1.0.1',
-    'spring':              '4.3.14.RELEASE',
-    'spring_boot':         '1.5.10.RELEASE',
-    'hibernate':           '5.1.12.Final',
-    'hibernate_validator': '6.0.7.Final',
+    'spring':              '5.0.7.RELEASE',
+    'spring_boot':         '2.0.3.RELEASE',
+    'hibernate':           '5.1.7.Final',
+    'hibernate_validator': '6.0.10.Final',
     'jooq':                '3.10.4',
     'shiro':               '1.3.2',
     'guava':               '18.0',
@@ -52,7 +52,7 @@ def versions = [
 
 buildscript {
 	def versions = [
-        'spring_boot':       '1.5.10.RELEASE',
+        'spring_boot':       '2.0.3.RELEASE',
         'jooq':              '3.10.4',
         'h2':                '1.4.196',
         'liquibase':         '1.2.4'
@@ -123,28 +123,22 @@ dependencies {
     compile "org.springframework:spring-tx:$versions.spring"
 
 	// Spring Boot
-    compile("org.springframework.boot:spring-boot-starter:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
-    compile("org.springframework.boot:spring-boot-starter-web:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
-    compile("org.springframework.boot:spring-boot-autoconfigure:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
-    compile("org.springframework.boot:spring-boot-starter-actuator:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
-    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat:$versions.spring_boot") { exclude(group: 'ch.qos.logback') }
+    compile("org.springframework.boot:spring-boot-starter:$versions.spring_boot") { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+    compile("org.springframework.boot:spring-boot-starter-web:$versions.spring_boot") { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+    compile("org.springframework.boot:spring-boot-starter-actuator:$versions.spring_boot") { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+    compile("org.springframework.boot:spring-boot-starter-log4j2:$versions.spring_boot")
+    compile("org.springframework.boot:spring-boot-autoconfigure:$versions.spring_boot")
 
     // Persistencia
     compile "org.hibernate:hibernate-core:$versions.hibernate"
     compile "org.hibernate:hibernate-validator:$versions.hibernate_validator"
     compile "com.h2database:h2:$versions.h2"
     compile "org.jooq:jooq:$versions.jooq"
-    compile 'commons-dbcp:commons-dbcp:1.4'
+    compile "commons-dbcp:commons-dbcp:1.4"
     
     // Seguridad
     compile("org.tynamo:tapestry-security:$versions.tapestry_security") { exclude(group: 'org.apache.shiro') }
     compile "org.apache.shiro:shiro-all:$versions.shiro"
-    
-    // Logging
-    compile "org.slf4j:slf4j-api:$versions.slf4j"
-    compile "org.apache.logging.log4j:log4j-slf4j-impl:$versions.log4j2"
-    runtime "org.apache.logging.log4j:log4j-api:$versions.log4j2"
-    runtime "org.apache.logging.log4j:log4j-core:$versions.log4j2"    
     
     // Pruebas unitarias
     testCompile("org.apache.tapestry:tapestry-test:$versions.tapestry") { exclude(group: 'org.testng'); exclude(group: 'org.seleniumhq.selenium') }
@@ -160,12 +154,12 @@ dependencies {
     // Pruebas de integración
     testCompile "org.gebish:geb-spock:$versions.geb"
     testCompile "org.gebish:geb-junit4:$versions.geb"
-    testCompile "org.springframework.boot:spring-boot-starter-test:$versions.spring_boot"
+    testCompile ("org.springframework.boot:spring-boot-starter-test:$versions.spring_boot") { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
 
     // Webjars
     runtime 'org.webjars:requirejs:2.3.5'
     runtime 'org.webjars:jquery:3.3.1-1'
-    runtime 'org.webjars.bower:underscore:1.9.0'
+    runtime 'org.webjars.bower:underscore:1.9.1'
 
 	// Otras
     compile "javax:javaee-api:8.0"
@@ -173,11 +167,12 @@ dependencies {
 	providedCompile "org.jboss:jboss-vfs:$versions.jboss_vfs"
     providedCompile "javax.servlet:javax.servlet-api:$versions.servlet_api"
     runtime "org.jboss.logging:jboss-logging:$versions.jboss_logging"
+    runtime "org.eclipse:yasson:1.0.1"
+    runtime "org.glassfish:javax.json:1.1.2"
 }
 
 test {
     // Excluir de los teses unitarios los teses de integración
-    exclude '**/*IntegrationTest.*'
     exclude '**/*Spec.*'
 }
 
@@ -188,8 +183,7 @@ pmd {
 
 task integrationTest(type: Test) {
     // Incluir los teses de integración
-    include '**/*IntegrationTest.*'
-    include '**/*Spec.*'
+    include '**/geb/*Spec.*'
 }
 
 task appJavadoc(type: Javadoc) {

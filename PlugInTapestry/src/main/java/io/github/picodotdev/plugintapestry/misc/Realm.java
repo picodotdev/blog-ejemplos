@@ -89,6 +89,10 @@ public class Realm extends AuthorizingRealm {
 		if (username == null) { throw new AccountException("Null usernames are not allowed by this realm."); }
 
 		Map<String, Object> user = findByUsername(username);
+		if (user == null) {
+		    return null;
+        }
+
         String password = (String) user.get("password");
         byte[] salt = (byte []) user.get("salt");
         boolean locked = (boolean) user.get("locked");
