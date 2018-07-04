@@ -4,7 +4,7 @@ import spock.lang.Specification
 
 class MonitorSpec extends Specification {
 
-    def "the monitor fies the alarm on high temp"() {
+    def "the monitor fires the alarm on high temp"() {
         given: "a sensor, a alarm and a max temperature"
         def sensor = Stub(Sensor)
         def alarm = Mock(Alarm)
