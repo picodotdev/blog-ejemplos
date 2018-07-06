@@ -3,7 +3,6 @@ package io.github.picodotdev.plugintapestry.geb
 import geb.Page
 import geb.spock.GebSpec
 
-import org.springframework.test.context.web.WebAppConfiguration
 import org.springframework.boot.test.context.SpringBootTest
 
 import io.github.picodotdev.plugintapestry.spring.AppConfiguration

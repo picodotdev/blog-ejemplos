@@ -171,17 +171,20 @@ dependencies {
     runtime "org.glassfish:javax.json:1.1.2"
 }
 
-test {
-    // Excluir de los teses unitarios los teses de integración
-    exclude '**/*Spec.*'
-}
-
 pmd {
   ruleSets = ["java-basic", "java-braces"]
   ruleSetFiles = files("misc/ruleset.xml")
 }
 
+test {
+    // Excluir de los teses unitarios los teses de integración
+    exclude '**/*Spec.*'
+}
+
 task integrationTest(type: Test) {
+    group = 'Verification'
+    description = 'Runs the integration/functional tests.'
+
     // Incluir los teses de integración
     include '**/geb/*Spec.*'
 }
