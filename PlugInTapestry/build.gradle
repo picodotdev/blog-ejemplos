@@ -38,7 +38,6 @@ def versions = [
     'shiro':               '1.3.2',
     'guava':               '18.0',
     'h2':                  '1.4.196',
-    'slf4j':               '1.7.25',
     'log4j2':              '2.10.0',
     'junit':               '4.12',
     'mockito':             '1.10.19',
@@ -169,6 +168,8 @@ dependencies {
     runtime "org.jboss.logging:jboss-logging:$versions.jboss_logging"
     runtime "org.eclipse:yasson:1.0.1"
     runtime "org.glassfish:javax.json:1.1.2"
+    runtime "com.fasterxml.jackson.core:jackson-databind:2.9.6"
+    runtime "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6"
 }
 
 pmd {
