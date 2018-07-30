@@ -24,7 +24,7 @@ public class Main extends SpringBootServletInitializer implements CommandLineRun
 		banner.append("/_/  /_/\\_,_/\\_, /___/_//_/_/  \\_,_/ .__/\\__/___/\\__/_/  \\_, / \n");
 		banner.append("            /___/                 /_/                   /___/");
 		logger.info("\n" + banner.toString());
-		logger.info("Application runnig");
+		logger.info("Application running");
  	}
 	
     @Override

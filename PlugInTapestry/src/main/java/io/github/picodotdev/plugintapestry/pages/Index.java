@@ -4,6 +4,8 @@ import io.github.picodotdev.plugintapestry.misc.AppOptionGroupModel;
 import io.github.picodotdev.plugintapestry.misc.AppOptionModel;
 import io.github.picodotdev.plugintapestry.misc.Globals;
 import io.github.picodotdev.plugintapestry.services.annotation.Csrf;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.web.subject.support.WebDelegatingSubject;
@@ -30,6 +32,8 @@ import java.util.*;
  * @tapestrydoc
  */
 public class Index {
+
+	private static final Logger logger = LogManager.getLogger(Index.class);
 
 	@Property
 	@Persist(value = PersistenceConstants.SESSION)
@@ -70,8 +74,9 @@ public class Index {
 	private JavaScriptSupport javascriptSupport;
 
 	// Ciclo de vida
-	Object onActivate(String context) {
-		if (context != null) {
+	Object onActivate(Object[] context) {
+		logger.info("Activating page {}", Index.class.getSimpleName());
+		if (context != null && context.length > 0) {
 			return Error404.class;
 		}
 		return null;
@@ -82,8 +87,8 @@ public class Index {
 	 * renderización de la página.
 	 */
 	void setupRender() {
-		// ThreadLocal example
-		System.out.printf("Host (from page): %s%n", Globals.HOST.get());
+		logger.info("Rendering page {}", Index.class.getSimpleName());
+		logger.info("Host {}", Globals.HOST.get()); // ThreadLocal example
 
 		if (cuenta  == null) {
 			cuenta = 0l;

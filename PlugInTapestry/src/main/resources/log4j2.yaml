@@ -5,7 +5,7 @@ configuration:
     console:
       name: STDOUT
       patternLayout:
-        Pattern: "%d{DEFAULT} %-5level %60.60logger %msg%n"
+        Pattern: "%d{DEFAULT} %X{uuid} %-5level %60.60logger %msg%n"
 
   loggers:
     root:
