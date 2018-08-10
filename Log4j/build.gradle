@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+mainClassName = 'io.github.picodotdev.blogbitix.log4j.Main'
+
+dependencies {
+    compile 'org.apache.logging.log4j:log4j-api:2.11.1'
+    runtime 'org.apache.logging.log4j:log4j:2.11.1'
+    runtime 'org.apache.logging.log4j:log4j-core:2.11.1'
+    runtime 'com.fasterxml.jackson.core:jackson-databind:2.9.6'
+    runtime 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6'
+}
+
+repositories {
+    jcenter()
+}
