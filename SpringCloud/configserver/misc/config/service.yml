@@ -1,0 +1,16 @@
+server:
+    port: ${port:8080}
+
+spring:
+  application:
+    name: service
+  profiles:
+    active: cloud
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+config:
+  key: dev

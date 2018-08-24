@@ -1,0 +1,14 @@
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+    }
+
+    task wrapper(type: Wrapper) {
+        gradleVersion = '4.9'
+    }
+}

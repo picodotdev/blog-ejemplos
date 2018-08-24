@@ -1,0 +1,7 @@
+config:
+  key: dev
+  password: '{cipher}fb416133716acf5b6e3ffb64a396d521cd68fb0c2cb58727d5e938badefa942b'
+
+eureka:
+  client:
+    register-with-eureka: false
