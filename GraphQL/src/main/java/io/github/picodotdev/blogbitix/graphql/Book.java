@@ -3,7 +3,7 @@ package io.github.picodotdev.blogbitix.graphql;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Book {
+public class Book extends Publication {
     
     private Long id;
     private String title;

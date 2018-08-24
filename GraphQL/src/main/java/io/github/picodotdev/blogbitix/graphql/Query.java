@@ -16,6 +16,10 @@ public class Query implements GraphQLQueryResolver {
         return libraryRepository.findBooks(filter);
     }
 
+    public List<Publication> publications() {
+        return libraryRepository.findPublications();
+    }
+
     public Book book(Long id) {
         return libraryRepository.findBookById(id).orElse(null);
     }

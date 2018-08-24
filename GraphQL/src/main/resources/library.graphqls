@@ -12,6 +12,12 @@ type Book {
     batchedComments(after: String, limit: Long): CommentsConnection
 }
 
+type Magazine {
+    id: Long
+    name: String
+    pages: Long
+}
+
 type Comment {
     id: Long
     text: String
@@ -42,8 +48,11 @@ type PageInfo {
     hasNextPage: Boolean
 }
 
+union Publication = Book | Magazine
+
 type Query {
     books(filter: BookFilter): [Book]!
+    publications: [Publication]!
     book(id: Long): Book!
     authors: [Author]!
     author(id: Long): Author!
