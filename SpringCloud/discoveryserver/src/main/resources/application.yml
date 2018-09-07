@@ -1,1 +1,47 @@
+server:
+  port: ${port:8761}
 
+spring:
+  application:
+    name: discoveryserver
+
+eureka:
+  environment: default
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://ds1.127.0.0.1.xip.io:8761/eureka/,http://ds2.127.0.0.1.xip.io:8762/eureka/,http://ds3.127.0.0.1.xip.io:8763/eureka/
+
+---
+server:
+  port: 8761
+
+spring:
+  profiles: ds1
+
+eureka:
+  instance:
+    hostname: ds1.127.0.0.1.xip.io
+
+---
+server:
+  port: 8762
+
+spring:
+  profiles: ds2
+
+eureka:
+  instance:
+    hostname: ds2.127.0.0.1.xip.io
+
+---
+server:
+  port: 8763
+
+spring:
+  profiles: ds3
+
+eureka:
+  instance:
+    hostname: ds3.127.0.0.1.xip.io

@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.springcloud.server.spring;
+package io.github.picodotdev.blogbitix.springcloud.configserver.spring;
 
 import org.springframework.context.annotation.Configuration;
 

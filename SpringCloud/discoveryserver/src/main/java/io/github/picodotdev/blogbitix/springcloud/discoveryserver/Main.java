@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.springcloud.server;
+package io.github.picodotdev.blogbitix.springcloud.discoveryserver;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

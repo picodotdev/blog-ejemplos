@@ -1,7 +1,0 @@
-spring:
-  application:
-    name: discoveryserver
-  cloud:
-    config:
-      uri: http://localhost:8090
-      failFast: true

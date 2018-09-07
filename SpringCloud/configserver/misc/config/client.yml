@@ -1,7 +1,27 @@
-config:
-  key: dev
-  password: '{cipher}fb416133716acf5b6e3ffb64a396d521cd68fb0c2cb58727d5e938badefa942b'
+server:
+  port: ${port:8085}
 
 eureka:
   client:
     register-with-eureka: false
+    serviceUrl:
+      defaultZone: http://ds1.127.0.0.1.xip.io:8761/eureka/,http://ds2.127.0.0.1.xip.io:8762/eureka/,http://ds3.127.0.0.1.xip.io:8763/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+circuitBreaker:
+  requestVolumeThreshold: 4
+  errorThresholdPercentage: 50
+
+metrics:
+  rollingStats:
+    timeInMilliseconds: 10000
+
+config:
+  key: dev
+  password: '{cipher}fb416133716acf5b6e3ffb64a396d521cd68fb0c2cb58727d5e938badefa942b'
+

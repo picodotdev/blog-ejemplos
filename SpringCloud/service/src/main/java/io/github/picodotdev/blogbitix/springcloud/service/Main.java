@@ -7,18 +7,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 @SpringBootApplication
 @EnableDiscoveryClient
 public class Main implements CommandLineRunner {
 
-    @Value("${config.key}")
-    String key;
-    
+	@Autowired
+	private DefaultConfiguration configuration;
+
 	@Override
 	public void run(String... args) {
-	    System.out.printf("Valor de propiedad de configuración (%s): %s%n", "config.key", key);
+	    System.out.printf("Valor de propiedad de configuración (%s): %s%n", "config.key", configuration.getKey());
 	}
 
 	public static void main(String[] args) throws Exception {
