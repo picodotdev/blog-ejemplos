@@ -1,12 +1,6 @@
 server:
   port: ${port:8085}
 
-eureka:
-  client:
-    register-with-eureka: false
-    serviceUrl:
-      defaultZone: http://ds1.127.0.0.1.xip.io:8761/eureka/,http://ds2.127.0.0.1.xip.io:8762/eureka/,http://ds3.127.0.0.1.xip.io:8763/eureka/
-
 management:
   endpoints:
     web:

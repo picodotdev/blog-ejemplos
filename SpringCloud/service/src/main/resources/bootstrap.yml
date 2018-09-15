@@ -6,3 +6,8 @@ spring:
       failFast: true
       discovery:
         enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://ds1.127.0.0.1.xip.io:8761/eureka/,http://ds2.127.0.0.1.xip.io:8762/eureka/,http://ds3.127.0.0.1.xip.io:8763/eureka/
