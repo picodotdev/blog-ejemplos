@@ -2,7 +2,6 @@ apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
 
 mainClassName = 'io.github.picodotdev.blogbitix.springcloud.service.Main'
-//applicationDefaultJvmArgs = ['-Dspring.profiles.active=dev']
 
 buildscript {
     repositories {

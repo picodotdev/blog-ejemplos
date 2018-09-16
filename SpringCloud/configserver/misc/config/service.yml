@@ -2,8 +2,6 @@ server:
   port: ${port:8080}
 
 spring:
-  application:
-    name: service
   profiles:
     active: cloud
   rabbitmq:
