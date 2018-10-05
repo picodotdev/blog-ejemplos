@@ -29,7 +29,7 @@ public class Main implements CommandLineRunner {
 		for (int i = 0; i < 20000; ++i) {
 			String response = service.get();
 			System.out.printf("Service response: %s%n", response);
-			Thread.sleep(200);
+			Thread.sleep(100);
 		}
 	}
 
