@@ -7,18 +7,6 @@ management:
       exposure:
         include: '*'
 
-hystrix:
-  command:
-    get:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 1000
-
-circuitBreaker:
-  requestVolumeThreshold: 4
-  errorThresholdPercentage: 50
-
 metrics:
   rollingStats:
     timeInMilliseconds: 10000

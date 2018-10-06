@@ -5,6 +5,17 @@ zuul:
   routes:
     service: '/service/**'
 
+hystrix:
+  command:
+    service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+    circuitBreaker:
+      requestVolumeThreshold: 4
+      errorThresholdPercentage: 50
+
 service:
   ribbon:
     ConnectTimeout: 1000
