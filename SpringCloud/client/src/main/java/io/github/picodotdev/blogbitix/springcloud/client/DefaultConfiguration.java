@@ -12,6 +12,9 @@ public class DefaultConfiguration {
     @Value("${config.password}")
     String password;
 
+    @Value("${config.service}")
+    String service;
+
     public String getKey() {
         return key;
     }
@@ -26,5 +29,13 @@ public class DefaultConfiguration {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
     }
 }

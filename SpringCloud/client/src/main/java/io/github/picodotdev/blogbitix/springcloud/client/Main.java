@@ -20,14 +20,18 @@ public class Main implements CommandLineRunner {
 
 	@Autowired
 	private ClientService service;
+
+	@Autowired
+	private ProxyService proxy;
     
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.printf("Valor de propiedad de configuración (%s): %s%n", "config.key", configuration.getKey());
 		System.out.printf("Valor de propiedad de configuración (%s): %s%n", "config.password", configuration.getPassword());
+		System.out.printf("Valor de propiedad de configuración (%s): %s%n", "config.service", configuration.getService());
 
 		for (int i = 0; i < 20000; ++i) {
-			String response = service.get();
+			String response = (configuration.getService().equals("service")) ? service.get() : proxy.get();
 			System.out.printf("Service response: %s%n", response);
 			Thread.sleep(100);
 		}

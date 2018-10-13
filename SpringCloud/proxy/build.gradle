@@ -29,8 +29,9 @@ dependencies {
     compile('org.springframework.cloud:spring-cloud-starter-bus-amqp:2.0.0.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }    
     compile('org.springframework.cloud:spring-cloud-netflix:2.0.1.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:2.0.1.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-zuul:2.0.1.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }    
-    
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-zuul:2.0.1.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+    compile('org.springframework.retry:spring-retry:1.2.2.RELEASE'){ exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+
     runtime 'com.google.code.gson:gson:2.8.5'
     runtime 'com.fasterxml.jackson.core:jackson-databind:2.9.6'
     runtime 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6'

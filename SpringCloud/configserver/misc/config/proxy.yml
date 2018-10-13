@@ -4,6 +4,7 @@ server:
 zuul:
   routes:
     service: '/service/**'
+  retryable: true
 
 hystrix:
   command:
@@ -11,7 +12,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 1000
+            timeoutInMilliseconds: 20000
     circuitBreaker:
       requestVolumeThreshold: 4
       errorThresholdPercentage: 50
@@ -19,6 +20,11 @@ hystrix:
 service:
   ribbon:
     ConnectTimeout: 1000
-    ReadTimeout: 3000
-    MaxTotalHttpConnections: 500
+    ReadTimeout: 2000
+    MaxTotalHttpConnections: 100
     MaxConnectionsPerHost: 100
+    MaxAutoRetries: 0
+    MaxAutoRetriesNextServer: 2
+    ServerListRefreshInterval: 2000
+    OkToRetryOnAllOperations: true
+    retryableStatusCodes: 500,404
