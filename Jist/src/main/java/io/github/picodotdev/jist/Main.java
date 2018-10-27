@@ -23,7 +23,7 @@ public class Main {
 
     private HttpClient client;
 
-    public Main() {
+    private Main() {
         this.client = HttpClient.newBuilder().followRedirects(HttpClient.Redirect.ALWAYS).version(HttpClient.Version.HTTP_2).build();
     }
 
