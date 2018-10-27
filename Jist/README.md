@@ -6,7 +6,7 @@ A Java program to download all public gists of a user.
 
 ```$ ./gradlew run --args="--user picodotdev"``` 
 
-Change the user, the gists are save to a folder with name `gist`.
+Change the user, the gists are saved to a folder with name `gist`.
 
 ### Requires
 
