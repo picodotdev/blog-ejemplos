@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+ext {
+    moduleName = 'jist'
+}
+
+mainClassName = "$moduleName/io.github.picodotdev.jist.Main"
+
+dependencies {
+    compile 'com.beust:jcommander:1.71'
+    compile 'javax.json:javax.json-api:1.1.3'
+    runtime 'org.glassfish:javax.json:1.1.3'
+}
+
+repositories {
+    jcenter()
+}
+
+compileJava {
+    sourceCompatibility = 11
+    targetCompatibility = 11
+
+    inputs.property("moduleName", moduleName)
+    doFirst {
+        options.compilerArgs = [
+            '--module-path', classpath.asPath,
+        ]
+        classpath = files()
+    }
+}
+
+run {
+    inputs.property('moduleName', moduleName)
+    doFirst {
+        jvmArgs = [
+                '--module-path', classpath.asPath,
+                '--module', mainClassName
+        ]
+        classpath = files()
+    }
+}
