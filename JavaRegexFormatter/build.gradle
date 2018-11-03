@@ -1,0 +1,12 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'io.github.picodotdev.blogbitix.javaregexformatter.Main'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.fusesource.jansi:jansi:1.17.1'
+}
