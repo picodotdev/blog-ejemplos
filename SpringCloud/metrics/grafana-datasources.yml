@@ -1,0 +1,9 @@
+datasources:
+- name: Prometheus
+  type: prometheus
+  access: direct
+  url: http://prometheus.127.0.0.1.xip.io:9090
+  basic_auth: false
+  with_credentials: false
+  is_default: true
+  version: 1
