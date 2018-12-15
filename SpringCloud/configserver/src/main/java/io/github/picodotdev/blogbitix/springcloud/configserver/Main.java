@@ -16,7 +16,7 @@ public class Main implements CommandLineRunner {
 	public void run(String... args) {
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		SpringApplication application = new SpringApplication(Main.class);
 		application.setApplicationContextClass(AnnotationConfigApplicationContext.class);
 		SpringApplication.run(Main.class, args);

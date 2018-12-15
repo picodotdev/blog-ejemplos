@@ -1,39 +1,34 @@
-apply plugin: 'application'
-apply plugin: 'org.springframework.boot'
+plugins {
+    id 'application'
+    id 'org.springframework.boot' version '2.0.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+}
 
 mainClassName = 'io.github.picodotdev.blogbitix.springcloud.client.Main'
 
-buildscript {
-    repositories {
-        mavenCentral()        
-    }
-   
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.3.RELEASE")
-    }
-}
-
-repositories {
-    maven {
-        url 'http://repo.spring.io/milestone'
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.SR2'
     }
 }
 
 dependencies {
 	// Spring
-	compile('org.springframework.boot:spring-boot-starter:2.0.3.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile("org.springframework.boot:spring-boot-starter-web:2.0.4.RELEASE") { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.springframework.cloud:spring-cloud-starter-config:2.0.1.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.springframework.boot:spring-boot-starter-log4j2:2.0.3.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile("org.springframework.boot:spring-boot-starter-actuator:2.0.4.RELEASE") { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.springframework.cloud:spring-cloud-netflix:2.0.1.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:2.0.1.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-ribbon:2.0.1.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix:2.0.1.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard:2.0.1.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.glassfish.jersey.core:jersey-client:2.27')
+    def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+	compile('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
+    compile('org.springframework.boot:spring-boot-starter-web', excludeSpringBootStarterLogging)
+    compile('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)
+    compile('org.springframework.boot:spring-boot-starter-actuator', excludeSpringBootStarterLogging)
+    compile('org.springframework.cloud:spring-cloud-starter-config', excludeSpringBootStarterLogging)
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client', excludeSpringBootStarterLogging)
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-ribbon', excludeSpringBootStarterLogging)
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix', excludeSpringBootStarterLogging)
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard', excludeSpringBootStarterLogging)
 
-    runtime 'com.google.code.gson:gson:2.8.5'
-    runtime 'com.fasterxml.jackson.core:jackson-databind:2.9.6'
-    runtime 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6'
+    compile('org.glassfish.jersey.core:jersey-client:2.27')
+    compile('org.glassfish.jersey.inject:jersey-hk2:2.27')
+
+    runtime('com.google.code.gson:gson:2.8.5')
+    runtime('com.fasterxml.jackson.core:jackson-databind:2.9.6')
+    runtime('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6')
 }

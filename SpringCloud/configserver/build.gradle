@@ -1,30 +1,29 @@
-apply plugin: 'application'
-apply plugin: 'org.springframework.boot'
+plugins {
+    id 'application'
+    id 'org.springframework.boot' version '2.0.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+}
 
 mainClassName = 'io.github.picodotdev.blogbitix.springcloud.configserver.Main'
 
-buildscript {
-    repositories {
-        mavenCentral()        
-    }
-   
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.3.RELEASE")
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.SR2'
     }
 }
 
 dependencies {
 	// Spring
-	compile('org.springframework.boot:spring-boot-starter:2.0.3.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-	compile('org.springframework.cloud:spring-cloud-starter-config:2.0.1.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.springframework.cloud:spring-cloud-config-server:2.0.1.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile("org.springframework.cloud:spring-cloud-config-monitor:2.0.1.RELEASE") { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.springframework.cloud:spring-cloud-starter-bus-amqp:2.0.0.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }    
-    compile('org.springframework.boot:spring-boot-starter-log4j2:2.0.3.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.springframework.cloud:spring-cloud-netflix:2.0.1.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:2.0.1.RELEASE') { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+    def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+	compile('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
+    compile('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)
+	compile('org.springframework.cloud:spring-cloud-starter-config', excludeSpringBootStarterLogging)
+    compile('org.springframework.cloud:spring-cloud-config-server', excludeSpringBootStarterLogging)
+    compile('org.springframework.cloud:spring-cloud-config-monitor', excludeSpringBootStarterLogging)
+    compile('org.springframework.cloud:spring-cloud-starter-bus-amqp', excludeSpringBootStarterLogging)    
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client', excludeSpringBootStarterLogging)
 
-    runtime 'com.google.code.gson:gson:2.8.5'
-    runtime 'com.fasterxml.jackson.core:jackson-databind:2.9.6'
-    runtime 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6'
+    runtime('com.google.code.gson:gson:2.8.5')
+    runtime('com.fasterxml.jackson.core:jackson-databind:2.9.6')
+    runtime('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6')
 }

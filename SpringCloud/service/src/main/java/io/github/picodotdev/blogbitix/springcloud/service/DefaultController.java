@@ -20,7 +20,7 @@ public class DefaultController {
 
 	public DefaultController(MeterRegistry registry) {
 		this.random = new Random();
-		this.counter = registry.counter("service.invocations");
+		this.counter = Counter.builder("service.invocations").description("Total service invocations").register(registry);
 	}
 
 	@RequestMapping("/")

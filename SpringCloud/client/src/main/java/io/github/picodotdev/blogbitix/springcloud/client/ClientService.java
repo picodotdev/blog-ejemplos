@@ -24,7 +24,12 @@ public class ClientService {
     public String get() {
         ServiceInstance instance = loadBalancer.choose("service");
         URI uri = instance.getUri();
-        return ClientBuilder.newClient().target(uri).request().get().readEntity(String.class);
+        try {
+            return ClientBuilder.newClient().target(uri).request().get(String.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     private String getFallback() {

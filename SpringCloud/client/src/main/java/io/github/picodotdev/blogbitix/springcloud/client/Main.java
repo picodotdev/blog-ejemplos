@@ -27,7 +27,7 @@ public class Main implements CommandLineRunner {
 	private ProxyService proxy;
 
 	@Bean
-	private HystrixMetricsBinder hystrixMetricsBinder() {
+	HystrixMetricsBinder hystrixMetricsBinder() {
 		return new HystrixMetricsBinder();
 	}
     
@@ -44,7 +44,7 @@ public class Main implements CommandLineRunner {
 		}
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		SpringApplication application = new SpringApplication(Main.class);
 		application.setApplicationContextClass(AnnotationConfigApplicationContext.class);
 		SpringApplication.run(Main.class, args);
