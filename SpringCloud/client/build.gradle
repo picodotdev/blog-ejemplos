@@ -13,9 +13,9 @@ dependencyManagement {
 }
 
 dependencies {
-	// Spring
+    // Spring
     def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-	compile('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
+    compile('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
     compile('org.springframework.boot:spring-boot-starter-web', excludeSpringBootStarterLogging)
     compile('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)
     compile('org.springframework.boot:spring-boot-starter-actuator', excludeSpringBootStarterLogging)
