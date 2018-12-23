@@ -31,9 +31,12 @@ def versions = [
     h2:                   '1.4.197',
     log4j2:               '2.11.1',
     junit:                '4.12',
-    mockito:              '2.23.11',
+    groovy:               '2.5.4',
+    mockito:              '2.23.4',
     geb:                  '2.2',
     selenium:             '3.141.59',
+    htmlunit_driver:      '2.33.3',
+    htmlunit_csspaser:    '1.2.0',
     spock:                '1.2-groovy-2.5',
     liquibase:            '3.6.2',
     liquibase_groovy_dsl: '2.0.2',
@@ -72,6 +75,7 @@ sourceSets {
 dependencies {
     def excludeSpring = { exclude(group: 'org.springframework') }
     def excludeShiro = { exclude(group: 'org.apache.shiro') }
+    def excludeGroovy = { exclude(group: 'org.codehaus.groovy') }
     def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
 
     // Tapestry
@@ -111,17 +115,21 @@ dependencies {
     testCompile("org.apache.tapestry:tapestry-test:$versions.tapestry") { exclude(group: 'org.testng'); exclude(group: 'org.seleniumhq.selenium') }
     testCompile "net.sourceforge.tapestrytestify:tapestry-testify:$versions.tapestry_testify"
     testCompile "net.sourceforge.tapestryxpath:tapestry-xpath:$versions.tapestry_xpath"
+    testCompile "junit:junit:$versions.junit"
+    testCompile "org.codehaus.groovy:groovy:$versions.groovy"
+    testCompile "org.mockito:mockito-core:$versions.mockito"
+    testCompile("org.spockframework:spock-core:$versions.spock", excludeGroovy)
+    testCompile("org.spockframework:spock-spring:$versions.spock", excludeGroovy)
+    testCompile "org.seleniumhq.selenium:selenium-api:$versions.selenium"
     testCompile "org.seleniumhq.selenium:selenium-java:$versions.selenium"
     testCompile "org.seleniumhq.selenium:selenium-server:$versions.selenium"
-    testCompile "junit:junit:$versions.junit"
-    testCompile "org.mockito:mockito-all:$versions.mockito"
-    testCompile "org.spockframework:spock-core:$versions.spock"
-    testCompile "org.spockframework:spock-spring:$versions.spock"
+    testCompile "org.seleniumhq.selenium:htmlunit-driver:$versions.htmlunit_driver"
+    testCompile "net.sourceforge.htmlunit:htmlunit-cssparser:$versions.htmlunit_csspaser"
  
-    // Pruebas de integración
-    testCompile "org.gebish:geb-spock:$versions.geb"
+    // Pruebas de integración    
+    testCompile("org.gebish:geb-spock:$versions.geb", excludeGroovy)
     testCompile "org.gebish:geb-junit4:$versions.geb"
-    testCompile ("org.springframework.boot:spring-boot-starter-test", excludeSpringBootStarterLogging)
+    testCompile("org.springframework.boot:spring-boot-starter-test", excludeSpringBootStarterLogging)
 
     // Webjars
     runtime 'org.webjars:requirejs:2.3.5'
@@ -159,6 +167,7 @@ test {
 task integrationTest(type: Test) {
     group = 'Verification'
     description = 'Runs the integration/functional tests.'
+    systemProperty 'geb.driver', 'htmlunit'
 
     // Incluir los teses de integración
     include '**/geb/*Spec.*'

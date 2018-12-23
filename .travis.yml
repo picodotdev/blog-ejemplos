@@ -3,4 +3,4 @@ jdk:
   - oraclejdk8
 script:
   - cd Machinarum && ./gradlew check && cd ..
-  - cd PlugInTapestry && ./gradlew test && cd ..
+  - cd PlugInTapestry && ./gradlew update && ./gradlew generateH2JooqSchemaSource && ./gradlew test && cd ..

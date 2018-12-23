@@ -8,7 +8,7 @@ class GoogleHomePage extends Page {
     static at = { title == 'Google' }
     static content = {
         searchField { $("input[name=q]") }
-        searchButton(to: GoogleResultsPage) { $("input[value='Buscar con Google']") }
+        searchButton(to: GoogleResultsPage) { $("input[value='Buscar con Google']", 1) }
     }
 }
 
