@@ -24,6 +24,7 @@ dependencies {
     compile('org.springframework.cloud:spring-cloud-starter-netflix-ribbon', excludeSpringBootStarterLogging)
     compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix', excludeSpringBootStarterLogging)
     compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard', excludeSpringBootStarterLogging)
+    compile('io.micrometer:micrometer-registry-prometheus:1.0.8')
 
     compile('org.glassfish.jersey.core:jersey-client:2.27')
     compile('org.glassfish.jersey.inject:jersey-hk2:2.27')
