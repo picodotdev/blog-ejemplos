@@ -1,90 +1,54 @@
-import org.jooq.util.GenerationTool
-import org.jooq.util.jaxb.Configuration
-import org.jooq.util.jaxb.CustomType
-import org.jooq.util.jaxb.Database
-import org.jooq.util.jaxb.ForcedType
-import org.jooq.util.jaxb.Generate
-import org.jooq.util.jaxb.Generator
-import org.jooq.util.jaxb.Jdbc
-import org.jooq.util.jaxb.Target
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'java'
+    id 'groovy'
+    id 'war'
+    id 'application'
+    id 'project-report'
+    id 'pmd'
+    id 'org.springframework.boot' version '2.0.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+    id 'nu.studer.jooq' version '3.0.2'
+    id 'org.liquibase.gradle' version '2.0.1'
+}
 
 description = 'PlugInTapestry application'
 group = 'io.github.picodotdev.plugintapestry'
-version = '1.6'
-
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'java'
-apply plugin: 'groovy'
-apply plugin: 'war'
-apply plugin: 'application'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'org.liquibase.gradle'
-apply plugin: 'project-report'
-apply plugin: 'pmd'
-
+version = '1.7'
 mainClassName = 'io.github.picodotdev.plugintapestry.Main'
 
 def versions = [
-    'tapestry':            '5.4.3',
-    'tapestry_security':   '0.7.1',
-    'tapestry_testify':    '1.0.4',
-    'tapestry_xpath':      '1.0.1',
-    'spring':              '5.0.7.RELEASE',
-    'spring_boot':         '2.0.3.RELEASE',
-    'hibernate':           '5.1.7.Final',
-    'hibernate_validator': '6.0.10.Final',
-    'jooq':                '3.10.4',
-    'shiro':               '1.3.2',
-    'guava':               '18.0',
-    'h2':                  '1.4.196',
-    'log4j2':              '2.10.0',
-    'junit':               '4.12',
-    'mockito':             '1.10.19',
-    'geb':                 '2.0',
-    'selenium':            '3.8.1',
-    'servlet_api':         '3.1.0',
-    'spock':               '1.1-groovy-2.4',
-    'jboss_vfs':           '3.2.12.Final',
-    'jboss_logging':       '3.3.1.Final'
+    tapestry:             '5.4.4',
+    tapestry_security:    '0.7.1',
+    tapestry_testify:     '1.0.4',
+    tapestry_xpath:       '1.0.1',
+    spring:               '5.0.11.RELEASE',
+    hibernate:            '5.1.16.Final',
+    hibernate_validator:  '6.0.13.Final',
+    shiro:                '1.3.2',
+    guava:                '27.0.1-jre',
+    h2:                   '1.4.197',
+    log4j2:               '2.11.1',
+    junit:                '4.12',
+    mockito:              '2.23.11',
+    geb:                  '2.2',
+    selenium:             '3.141.59',
+    spock:                '1.2-groovy-2.5',
+    liquibase:            '3.6.2',
+    liquibase_groovy_dsl: '2.0.2',
+    jboss_vfs:            '3.2.14.Final',
+    jboss_logging:        '3.3.2.Final'
 ]
 
-buildscript {
-	def versions = [
-        'spring_boot':       '2.0.3.RELEASE',
-        'jooq':              '3.10.4',
-        'h2':                '1.4.196',
-        'liquibase':         '1.2.4'
-    ]
-
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:$versions.spring_boot"
-        classpath "org.jooq:jooq:$versions.jooq"
-        classpath "org.jooq:jooq-meta:$versions.jooq"
-        classpath "org.jooq:jooq-codegen:$versions.jooq"
-        classpath "com.h2database:h2:$versions.h2"
-        classpath "org.liquibase:liquibase-gradle-plugin:$versions.liquibase"
-    }
+dependencyManagement {
+	imports {
+		mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.SR2'
+	}
 }
 
 repositories {
     mavenCentral()
-
-    // All things JBoss/Hibernate
-	maven {
-    	name 'JBoss'
-    	url 'http://repository.jboss.org/nexus/content/groups/public/'
-    }
-
-    // For access to Apache Staging (Preview) packages
-    maven {
-    	name 'Apache Staging'
-    	url 'https://repository.apache.org/content/groups/staging'
-    }
 }
 
 // This simulates Maven's 'provided' scope, until it is officially supported by Gradle
@@ -106,6 +70,10 @@ sourceSets {
 }
 
 dependencies {
+    def excludeSpring = { exclude(group: 'org.springframework') }
+    def excludeShiro = { exclude(group: 'org.apache.shiro') }
+    def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+
     // Tapestry
     compile "org.apache.tapestry:tapestry-core:$versions.tapestry"
     compile "org.apache.tapestry:tapestry-hibernate:$versions.tapestry"
@@ -116,27 +84,27 @@ dependencies {
     appJavadoc "org.apache.tapestry:tapestry-javadoc:$versions.tapestry"
     
     // Spring
-    compile ("org.apache.tapestry:tapestry-spring:$versions.tapestry") { exclude(group: 'org.springframework') }
+    compile ("org.apache.tapestry:tapestry-spring:$versions.tapestry", excludeSpring)
     compile "org.springframework:spring-jdbc:$versions.spring"
     compile "org.springframework:spring-orm:$versions.spring"
     compile "org.springframework:spring-tx:$versions.spring"
 
 	// Spring Boot
-    compile("org.springframework.boot:spring-boot-starter:$versions.spring_boot") { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile("org.springframework.boot:spring-boot-starter-web:$versions.spring_boot") { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile("org.springframework.boot:spring-boot-starter-actuator:$versions.spring_boot") { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile("org.springframework.boot:spring-boot-starter-log4j2:$versions.spring_boot")
-    compile("org.springframework.boot:spring-boot-autoconfigure:$versions.spring_boot")
+    compile("org.springframework.boot:spring-boot-starter", excludeSpringBootStarterLogging)
+    compile("org.springframework.boot:spring-boot-starter-web", excludeSpringBootStarterLogging)
+    compile("org.springframework.boot:spring-boot-starter-actuator", excludeSpringBootStarterLogging)
+    compile("org.springframework.boot:spring-boot-starter-log4j2")
+    compile("org.springframework.boot:spring-boot-autoconfigure")
 
     // Persistencia
     compile "org.hibernate:hibernate-core:$versions.hibernate"
     compile "org.hibernate:hibernate-validator:$versions.hibernate_validator"
     compile "com.h2database:h2:$versions.h2"
-    compile "org.jooq:jooq:$versions.jooq"
+    compile "org.jooq:jooq"
     compile "commons-dbcp:commons-dbcp:1.4"
     
     // Seguridad
-    compile("org.tynamo:tapestry-security:$versions.tapestry_security") { exclude(group: 'org.apache.shiro') }
+    compile("org.tynamo:tapestry-security:$versions.tapestry_security", excludeShiro)
     compile "org.apache.shiro:shiro-all:$versions.shiro"
     
     // Pruebas unitarias
@@ -153,7 +121,7 @@ dependencies {
     // Pruebas de integración
     testCompile "org.gebish:geb-spock:$versions.geb"
     testCompile "org.gebish:geb-junit4:$versions.geb"
-    testCompile ("org.springframework.boot:spring-boot-starter-test:$versions.spring_boot") { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+    testCompile ("org.springframework.boot:spring-boot-starter-test", excludeSpringBootStarterLogging)
 
     // Webjars
     runtime 'org.webjars:requirejs:2.3.5'
@@ -163,13 +131,19 @@ dependencies {
 	// Otras
     compile "javax:javaee-api:8.0"
 	compile "com.google.guava:guava:$versions.guava"
-	providedCompile "org.jboss:jboss-vfs:$versions.jboss_vfs"
-    providedCompile "javax.servlet:javax.servlet-api:$versions.servlet_api"
+	
+    providedCompile "org.jboss:jboss-vfs:$versions.jboss_vfs"
+
     runtime "org.jboss.logging:jboss-logging:$versions.jboss_logging"
     runtime "org.eclipse:yasson:1.0.1"
     runtime "org.glassfish:javax.json:1.1.2"
     runtime "com.fasterxml.jackson.core:jackson-databind:2.9.6"
     runtime "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6"
+
+    jooqRuntime "com.h2database:h2:$versions.h2"
+    liquibaseRuntime "org.liquibase:liquibase-core:$versions.liquibase"
+    liquibaseRuntime "org.liquibase:liquibase-groovy-dsl:$versions.liquibase_groovy_dsl"
+    liquibaseRuntime "com.h2database:h2:$versions.h2"
 }
 
 pmd {
@@ -213,38 +187,43 @@ task appJavadoc(type: Javadoc) {
     }
 }
 
-task generateModels {
-	doLast {
-		Configuration configuration = new Configuration()
-		    .withJdbc(new Jdbc()
-		        .withDriver('org.h2.Driver')
-		        .withUrl('jdbc:h2:./misc/database/app')
-		        .withUser('sa')
-		        .withPassword('sa'))
-		    .withGenerator(new Generator()
-		        .withGenerate(new Generate()
-		            .withInterfaces(true)
-		            .withPojos(true)
-		            .withRelations(true)
-		            .withValidationAnnotations(true))
-		        .withName('org.jooq.util.DefaultGenerator')
-		        .withDatabase(new Database()
-		            .withForcedTypes([
-		                new ForcedType()
-		                    .withTypes('TIMESTAMP')
-		                    .withUserType('java.time.LocalDateTime')
-                            .withConverter('io.github.picodotdev.plugintapestry.misc.TimestampConverter')    
-		            ])
-		            .withName('org.jooq.util.h2.H2Database')
-                    .withInputSchema('PLUGINTAPESTRY')
-		            .withIncludes('.*')
-		            .withExcludes(''))
-		        .withTarget(new Target()
-		            .withPackageName('io.github.picodotdev.plugintapestry.entities.jooq')
-		            .withDirectory('src/main/java')));
-
-		GenerationTool.main(configuration)
-	}
+jooq {
+    version = '3.11.2'
+    edition = 'OSS'
+    h2(sourceSets.main) {
+        jdbc {
+            driver = 'org.h2.Driver'
+            url = 'jdbc:h2:./misc/database/app'
+            user = 'sa'
+            password = 'sa'
+        }
+        generator {
+            name = 'org.jooq.codegen.DefaultGenerator'
+            database {
+                name = 'org.jooq.meta.h2.H2Database'
+                inputSchema = 'PLUGINTAPESTRY'
+                includes = '.*'
+                excludes = ''
+                forcedTypes {
+                    forcedType {
+                        types = 'TIMESTAMP'
+                        userType = 'java.time.LocalDateTime'
+                        converter = 'io.github.picodotdev.plugintapestry.misc.TimestampConverter'
+                    }
+                }
+            }
+            generate {
+                interfaces = true
+                pojos = true
+                relations = true
+                validationAnnotations = true
+            }
+            target {
+                packageName = 'io.github.picodotdev.plugintapestry.entities.jooq'
+                directory = 'src/main/java'
+            }
+        }
+    }
 }
 
 liquibase {
