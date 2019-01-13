@@ -1,0 +1,2 @@
+Main-Class: io.github.picodotdev.blogbitix.java8.helloworld.Main
+Class-Path: libraries/log4j-api-2.11.1.jar libraries/log4j-core-2.11.1.jar
