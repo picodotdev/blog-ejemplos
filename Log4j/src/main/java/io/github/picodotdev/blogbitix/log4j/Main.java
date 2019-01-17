@@ -3,6 +3,9 @@ package io.github.picodotdev.blogbitix.log4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 public class Main {
 
     private static final Logger logger = LogManager.getLogger(Main.class);
@@ -14,5 +17,6 @@ public class Main {
         logger.info(product);
         logger.info(new SimpleProductMessage(product));
         logger.info(new ProductMessage(product));
+        logger.info(new SecuredMessage("Tarjeta de crédito: 1111 1111 1111 1111, DNI: 11111111A", Arrays.asList("\\d{4} \\d{4} \\d{4} \\d{4}", "\\d{8}[A-Z]")));
     }
 }

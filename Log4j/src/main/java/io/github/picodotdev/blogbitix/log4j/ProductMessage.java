@@ -21,9 +21,7 @@ public class ProductMessage implements Message {
     }
 
     @Override
-    public String getFormattedMessage() {
-        return String.format(getFormat(), getParameters());
-    }
+    public String getFormattedMessage() { return String.format(getFormat(), getParameters()); }
 
     @Override
     public Throwable getThrowable() {
