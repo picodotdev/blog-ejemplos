@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+mainClassName = 'io.github.picodotdev.blogbitix.javajson.Main'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "javax.json.bind:javax.json.bind-api:1.0"
+    compile "org.eclipse:yasson:1.0"
+    compile "org.glassfish:javax.json:1.1"
+
+    compile "com.google.code.gson:gson:2.8.5"
+
+    compile "com.fasterxml.jackson.core:jackson-databind:2.9.8"
+}
+
+
