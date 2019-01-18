@@ -29,11 +29,11 @@ public class Comprador {
         this.edad = edad;
     }
 
-    public List getDirecciones() {
+    public List<Direccion> getDirecciones() {
         return direcciones;
     }
 
-    public void setDirecciones(List direcciones) {
+    public void setDirecciones(List<Direccion> direcciones) {
         this.direcciones = direcciones;
     }
 }
