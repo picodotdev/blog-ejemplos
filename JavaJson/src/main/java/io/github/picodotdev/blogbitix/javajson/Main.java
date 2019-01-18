@@ -42,7 +42,7 @@ public class Main {
         System.out.printf("JSON-P (JsonObject): %s%n", jsonp.toString());
 
         JsonPatch jsonPatch = Json.createPatchBuilder().add("/telefono", "111111111").remove("/direcciones/0").build();
-        jsonp = Json.createPatchBuilder().add("/telefono", "111111111").remove("/direcciones/0").build().apply(jsonp);
+        jsonp = jsonPatch.apply(jsonp);
         System.out.printf("JSON-P (JsonPatch): %s%n", jsonPatch.toString());
         System.out.printf("JSON-P (JsonObject): %s%n", jsonp.toString());
 
