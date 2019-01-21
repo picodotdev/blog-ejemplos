@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+mainClassName = 'io.github.picodotdev.blogbitix.javasound.Main'
+sourceCompatibility = 11
+targetCompatibility = 11
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+}
+
