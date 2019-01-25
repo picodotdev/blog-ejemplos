@@ -77,6 +77,7 @@ public class Main {
         // JsonPath
         BufferedReader br = new BufferedReader(new InputStreamReader(Main.class.getResourceAsStream("/store.json")));
         String storeJson = br.lines().collect(Collectors.joining());
+        br.close();
 
         ReadContext readContext = JsonPath.parse(storeJson);
 
@@ -88,11 +89,10 @@ public class Main {
         expressions.put("first-books", "$.store.book[:2]");
         expressions.put("prices", "$..price");
 
-        expressions.forEach((k, e) -> {
-            Object value = readContext.read(e);
-            System.out.printf("%s: %s%n", k, value);
+        expressions.forEach((key, expression) -> {
+            Object value = readContext.read(expression);
+            System.out.printf("%s: %s%n", key, value);
         });
-
     }
 
     private static Comprador buildComprador() {
