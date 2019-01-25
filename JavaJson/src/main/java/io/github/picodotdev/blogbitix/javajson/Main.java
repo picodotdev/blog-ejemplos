@@ -3,14 +3,21 @@ package io.github.picodotdev.blogbitix.javajson;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonPatch;
-import javax.json.JsonPatchBuilder;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.Jsonb;
 import com.google.gson.Gson;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.JsonArray;
+import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.ReadContext;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -66,6 +73,26 @@ public class Main {
         comprador = mapper.readValue(json, Comprador.class);
         System.out.printf("Jackson: %s%n", json);
         System.out.printf("Jackson (comprador): %s, %s, %d%n", comprador.getNombre(), comprador.getEdad(), comprador.getDirecciones().size());
+
+        // JsonPath
+        BufferedReader br = new BufferedReader(new InputStreamReader(Main.class.getResourceAsStream("/store.json")));
+        String storeJson = br.lines().collect(Collectors.joining());
+
+        ReadContext readContext = JsonPath.parse(storeJson);
+
+        Map<String, String> expressions = new LinkedHashMap<>();
+        expressions.put("authors", "$.store.book[*].author");
+        expressions.put("books", "$.store.book[*]");
+        expressions.put("cheap-books", "$.store.book[?(@.price < 10)]");
+        expressions.put("isbn-books", "$.store.book[?(@.isbn)]");
+        expressions.put("first-books", "$.store.book[:2]");
+        expressions.put("prices", "$..price");
+
+        expressions.forEach((k, e) -> {
+            Object value = readContext.read(e);
+            System.out.printf("%s: %s%n", k, value);
+        });
+
     }
 
     private static Comprador buildComprador() {
