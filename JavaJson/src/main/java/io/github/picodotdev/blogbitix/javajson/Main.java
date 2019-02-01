@@ -5,18 +5,21 @@ import javax.json.JsonObject;
 import javax.json.JsonPatch;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbConfig;
+
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.google.gson.Gson;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.GsonBuilder;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.ReadContext;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.StringReader;
-import java.util.HashMap;
+import java.time.LocalDate;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -28,7 +31,7 @@ public class Main {
         // JSON-P
         JsonObject jsonp = Json.createObjectBuilder()
             .add("name", comprador.getNombre())
-            .add("edad", comprador.getEdad())
+            .add("fechaNacimiento", comprador.getFechaNacimiento().toString())
             .add("direcciones", Json.createArrayBuilder().add(
                 Json.createObjectBuilder()
                     .add("calle", comprador.getDirecciones().get(0).getCalle())
@@ -54,25 +57,35 @@ public class Main {
         System.out.printf("JSON-P (JsonObject): %s%n", jsonp.toString());
 
         // JSON-B
-        Jsonb jsonb = JsonbBuilder.create();
+        JsonbConfig config = new JsonbConfig().withAdapters(new JsonbLocalDateAdapter());
+
+        Jsonb jsonb = JsonbBuilder.create(config);
         json = jsonb.toJson(comprador);
         comprador = jsonb.fromJson(json, Comprador.class);
         System.out.printf("JSON-B: %s%n", json);
-        System.out.printf("JSON-B (comprador): %s, %s, %d%n", comprador.getNombre(), comprador.getEdad(), comprador.getDirecciones().size());
+        System.out.printf("JSON-B (comprador): %s, %s, %d%n", comprador.getNombre(), comprador.getFechaNacimiento(), comprador.getDirecciones().size());
 
         // Gson
-        Gson gson = new Gson();
+        GsonBuilder builder = new GsonBuilder();
+        builder.registerTypeAdapter(LocalDate.class, new GsonLocalDateTypeAdapter());
+        Gson gson = builder.create();;
+
         json = gson.toJson(comprador);
         comprador = gson.fromJson(json, Comprador.class);
         System.out.printf("Gson: %s%n", json);
-        System.out.printf("Gson (comprador): %s, %s, %d%n", comprador.getNombre(), comprador.getEdad(), comprador.getDirecciones().size());
+        System.out.printf("Gson (comprador): %s, %s, %d%n", comprador.getNombre(), comprador.getFechaNacimiento(), comprador.getDirecciones().size());
 
         // Jackson
         ObjectMapper mapper = new ObjectMapper();
+        SimpleModule module = new SimpleModule();
+        module.addSerializer(LocalDate.class, new JacksonLocalDateSerializer());
+        module.addDeserializer(LocalDate.class, new JacksonLocalDateDeserializer());
+        mapper.registerModule(module);
+
         json = mapper.writeValueAsString(comprador);
         comprador = mapper.readValue(json, Comprador.class);
         System.out.printf("Jackson: %s%n", json);
-        System.out.printf("Jackson (comprador): %s, %s, %d%n", comprador.getNombre(), comprador.getEdad(), comprador.getDirecciones().size());
+        System.out.printf("Jackson (comprador): %s, %s, %d%n", comprador.getNombre(), comprador.getFechaNacimiento(), comprador.getDirecciones().size());
 
         // JsonPath
         BufferedReader br = new BufferedReader(new InputStreamReader(Main.class.getResourceAsStream("/store.json")));
@@ -98,7 +111,7 @@ public class Main {
     private static Comprador buildComprador() {
         Comprador comprador = new Comprador();
         comprador.setNombre("Juan");
-        comprador.setEdad(30);
+        comprador.setFechaNacimiento(LocalDate.now());
         comprador.getDirecciones().add(buildDireccion());
         comprador.getDirecciones().add(buildDireccion());
         return comprador;

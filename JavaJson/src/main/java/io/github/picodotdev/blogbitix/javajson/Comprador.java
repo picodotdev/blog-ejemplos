@@ -1,12 +1,13 @@
 package io.github.picodotdev.blogbitix.javajson;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Comprador {
 
     private String nombre;
-    private int edad;
+    private LocalDate fechaNacimiento;
     private List<Direccion> direcciones;
 
     public Comprador() {
@@ -21,12 +22,12 @@ public class Comprador {
         this.nombre = nombre;
     }
 
-    public int getEdad() {
-        return edad;
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public List<Direccion> getDirecciones() {
