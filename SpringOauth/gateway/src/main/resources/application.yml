@@ -1,0 +1,12 @@
+server.port: 8090
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: path_route
+        uri: http://localhost:8080/
+        predicates:
+        - Path=/service/
+        filters:
+        - RewritePath=/service/, /

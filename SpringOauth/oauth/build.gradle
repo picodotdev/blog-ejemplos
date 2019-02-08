@@ -1,0 +1,28 @@
+plugins {
+    id 'application'
+    id 'org.springframework.boot' version '2.0.8.RELEASE'
+}
+
+mainClassName = 'io.github.picodotdev.blogbitix.springoauth.oauth.Main'
+
+dependencies {
+    implementation platform('org.springframework.boot:spring-boot-dependencies:2.0.8.RELEASE')
+    implementation platform('org.springframework.cloud:spring-cloud-dependencies:Finchley.SR2')
+    
+    def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+	compile('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
+    compile('org.springframework.boot:spring-boot-starter-web', excludeSpringBootStarterLogging)
+    compile('org.springframework.boot:spring-boot-starter-security', excludeSpringBootStarterLogging)
+    compile('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)    
+    compile('org.springframework.security.oauth:spring-security-oauth2:2.3.4.RELEASE', excludeSpringBootStarterLogging)
+    compile('org.springframework.security:spring-security-jwt:1.0.10.RELEASE', excludeSpringBootStarterLogging)
+
+    runtime('com.google.code.gson:gson:2.8.5')
+    runtime('com.fasterxml.jackson.core:jackson-databind:2.9.6')
+    runtime('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6')
+
+    runtime('javax.xml.bind:jaxb-api:2.3.0')
+    runtime('com.sun.xml.bind:jaxb-impl:2.3.0')
+    runtime('org.glassfish.jaxb:jaxb-runtime:2.3.0')
+    runtime('javax.activation:activation:1.1.1')
+}
