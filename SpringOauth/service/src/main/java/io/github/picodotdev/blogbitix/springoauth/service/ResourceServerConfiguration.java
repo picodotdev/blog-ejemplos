@@ -31,7 +31,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableResourceServer
-@EnableGlobalMethodSecurity
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
     @Autowired
