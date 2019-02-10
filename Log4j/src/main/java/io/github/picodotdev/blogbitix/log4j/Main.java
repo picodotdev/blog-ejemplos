@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 public class Main {
 
@@ -17,6 +16,7 @@ public class Main {
         logger.info(product);
         logger.info(new SimpleProductMessage(product));
         logger.info(new ProductMessage(product));
-        logger.info(new SecuredMessage("Tarjeta de crédito: 1111 1111 1111 1111, DNI: 11111111A", Arrays.asList("\\d{4} \\d{4} \\d{4} \\d{4}", "\\d{8}[A-Z]")));
+        logger.info(new SecuredMessage("Tarjeta de crédito: 1111 1111 1111 1111, DNI: 11111111A", Arrays.asList("(\\d{4} \\d{4} \\d{4} \\d{1})(?=\\d{3})", "(\\d{6})(?=\\d{2}[A-Z])")));
+        logger.info("Tarjeta de crédito: 1111 1111 1111 1111, DNI: 11111111A");
     }
 }

@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 public class SecuredMessage implements Message {
 
+    private static final int UNMASKED_CHARACTERS = 3;
+
     private Message message;
     private String string;
     private Pattern pattern;
@@ -72,10 +74,6 @@ public class SecuredMessage implements Message {
     }
 
     private String mask(String string) {
-        if (string.length() > 3) {
-            return string.substring(0, string.length() - 3).replaceAll(".", "*") + string.substring(string.length() - 3, string.length());
-        } else {
-            return string.replaceAll(".", "*");
-        }
+        return string.replaceAll(".", "*");
     }
 }
