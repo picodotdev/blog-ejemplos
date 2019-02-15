@@ -7,8 +7,7 @@ plugins {
     id 'application'
     id 'project-report'
     id 'pmd'
-    id 'org.springframework.boot' version '2.0.7.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+    id 'org.springframework.boot' version '2.0.8.RELEASE'
     id 'nu.studer.jooq' version '3.0.2'
     id 'org.liquibase.gradle' version '2.0.1'
 }
@@ -44,12 +43,6 @@ def versions = [
     jboss_logging:        '3.3.2.Final'
 ]
 
-dependencyManagement {
-	imports {
-		mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.SR2'
-	}
-}
-
 repositories {
     mavenCentral()
 }
@@ -72,7 +65,17 @@ sourceSets {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force "org.hibernate:hibernate-core:$versions.hibernate"
+        force "org.apache.shiro:shiro-all:$versions.shiro"
+        force "org.codehaus.groovy:groovy:$versions.groovy"
+    }
+}
+
 dependencies {
+    implementation platform('org.springframework.boot:spring-boot-dependencies:2.0.8.RELEASE')
+
     def excludeSpring = { exclude(group: 'org.springframework') }
     def excludeShiro = { exclude(group: 'org.apache.shiro') }
     def excludeGroovy = { exclude(group: 'org.codehaus.groovy') }
@@ -88,7 +91,7 @@ dependencies {
     appJavadoc "org.apache.tapestry:tapestry-javadoc:$versions.tapestry"
     
     // Spring
-    compile ("org.apache.tapestry:tapestry-spring:$versions.tapestry", excludeSpring)
+    compile ("org.apache.tapestry:tapestry-spring:$versions.tapestry")
     compile "org.springframework:spring-jdbc:$versions.spring"
     compile "org.springframework:spring-orm:$versions.spring"
     compile "org.springframework:spring-tx:$versions.spring"
@@ -101,25 +104,21 @@ dependencies {
     compile("org.springframework.boot:spring-boot-autoconfigure")
 
     // Persistencia
-    compile "org.hibernate:hibernate-core:$versions.hibernate"
-    compile "org.hibernate:hibernate-validator:$versions.hibernate_validator"
     compile "com.h2database:h2:$versions.h2"
     compile "org.jooq:jooq"
     compile "commons-dbcp:commons-dbcp:1.4"
     
     // Seguridad
-    compile("org.tynamo:tapestry-security:$versions.tapestry_security", excludeShiro)
-    compile "org.apache.shiro:shiro-all:$versions.shiro"
+    compile("org.tynamo:tapestry-security:$versions.tapestry_security")
     
     // Pruebas unitarias
     testCompile("org.apache.tapestry:tapestry-test:$versions.tapestry") { exclude(group: 'org.testng'); exclude(group: 'org.seleniumhq.selenium') }
     testCompile "net.sourceforge.tapestrytestify:tapestry-testify:$versions.tapestry_testify"
     testCompile "net.sourceforge.tapestryxpath:tapestry-xpath:$versions.tapestry_xpath"
     testCompile "junit:junit:$versions.junit"
-    testCompile "org.codehaus.groovy:groovy:$versions.groovy"
     testCompile "org.mockito:mockito-core:$versions.mockito"
-    testCompile("org.spockframework:spock-core:$versions.spock", excludeGroovy)
-    testCompile("org.spockframework:spock-spring:$versions.spock", excludeGroovy)
+    testCompile("org.spockframework:spock-core:$versions.spock")
+    testCompile("org.spockframework:spock-spring:$versions.spock")
     testCompile "org.seleniumhq.selenium:selenium-api:$versions.selenium"
     testCompile "org.seleniumhq.selenium:selenium-java:$versions.selenium"
     testCompile "org.seleniumhq.selenium:selenium-server:$versions.selenium"
@@ -127,7 +126,7 @@ dependencies {
     testCompile "net.sourceforge.htmlunit:htmlunit-cssparser:$versions.htmlunit_csspaser"
  
     // Pruebas de integración    
-    testCompile("org.gebish:geb-spock:$versions.geb", excludeGroovy)
+    testCompile("org.gebish:geb-spock:$versions.geb")
     testCompile "org.gebish:geb-junit4:$versions.geb"
     testCompile("org.springframework.boot:spring-boot-starter-test", excludeSpringBootStarterLogging)
 
