@@ -8,6 +8,7 @@ public class Order {
 
     Collection<Product> products;
 
+    // Inner
     public enum Discount {
         NORMAL, DISCOUNT_10, CHEAPEST_FREE
     }
@@ -20,12 +21,14 @@ public class Order {
         return new PriceCalculatorFactory().getInstance(discount).calculate(products);
     }
 
-    private class PriceCalculatorFactory {
+    // Inner static
+    private static class PriceCalculatorFactory {
         PriceCalculator getInstance(Discount discount) {
             switch (discount) {
                 case DISCOUNT_10:
                     return new DiscountCalculator(new BigDecimal("0.90"));                    
                 case CHEAPEST_FREE:
+                    // Anonymous
                     return new NormalCalculator() {
                         @Override
                         BigDecimal calculate(Collection<Product> products) {
@@ -40,10 +43,12 @@ public class Order {
         }
     }
 
+    // Inner static
     private static abstract class PriceCalculator {
         abstract BigDecimal calculate(Collection<Product> products);
     }
 
+    // Inner static
     private static class NormalCalculator extends PriceCalculator {
 
         @Override
@@ -52,6 +57,7 @@ public class Order {
         }
     }
 
+    // Inner static
     private static class DiscountCalculator extends PriceCalculator {
 
         private BigDecimal discount;
