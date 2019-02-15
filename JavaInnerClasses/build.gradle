@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+mainClassName = 'io.github.picodotdev.blogbitix.javainnerclasses.Main'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+}
