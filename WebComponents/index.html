@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Web Components</title>
+    <script type="text/javascript">
+        class HelloWorld extends HTMLElement {
+            static get observedAttributes() {
+                return ["observed"];
+            }
+
+            constructor() {
+                super();
+
+                let style = document.createElement("style");
+                style.textContent = ".paragraph { font-size: 2em; font-weight: bold; }";
+
+                let paragraph = document.createElement("p");
+                paragraph.setAttribute("class", "paragraph");
+                paragraph.textContent = "Hello World!";
+
+                let shadow = this.attachShadow({mode: "open"});
+                shadow.appendChild(style);
+                shadow.appendChild(paragraph);
+            }
+
+            connectedCallback() {
+                console.log("HelloWorld element added to page.");
+            }
+
+            attributeChangedCallback(name, oldValue, newValue) {        
+                console.log("HelloWorld element attributes changed.");
+                console.log({name: name, oldValue: oldValue, newValue: newValue});
+            }
+        }
+
+        class HelloWorldCustomized extends HTMLParagraphElement {
+            static get observedAttributes() {
+                return ["observed"];
+            }
+
+            constructor() {
+                super();
+
+                let style = document.createElement("style");
+                style.textContent = ".paragraph { font-size: 2em; font-weight: bold; }";
+
+                let span = document.createElement("span");
+                span.setAttribute("class", "paragraph");
+                span.textContent = "Hello World! (Customized)";
+
+                let shadow = this.attachShadow({mode: "open"});
+                shadow.appendChild(style);
+                shadow.appendChild(span);
+            }
+
+            connectedCallback() {
+                console.log("HelloWorld (Customized) element added to page.");
+            }
+
+            attributeChangedCallback(name, oldValue, newValue) {        
+                console.log("HelloWorld (Customized) element attributes changed.");
+                console.log({name: name, oldValue: oldValue, newValue: newValue});
+            }
+        }
+
+        class HelloWorldTemplate extends HTMLElement {
+            static get observedAttributes() {
+                return ["observed"];
+            }
+
+            constructor() {
+                super();
+
+                let template = document.getElementById('hello-world-template');
+
+                let shadow = this.attachShadow({mode: 'open'})
+                shadow.appendChild(template.content.cloneNode(true));
+            }
+
+            connectedCallback() {
+                console.log("HelloWorldTemplate element added to page.");
+            }
+
+            attributeChangedCallback(name, oldValue, newValue) {        
+                console.log("HelloWorldTemplate element attributes changed.");
+                console.log({name: name, oldValue: oldValue, newValue: newValue});
+            }
+        }
+
+        class HelloWorldSlot extends HTMLElement {
+            static get observedAttributes() {
+                return ["observed"];
+            }
+
+            constructor() {
+                super();
+
+                let template = document.getElementById('hello-world-slot');
+
+                let shadow = this.attachShadow({mode: 'open'})
+                shadow.appendChild(template.content.cloneNode(true));
+            }
+
+            connectedCallback() {
+                console.log("HelloWorldSlot element added to page.");
+            }
+
+            attributeChangedCallback(name, oldValue, newValue) {        
+                console.log("HelloWorldSlot element attributes changed.");
+                console.log({name: name, oldValue: oldValue, newValue: newValue});
+            }
+        }
+
+        customElements.define("hello-world", HelloWorld);
+        customElements.define("hello-world-customized", HelloWorldCustomized, { extends: "p" });
+        customElements.define("hello-world-template", HelloWorldTemplate);
+        customElements.define("hello-world-slot", HelloWorldSlot);
+    </script>
+</head>
+<body>
+    <template id="hello-world-template">
+        <style>
+            .paragraph {
+                font-size: 2em;
+                font-weight: bold;
+            }
+        </style>
+        <p class="paragraph">Hello World! (Template)</p>
+    </template>
+    <template id="hello-world-slot">
+        <style>
+            .paragraph {
+                font-size: 2em;
+                font-weight: bold;
+            }
+        </style>
+        <p class="paragraph"><slot name="text">Hello World! (Slot)</slot></p>
+    </template>
+
+    <hello-world observed="value"></hello-world>
+    <p is="hello-world-customized"></p>
+    <hello-world-template></hello-world-template>
+    <hello-world-slot></hello-world-slot>
+    <hello-world-slot>
+        <span slot="text">Hello World! (Slot Custom)</span>
+    </hello-world-slot>
+</body>
+</html>
