@@ -1,9 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Session Attributes</title>
-	<link rel="stylesheet" href="assets/bootstrap.min.css">
+	<link rel="stylesheet" th:href="@{/bootstrap.min.css}">
 	<style type="text/css">
 		body {
 			padding: 1em;
@@ -16,7 +15,7 @@
 		<p>This application demonstrates how to use a Redis instance to back your session. Notice that there is no JSESSIONID cookie. We are also able to customize the way of identifying what the requested session id is.</p>
 		
 		<h1>Try it</h1>
-		<form action="./attributes" method="post" class="form-inline" role="form">
+		<form th:action="@{/attributes}" method="post" class="form-inline" role="form">
 			<label for="attributeValue">Attribute Name</label>
 			<input id="attributeValue" type="text" name="attributeName"/>
 			<label for="attributeValue">Attribute Value</label>
@@ -32,12 +31,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${sessionScope}" var="attr">
-					<tr>
-						<td><c:out value="${attr.key}"/></td>
-						<td><c:out value="${attr.value}"/></td>
-					</tr>
-				</c:forEach>
+				<tr th:each="attribute : ${session}">
+					<td th:text="${attribute.key}"></td>
+					<td th:text="${attribute.value}"></td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
