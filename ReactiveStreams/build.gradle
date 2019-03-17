@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+}
+
+mainClassName = 'io.github.picodotdev.blogbitix.reactivestreams.Main'
