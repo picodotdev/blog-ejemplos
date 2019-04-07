@@ -1,18 +1,13 @@
 plugins {
     id 'application'
-    id 'org.springframework.boot' version '2.0.7.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
 }
 
 mainClassName = 'io.github.picodotdev.blogbitix.springcloud.configserver.Main'
 
-dependencyManagement {
-    imports {
-        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.SR2'
-    }
-}
-
 dependencies {
+    implementation platform("org.springframework.boot:spring-boot-dependencies:2.1.4.RELEASE")
+    implementation platform("org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR1")
+
 	// Spring
     def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
 	compile('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)

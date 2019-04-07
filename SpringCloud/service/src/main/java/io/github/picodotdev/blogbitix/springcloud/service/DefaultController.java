@@ -1,5 +1,9 @@
 package io.github.picodotdev.blogbitix.springcloud.service;
 
+import brave.Span;
+import brave.Tracer;
+import brave.Tracing;
+import brave.propagation.TraceContext;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +19,12 @@ public class DefaultController {
 	@Autowired
 	private DefaultConfiguration configuration;
 
+	@Autowired
+	private Tracing tracing;
+
+	@Autowired
+	private Tracer tracer;
+
 	private Random random;
 	private Counter counter;
 
@@ -29,6 +39,10 @@ public class DefaultController {
 
 		// Timeout simulation
 		//Thread.sleep(random.nextInt(2000));
+
+		TraceContext.Extractor<HttpServletRequest> extractor = tracing.propagation().extractor((HttpServletRequest carrier, String key) -> { return carrier.getHeader(key); });
+		Span span = tracer.nextSpan(extractor.extract(request));
+		System.out.printf("Service Span (traceId: %s, spanId: %s)%n", span.context().traceIdString(), span.context().spanIdString());
 
 		return String.format("Hello world (%s, %s)", request.getRequestURL(), configuration.getKey());
 	}

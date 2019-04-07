@@ -26,10 +26,12 @@ public class Main implements CommandLineRunner {
 	@Autowired
 	private ProxyService proxy;
 
+	/*
 	@Bean
 	HystrixMetricsBinder hystrixMetricsBinder() {
 		return new HystrixMetricsBinder();
 	}
+	*/
     
 	@Override
 	public void run(String... args) throws Exception {
