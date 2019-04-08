@@ -5,8 +5,8 @@ mainClassName = 'io.github.picodotdev.springsession.Main'
 
 ext {
     versions = [
-        jedis: '2.9.3',
-        springBoot: '2.1.3.RELEASE',
+        jedis: '2.10.2',
+        springBoot: '2.1.4.RELEASE',
     ]
 }
 
