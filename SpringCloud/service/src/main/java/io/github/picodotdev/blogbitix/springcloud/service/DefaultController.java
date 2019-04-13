@@ -38,7 +38,7 @@ public class DefaultController {
 		counter.increment();
 
 		// Timeout simulation
-		//Thread.sleep(random.nextInt(2000));
+		Thread.sleep(random.nextInt(4000));
 
 		TraceContext.Extractor<HttpServletRequest> extractor = tracing.propagation().extractor((HttpServletRequest carrier, String key) -> { return carrier.getHeader(key); });
 		Span span = tracer.nextSpan(extractor.extract(request));

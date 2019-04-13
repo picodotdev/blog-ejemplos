@@ -1,0 +1,17 @@
+{
+  "instance": {
+    "instanceId": "localhost:app:8090",
+    "hostName": "localhost",
+    "app": "app",
+    "ipAddr": "127.0.0.1",
+    "status": "UP",
+    "port": {
+      "$": 8090,
+      "@enabled": "true"
+    },
+    "dataCenterInfo": {
+      "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
+      "name": "MyOwn"
+    }
+  }
+}

@@ -26,6 +26,9 @@ public class Main implements CommandLineRunner {
 	@Autowired
 	private ProxyService proxy;
 
+	@Autowired
+	private Resilience4jProxyService resilience4jProxy;
+
 	/*
 	@Bean
 	HystrixMetricsBinder hystrixMetricsBinder() {
@@ -40,9 +43,22 @@ public class Main implements CommandLineRunner {
 		System.out.printf("Valor de propiedad de configuración (%s): %s%n", "config.service", configuration.getService());
 
 		for (int i = 0; i < 20000; ++i) {
-			String response = (configuration.getService().equals("service")) ? service.get() : proxy.get();
+			String response = get();
 			System.out.printf("Service response: %s%n", response);
 			Thread.sleep(100);
+		}
+	}
+
+	private String get() {
+		switch (configuration.getService()) {
+			case "serivce":
+				return service.get();
+			case "proxy":
+				return proxy.get();
+			case "resilience4jproxy":
+				return resilience4jProxy.get();
+			default:
+				return "";
 		}
 	}
 
