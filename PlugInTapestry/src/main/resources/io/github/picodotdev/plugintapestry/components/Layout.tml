@@ -5,8 +5,8 @@
 <meta t:type="any" t:pagina="${pagina}" />
 <title>${titulo}</title>
 <!-- Resources -->
-<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css"/>
-<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Cantarell:400,700" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 	<div class="container">

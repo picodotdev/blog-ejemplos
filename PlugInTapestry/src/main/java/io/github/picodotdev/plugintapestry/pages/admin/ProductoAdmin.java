@@ -74,6 +74,9 @@ public class ProductoAdmin {
 	}
 
 	Object[] onPassivate() {
+		if (producto == null && modo == null) {
+			return null;
+		}
 		return new Object[] { (producto == null) ? null : producto.getId(), (modo == null) ? null : modo.toString().toLowerCase() };
 	}
 
@@ -155,7 +158,7 @@ public class ProductoAdmin {
 				return listaBlock;
 		}
 	}
-	
+
 	// La anotacion @Cached permite cachar el resultado de un método de forma
 	// que solo se evalúe
 	// una vez independientemente del número de veces que se llame en la

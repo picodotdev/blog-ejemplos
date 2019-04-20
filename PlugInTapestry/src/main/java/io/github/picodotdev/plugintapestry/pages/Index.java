@@ -74,12 +74,8 @@ public class Index {
 	private JavaScriptSupport javascriptSupport;
 
 	// Ciclo de vida
-	Object onActivate(Object[] context) {
+	void onActivate() {
 		logger.info("Activating page {}", Index.class.getSimpleName());
-		if (context != null && context.length > 0) {
-			return Error404.class;
-		}
-		return null;
 	}
 
 	/**

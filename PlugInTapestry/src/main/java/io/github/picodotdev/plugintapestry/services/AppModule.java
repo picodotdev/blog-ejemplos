@@ -1,31 +1,29 @@
 package io.github.picodotdev.plugintapestry.services;
 
-import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.UUID;
-
-import javax.servlet.ServletContext;
-import javax.validation.ValidationException;
-
+import io.github.picodotdev.plugintapestry.misc.ContextListener;
+import io.github.picodotdev.plugintapestry.misc.DateTranslator;
+import io.github.picodotdev.plugintapestry.misc.LocalDateTimeTranslator;
+import io.github.picodotdev.plugintapestry.misc.PlugInStack;
+import io.github.picodotdev.plugintapestry.misc.WildFlyClasspathURLConverter;
+import io.github.picodotdev.plugintapestry.services.hibernate.HibernateSessionSourceImpl;
+import io.github.picodotdev.plugintapestry.services.workers.CsrfWorker;
 import org.apache.shiro.realm.Realm;
 import org.apache.tapestry5.SymbolConstants;
-import org.apache.tapestry5.annotations.Path;
 import org.apache.tapestry5.beanvalidator.BeanValidatorConfigurer;
 import org.apache.tapestry5.hibernate.HibernateSessionSource;
 import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
-import org.apache.tapestry5.ioc.Resource;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.Local;
 import org.apache.tapestry5.ioc.annotations.Symbol;
 import org.apache.tapestry5.ioc.services.ClasspathURLConverter;
 import org.apache.tapestry5.services.BaseURLSource;
-import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.Core;
-import org.apache.tapestry5.services.javascript.JavaScriptModuleConfiguration;
+import org.apache.tapestry5.services.Request;
+import org.apache.tapestry5.services.compatibility.Compatibility;
+import org.apache.tapestry5.services.compatibility.Trait;
 import org.apache.tapestry5.services.javascript.JavaScriptStack;
 import org.apache.tapestry5.services.javascript.StackExtension;
 import org.apache.tapestry5.services.transform.ComponentClassTransformWorker2;
@@ -34,15 +32,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.tynamo.security.SecuritySymbols;
 
-import io.github.picodotdev.plugintapestry.misc.ContextListener;
-import io.github.picodotdev.plugintapestry.misc.DateTranslator;
-import io.github.picodotdev.plugintapestry.misc.LocalDateTimeTranslator;
-import io.github.picodotdev.plugintapestry.misc.PlugInStack;
-import io.github.picodotdev.plugintapestry.misc.WildFlyClasspathURLConverter;
-import io.github.picodotdev.plugintapestry.pages.Error500;
-import io.github.picodotdev.plugintapestry.pages.ExceptionReport;
-import io.github.picodotdev.plugintapestry.services.hibernate.HibernateSessionSourceImpl;
-import io.github.picodotdev.plugintapestry.services.workers.CsrfWorker;
+import javax.servlet.ServletContext;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.UUID;
 
 public class AppModule {
 
@@ -150,7 +143,12 @@ public class AppModule {
 		configuration.override("underscore-library", StackExtension.library("classpath:/META-INF/resources/webjars/underscore/1.9.1/underscore-min.js"));
 	}
 
-	public static void contributeClasspathAssetAliasManager(MappedConfiguration configuration) {
+	public static void contributeCompatibility(MappedConfiguration<Trait, Boolean> configuration) {
+		configuration.add(Trait.INITIALIZERS, Boolean.FALSE);
+		configuration.add(Trait.SCRIPTACULOUS, Boolean.FALSE);
+	}
+
+	public static void contributeClasspathAssetAliasManager(MappedConfiguration<String, String> configuration) {
         configuration.add("webjars", "META-INF/resources/webjars");
     }
 

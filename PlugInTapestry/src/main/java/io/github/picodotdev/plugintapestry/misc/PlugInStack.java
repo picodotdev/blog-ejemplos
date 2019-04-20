@@ -1,7 +1,6 @@
 package io.github.picodotdev.plugintapestry.misc;
 
 import org.apache.tapestry5.Asset;
-import org.apache.tapestry5.internal.services.UrlAsset;
 import org.apache.tapestry5.services.AssetSource;
 import org.apache.tapestry5.services.javascript.JavaScriptAggregationStrategy;
 import org.apache.tapestry5.services.javascript.JavaScriptStack;
@@ -33,7 +32,7 @@ public class PlugInStack implements JavaScriptStack {
 	public List<Asset> getJavaScriptLibraries() {
 		List<Asset> r = new ArrayList<>();
 		r.add(assetSource.getClasspathAsset("META-INF/assets/tapestry5/bootstrap/js/dropdown.js"));
-		r.add(new UrlAsset("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js", null));
+		r.add(assetSource.getClasspathAsset("META-INF/resources/webjars/bootstrap-select/1.13.8/js/bootstrap-select.min.js"));
 		return r;
 	}
 	
@@ -45,7 +44,7 @@ public class PlugInStack implements JavaScriptStack {
 	@Override
 	public List<StylesheetLink> getStylesheets() {
 		List<StylesheetLink> r = new ArrayList<>();
-		r.add(new StylesheetLink("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css"));
+		r.add(new StylesheetLink(assetSource.getClasspathAsset("META-INF/resources/webjars/bootstrap-select/1.13.8/css/bootstrap-select.min.css", null)));
 		r.add(new StylesheetLink(assetSource.getContextAsset("css/app.css", null)));
 		return r;
 	}

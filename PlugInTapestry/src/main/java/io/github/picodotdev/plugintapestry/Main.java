@@ -1,13 +1,16 @@
 package io.github.picodotdev.plugintapestry;
 
 import io.github.picodotdev.plugintapestry.spring.AppConfiguration;
+import org.apache.catalina.Context;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.embedded.tomcat.TomcatContextCustomizer;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 @SpringBootApplication
@@ -26,7 +29,7 @@ public class Main extends SpringBootServletInitializer implements CommandLineRun
 		logger.info("\n" + banner.toString());
 		logger.info("Application running");
  	}
-	
+
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(AppConfiguration.class);

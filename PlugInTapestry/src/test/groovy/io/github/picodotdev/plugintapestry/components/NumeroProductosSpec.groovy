@@ -4,7 +4,7 @@ import org.apache.tapestry5.MarkupWriter
 import org.apache.tapestry5.internal.services.MarkupWriterImpl
 
 import io.github.picodotdev.plugintapestry.services.dao.JooqProductoDAO
-
+import org.apache.tapestry5.test.PageTester
 import spock.lang.Specification
 
 class NumeroProductosSpec extends Specification {

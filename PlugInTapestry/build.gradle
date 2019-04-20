@@ -7,44 +7,65 @@ plugins {
     id 'application'
     id 'project-report'
     id 'pmd'
-    id 'org.springframework.boot' version '2.0.8.RELEASE'
-    id 'nu.studer.jooq' version '3.0.2'
+    id 'nu.studer.jooq' version '3.0.3'
     id 'org.liquibase.gradle' version '2.0.1'
 }
 
 description = 'PlugInTapestry application'
 group = 'io.github.picodotdev.plugintapestry'
-version = '1.7'
+version = '1.8'
 mainClassName = 'io.github.picodotdev.plugintapestry.Main'
 
-def versions = [
-    tapestry:             '5.4.4',
-    tapestry_security:    '0.7.1',
-    tapestry_testify:     '1.0.4',
-    tapestry_xpath:       '1.0.1',
-    spring:               '5.0.11.RELEASE',
-    hibernate:            '5.1.16.Final',
-    hibernate_validator:  '6.0.13.Final',
-    shiro:                '1.3.2',
-    guava:                '27.0.1-jre',
-    h2:                   '1.4.197',
-    log4j2:               '2.11.1',
-    junit:                '4.12',
-    groovy:               '2.5.4',
-    mockito:              '2.23.4',
-    geb:                  '2.2',
-    selenium:             '3.141.59',
-    htmlunit_driver:      '2.33.3',
-    htmlunit_csspaser:    '1.2.0',
-    spock:                '1.2-groovy-2.5',
-    liquibase:            '3.6.2',
-    liquibase_groovy_dsl: '2.0.2',
-    jboss_vfs:            '3.2.14.Final',
-    jboss_logging:        '3.3.2.Final'
-]
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+ext {
+    versions = [
+        tapestry:             '5.4.4',
+        tapestrySecurity:     '0.7.1',
+        tapestryTestify:      '1.0.4',
+        tapestryXpath:        '1.0.1',
+        commons_dbcp:         '1.4',
+        hibernate:            '5.1.16.Final',
+        hibernateValidator:   '6.0.13.Final',
+        geb:                  '2.3.1',
+        groovy:               '2.5.4',
+        guava:                '27.0.1-jre',
+        h2:                   '1.4.197',
+        htmlunitDriver:       '2.33.3',
+        htmlunitCsspaser:     '1.2.0',
+        jackson:              '2.9.6',
+        javaee:               '8.0',
+        json:                 '1.1.2',
+        jooq:                 '3.11.10',
+        junit:                '4.12',
+        liquibase:            '3.6.2',
+        liquibaseGroovyDsl:   '2.0.2',
+        log4j2:               '2.11.1',
+        mockito:              '2.23.4',
+        selenium:             '3.141.59',
+        shiro:                '1.3.2',
+        spock:                '1.3-RC1-groovy-2.5',
+        spring:               '5.0.11.RELEASE',
+        springBoot:           '2.1.4.RELEASE',
+        jbossVfs:             '3.2.14.Final',
+        jbossLogging:         '3.3.2.Final',
+        webjars: [
+            requirejs:        '2.3.5',
+            jquery:           '3.3.1-1',
+            underscore:       '1.9.1',
+            bootstrapSelect:  '1.13.8'
+        ],
+        yasson:               '1.0.1'
+    ]
+}
 
 repositories {
+    mavenLocal()
     mavenCentral()
+    maven {
+        url 'https://repository.apache.org/content/repositories/staging/'
+    }
 }
 
 // This simulates Maven's 'provided' scope, until it is officially supported by Gradle
@@ -74,27 +95,24 @@ configurations.all {
 }
 
 dependencies {
-    implementation platform('org.springframework.boot:spring-boot-dependencies:2.0.8.RELEASE')
+    implementation platform("org.springframework.boot:spring-boot-dependencies:$versions.springBoot")
 
-    def excludeSpring = { exclude(group: 'org.springframework') }
-    def excludeShiro = { exclude(group: 'org.apache.shiro') }
-    def excludeGroovy = { exclude(group: 'org.codehaus.groovy') }
     def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
 
     // Tapestry
-    compile "org.apache.tapestry:tapestry-core:$versions.tapestry"
-    compile "org.apache.tapestry:tapestry-hibernate:$versions.tapestry"
-    compile "org.apache.tapestry:tapestry-beanvalidator:$versions.tapestry"
+    compile("org.apache.tapestry:tapestry-core:$versions.tapestry")
+    compile("org.apache.tapestry:tapestry-hibernate:$versions.tapestry")
+    compile("org.apache.tapestry:tapestry-beanvalidator:$versions.tapestry")
 
     // Compresión automática de javascript y css en el modo producción
-    compile "org.apache.tapestry:tapestry-webresources:$versions.tapestry"
-    appJavadoc "org.apache.tapestry:tapestry-javadoc:$versions.tapestry"
-    
+    compile("org.apache.tapestry:tapestry-webresources:$versions.tapestry")
+    appJavadoc("org.apache.tapestry:tapestry-javadoc:$versions.tapestry")
+
     // Spring
-    compile ("org.apache.tapestry:tapestry-spring:$versions.tapestry")
-    compile "org.springframework:spring-jdbc:$versions.spring"
-    compile "org.springframework:spring-orm:$versions.spring"
-    compile "org.springframework:spring-tx:$versions.spring"
+    compile("org.apache.tapestry:tapestry-spring:$versions.tapestry")
+    compile("org.springframework:spring-jdbc:$versions.spring")
+    compile("org.springframework:spring-orm:$versions.spring")
+    compile("org.springframework:spring-tx:$versions.spring")
 
 	// Spring Boot
     compile("org.springframework.boot:spring-boot-starter", excludeSpringBootStarterLogging)
@@ -102,55 +120,54 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator", excludeSpringBootStarterLogging)
     compile("org.springframework.boot:spring-boot-starter-log4j2")
     compile("org.springframework.boot:spring-boot-autoconfigure")
+    compile("org.springframework.boot:spring-boot-starter-tomcat")
 
     // Persistencia
-    compile "com.h2database:h2:$versions.h2"
-    compile "org.jooq:jooq"
-    compile "commons-dbcp:commons-dbcp:1.4"
+    compile("org.jooq:jooq:$versions.jooq")
+    compile("commons-dbcp:commons-dbcp:$versions.commons_dbcp")
+    compile("com.h2database:h2:$versions.h2")
     
     // Seguridad
-    compile("org.tynamo:tapestry-security:$versions.tapestry_security")
+    compile("org.tynamo:tapestry-security:$versions.tapestrySecurity")
+
+    // Otras
+    compile("javax:javaee-api:$versions.javaee")
+    compile("com.google.guava:guava:$versions.guava")
     
     // Pruebas unitarias
     testCompile("org.apache.tapestry:tapestry-test:$versions.tapestry") { exclude(group: 'org.testng'); exclude(group: 'org.seleniumhq.selenium') }
-    testCompile "net.sourceforge.tapestrytestify:tapestry-testify:$versions.tapestry_testify"
-    testCompile "net.sourceforge.tapestryxpath:tapestry-xpath:$versions.tapestry_xpath"
-    testCompile "junit:junit:$versions.junit"
-    testCompile "org.mockito:mockito-core:$versions.mockito"
+    testCompile("net.sourceforge.tapestrytestify:tapestry-testify:$versions.tapestryTestify")
+    testCompile("net.sourceforge.tapestryxpath:tapestry-xpath:$versions.tapestryXpath")
+    testCompile("junit:junit:$versions.junit")
+    testCompile("org.mockito:mockito-core:$versions.mockito")
     testCompile("org.spockframework:spock-core:$versions.spock")
     testCompile("org.spockframework:spock-spring:$versions.spock")
-    testCompile "org.seleniumhq.selenium:selenium-api:$versions.selenium"
-    testCompile "org.seleniumhq.selenium:selenium-java:$versions.selenium"
-    testCompile "org.seleniumhq.selenium:selenium-server:$versions.selenium"
-    testCompile "org.seleniumhq.selenium:htmlunit-driver:$versions.htmlunit_driver"
-    testCompile "net.sourceforge.htmlunit:htmlunit-cssparser:$versions.htmlunit_csspaser"
  
     // Pruebas de integración    
     testCompile("org.gebish:geb-spock:$versions.geb")
-    testCompile "org.gebish:geb-junit4:$versions.geb"
+    testCompile("org.gebish:geb-junit4:$versions.geb")
+    testCompile("org.seleniumhq.selenium:selenium-support:${versions.selenium}")
+    testCompile("org.seleniumhq.selenium:htmlunit-driver:${versions.htmlunitDriver}")
     testCompile("org.springframework.boot:spring-boot-starter-test", excludeSpringBootStarterLogging)
 
     // Webjars
-    runtime 'org.webjars:requirejs:2.3.5'
-    runtime 'org.webjars:jquery:3.3.1-1'
-    runtime 'org.webjars.bower:underscore:1.9.1'
+    runtime("org.webjars:requirejs:$versions.webjars.requirejs")
+    runtime("org.webjars:jquery:$versions.webjars.jquery")
+    runtime("org.webjars.bower:underscore:$versions.webjars.underscore")
+    runtime("org.webjars:bootstrap-select:$versions.webjars.bootstrapSelect")
 
-	// Otras
-    compile "javax:javaee-api:8.0"
-	compile "com.google.guava:guava:$versions.guava"
-	
-    providedCompile "org.jboss:jboss-vfs:$versions.jboss_vfs"
+    providedCompile("org.jboss:jboss-vfs:$versions.jbossVfs")
 
-    runtime "org.jboss.logging:jboss-logging:$versions.jboss_logging"
-    runtime "org.eclipse:yasson:1.0.1"
-    runtime "org.glassfish:javax.json:1.1.2"
-    runtime "com.fasterxml.jackson.core:jackson-databind:2.9.6"
-    runtime "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6"
+    runtime("org.jboss.logging:jboss-logging:$versions.jbossLogging")
+    runtime("org.eclipse:yasson:$versions.yasson")
+    runtime("org.glassfish:javax.json:$versions.json")
+    runtime("com.fasterxml.jackson.core:jackson-databind:$versions.jackson")
+    runtime("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$versions.jackson")
 
-    jooqRuntime "com.h2database:h2:$versions.h2"
-    liquibaseRuntime "org.liquibase:liquibase-core:$versions.liquibase"
-    liquibaseRuntime "org.liquibase:liquibase-groovy-dsl:$versions.liquibase_groovy_dsl"
-    liquibaseRuntime "com.h2database:h2:$versions.h2"
+    jooqRuntime("com.h2database:h2:$versions.h2")
+    liquibaseRuntime("org.liquibase:liquibase-core:$versions.liquibase")
+    liquibaseRuntime("org.liquibase:liquibase-groovy-dsl:$versions.liquibaseGroovyDsl")
+    liquibaseRuntime("com.h2database:h2:$versions.h2")
 }
 
 pmd {
@@ -160,7 +177,7 @@ pmd {
 
 test {
     // Excluir de los teses unitarios los teses de integración
-    exclude '**/*Spec.*'
+    exclude '**/geb/*Spec.*'
 }
 
 task integrationTest(type: Test) {

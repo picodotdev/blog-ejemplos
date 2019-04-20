@@ -12,3 +12,12 @@ configuration:
       level: info
       appenderRef:
         ref: STDOUT
+
+    logger:
+      -
+        name: tapestry.render
+        level: debug
+
+      -
+        name: tapestry.events.com.foo.pages.Index
+        level: debug
