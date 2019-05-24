@@ -5,6 +5,9 @@ import org.apache.logging.log4j.Logger;
 import org.jooq.ExecuteContext;
 import org.jooq.impl.DefaultExecuteListener;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+
 public class JooqExecuteListener extends DefaultExecuteListener {
 
     private static final Logger logger = LogManager.getLogger(JooqExecuteListener.class);
@@ -23,7 +26,7 @@ public class JooqExecuteListener extends DefaultExecuteListener {
         logger.info("{} ({}ms)", ctx.sql(), getTime(start, end));
     }
 
-    private long getTime(long start, long end) {
-        return (end - start) / 1000;
+    private String getTime(long start, long end) {
+        return new BigDecimal(end - start, new MathContext(4)).divide(new BigDecimal(1000000)).toString();
     }
 }
