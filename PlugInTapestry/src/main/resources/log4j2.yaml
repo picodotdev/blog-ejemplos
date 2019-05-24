@@ -21,3 +21,7 @@ configuration:
       -
         name: tapestry.events.com.foo.pages.Index
         level: debug
+
+      -
+        name: io.github.picodotdev.plugintapestry
+        level: debug

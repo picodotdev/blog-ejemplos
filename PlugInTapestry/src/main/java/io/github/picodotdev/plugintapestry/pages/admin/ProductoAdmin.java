@@ -64,10 +64,13 @@ public class ProductoAdmin {
 	@Component
 	private Form form;
 
-	private Modo modo;
-
 	@Property
 	private Producto producto;
+
+	@Property
+	private GridDataSource source;
+
+	private Modo modo;
 
 	void onActivate(Long id, Modo modo) {
 		setModo((modo == null) ? Modo.LISTA : modo, (id == null) ? null : dao.findById(id));
@@ -124,21 +127,7 @@ public class ProductoAdmin {
 	}
 
 	public boolean hasProductos() {
-		return getSource().getAvailableRows() > 0;
-	}
-
-	public GridDataSource getSource() {
-		return new JooqGridDataSource(context, Producto.class) {
-			@Override
-			public int getAvailableRows() {
-				return (int) dao.countAll();
-			}
-			
-			@Override
-			public List find(Pagination pagination) {
-				return dao.findAll(pagination);
-			}
-		};
+		return source.getAvailableRows() > 0;
 	}
 
 	public BeanModel<Producto> getModel() {
@@ -196,6 +185,27 @@ public class ProductoAdmin {
 			default:
 			case LISTA:
 				this.producto = null;
+				this.source = new JooqGridDataSource(context, Producto.class) {
+
+					private int count = -1;
+					private List list = null;
+
+					@Override
+					public int getAvailableRows() {
+						if (count == -1) {
+							count = (int) dao.countAll();
+						}
+						return count;
+					}
+
+					@Override
+					public List find(Pagination pagination) {
+						if (list == null) {
+							list = dao.findAll(pagination);
+						}
+						return list;
+					}
+				};
 				break;
 
 		}

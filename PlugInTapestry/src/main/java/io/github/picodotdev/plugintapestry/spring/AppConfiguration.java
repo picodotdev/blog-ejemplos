@@ -1,6 +1,7 @@
 package io.github.picodotdev.plugintapestry.spring;
 
 import io.github.picodotdev.plugintapestry.misc.AppFilter;
+import io.github.picodotdev.plugintapestry.misc.JooqExecuteListener;
 import io.github.picodotdev.plugintapestry.services.dao.DefaultHibernateProductoDAO;
 import io.github.picodotdev.plugintapestry.services.dao.DefaultJooqProductoDAO;
 import io.github.picodotdev.plugintapestry.services.dao.HibernateProductoDAO;
@@ -16,10 +17,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.dialect.H2Dialect;
 import org.jooq.ConnectionProvider;
 import org.jooq.DSLContext;
+import org.jooq.ExecuteContext;
+import org.jooq.ExecuteListener;
+import org.jooq.ExecuteListenerProvider;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 import org.jooq.impl.DataSourceConnectionProvider;
 import org.jooq.impl.DefaultConfiguration;
+import org.jooq.impl.DefaultExecuteListener;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
@@ -85,10 +90,21 @@ public class AppConfiguration {
     }
 
     @Bean
-    public org.jooq.Configuration config(ConnectionProvider connectionProvider) {
+    public ExecuteListenerProvider executeListenerProvider() {
+        return new ExecuteListenerProvider() {
+            @Override
+            public ExecuteListener provide() {
+                return new JooqExecuteListener();
+            }
+        };
+    }
+
+    @Bean
+    public org.jooq.Configuration config(ConnectionProvider connectionProvider, ExecuteListenerProvider executeListenerProvider) {
         DefaultConfiguration config = new DefaultConfiguration();
         config.set(connectionProvider);
         config.set(SQLDialect.H2);
+        config.set(executeListenerProvider);
         return config;
     }
 
