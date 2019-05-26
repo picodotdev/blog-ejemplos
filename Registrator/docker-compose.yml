@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  consul:
+    image: consul:latest
+    container_name: consul
+    network_mode: "host"
+    command: ["consul", "agent", "-dev", "-ui"]
+  registrator:
+    image: gliderlabs/registrator:latest
+    container_name: registrator
+    network_mode: "host"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+    entrypoint: /bin/registrator consul://localhost:8500
+    depends_on:
+      - consul
+  postgres:
+    image: postgres:alpine
+    container_name: postgres
+    ports:
+        - "5432"
+    environment:
+        - POSTGRES_USER=user
+        - POSTGRES_PASSWORD=password
+        - POSTGRES_DB=database
+    depends_on:
+      - registrator
