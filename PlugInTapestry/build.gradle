@@ -134,7 +134,7 @@ dependencies {
     // Otras
     compile("javax:javaee-api:$versions.javaee")
     compile("com.google.guava:guava:$versions.guava")
-    
+
     // Pruebas unitarias
     testCompile("org.apache.tapestry:tapestry-test:$versions.tapestry") { exclude(group: 'org.testng'); exclude(group: 'org.seleniumhq.selenium') }
     testCompile("net.sourceforge.tapestrytestify:tapestry-testify:$versions.tapestryTestify")

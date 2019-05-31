@@ -27,6 +27,6 @@ public class JooqExecuteListener extends DefaultExecuteListener {
     }
 
     private String getTime(long start, long end) {
-        return new BigDecimal(end - start, new MathContext(4)).divide(new BigDecimal(1000000)).toString();
+        return new BigDecimal(end - start, new MathContext(4)).divide(new BigDecimal("1000000")).toString();
     }
 }

@@ -44,6 +44,7 @@ public class DefaultJooqProductoDAO implements GenericDAO<Producto>, JooqProduct
     @Override
     @Transactional(readOnly = true)
     public List<Producto> findAll(Pagination pagination) {
+        //return context.selectFrom(Tables.PRODUCTO).orderBy(PRODUCTO.CANTIDAD).seek(3l).limit(10).fetchInto(Producto.class);
         return context.selectFrom(Tables.PRODUCTO).orderBy(getSortFields(pagination)).limit(pagination.getOffset(), pagination.getNum()).fetchInto(Producto.class);
     }
 
