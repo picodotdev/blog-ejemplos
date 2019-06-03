@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.graphql;
+package io.github.picodotdev.blogbitix.graphql.misc;
 
 import graphql.ErrorType;
 import graphql.GraphQLError;

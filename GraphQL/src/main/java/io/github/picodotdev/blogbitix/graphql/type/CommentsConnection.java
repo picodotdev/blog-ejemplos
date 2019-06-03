@@ -1,4 +1,6 @@
-package io.github.picodotdev.blogbitix.graphql;
+package io.github.picodotdev.blogbitix.graphql.type;
+
+import io.github.picodotdev.blogbitix.graphql.type.CommentEdge;
 
 import java.util.List;
 import java.util.stream.Collectors;

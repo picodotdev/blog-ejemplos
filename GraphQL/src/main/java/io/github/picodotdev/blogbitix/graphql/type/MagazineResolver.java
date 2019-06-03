@@ -1,7 +1,9 @@
-package io.github.picodotdev.blogbitix.graphql;
+package io.github.picodotdev.blogbitix.graphql.type;
 
 import com.coxautodev.graphql.tools.GraphQLResolver;
 import graphql.execution.batched.Batched;
+import io.github.picodotdev.blogbitix.graphql.LibraryRepository;
+import io.github.picodotdev.blogbitix.graphql.type.Magazine;
 
 import java.util.List;
 import java.util.ArrayList;

@@ -1,6 +1,11 @@
-package io.github.picodotdev.blogbitix.graphql;
+package io.github.picodotdev.blogbitix.graphql.resolver;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import io.github.picodotdev.blogbitix.graphql.LibraryRepository;
+import io.github.picodotdev.blogbitix.graphql.type.Author;
+import io.github.picodotdev.blogbitix.graphql.type.Book;
+import io.github.picodotdev.blogbitix.graphql.type.BookFilter;
+import io.github.picodotdev.blogbitix.graphql.type.Publication;
 
 import java.util.List;
 

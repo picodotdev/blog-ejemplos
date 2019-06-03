@@ -1,7 +1,13 @@
-package io.github.picodotdev.blogbitix.graphql;
+package io.github.picodotdev.blogbitix.graphql.resolver;
 
 import com.coxautodev.graphql.tools.GraphQLResolver;
 import graphql.execution.batched.Batched;
+import io.github.picodotdev.blogbitix.graphql.LibraryRepository;
+import io.github.picodotdev.blogbitix.graphql.type.Book;
+import io.github.picodotdev.blogbitix.graphql.type.Comment;
+import io.github.picodotdev.blogbitix.graphql.type.CommentEdge;
+import io.github.picodotdev.blogbitix.graphql.type.CommentsConnection;
+import io.github.picodotdev.blogbitix.graphql.type.PageInfo;
 
 import java.util.List;
 import java.util.ArrayList;

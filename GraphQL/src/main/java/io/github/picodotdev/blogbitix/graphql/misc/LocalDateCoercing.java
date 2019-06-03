@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.graphql;
+package io.github.picodotdev.blogbitix.graphql.misc;
 
 import graphql.schema.Coercing;
 import graphql.schema.CoercingParseValueException;
