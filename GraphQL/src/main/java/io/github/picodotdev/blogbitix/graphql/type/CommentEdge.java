@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.graphql;
+package io.github.picodotdev.blogbitix.graphql.type;
 
 import graphql.relay.Relay;
 

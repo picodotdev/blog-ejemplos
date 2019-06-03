@@ -1,13 +1,7 @@
-package io.github.picodotdev.blogbitix.graphql;
+package io.github.picodotdev.blogbitix.graphql.type;
 
 import com.coxautodev.graphql.tools.GraphQLResolver;
-import graphql.execution.batched.Batched;
-
-import java.util.List;
-import java.util.ArrayList;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import io.github.picodotdev.blogbitix.graphql.repository.LibraryRepository;
 
 public class MagazineResolver implements GraphQLResolver<Magazine> {
 

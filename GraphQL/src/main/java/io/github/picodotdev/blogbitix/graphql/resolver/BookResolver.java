@@ -1,10 +1,17 @@
-package io.github.picodotdev.blogbitix.graphql;
+package io.github.picodotdev.blogbitix.graphql.resolver;
 
 import com.coxautodev.graphql.tools.GraphQLResolver;
-import graphql.execution.batched.Batched;
+import graphql.schema.DataFetchingEnvironment;
+import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphQLContext;
+import io.github.picodotdev.blogbitix.graphql.repository.LibraryRepository;
+import io.github.picodotdev.blogbitix.graphql.type.Book;
+import io.github.picodotdev.blogbitix.graphql.type.Comment;
+import io.github.picodotdev.blogbitix.graphql.type.CommentEdge;
+import io.github.picodotdev.blogbitix.graphql.type.CommentsConnection;
+import io.github.picodotdev.blogbitix.graphql.type.PageInfo;
 
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -24,12 +31,10 @@ public class BookResolver implements GraphQLResolver<Book> {
         return UUID.randomUUID().toString();
     }
 
-    @Batched
-    public List<String> getBatchedIsbn(List<Book> books) throws InterruptedException {
-        System.out.printf("Getting %d ISBNs...", books.size());
-        Thread.sleep(3000);
-        System.out.printf("ok%n");
-        return books.stream().map(b -> UUID.randomUUID().toString()).collect(Collectors.toList());
+    public String getBatchedIsbn(Book book, DataFetchingEnvironment environment) throws InterruptedException {
+        DefaultGraphQLContext context = environment.getContext();
+        Map<Long, String> isbns = (Map<Long, String>) context.getData().get("batchedIsbn");
+        return isbns.get(book.getId());
     }
 
     public CommentsConnection getComments(Book book, String after, Long limit) {
@@ -61,13 +66,9 @@ public class BookResolver implements GraphQLResolver<Book> {
         return new CommentsConnection(comments, new PageInfo(startCursor, endCursor, hasNextPage));
     }
 
-    @Batched
-    public List<CommentsConnection> getBatchedComments(List<Book> books, String after, Long limit) {
-        List<CommentsConnection> ccs = new ArrayList<>();
-        for (int i = 0; i < books.size(); ++i) {
-            CommentsConnection cc = getComments(books.get(i), null, limit);
-            ccs.add(cc);
-        }
-        return ccs;
+    public CommentsConnection getBatchedComments(Book book, String after, Long limit, DataFetchingEnvironment environment) {
+        DefaultGraphQLContext context = environment.getContext();
+        Map<Long, CommentsConnection> batchedComments = (Map<Long, CommentsConnection>) context.getData().get("batchedComments");
+        return batchedComments.get(book.getId());
     }
 }

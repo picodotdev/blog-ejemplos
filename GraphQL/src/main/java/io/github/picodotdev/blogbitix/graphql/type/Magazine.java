@@ -1,7 +1,4 @@
-package io.github.picodotdev.blogbitix.graphql;
-
-import java.time.LocalDate;
-import java.util.List;
+package io.github.picodotdev.blogbitix.graphql.type;
 
 public class Magazine extends Publication {
     
