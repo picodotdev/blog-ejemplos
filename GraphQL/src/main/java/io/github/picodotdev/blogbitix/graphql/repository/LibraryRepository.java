@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.graphql;
+package io.github.picodotdev.blogbitix.graphql.repository;
 
 import io.github.picodotdev.blogbitix.graphql.misc.AuthContext;
 import io.github.picodotdev.blogbitix.graphql.misc.PermissionException;

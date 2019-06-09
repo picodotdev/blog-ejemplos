@@ -2,7 +2,7 @@ package io.github.picodotdev.blogbitix.graphql.resolver;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import graphql.schema.DataFetchingEnvironment;
-import io.github.picodotdev.blogbitix.graphql.LibraryRepository;
+import io.github.picodotdev.blogbitix.graphql.repository.LibraryRepository;
 import io.github.picodotdev.blogbitix.graphql.misc.AuthContext;
 import io.github.picodotdev.blogbitix.graphql.type.Book;
 

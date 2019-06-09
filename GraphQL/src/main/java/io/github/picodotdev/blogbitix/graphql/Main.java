@@ -3,15 +3,15 @@ package io.github.picodotdev.blogbitix.graphql;
 import com.coxautodev.graphql.tools.SchemaParser;
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
-import graphql.execution.ExecutionStrategy;
-import graphql.execution.batched.BatchedExecutionStrategy;
 import graphql.schema.GraphQLScalarType;
 import graphql.schema.GraphQLSchema;
 import graphql.servlet.GraphQLContext;
 import graphql.servlet.GraphQLContextBuilder;
 import graphql.servlet.GraphQLErrorHandler;
+import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphQLContext;
 import io.github.picodotdev.blogbitix.graphql.misc.GraphQLErrorAdapter;
 import io.github.picodotdev.blogbitix.graphql.misc.LocalDateCoercing;
+import io.github.picodotdev.blogbitix.graphql.repository.LibraryRepository;
 import io.github.picodotdev.blogbitix.graphql.resolver.BookResolver;
 import io.github.picodotdev.blogbitix.graphql.resolver.Mutation;
 import io.github.picodotdev.blogbitix.graphql.resolver.Query;
@@ -43,43 +43,7 @@ public class Main {
     public LibraryRepository buildLibraryRepository() {
         return new LibraryRepository();
     }
-/*
-    @Bean
-    public GraphQLErrorHandler graphQLErrorHandler() {
-        return new GraphQLErrorHandler() {
-            @Override
-            public List<GraphQLError> processErrors(List<GraphQLError> errors) {
-                List<GraphQLError> clientErrors = errors.stream()
-                        .filter(this::isClientError)
-                        .collect(Collectors.toList());
 
-                List<GraphQLError> serverErrors = errors.stream()
-                        .filter(e -> !isClientError(e))
-                        .map(GraphQLErrorAdapter::new)
-                        .collect(Collectors.toList());
-
-                serverErrors.forEach(error -> {
-                    logger.error("Error executing query ({}): {}", error.getClass().getSimpleName(), error.getMessage());
-                });
-
-                List<GraphQLError> e = new ArrayList<>();
-                e.addAll(clientErrors);
-                e.addAll(serverErrors);
-                return e;
-            }
-
-            protected List<GraphQLError> filterGraphQLErrors(List<GraphQLError> errors) {
-                return errors.stream()
-                        .filter(this::isClientError)
-                        .collect(Collectors.toList());
-            }
-
-            protected boolean isClientError(GraphQLError error) {
-                return !(error instanceof ExceptionWhileDataFetching || error instanceof Throwable);
-            }
-        };
-    }
-*/
     @Bean
     public GraphQLSchema graphQLSchema(LibraryRepository libraryRepository) throws IOException {
         return SchemaParser.newParser()
@@ -89,20 +53,12 @@ public class Main {
                 .dictionary(Magazine.class)
                 .build()
                 .makeExecutableSchema();
-
-        /*
-        return GraphQL.newGraphQL(schema)
-                .queryExecutionStrategy(new BatchedExecutionStrategy())
-                //.errorHandler(graphQLErrorHandler)
-                //.graphQLContextBuilder(contextBuilder)
-                .build();
-         */
     }
 
-    @Bean
-    public ExecutionStrategy batchedExecutionStrategy() {
-        return new BatchedExecutionStrategy();
-    }
+//    @Bean
+//    public ExecutionStrategy batchedExecutionStrategy() {
+//        return new BatchedExecutionStrategy();
+//    }
 
     @Bean
     public GraphQLErrorHandler graphQLErrorHandler() {
@@ -145,79 +101,27 @@ public class Main {
         return new GraphQLContextBuilder() {
             @Override
             public GraphQLContext build(HttpServletRequest request, HttpServletResponse response) {
-                GraphQLContext context = new GraphQLContext(request, response);
+                graphql.GraphQLContext data = graphql.GraphQLContext.newContext().build();
+                GraphQLContext context = new DefaultGraphQLContext(data, request, response);
                 return context;
             }
 
             @Override
             public GraphQLContext build(Session session, HandshakeRequest request) {
-                GraphQLContext context = new GraphQLContext(session, request);
+                graphql.GraphQLContext data = graphql.GraphQLContext.newContext().build();
+                GraphQLContext context = new DefaultGraphQLContext(data, session, request);
                 return context;
             }
 
             @Override
             public GraphQLContext build() {
-                GraphQLContext context = new GraphQLContext();
+                graphql.GraphQLContext data = graphql.GraphQLContext.newContext().build();
+                GraphQLContext context = new DefaultGraphQLContext(data);
                 return context;
             }
         };
     }
 
-/*
-    @Bean
-    public ServletRegistrationBean graphQLServletRegistrationBean(LibraryRepository libraryRepository) throws Exception {
-        GraphQLSchema schema = SchemaParser.newParser()
-                .schemaString(IOUtils.resourceToString("/library.graphqls", Charset.forName("UTF-8")))
-                .resolvers(new Query(libraryRepository), new Mutation(libraryRepository), new BookResolver(libraryRepository), new MagazineResolver(libraryRepository))
-                .scalars(new GraphQLScalarType("LocalDate", "LocalDate scalar", new LocalDateCoercing()))
-                .dictionary(Magazine.class)
-                .build()
-                .makeExecutableSchema();
-
-        GraphQLErrorHandler errorHandler = new GraphQLErrorHandler() {
-            @Override
-            public List<GraphQLError> processErrors(List<GraphQLError> errors) {
-                List<GraphQLError> clientErrors = errors.stream()
-                        .filter(this::isClientError)
-                        .collect(Collectors.toList());
-
-                List<GraphQLError> serverErrors = errors.stream()
-                        .filter(e -> !isClientError(e))
-                        .map(GraphQLErrorAdapter::new)
-                        .collect(Collectors.toList());
-
-                serverErrors.forEach(error -> {
-                    logger.error("Error executing query ({}): {}", error.getClass().getSimpleName(), error.getMessage());
-                });
-
-                List<GraphQLError> e = new ArrayList<>();
-                e.addAll(clientErrors);
-                e.addAll(serverErrors);
-                return e;
-            }
-
-            protected List<GraphQLError> filterGraphQLErrors(List<GraphQLError> errors) {
-                return errors.stream()
-                        .filter(this::isClientError)
-                        .collect(Collectors.toList());
-            }
-
-            protected boolean isClientError(GraphQLError error) {
-                return !(error instanceof ExceptionWhileDataFetching || error instanceof Throwable);
-            }
-        };
-
-        GraphQLContextBuilder contextBuilder = new GraphQLContextBuilder() {
-            @Override
-            public GraphQLContext build(Optional<HttpServletRequest> request, Optional<HttpServletResponse> response) {
-                String user = request.get().getHeader("User");
-                return new AuthContext(user, request, response);
-            }
-        };
-
-        return new ServletRegistrationBean(SimpleGraphQLServlet.builder(schema).withExecutionStrategyProvider(new DefaultExecutionStrategyProvider(new BatchedExecutionStrategy())).withGraphQLErrorHandler(errorHandler).withGraphQLContextBuilder(contextBuilder).build(), "/library");
-    }
-*/
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
     }
