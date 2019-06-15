@@ -55,11 +55,6 @@ public class Main {
                 .makeExecutableSchema();
     }
 
-//    @Bean
-//    public ExecutionStrategy batchedExecutionStrategy() {
-//        return new BatchedExecutionStrategy();
-//    }
-
     @Bean
     public GraphQLErrorHandler graphQLErrorHandler() {
         return new GraphQLErrorHandler() {
