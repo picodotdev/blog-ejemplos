@@ -18,6 +18,10 @@ import io.github.picodotdev.blogbitix.graphql.resolver.Query;
 import io.github.picodotdev.blogbitix.graphql.type.Magazine;
 import io.github.picodotdev.blogbitix.graphql.type.MagazineResolver;
 import org.apache.commons.io.IOUtils;
+import org.dataloader.DataLoader;
+import org.dataloader.DataLoaderOptions;
+import org.dataloader.DataLoaderRegistry;
+import org.dataloader.MappedBatchLoaderWithContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -92,12 +96,13 @@ public class Main {
     }
 
     @Bean
-    public GraphQLContextBuilder contextBuilder() {
+    public GraphQLContextBuilder contextBuilder(List<MappedBatchLoaderWithContext<?, ?>> mappedBatchLoaders) {
         return new GraphQLContextBuilder() {
             @Override
             public GraphQLContext build(HttpServletRequest request, HttpServletResponse response) {
                 graphql.GraphQLContext data = graphql.GraphQLContext.newContext().build();
                 GraphQLContext context = new DefaultGraphQLContext(data, request, response);
+                context.setDataLoaderRegistry(buildDataLoaderRegistry(mappedBatchLoaders, context));
                 return context;
             }
 
@@ -105,6 +110,7 @@ public class Main {
             public GraphQLContext build(Session session, HandshakeRequest request) {
                 graphql.GraphQLContext data = graphql.GraphQLContext.newContext().build();
                 GraphQLContext context = new DefaultGraphQLContext(data, session, request);
+                context.setDataLoaderRegistry(buildDataLoaderRegistry(mappedBatchLoaders, context));
                 return context;
             }
 
@@ -112,9 +118,23 @@ public class Main {
             public GraphQLContext build() {
                 graphql.GraphQLContext data = graphql.GraphQLContext.newContext().build();
                 GraphQLContext context = new DefaultGraphQLContext(data);
+                context.setDataLoaderRegistry(buildDataLoaderRegistry(mappedBatchLoaders, context));
                 return context;
             }
         };
+    }
+
+    private DataLoaderRegistry buildDataLoaderRegistry(List<MappedBatchLoaderWithContext<?, ?>> mappedBatchLoaders, GraphQLContext context) {
+        DataLoaderRegistry registry = new DataLoaderRegistry();
+        for (MappedBatchLoaderWithContext<?, ?> loader : mappedBatchLoaders) {
+            registry.register(loader.getClass().getSimpleName(),
+                DataLoader.newMappedDataLoader(
+                    loader,
+                    DataLoaderOptions.newOptions().setBatchLoaderContextProvider(() -> context)
+                )
+            );
+        }
+        return registry;
     }
 
     public static void main(String[] args) {

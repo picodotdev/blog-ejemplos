@@ -23,7 +23,4 @@ dependencies {
     implementation("commons-io:commons-io:2.6")
 }
 
-run {
-    systemProperty "tomcat.util.http.parser.HttpParser.requestTargetAllow", "|{}"
-}
 

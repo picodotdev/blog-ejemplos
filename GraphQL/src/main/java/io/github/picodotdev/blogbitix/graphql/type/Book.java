@@ -2,6 +2,8 @@ package io.github.picodotdev.blogbitix.graphql.type;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 public class Book extends Publication {
     
@@ -10,6 +12,7 @@ public class Book extends Publication {
     private Author author;
     private LocalDate date;
     private List<Comment> comments;
+    private String isbn;
 
     public Book(Long id, String title, Author author, LocalDate date, List<Comment> comments) {
         this.id = id;
@@ -17,6 +20,8 @@ public class Book extends Publication {
         this.author = author;
         this.date = date;
         this.comments = comments;
+
+        this.isbn = UUID.randomUUID().toString();
     }
 
     public Long getId() {
@@ -57,5 +62,26 @@ public class Book extends Publication {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return id.equals(book.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

@@ -2,6 +2,7 @@ package io.github.picodotdev.blogbitix.graphql.resolver;
 
 import com.coxautodev.graphql.tools.GraphQLResolver;
 import graphql.schema.DataFetchingEnvironment;
+import io.github.picodotdev.blogbitix.graphql.dataloader.IsbnDataLoader;
 import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphQLContext;
 import io.github.picodotdev.blogbitix.graphql.repository.LibraryRepository;
 import io.github.picodotdev.blogbitix.graphql.type.Book;
@@ -9,10 +10,12 @@ import io.github.picodotdev.blogbitix.graphql.type.Comment;
 import io.github.picodotdev.blogbitix.graphql.type.CommentEdge;
 import io.github.picodotdev.blogbitix.graphql.type.CommentsConnection;
 import io.github.picodotdev.blogbitix.graphql.type.PageInfo;
+import org.dataloader.DataLoader;
 
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -28,13 +31,19 @@ public class BookResolver implements GraphQLResolver<Book> {
         System.out.printf("Getting ISBN %d...", book.getId());
         Thread.sleep(3000);
         System.out.printf("ok%n");
-        return UUID.randomUUID().toString();
+        return book.getIsbn();
     }
 
     public String getBatchedIsbn(Book book, DataFetchingEnvironment environment) throws InterruptedException {
         DefaultGraphQLContext context = environment.getContext();
         Map<Long, String> isbns = (Map<Long, String>) context.getData().get("batchedIsbn");
         return isbns.get(book.getId());
+    }
+
+    public CompletableFuture<String> getDataLoaderIsbn(Book book, DataFetchingEnvironment environment) throws InterruptedException {
+        DataLoader<Book, String> dataLoader = environment.getDataLoader(IsbnDataLoader.class.getSimpleName());
+        return dataLoader.load(book);
+
     }
 
     public CommentsConnection getComments(Book book, String after, Long limit) {
