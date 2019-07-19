@@ -1,0 +1,22 @@
+plugins {
+	id 'java'
+	id 'application'
+	id 'org.springframework.boot' version '2.1.6.RELEASE'
+}
+
+group = 'io.github.picodotdev.blogbitix'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 11
+mainClassName = 'io.github.picodotdev.blogbitix.guava.Main'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation platform("org.springframework.boot:spring-boot-dependencies:2.1.6.RELEASE")
+
+	implementation('org.springframework.boot:spring-boot-starter-web')
+	implementation('org.springframework.boot:spring-boot-starter-jersey')
+	implementation('com.google.guava:guava:28.0-jre')
+}
