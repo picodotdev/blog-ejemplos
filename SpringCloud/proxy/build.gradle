@@ -1,5 +1,6 @@
 plugins {
     id 'application'
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
 }
 
 mainClassName = 'io.github.picodotdev.blogbitix.springcloud.proxy.Main'
@@ -10,7 +11,7 @@ dependencies {
     
     // Spring
     def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-	compile('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
+    compile('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
     compile('org.springframework.boot:spring-boot-starter-web', excludeSpringBootStarterLogging)
     compile('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)
     compile('org.springframework.boot:spring-boot-starter-actuator', excludeSpringBootStarterLogging)

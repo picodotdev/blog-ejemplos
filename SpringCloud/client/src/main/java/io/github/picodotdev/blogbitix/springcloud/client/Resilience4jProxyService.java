@@ -8,7 +8,6 @@ import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import io.github.resilience4j.timelimiter.TimeLimiter;
 import io.github.resilience4j.timelimiter.TimeLimiterConfig;
-import io.vavr.CheckedFunction0;
 import io.vavr.control.Try;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -72,9 +71,9 @@ public class Resilience4jProxyService {
             });
         };
         Callable<String> getLimiter = TimeLimiter.decorateFutureSupplier(timeLimiter, get);
-        Callable<String> getBreaker = CircuitBreaker.decorateCallable(circuitBreaker, getLimiter);
+        Callable<String> getCircuitBreaker = CircuitBreaker.decorateCallable(circuitBreaker, getLimiter);
 
-        return Try.of(getBreaker::call).recover((throwable) -> getFallback()).get();
+        return Try.of(getCircuitBreaker::call).recover((throwable) -> getFallback()).get();
     }
 
     private String getFallback() {

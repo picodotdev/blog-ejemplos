@@ -51,7 +51,7 @@ public class Main implements CommandLineRunner {
 
 	private String get() {
 		switch (configuration.getService()) {
-			case "serivce":
+			case "service":
 				return service.get();
 			case "proxy":
 				return proxy.get();

@@ -9,7 +9,7 @@ eureka:
   environment: default
   client:
     registerWithEureka: true
-    fetchRegistry: true
+    fetchRegistry: false
     serviceUrl:
       defaultZone: http://ds1.127.0.0.1.xip.io:8761/eureka/,http://ds2.127.0.0.1.xip.io:8762/eureka/,http://ds3.127.0.0.1.xip.io:8763/eureka/
 
