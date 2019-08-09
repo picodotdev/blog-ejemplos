@@ -1,13 +1,13 @@
 plugins {
     id 'application'
-    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
 }
 
 mainClassName = 'io.github.picodotdev.blogbitix.springcloud.proxy.Main'
 
 dependencies {
-    implementation platform("org.springframework.boot:spring-boot-dependencies:2.1.4.RELEASE")
-    implementation platform("org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR1")
+    implementation platform("org.springframework.boot:spring-boot-dependencies:2.1.6.RELEASE")
+    implementation platform("org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR2")
     
     // Spring
     def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
@@ -16,7 +16,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)
     compile('org.springframework.boot:spring-boot-starter-actuator', excludeSpringBootStarterLogging)
     compile('org.springframework.cloud:spring-cloud-starter-config', excludeSpringBootStarterLogging)
-    compile('org.springframework.cloud:spring-cloud-starter-bus-amqp', excludeSpringBootStarterLogging)    
+    //compile('org.springframework.cloud:spring-cloud-starter-bus-amqp', excludeSpringBootStarterLogging)
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client', excludeSpringBootStarterLogging)
     compile('org.springframework.cloud:spring-cloud-starter-netflix-zuul', excludeSpringBootStarterLogging)
     compile('org.springframework.retry:spring-retry:1.2.2.RELEASE', excludeSpringBootStarterLogging)

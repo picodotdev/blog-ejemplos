@@ -7,7 +7,7 @@ mainClassName = 'io.github.picodotdev.blogbitix.springcloud.configserver.Main'
 
 dependencies {
     implementation platform("org.springframework.boot:spring-boot-dependencies:2.1.6.RELEASE")
-    implementation platform("org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR1")
+    implementation platform("org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR2")
 
     // Spring
     def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
@@ -16,7 +16,7 @@ dependencies {
     compile('org.springframework.cloud:spring-cloud-starter-config', excludeSpringBootStarterLogging)
     compile('org.springframework.cloud:spring-cloud-config-server', excludeSpringBootStarterLogging)
     compile('org.springframework.cloud:spring-cloud-config-monitor', excludeSpringBootStarterLogging)
-    compile('org.springframework.cloud:spring-cloud-starter-bus-amqp', excludeSpringBootStarterLogging)    
+    compile('org.springframework.cloud:spring-cloud-starter-bus-amqp', excludeSpringBootStarterLogging)
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client', excludeSpringBootStarterLogging)
 
     runtime('com.google.code.gson:gson:2.8.5')
