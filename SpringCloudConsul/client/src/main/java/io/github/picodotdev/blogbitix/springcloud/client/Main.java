@@ -28,8 +28,10 @@ public class Main implements CommandLineRunner {
 		System.out.println("Servicios:");
 	    discoveryClient.getServices().forEach(service -> {	        
 	        List<ServiceInstance> instances = discoveryClient.getInstances(service);
-	        ServiceInstance instance = instances.get(0);
-	        System.out.printf("%s (%d): %s:%d %s%n", service, instances.size(), instance.getHost(), instance.getPort(), instance.getUri());
+			for (int i = 0; i < instances.size(); ++i) {
+	        	ServiceInstance instance = instances.get(i);
+	        	System.out.printf("%s (%d): %s:%d, %s%n", service, i + 1, instance.getHost(), instance.getPort(), instance.getUri());
+			}
 	    });
 	}
 

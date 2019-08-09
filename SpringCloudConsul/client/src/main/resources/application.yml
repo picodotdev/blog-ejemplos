@@ -1,2 +1,11 @@
+server:
+  port: ${port:8080}
+
+spring:
+  cloud:
+    consul:
+      discovery:
+        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+
 config:
   key: prod
