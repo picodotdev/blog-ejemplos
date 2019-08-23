@@ -22,7 +22,7 @@ public class Main implements CommandLineRunner {
     @Override
     public void run(String... args) {
         System.out.printf("Username: %s%n", username);
-        System.out.printf("Passowrd: %s%n", password);
+        System.out.printf("Password: %s%n", password);
 
         boolean test = false;
         try (Connection connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/app", username, password)) {
