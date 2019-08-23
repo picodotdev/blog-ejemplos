@@ -24,7 +24,6 @@ public class Main implements CommandLineRunner {
         System.out.printf("Username: %s%n", username);
         System.out.printf("Password: %s%n", password);
 
-        boolean test = false;
         try (Connection connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/app", username, password)) {
             if (connection != null) {
                 System.out.println("Connected to the database!");
