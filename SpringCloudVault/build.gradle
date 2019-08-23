@@ -1,0 +1,25 @@
+plugins {
+    id 'application'
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
+}
+
+mainClassName = 'io.github.picodotdev.blogbitix.springcloudvault.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform("org.springframework.boot:spring-boot-dependencies:2.1.6.RELEASE")
+    implementation platform("org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR2")
+
+    // Spring
+    def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+    implementation('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
+    implementation('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)
+    implementation('org.springframework.cloud:spring-cloud-starter-config', excludeSpringBootStarterLogging)
+    implementation('org.springframework.cloud:spring-cloud-starter-vault-config', excludeSpringBootStarterLogging)
+    implementation('org.springframework.cloud:spring-cloud-vault-config-databases', excludeSpringBootStarterLogging)
+
+    implementation('org.postgresql:postgresql:42.2.6')
+}
