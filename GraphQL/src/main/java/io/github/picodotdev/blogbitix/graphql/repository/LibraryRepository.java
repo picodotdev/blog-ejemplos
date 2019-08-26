@@ -1,6 +1,7 @@
 package io.github.picodotdev.blogbitix.graphql.repository;
 
 import io.github.picodotdev.blogbitix.graphql.misc.AuthContext;
+import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphQLContext;
 import io.github.picodotdev.blogbitix.graphql.misc.PermissionException;
 import io.github.picodotdev.blogbitix.graphql.misc.ValidationException;
 import io.github.picodotdev.blogbitix.graphql.type.Author;
@@ -106,8 +107,8 @@ public class LibraryRepository {
         return authors.stream().filter(a -> a.getId().equals(id)).findFirst();
     }
 
-    public Book addBook(String title, Long idAuthor, AuthContext context) throws PermissionException, ValidationException {
-        if (context.getUser() == null || !context.getUser().equals("admin")) {
+    public Book addBook(String title, Long idAuthor, DefaultGraphQLContext context) throws PermissionException, ValidationException {
+        if (context.getHttpServletRequest().get().getHeader("User") == null || !context.getHttpServletRequest().get().getHeader("User").equals("admin")) {
             throw new PermissionException("Invalid permissions");
         }
         Optional<Author> author = findAuthorById(idAuthor);

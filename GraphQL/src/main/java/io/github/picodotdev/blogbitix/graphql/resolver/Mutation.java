@@ -3,7 +3,6 @@ package io.github.picodotdev.blogbitix.graphql.resolver;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import graphql.schema.DataFetchingEnvironment;
 import io.github.picodotdev.blogbitix.graphql.repository.LibraryRepository;
-import io.github.picodotdev.blogbitix.graphql.misc.AuthContext;
 import io.github.picodotdev.blogbitix.graphql.type.Book;
 
 public class Mutation implements GraphQLMutationResolver {
@@ -16,6 +15,6 @@ public class Mutation implements GraphQLMutationResolver {
 
     public Book addBook(String title, Long author, DataFetchingEnvironment env) throws Exception {
         //String user = request.getHeader("User");
-        return libraryRepository.addBook(title, author, env.<AuthContext>getContext());
+        return libraryRepository.addBook(title, author, env.getContext());
     }
 }
