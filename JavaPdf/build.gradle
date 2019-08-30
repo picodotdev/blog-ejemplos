@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+application {
+    mainClassName = 'io.github.picodotdev.blogbitix.javapdf.Main'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.apache.pdfbox:pdfbox:2.0.16'
+}
+
