@@ -16,6 +16,12 @@ curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{b
 curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{books{title} authors{name}}"}' http://localhost:8080/graphql | jq
 curl -s -XPOST -H "Content-Type: application/json" -d '[{"query": "query Books{books{title}}"}, {"query": "query Authors{authors{name}}"}]' http://localhost:8080/graphql | jq
 
+# Aliases
+curl -s -XPOST -H "Content-Type: application/json" -d '[{"query": "query Libros{libros:books{titulo:title}}"}]' http://localhost:8080/graphql | jq
+
+### Multiple result types
+curl -s -XPOST -H "Content-Type: application/json" -d '[{"query": "query Publications {publications {... on Book {__typename title} ... on Magazine {__typename name}}}"}]' http://localhost:8080/graphql | jq
+
 ---
 # Mutación
 
@@ -31,8 +37,14 @@ curl -s -XPOST -H "Content-Type: application/json" -H "User: admin" -d '[{"query
 # Resolver
 curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{books{title isbn}}"}' http://localhost:8080/graphql | jq
 
-# Query with arguments, resolver with arguments
+# Query with arguments, variables and default variables
 curl -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{books(filter:{title:\"^[OR].*\"}){title}}"}' http://localhost:8080/graphql | jq
+curl -XPOST -H "Content-Type: application/json" -d '{"query": "query Books($regexp: String){books(filter:{title:$regexp}){title}}", "variables": {"regexp": "^[OR].*"}}' http://localhost:8080/graphql | jq
+curl -XPOST -H "Content-Type: application/json" -d '{"query": "query Books($regexp: String = \"^[OR].*\"){books(filter:{title:$regexp}){title}}", "variables": {}}' http://localhost:8080/graphql | jq
+curl -XPOST -H "Content-Type: application/json" -d '{"query": "query Books($regexp: String = \"^[OR].*\"){books(filter:{title:$regexp}){title}}", "variables": {"regexp": "^[E].*"}}' http://localhost:8080/graphql | jq
+
+# Directive
+curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books($withAuthor: Boolean!){books{title date author @include(if: $withAuthor){name}}}", "variables": {"withAuthor": false}}' http://localhost:8080/graphql | jq
 
 # Scalar
 curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{books{title date}}"}' http://localhost:8080/graphql | jq

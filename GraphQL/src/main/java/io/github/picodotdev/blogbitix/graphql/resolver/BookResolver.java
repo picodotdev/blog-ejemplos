@@ -28,9 +28,8 @@ public class BookResolver implements GraphQLResolver<Book> {
     }
 
     public String getIsbn(Book book) throws InterruptedException {
-        System.out.printf("Getting ISBN %d...", book.getId());
-        Thread.sleep(3000);
-        System.out.printf("ok%n");
+        System.out.printf("Getting ISBN %d...%n", book.getId());
+        //Thread.sleep(3000);
         return book.getIsbn();
     }
 

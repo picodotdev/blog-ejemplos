@@ -20,6 +20,7 @@ public class IsbnDataLoader implements MappedBatchLoaderWithContext<Book, String
 
    @Override
    public CompletionStage<Map<Book, String>> load(Set<Book> books, BatchLoaderEnvironment environment) {
+       System.out.printf("Getting ISBN %s...%n", books.stream().map(Book::getId).collect(Collectors.toList()));
        Map<Book, String> isbns = books.stream().collect(Collectors.toMap(
            Function.identity(),
            Book::getIsbn
