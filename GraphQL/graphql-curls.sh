@@ -46,6 +46,14 @@ curl -XPOST -H "Content-Type: application/json" -d '{"query": "query Books($rege
 # Directive
 curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books($withAuthor: Boolean!){books{title date author @include(if: $withAuthor){name}}}", "variables": {"withAuthor": false}}' http://localhost:8080/graphql | jq
 
+# Fragment
+curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "fragment BookFragment on Book {title date} query Books{books{...BookFragment}}"}' http://localhost:8080/graphql | jq
+
+# Instrospection, Meta Fields
+curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{books{__typename title}}"}' http://localhost:8080/graphql | jq
+curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Types{__schema {types {name}}}"}' http://localhost:8080/graphql | jq
+curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Types{__type(name: \"Book\") {name fields{name}}}"}' http://localhost:8080/graphql | jq
+
 # Scalar
 curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{books{title date}}"}' http://localhost:8080/graphql | jq
 
