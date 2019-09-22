@@ -5,6 +5,9 @@ import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
 import graphql.language.SourceLocation;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +21,20 @@ public class GraphQLErrorAdapter implements GraphQLError {
 
     @Override
     public Map<String, Object> getExtensions() {
-        return error.getExtensions();
+        Map<String, Object> extensions = new HashMap<>();
+        if (error.getExtensions() != null) {
+            extensions.putAll(error.getExtensions());
+        }
+        if (error instanceof ExceptionWhileDataFetching) {
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            Throwable exception = ((ExceptionWhileDataFetching) error).getException();
+            exception.printStackTrace(pw);
+            String stacktrace = sw.toString();
+            extensions.put("stacktrace", stacktrace);
+            extensions.put("exception", exception.getClass().getName());
+        }
+        return (extensions.isEmpty()) ? null : extensions;
     }
 
     @Override

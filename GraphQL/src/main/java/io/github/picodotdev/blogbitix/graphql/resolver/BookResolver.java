@@ -14,7 +14,6 @@ import org.dataloader.DataLoader;
 
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -27,9 +26,9 @@ public class BookResolver implements GraphQLResolver<Book> {
         this.libraryRespository = libraryRespository;
     }
 
-    public String getIsbn(Book book) throws InterruptedException {
+    public String getIsbn(Book book) {
         System.out.printf("Getting ISBN %d...%n", book.getId());
-        //Thread.sleep(3000);
+        //try { Thread.sleep(3000); } catch (Exception e) {}
         return book.getIsbn();
     }
 
