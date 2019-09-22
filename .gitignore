@@ -1,29 +1,7 @@
-*.class
-*.war
-*.ear
+.gradle
+.idea
 
 *.db
 
-*.iml
-*.ipr
-*.iws
-
-*.xls
-*.mmdb
-
-bin/
 build/
-target/
 out/
-
-.gradle/
-.settings/
-.classpath
-.project
-.idea
-.Trash*
-.DS_Store
-
-node_modules/
-.resourceCache/
-.vertx/
