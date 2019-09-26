@@ -67,7 +67,7 @@ curl -s -XPOST -H "Content-Type: application/json" -H "User: admin" -d '{"query"
 curl -s -XPOST -H "Content-Type: application/json" -d '{"query": "mutation AddBook($title: String, $author: Long){addBook(title: $title, author: $author){title}}", "variables": { "title": "El lazarillo de Tormes 2", "author": 999}}' http://localhost:8080/graphql | jq
 curl -s -XPOST -H "Content-Type: application/json" -H "User: hacker" -d '{"query": "mutation AddBook($title: String, $author: Long){addBook(title: $title, author: $author){title}}", "variables": { "title": "El lazarillo de Tormes 2", "author": 999}}' http://localhost:8080/graphql | jq
 
-# Batched
+# Batched/Dataloader
 curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{books{title date isbn}}"}' http://localhost:8080/graphql | jq
 curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{books{title date batchedIsbn}}"}' http://localhost:8080/graphql | jq
 curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{books{title date dataLoaderIsbn}}"}' http://localhost:8080/graphql | jq

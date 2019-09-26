@@ -5,6 +5,8 @@ import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
 import graphql.schema.GraphQLScalarType;
 import graphql.schema.GraphQLSchema;
+import graphql.servlet.DefaultGraphQLErrorHandler;
+import graphql.servlet.GenericGraphQLError;
 import graphql.servlet.GraphQLContext;
 import graphql.servlet.GraphQLContextBuilder;
 import graphql.servlet.GraphQLErrorHandler;
@@ -61,11 +63,12 @@ public class Main {
 
     @Bean
     public GraphQLErrorHandler graphQLErrorHandler() {
-        return new GraphQLErrorHandler() {
+        return new DefaultGraphQLErrorHandler() {
             @Override
             public List<GraphQLError> processErrors(List<GraphQLError> errors) {
                 List<GraphQLError> clientErrors = errors.stream()
-                        .filter(this::isClientError)
+                        .filter(e -> isClientError(e))
+                        .map(GraphQLErrorAdapter::new)
                         .collect(Collectors.toList());
 
                 List<GraphQLError> serverErrors = errors.stream()
@@ -77,20 +80,15 @@ public class Main {
                     logger.error("Error executing query ({}): {}", error.getClass().getSimpleName(), error.getMessage());
                 });
 
+                if (!serverErrors.isEmpty()) {
+                    serverErrors = new ArrayList<>();
+                    serverErrors.add(new GenericGraphQLError("Internal Server Error(s) while executing query"));
+                }
+
                 List<GraphQLError> e = new ArrayList<>();
                 e.addAll(clientErrors);
                 e.addAll(serverErrors);
                 return e;
-            }
-
-            protected List<GraphQLError> filterGraphQLErrors(List<GraphQLError> errors) {
-                return errors.stream()
-                        .filter(this::isClientError)
-                        .collect(Collectors.toList());
-            }
-
-            protected boolean isClientError(GraphQLError error) {
-                return !(error instanceof ExceptionWhileDataFetching || error instanceof Throwable);
             }
         };
     }
