@@ -2,7 +2,6 @@
 .idea
 
 .*
-*.db
 *.xls
 *.iml
 *.ipr

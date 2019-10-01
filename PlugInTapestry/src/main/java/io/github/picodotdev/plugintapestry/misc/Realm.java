@@ -38,7 +38,7 @@ public class Realm extends AuthorizingRealm {
         // Generar una contraseña de clave «password», con SHA-512 y con «salt» aleatorio.
         ByteSource saltSource = new SecureRandomNumberGenerator().nextBytes();
         byte[] salt = saltSource.getBytes();
-        Sha512Hash hash= new Sha512Hash("password", saltSource, HASH_ITERATIONS);
+        Sha512Hash hash = new Sha512Hash("password", saltSource, HASH_ITERATIONS);
         String password = hash.toHex();
         // Contraseña codificada en Base64
         //String password = hash.toBase64();
