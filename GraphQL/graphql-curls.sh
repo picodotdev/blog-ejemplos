@@ -33,6 +33,15 @@ curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{b
 curl -vs -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{books{title date dataLoaderIsbn}}"}' http://localhost:8080/graphql | jq
 
 ---
+
+# Query with arguments, variables and default variables
+curl -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{books(filter:{title:\"^[OR].*\"}){title}}"}' http://localhost:8080/graphql | jq
+curl -XPOST -H "Content-Type: application/json" -d '{"query": "query Books($regexp: String){books(filter:{title:$regexp}){title}}", "variables": {"regexp": "^[OR].*"}}' http://localhost:8080/graphql | jq
+curl -XPOST -H "Content-Type: application/json" -d '{"query": "query Books($regexp: String = \"^[OR].*\"){books(filter:{title:$regexp}){title}}", "variables": {}}' http://localhost:8080/graphql | jq
+curl -XPOST -H "Content-Type: application/json" -d '{"query": "query Books($regexp: String = \"^[OR].*\"){books(filter:{title:$regexp}){title}}", "variables": {"regexp": "^[E].*"}}' http://localhost:8080/graphql | jq
+
+---
+
 # Mutación
 
 ### Mutation
@@ -41,14 +50,6 @@ curl -s -XPOST -H "Content-Type: application/json" -H "User: admin" -d '[{"query
 
 ### Mutación y consulta
 curl -s -XPOST -H "Content-Type: application/json" -H "User: admin" -d '[{"query": "mutation AddBook($title: String, $author: Long){addBook(title: $title, author: $author){title}}", "variables": { "title": "Xxx", "author": 6}}, {"query": "query Books{books{title}}"}]' http://localhost:8080/graphql | jq
-
----
-
-# Query with arguments, variables and default variables
-curl -XPOST -H "Content-Type: application/json" -d '{"query": "query Books{books(filter:{title:\"^[OR].*\"}){title}}"}' http://localhost:8080/graphql | jq
-curl -XPOST -H "Content-Type: application/json" -d '{"query": "query Books($regexp: String){books(filter:{title:$regexp}){title}}", "variables": {"regexp": "^[OR].*"}}' http://localhost:8080/graphql | jq
-curl -XPOST -H "Content-Type: application/json" -d '{"query": "query Books($regexp: String = \"^[OR].*\"){books(filter:{title:$regexp}){title}}", "variables": {}}' http://localhost:8080/graphql | jq
-curl -XPOST -H "Content-Type: application/json" -d '{"query": "query Books($regexp: String = \"^[OR].*\"){books(filter:{title:$regexp}){title}}", "variables": {"regexp": "^[E].*"}}' http://localhost:8080/graphql | jq
 
 ---
 
