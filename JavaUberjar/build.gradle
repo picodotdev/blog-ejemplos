@@ -64,7 +64,7 @@ distributions {
     docs {
         baseName = "$archivesBaseName-docs"
         contents {
-            from(libsDir) {
+            from(libsDirName) {
                 include sourcesJar.archiveName
                 include javadocJar.archiveName
             }
