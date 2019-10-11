@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: client
+  cloud:
+    config:
+      uri: http://traefik:80/configuration
+      failFast: true
+      discovery:
+        enabled: false
+        register: false
+    consul:
+      host: consul
+      port: 8500

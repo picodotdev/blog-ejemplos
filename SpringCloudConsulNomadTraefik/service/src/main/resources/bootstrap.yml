@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: service
+  cloud:
+    config:
+      uri: http://traefik:80/configuration
+      failFast: true
+      discovery:
+        enabled: false
+        register: false

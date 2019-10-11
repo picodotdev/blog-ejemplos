@@ -1,0 +1,8 @@
+server:
+    port: ${port:8888}
+
+spring:
+  application:
+    name: configserver
+  profiles:
+    active: native

@@ -1,0 +1,15 @@
+server:
+  port: ${port:8080}
+
+spring:
+  profiles:
+    active: cloud
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+config:
+  key: value
