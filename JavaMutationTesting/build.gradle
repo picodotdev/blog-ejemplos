@@ -39,4 +39,5 @@ pitest {
     threads = 4
     outputFormats = ['HTML']
     timestampedReports = false
+    mutators = ['DEFAULTS']
 }
