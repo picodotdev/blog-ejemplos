@@ -1,0 +1,42 @@
+buildscript {
+   repositories {
+        jcenter()
+   }
+   configurations.maybeCreate('pitest')
+   dependencies {
+       classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.4.5'
+       pitest 'org.pitest:pitest-junit5-plugin:0.8'
+   }
+}
+
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'info.solidsoft.pitest' version '1.4.5'
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+}
+
+repositories {
+    jcenter()
+}
+
+compileJava {
+    sourceCompatibility = 11
+    targetCompatibility = 11
+}
+
+test {
+    useJUnitPlatform()
+}
+
+pitest {
+    testPlugin = 'junit5'
+    targetClasses = ['io.github.picodotdev.blogbitix.*']
+    threads = 4
+    outputFormats = ['HTML']
+    timestampedReports = false
+}
