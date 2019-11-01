@@ -54,6 +54,32 @@ public class TicketPriceCalculatorTest {
     }
 
     @Test
+    public void calculatePriceForNoFamilyByNoAdults() {
+        List<Passenger> passengers = new ArrayList<>();
+        Passenger adultPassenger1 = new Passenger(20);
+        Passenger childPassenger2 = new Passenger(12);
+        Passenger childPassenger3 = new Passenger(4);
+        passengers.add(adultPassenger1);
+        passengers.add(childPassenger2);
+        passengers.add(childPassenger3);
+        double price = calculator.calculatePrice(passengers, ADULT_TICKET_PRICE, CHILD_TICKER_PRICE);
+        Assertions.assertEquals(1 * ADULT_TICKET_PRICE + 2 * CHILD_TICKER_PRICE, price, 0);
+    }
+
+    @Test
+    public void calculatePriceForNoFamilyByNoChildren() {
+        List<Passenger> passengers = new ArrayList<>();
+        Passenger adultPassenger1 = new Passenger(20);
+        Passenger adultPassenger2 = new Passenger(20);
+        Passenger childPassenger3 = new Passenger(12);
+        passengers.add(adultPassenger1);
+        passengers.add(adultPassenger2);
+        passengers.add(childPassenger3);
+        double price = calculator.calculatePrice(passengers, ADULT_TICKET_PRICE, CHILD_TICKER_PRICE);
+        Assertions.assertEquals(2 * ADULT_TICKET_PRICE + 1 * CHILD_TICKER_PRICE, price, 0);
+    }
+
+    @Test
     public void calculatePriceForChildNarrowCase() {
         List<Passenger> passengers = new ArrayList<>();
         Passenger childPassenger = new Passenger(18);
