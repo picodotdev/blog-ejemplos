@@ -9,7 +9,7 @@ group = 'io.github.picodotdev.blogbitix.jmx'
 sourceCompatibility = '11'
 
 application {
-	mainClassName = 'io.github.picodotdev.blogbitix.jmx.java.Main'
+	//mainClassName = 'io.github.picodotdev.blogbitix.jmx.java.Main'
 	mainClassName = 'io.github.picodotdev.blogbitix.jmx.springboot.Main'
 }
 
