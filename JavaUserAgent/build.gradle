@@ -1,0 +1,23 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.1.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+	id 'application'
+}
+
+group = 'io.github.picotodtdev.blogbitix.useragent'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+application {
+    mainClassName = 'io.github.picotodtdev.blogbitix.useragent.Main'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.blueconic:browscap-java:1.2.13'
+}
