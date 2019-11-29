@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout}">
+<body>
+<div layout:fragment="container" class="container">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center">Inicio</h2>
+            <div class="row" th:with="currentUser=${#httpServletRequest.userPrincipal?.principal}">
+                <div class="col">
+                    Has iniciado sesión como:
+                    <span th:text="${currentUser?.username}">
+                        FirstName LastName
+                    </span>
+                </div>
+             </div>
+            <hr class="colorgraph" />
+            <div class="row">
+                <div class="col">
+                    <form th:action="@{/logout}" method="post">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        <button class="btn btn-lg btn-success" type="submit">Cerrar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
