@@ -85,12 +85,10 @@ public class Main {
         Process process = builder.start();
 
         InputStream is = process.getInputStream();
-        AudioInputStream ais = AudioSystem.getAudioInputStream(is);
-        AudioFormat af = ais.getFormat();
-        byte[] bytes = is.readAllBytes();
+        AudioInputStream ais = new AudioInputStream(is, AudioSystem.getAudioInputStream(is).getFormat(), AudioSystem.NOT_SPECIFIED);
 
         Clip clip = AudioSystem.getClip();
-        clip.open(af, bytes, 0, bytes.length);
+        clip.open(ais);
 
         System.out.printf("Audio format: %s%n", ais.getFormat());
         System.out.printf("Sampled duration: %d seconds%n", clip.getMicrosecondLength() / 1000000);
@@ -110,12 +108,10 @@ public class Main {
         Process process = builder.start();
 
         InputStream is = process.getInputStream();
-        AudioInputStream ais = AudioSystem.getAudioInputStream(is);
-        AudioFormat af = ais.getFormat();
-        byte[] bytes = is.readAllBytes();
+        AudioInputStream ais = new AudioInputStream(is, AudioSystem.getAudioInputStream(is).getFormat(), AudioSystem.NOT_SPECIFIED);
 
         Clip clip = AudioSystem.getClip();
-        clip.open(af, bytes, 0, bytes.length);
+        clip.open(ais);
 
         System.out.printf("Audio format: %s%n", ais.getFormat());
         System.out.printf("Sampled duration: %d seconds%n", clip.getMicrosecondLength() / 1000000);
