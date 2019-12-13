@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_2" pageWidth="2170" pageHeight="1180" whenNoDataType="NoDataSection" columnWidth="2130" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="862f78a5-8c6b-4578-b4ca-9600db875fc4">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="TextField" fontSize="18" isBold="true"/>
+	<style name="TitleTextField" forecolor="#000000" fontSize="18" isBold="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="ordenante" class="java.lang.String">
+		<fieldDescription><![CDATA[ordenante]]></fieldDescription>
+	</field>
+	<field name="concepto" class="java.lang.String"/>
+	<field name="referencia" class="java.lang.String"/>
+	<field name="titulares" class="java.lang.String"/>
+	<field name="acreedor" class="java.lang.String"/>
+	<field name="adeudo" class="java.lang.String"/>
+	<field name="valor" class="java.util.Date"/>
+	<field name="fecha" class="java.util.Date"/>
+	<field name="iban" class="java.lang.String"/>
+	<field name="bic" class="java.lang.String"/>
+	<field name="importe" class="java.math.BigDecimal"/>
+	<field name="titular" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="1" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="1" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="731" splitType="Stretch">
+			<rectangle>
+				<reportElement x="39" y="50" width="2079" height="661" uuid="d07fbbc2-7ad8-49fc-afb2-9f1454e49723"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1460" y="180" width="660" height="399" uuid="e489c61b-2993-4c93-9add-4d198dc34da4"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1460" y="178" width="659" height="67" uuid="1550cb08-8215-4dc8-bf57-3be9cae3af6b"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="39" y="49" width="2081" height="129" uuid="bd8c4e15-7270-4c28-bd5d-6894993df9e8"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="39" y="49" width="1212" height="129" uuid="e1c635b2-2fe7-466b-9d11-0a65ead3119b"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1460" y="245" width="660" height="70" uuid="f895305c-0d15-4b28-91ce-a6e84441accf"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1460" y="310" width="660" height="69" uuid="3a75da4c-80ff-4e52-b4e8-99e30fb35956"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1460" y="379" width="660" height="69" uuid="9bb99530-bf8d-4ff7-ad18-94711ee3735d"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1900" y="580" width="220" height="130" uuid="32e3cd52-5f3e-4f55-916b-19927fbce127"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1700" y="580" width="200" height="130" uuid="8c240bc9-1e17-431c-a9a7-974272d3f4d5"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="39" y="580" width="1001" height="130" uuid="31cea6bf-d207-467e-b923-a96114580c30">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1040" y="580" width="660" height="130" uuid="1c81a737-cf5a-4a94-bebb-afd7489d142e"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement key="ordenante" style="TextField" x="120" y="140" width="1120" height="30" uuid="da955cec-83b3-496d-842b-071d10aa5d01"/>
+				<textFieldExpression><![CDATA[$F{ordenante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="titular" style="TextField" x="1270" y="140" width="790" height="31" uuid="c831f875-fa2a-4c4f-b5fc-a9516e2af048"/>
+				<textFieldExpression><![CDATA[$F{titular}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="referencia" style="TextField" x="1471" y="209" width="589" height="30" uuid="2097b450-be0e-4f9c-ac1f-48a10a068547"/>
+				<textFieldExpression><![CDATA[$F{referencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="adeudo" style="TextField" x="1470" y="280" width="589" height="30" uuid="cc44cfc1-453a-4544-a9af-c3e039518336"/>
+				<textFieldExpression><![CDATA[$F{adeudo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="importe" style="TextField" x="1470" y="350" width="589" height="30" uuid="45c20718-6d8a-4e4c-b805-324bf42e4ca9"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="acreedor" style="TextField" x="1471" y="420" width="589" height="30" uuid="5cea6e3a-907b-453d-9e5b-81da029b1ed0"/>
+				<textFieldExpression><![CDATA[$F{acreedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="concepto" style="TextField" x="120" y="210" width="1320" height="140" uuid="db87b2be-e924-4667-9e56-9b6f37e83bc3"/>
+				<textFieldExpression><![CDATA[$F{concepto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="fecha" style="TextField" x="1725" y="633" width="145" height="30" uuid="25242235-593d-40bb-ae41-463cd8755ce6"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="valor" style="TextField" x="1914" y="633" width="145" height="30" uuid="b1f526d1-b800-440e-af69-21dae989b349"/>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="iban-1" style="TextField" positionType="Float" stretchType="ElementGroupHeight" x="1180" y="633" width="501" height="30" uuid="f2456341-7d07-400b-9e51-96dafccfc5e7"/>
+				<textFieldExpression><![CDATA[$F{iban}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="titulares" style="TextField" x="100" y="633" width="920" height="31" uuid="ff38d311-4834-4563-863a-2453b273fb0d"/>
+				<textFieldExpression><![CDATA[$F{titulares}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="TitleTextField" x="120" y="110" width="260" height="30" uuid="5b36cefc-71d5-4a3f-9761-e756d24c5375"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Ordenante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="TitleTextField" x="1270" y="110" width="260" height="30" uuid="be703ca1-12f9-487d-94da-a14b58be5420"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Titular]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="TitleTextField" x="120" y="180" width="260" height="30" uuid="ab61d4c4-ae5d-4500-a615-9e0072688000"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Concepto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="TitleTextField" x="1471" y="180" width="260" height="30" uuid="75212740-d4e1-4037-9859-a2a44e1737fb"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Referencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="TitleTextField" x="1470" y="250" width="260" height="30" uuid="de335ae0-5c69-40e0-afd6-56702f8f157a"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Adeudo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="TitleTextField" x="1470" y="320" width="260" height="30" uuid="fef908bf-ac89-45ca-8883-d13e258d8b56"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Importe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="TitleTextField" x="1471" y="390" width="260" height="30" uuid="9247584b-3aa3-422f-a233-fb7c3c60e5e1"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Acreedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="TitleTextField" x="1060" y="633" width="120" height="30" uuid="b378ef52-7f64-450b-86ba-440eee568eda"/>
+				<textElement markup="none"/>
+				<text><![CDATA[IBAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="TitleTextField" x="1725" y="603" width="145" height="30" uuid="79f58edc-9838-4f0f-b3d8-38057948ee6b"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="TitleTextField" x="1914" y="603" width="145" height="30" uuid="4bf04b03-a75b-464a-83ba-885fb0d2ac12"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Fecha valor]]></text>
+			</staticText>
+			<textField>
+				<reportElement key="iban-1" style="TextField" positionType="Float" stretchType="ElementGroupHeight" x="1180" y="603" width="501" height="30" uuid="3b1f5a70-ca05-41d4-84c2-934532725bd0"/>
+				<textFieldExpression><![CDATA[$F{bic}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="TitleTextField" x="1060" y="603" width="120" height="30" uuid="fcd4da4b-ef8d-4dd9-8d2e-681dd2ecaeed"/>
+				<textElement markup="none"/>
+				<text><![CDATA[BIC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="TitleTextField" x="100" y="600" width="120" height="30" uuid="cacb9ec3-b764-4e8a-bc88-55289bdbdf39"/>
+				<textElement markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Titulares]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

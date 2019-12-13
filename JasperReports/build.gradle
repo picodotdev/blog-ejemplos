@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+application {
+    mainClassName = 'io.github.picodotdev.blogbitix.jasperreports.Main'
+}
+
+dependencies {
+    implementation 'net.sf.jasperreports:jasperreports:6.11.0'
+    implementation 'com.lowagie:itext:2.1.7'
+}
+
+repositories {
+    mavenCentral()
+}
