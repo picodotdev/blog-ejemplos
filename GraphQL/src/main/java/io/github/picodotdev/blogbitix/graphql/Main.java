@@ -1,7 +1,6 @@
 package io.github.picodotdev.blogbitix.graphql;
 
 import com.coxautodev.graphql.tools.SchemaParser;
-import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
 import graphql.schema.GraphQLScalarType;
 import graphql.schema.GraphQLSchema;
