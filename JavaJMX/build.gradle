@@ -1,24 +1,25 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.0.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-	id 'java'
-	id 'application'
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
 }
 
 group = 'io.github.picodotdev.blogbitix.jmx'
 sourceCompatibility = '11'
 
 application {
-	//mainClassName = 'io.github.picodotdev.blogbitix.jmx.java.Main'
-	mainClassName = 'io.github.picodotdev.blogbitix.jmx.springboot.Main'
+    //mainClassName = 'io.github.picodotdev.blogbitix.jmx.java.Main'
+    mainClassName = 'io.github.picodotdev.blogbitix.jmx.springboot.Main'
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:2.2.4.RELEASE"))
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
 }
 
 run {

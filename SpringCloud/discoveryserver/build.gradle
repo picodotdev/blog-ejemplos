@@ -1,22 +1,24 @@
 plugins {
     id 'application'
-    id 'org.springframework.boot' version '2.1.6.RELEASE'
+    id 'org.springframework.boot' version '2.1.12.RELEASE'
 }
 
-mainClassName = 'io.github.picodotdev.blogbitix.springcloud.discoveryserver.Main'
+application {
+    mainClassName = 'io.github.picodotdev.blogbitix.springcloud.discoveryserver.Main'
+}
 
 dependencies {
-    implementation platform("org.springframework.boot:spring-boot-dependencies:2.1.6.RELEASE")
-    implementation platform("org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR2")
+    implementation(platform('org.springframework.boot:spring-boot-dependencies:2.1.12.RELEASE'))
+    implementation(platform('org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR2'))
     
     // Spring
     def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
-    compile('org.springframework.boot:spring-boot-starter-web', excludeSpringBootStarterLogging)
-    compile('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server', excludeSpringBootStarterLogging)
+    implementation('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
+    implementation('org.springframework.boot:spring-boot-starter-web', excludeSpringBootStarterLogging)
+    implementation('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server', excludeSpringBootStarterLogging)
 
-    runtime('com.google.code.gson:gson:2.8.5')
-    runtime('com.fasterxml.jackson.core:jackson-databind:2.9.6')
-    runtime('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6')
+    runtimeOnly('com.google.code.gson:gson:2.8.5')
+    runtimeOnly('com.fasterxml.jackson.core:jackson-databind:2.9.6')
+    runtimeOnly('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6')
 }

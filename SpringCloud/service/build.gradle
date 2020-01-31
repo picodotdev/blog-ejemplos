@@ -1,27 +1,29 @@
 plugins {
     id 'application'
-    id 'org.springframework.boot' version '2.1.6.RELEASE'
+    id 'org.springframework.boot' version '2.1.12.RELEASE'
 }
 
-mainClassName = 'io.github.picodotdev.blogbitix.springcloud.service.Main'
+application {
+    mainClassName = 'io.github.picodotdev.blogbitix.springcloud.service.Main'
+}
 
 dependencies {
-    implementation platform("org.springframework.boot:spring-boot-dependencies:2.1.6.RELEASE")
-    implementation platform("org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR2")
+    implementation(platform('org.springframework.boot:spring-boot-dependencies:2.1.12.RELEASE'))
+    implementation(platform('org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR2'))
 	
     // Spring
     def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
-    compile('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
-    compile('org.springframework.boot:spring-boot-starter-web', excludeSpringBootStarterLogging)
-    compile('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)
-    compile('org.springframework.boot:spring-boot-starter-actuator', excludeSpringBootStarterLogging)
-    compile('org.springframework.cloud:spring-cloud-starter-config', excludeSpringBootStarterLogging)
-    //compile('org.springframework.cloud:spring-cloud-starter-bus-amqp', excludeSpringBootStarterLogging)
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client', excludeSpringBootStarterLogging)
-    compile('org.springframework.cloud:spring-cloud-starter-sleuth', excludeSpringBootStarterLogging)
-    compile('io.micrometer:micrometer-registry-prometheus:1.0.8')
+    implementation('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
+    implementation('org.springframework.boot:spring-boot-starter-web', excludeSpringBootStarterLogging)
+    implementation('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)
+    implementation('org.springframework.boot:spring-boot-starter-actuator', excludeSpringBootStarterLogging)
+    implementation('org.springframework.cloud:spring-cloud-starter-config', excludeSpringBootStarterLogging)
+    //implementation('org.springframework.cloud:spring-cloud-starter-bus-amqp', excludeSpringBootStarterLogging)
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client', excludeSpringBootStarterLogging)
+    implementation('org.springframework.cloud:spring-cloud-starter-sleuth', excludeSpringBootStarterLogging)
+    implementation('io.micrometer:micrometer-registry-prometheus:1.0.8')
     
-    runtime('com.google.code.gson:gson:2.8.5')
-    runtime('com.fasterxml.jackson.core:jackson-databind:2.9.6')
-    runtime('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6')
+    runtimeOnly('com.google.code.gson:gson:2.8.5')
+    runtimeOnly('com.fasterxml.jackson.core:jackson-databind:2.9.6')
+    runtimeOnly('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6')
 }

@@ -1,8 +1,7 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.1.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-	id 'java'
-	id 'application'
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
 }
 
 group = 'io.github.picodotdev.blogbitix.spring2fa'
@@ -10,18 +9,19 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 application {
-	mainClassName = 'io.github.picodotdev.blogbitix.spring2fa.Main'
+    mainClassName = 'io.github.picodotdev.blogbitix.spring2fa.Main'
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.thymeleaf:thymeleaf-spring5:3.0.11.RELEASE'
-	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.4.1'
-	implementation 'org.jboss.aerogear:aerogear-otp-java:1.0.0'
-}
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:2.2.4.RELEASE"))
 
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.thymeleaf:thymeleaf-spring5:3.0.11.RELEASE'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.4.1'
+    implementation 'org.jboss.aerogear:aerogear-otp-java:1.0.0'
+}
