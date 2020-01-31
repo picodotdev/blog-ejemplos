@@ -1,42 +1,42 @@
 plugins {
     id 'application'
-    id 'org.springframework.boot' version '2.1.8.RELEASE'
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
 }
 
 mainClassName = 'io.github.picodotdev.blogbitix.springcloud.client.Main'
 version = "1.0"
 
 dependencies {
-    implementation platform("org.springframework.boot:spring-boot-dependencies:2.1.8.RELEASE")
-    implementation platform("org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR3")
+    implementation(platform('org.springframework.boot:spring-boot-dependencies:2.2.4.RELEASE'))
+    implementation(platform('org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR1'))
 
     // Spring
     def excludeSpringBootStarterLogging = { 
         exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging')
         exclude(group: 'ch.qos.logback')
     }
-    compile('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
-    compile('org.springframework.boot:spring-boot-starter-web', excludeSpringBootStarterLogging)
-    compile('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)
-    compile('org.springframework.boot:spring-boot-starter-actuator', excludeSpringBootStarterLogging)
-    compile('org.springframework.cloud:spring-cloud-starter-config', excludeSpringBootStarterLogging)
-    compile('org.springframework.cloud:spring-cloud-starter-consul-all') { 
+    implementation('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
+    implementation('org.springframework.boot:spring-boot-starter-web', excludeSpringBootStarterLogging)
+    implementation('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)
+    implementation('org.springframework.boot:spring-boot-starter-actuator', excludeSpringBootStarterLogging)
+    implementation('org.springframework.cloud:spring-cloud-starter-config', excludeSpringBootStarterLogging)
+    implementation('org.springframework.cloud:spring-cloud-starter-consul-all') { 
         exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging')
         exclude(group: 'ch.qos.logback')
     }
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-ribbon', excludeSpringBootStarterLogging)
-    compile('org.springframework.cloud:spring-cloud-starter-sleuth', excludeSpringBootStarterLogging)
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-ribbon', excludeSpringBootStarterLogging)
+    implementation('org.springframework.cloud:spring-cloud-starter-sleuth', excludeSpringBootStarterLogging)
 
-    compile('io.github.resilience4j:resilience4j-spring-boot2:0.17.0', excludeSpringBootStarterLogging)
-    compile('io.github.resilience4j:resilience4j-timelimiter:0.17.0', excludeSpringBootStarterLogging)
-    compile('io.micrometer:micrometer-registry-prometheus:1.1.5')
+    implementation('io.github.resilience4j:resilience4j-spring-boot2:1.2.0', excludeSpringBootStarterLogging)
+    implementation('io.github.resilience4j:resilience4j-timelimiter:1.2.0', excludeSpringBootStarterLogging)
+    implementation('io.micrometer:micrometer-registry-prometheus:1.1.5')
 
-    compile('org.glassfish.jersey.core:jersey-client:2.27')
-    compile('org.glassfish.jersey.inject:jersey-hk2:2.27')
+    implementation('org.glassfish.jersey.core:jersey-client:2.27')
+    implementation('org.glassfish.jersey.inject:jersey-hk2:2.27')
 
-    runtime('com.google.code.gson:gson:2.8.5')
-    runtime('com.fasterxml.jackson.core:jackson-databind:2.9.6')
-    runtime('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6')
+    runtimeOnly('com.google.code.gson:gson:2.8.5')
+    runtimeOnly('com.fasterxml.jackson.core:jackson-databind:2.9.6')
+    runtimeOnly('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6')
 }
 
 run {   
