@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
+    id 'io.freefair.aspectj.post-compile-weaving' version '4.1.6'
+}
+
+group = 'io.github.picodotdev.blogbitix.aspects'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+application {
+    mainClassName = 'io.github.picodotdev.blogbitix.aspects.Main'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:2.2.4.RELEASE"))
+
+    implementation('org.springframework.boot:spring-boot-starter')
+    implementation('org.aspectj:aspectjweaver:1.9.5')
+}
