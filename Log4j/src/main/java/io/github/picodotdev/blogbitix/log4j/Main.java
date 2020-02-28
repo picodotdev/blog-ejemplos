@@ -29,11 +29,13 @@ public class Main {
 
     private static void changeLogLevelDynamically() {
         Configurator.setLevel(logger.getName(), Level.ERROR);
-        logger.info("Level.ERROR info trace");
-        logger.error("Level.ERROR error trace");
+        logger.info("info trace");
+        logger.error("error trace");
+
+        logger.error("");
 
         Configurator.setLevel(logger.getName(), Level.INFO);
-        logger.info("Level.INFO info trace");
-        logger.error("Level.INFO error trace");
+        logger.info("info trace");
+        logger.error("error trace");
     }
 }
