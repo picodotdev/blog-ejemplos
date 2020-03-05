@@ -18,13 +18,13 @@ repositories {
     mavenCentral()
 }
 
-configurations.all {
-    exclude(group: "javax.annotation")
-    exclude(group: "jakarta.annotation")
-    exclude group: "javax.servlet"
-    exclude group: "javax.websocket"
-    exclude group: "com.google.code.findbugs"
-}
+//configurations.all {
+//    exclude(group: "javax.annotation")
+//    exclude(group: "jakarta.annotation")
+//    exclude group: "javax.servlet"
+//    exclude group: "javax.websocket"
+//    exclude group: "com.google.code.findbugs"
+//}
 
 dependencies {
     implementation platform("org.springframework.boot:spring-boot-dependencies:2.2.5.RELEASE")
