@@ -2,13 +2,28 @@ plugins {
     id 'java'
     id 'application'
     id 'org.springframework.boot' version '2.2.5.RELEASE'
+    //id 'org.javamodularity.moduleplugin' version '1.6.0'
 }
 
-mainClassName = 'io.github.picodotdev.blogbitix.graphql.Main'
+application {
+    mainClassName = 'io.github.picodotdev.blogbitix.graphql.Main'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
 
 repositories {
-    jcenter()
     mavenCentral()
+}
+
+configurations.all {
+    exclude(group: "javax.annotation")
+    exclude(group: "jakarta.annotation")
+    exclude group: "javax.servlet"
+    exclude group: "javax.websocket"
+    exclude group: "com.google.code.findbugs"
 }
 
 dependencies {
@@ -22,5 +37,3 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:3.7")
     implementation("commons-io:commons-io:2.6")
 }
-
-

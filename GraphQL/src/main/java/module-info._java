@@ -1,0 +1,10 @@
+module blogbitix.graphql {
+    requires graphql.java;
+    requires spring.boot;
+    requires spring.boot.starter;
+    requires spring.boot.starter.web;
+    requires spring.web;
+    requires com.fasterxml.jackson.core;
+
+    opens io.github.picodotdev.blogbitix.graphql to spring.boot, spring.core;
+}
