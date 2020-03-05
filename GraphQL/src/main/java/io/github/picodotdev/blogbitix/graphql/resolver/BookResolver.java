@@ -1,6 +1,6 @@
 package io.github.picodotdev.blogbitix.graphql.resolver;
 
-import com.coxautodev.graphql.tools.GraphQLResolver;
+import graphql.kickstart.tools.GraphQLResolver;
 import graphql.schema.DataFetchingEnvironment;
 import io.github.picodotdev.blogbitix.graphql.dataloader.IsbnDataLoader;
 import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphQLContext;

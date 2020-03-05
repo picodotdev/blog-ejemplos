@@ -1,6 +1,6 @@
 package io.github.picodotdev.blogbitix.graphql.type;
 
-import com.coxautodev.graphql.tools.GraphQLResolver;
+import graphql.kickstart.tools.GraphQLResolver;
 import io.github.picodotdev.blogbitix.graphql.repository.LibraryRepository;
 
 public class MagazineResolver implements GraphQLResolver<Magazine> {

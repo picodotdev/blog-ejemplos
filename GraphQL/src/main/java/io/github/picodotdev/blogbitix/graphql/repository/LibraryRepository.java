@@ -108,8 +108,8 @@ public class LibraryRepository {
         return authors.stream().filter(a -> a.getId().equals(id)).findFirst();
     }
 
-    public Book addBook(String title, Long idAuthor, DefaultGraphQLContext context) throws PermissionException, ValidationException {
-        if (context.getHttpServletRequest().get().getHeader("User") == null || !context.getHttpServletRequest().get().getHeader("User").equals("admin")) {
+    public Book addBook(String title, Long idAuthor, String user) throws PermissionException, ValidationException {
+        if (user == null || !user.equals("admin")) {
             throw new PermissionException("Invalid permissions");
         }
         Optional<Author> author = findAuthorById(idAuthor);

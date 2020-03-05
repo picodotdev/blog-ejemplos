@@ -1,7 +1,7 @@
 package io.github.picodotdev.blogbitix.graphql.resolver;
 
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.google.common.base.Functions;
+import graphql.kickstart.tools.GraphQLQueryResolver;
 import graphql.schema.DataFetchingEnvironment;
 import graphql.schema.SelectedField;
 import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphQLContext;

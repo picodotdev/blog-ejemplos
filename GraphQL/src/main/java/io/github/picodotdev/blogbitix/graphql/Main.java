@@ -1,14 +1,15 @@
 package io.github.picodotdev.blogbitix.graphql;
 
-import com.coxautodev.graphql.tools.SchemaParser;
 import graphql.GraphQLError;
+import graphql.kickstart.execution.context.GraphQLContext;
+import graphql.kickstart.execution.context.GraphQLContextBuilder;
+import graphql.kickstart.execution.error.DefaultGraphQLErrorHandler;
+import graphql.kickstart.execution.error.GenericGraphQLError;
+import graphql.kickstart.execution.error.GraphQLErrorHandler;
+import graphql.kickstart.tools.SchemaParser;
 import graphql.schema.GraphQLScalarType;
 import graphql.schema.GraphQLSchema;
-import graphql.servlet.DefaultGraphQLErrorHandler;
-import graphql.servlet.GenericGraphQLError;
-import graphql.servlet.GraphQLContext;
-import graphql.servlet.GraphQLContextBuilder;
-import graphql.servlet.GraphQLErrorHandler;
+import graphql.servlet.context.GraphQLServletContextBuilder;
 import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphQLContext;
 import io.github.picodotdev.blogbitix.graphql.misc.GraphQLErrorAdapter;
 import io.github.picodotdev.blogbitix.graphql.misc.LocalDateCoercing;
@@ -93,12 +94,12 @@ public class Main {
     }
 
     @Bean
-    public GraphQLContextBuilder contextBuilder(List<MappedBatchLoaderWithContext<?, ?>> mappedBatchLoaders) {
-        return new GraphQLContextBuilder() {
+    public GraphQLServletContextBuilder contextBuilder(List<MappedBatchLoaderWithContext<?, ?>> mappedBatchLoaders) {
+        return new GraphQLServletContextBuilder() {
             @Override
             public GraphQLContext build(HttpServletRequest request, HttpServletResponse response) {
                 graphql.GraphQLContext data = graphql.GraphQLContext.newContext().build();
-                GraphQLContext context = new DefaultGraphQLContext(data, request, response);
+                DefaultGraphQLContext context = new DefaultGraphQLContext(data, request, response);
                 context.setDataLoaderRegistry(buildDataLoaderRegistry(mappedBatchLoaders, context));
                 return context;
             }
@@ -106,7 +107,7 @@ public class Main {
             @Override
             public GraphQLContext build(Session session, HandshakeRequest request) {
                 graphql.GraphQLContext data = graphql.GraphQLContext.newContext().build();
-                GraphQLContext context = new DefaultGraphQLContext(data, session, request);
+                DefaultGraphQLContext context = new DefaultGraphQLContext(data, session, request);
                 context.setDataLoaderRegistry(buildDataLoaderRegistry(mappedBatchLoaders, context));
                 return context;
             }
@@ -114,7 +115,7 @@ public class Main {
             @Override
             public GraphQLContext build() {
                 graphql.GraphQLContext data = graphql.GraphQLContext.newContext().build();
-                GraphQLContext context = new DefaultGraphQLContext(data);
+                DefaultGraphQLContext context = new DefaultGraphQLContext(data);
                 context.setDataLoaderRegistry(buildDataLoaderRegistry(mappedBatchLoaders, context));
                 return context;
             }
