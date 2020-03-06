@@ -9,7 +9,7 @@ interface Props {
 
 class HelloWorld extends React.Component<Props> {
   public static defaultProps = {
-    name: "World (updated)"
+    name: "World"
   };
 
   public static propTypes = {
