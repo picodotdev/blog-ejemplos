@@ -1,7 +1,5 @@
 package io.github.picodotdev.blogbitix.graphql.repository;
 
-import io.github.picodotdev.blogbitix.graphql.misc.AuthContext;
-import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphQLContext;
 import io.github.picodotdev.blogbitix.graphql.misc.PermissionException;
 import io.github.picodotdev.blogbitix.graphql.misc.ValidationException;
 import io.github.picodotdev.blogbitix.graphql.type.Author;
@@ -15,7 +13,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
