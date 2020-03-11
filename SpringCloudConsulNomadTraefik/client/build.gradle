@@ -1,14 +1,21 @@
 plugins {
     id 'application'
-    id 'org.springframework.boot' version '2.2.4.RELEASE'
+    id 'org.springframework.boot' version '2.2.5.RELEASE'
 }
 
-mainClassName = 'io.github.picodotdev.blogbitix.springcloud.client.Main'
-version = "1.0"
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+application {
+    mainClassName = 'io.github.picodotdev.blogbitix.springcloud.client.Main'
+    version = '1.0'
+}
 
 dependencies {
-    implementation(platform('org.springframework.boot:spring-boot-dependencies:2.2.4.RELEASE'))
-    implementation(platform('org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR1'))
+    implementation(platform('org.springframework.boot:spring-boot-dependencies:2.2.5.RELEASE'))
+    implementation(platform('org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3'))
 
     // Spring
     def excludeSpringBootStarterLogging = { 

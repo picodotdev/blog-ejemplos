@@ -18,11 +18,6 @@ job "configserver" {
         volumes = [
           "/home/picodotdev/Software/personal/blog-ejemplos/SpringCloudConsulNomadTraefik/:/app"
         ]
-        labels {
-          traefik.http.middlewares.configserver1-stripprefix.stripprefix.prefixes="/configuration",
-          traefik.http.routers.configserver1.middlewares="configserver1-stripprefix"
-          traefik.http.routers.configserver1.rule="PathPrefix(`/configuration`)",
-        }
       }
 
       service {
@@ -36,6 +31,12 @@ job "configserver" {
           interval = "5s"
           timeout  = "2s"
         }
+
+        tags = [
+          "traefik.http.middlewares.configserver1-stripprefix.stripprefix.prefixes=/configuration",
+          "traefik.http.routers.configserver1.middlewares=configserver1-stripprefix",
+          "traefik.http.routers.configserver1.rule=PathPrefix(`/configuration`)"
+        ]
       }
 
       resources {

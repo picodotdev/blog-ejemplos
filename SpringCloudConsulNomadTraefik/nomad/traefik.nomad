@@ -8,7 +8,7 @@ job "traefik" {
         image = "traefik:latest"
         args = [
           "--api.insecure=true",
-          "--providers.docker"
+          "--providers.consulcatalog.endpoint.address=http://172.30.0.1:8500"
         ]
         network_mode = "nomad"
         ipv4_address = "172.30.0.3"

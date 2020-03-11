@@ -33,13 +33,6 @@ job "service" {
         volumes = [
           "/home/picodotdev/Software/personal/blog-ejemplos/SpringCloudConsulNomadTraefik/:/app"
         ]
-        labels {
-          traefik.http.middlewares.service1-stripprefix.stripprefix.prefixes="/service",
-          traefik.http.middlewares.service1-retry.retry.attempts="10",
-          traefik.http.routers.service1.middlewares="service1-stripprefix,service1-retry",
-          traefik.http.routers.service1.rule="PathPrefix(`/service`)",
-          traefik.http.services.service1.loadbalancer.server.port="8080"
-        }
       }
 
       service {
@@ -53,6 +46,14 @@ job "service" {
           interval = "5s"
           timeout  = "2s"
         }
+
+        tags = [
+          "traefik.http.middlewares.service1-stripprefix.stripprefix.prefixes=/service",
+          "traefik.http.middlewares.service1-retry.retry.attempts=10",
+          "traefik.http.routers.service1.middlewares=service1-stripprefix,service1-retry",
+          "traefik.http.routers.service1.rule=PathPrefix(`/service`)",
+          "traefik.http.services.service1.loadbalancer.server.port=8080"
+        ]
       }
 
       resources {
