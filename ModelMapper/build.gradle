@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'application'
+ }
+
+group = 'io.github.picodotdev.blogbitix.modelmapper'
+version = '1.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+}
+
+application {
+    mainClass = 'io.github.picodotdev.blogbitix.modelmapper.Main'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform('org.springframework.boot:spring-boot-dependencies:2.3.0.RELEASE')
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.modelmapper:modelmapper:2.3.7'
+}
