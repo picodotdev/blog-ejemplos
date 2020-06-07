@@ -28,8 +28,11 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	testImplementation 'org.testcontainers:testcontainers:1.14.3'
+	testImplementation 'org.testcontainers:junit-jupiter:1.14.3'
 	testImplementation 'org.testcontainers:postgresql:1.14.3'
+
 	testImplementation 'org.postgresql:postgresql:42.2.12'
+	testImplementation 'redis.clients:jedis:3.3.0'
 }
 
 test {
