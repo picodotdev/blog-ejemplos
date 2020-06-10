@@ -43,8 +43,6 @@ public class RedisTest {
 
     public static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
         public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-            DefaultPostgresContainer container = DefaultPostgresContainer.getInstance();
-            container.start();
             TestPropertyValues.of("spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration,org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration")
                     .applyTo(configurableApplicationContext.getEnvironment());
         }
