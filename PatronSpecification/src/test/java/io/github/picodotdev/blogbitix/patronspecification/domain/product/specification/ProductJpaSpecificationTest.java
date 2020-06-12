@@ -35,7 +35,7 @@ public class ProductJpaSpecificationTest {
     @Sql("/sql/products.sql")
     void testIsLongTermSpecification() {
         // given
-        Specification<Product> specification = new IsCheapSpecification();
+        Specification<Product> specification = new IsLongTermSpecification();
 
         // then
         assertEquals(1, productRepository.findAll(specification).size());
@@ -45,7 +45,7 @@ public class ProductJpaSpecificationTest {
     @Sql("/sql/products.sql")
     void testIsOverstockSpecification() {
         // given
-        Specification<Product> specification = new IsCheapSpecification();
+        Specification<Product> specification = new IsOverstockSpecification();
 
         // then
         assertEquals(1, productRepository.findAll(specification).size());

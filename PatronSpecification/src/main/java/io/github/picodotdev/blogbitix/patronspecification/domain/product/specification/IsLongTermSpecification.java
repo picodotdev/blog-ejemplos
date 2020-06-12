@@ -30,7 +30,7 @@ public class IsLongTermSpecification implements Specification<Product>, org.spri
 
     @Override
     public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-        LocalDate longTermDate = LocalDate.now().plus(Product.LONG_TERM_PERIOD);
+        LocalDate longTermDate = LocalDate.now().minus(Product.LONG_TERM_PERIOD);
         return criteriaBuilder.lessThan(root.get(dateAttributeName), longTermDate);
     }
 }
