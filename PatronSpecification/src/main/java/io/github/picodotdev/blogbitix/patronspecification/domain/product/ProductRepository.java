@@ -1,4 +1,3 @@
-
 package io.github.picodotdev.blogbitix.patronspecification.domain.product;
 
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
