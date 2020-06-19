@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.testcontainers;
+package io.github.picodotdev.blogbitix.patronspecification;
 
 import org.springframework.boot.test.util.TestPropertyValues;
 

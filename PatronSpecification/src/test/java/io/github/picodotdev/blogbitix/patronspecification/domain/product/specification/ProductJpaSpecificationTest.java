@@ -1,5 +1,6 @@
 package io.github.picodotdev.blogbitix.patronspecification.domain.product.specification;
 
+import io.github.picodotdev.blogbitix.patronspecification.DefaultPostgresContainer;
 import io.github.picodotdev.blogbitix.patronspecification.domain.product.Product;
 import io.github.picodotdev.blogbitix.patronspecification.domain.product.ProductRepository;
 import liquibase.pro.packaged.T;
@@ -15,7 +16,7 @@ import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-@ContextConfiguration(initializers = { io.github.picodotdev.blogbitix.testcontainers.DefaultPostgresContainer.Initializer.class })
+@ContextConfiguration(initializers = { DefaultPostgresContainer.Initializer.class })
 public class ProductJpaSpecificationTest {
 
     @Autowired
