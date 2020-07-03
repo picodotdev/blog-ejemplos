@@ -17,8 +17,12 @@ public class SpringJobs {
 
 
     @Scheduled(fixedDelay = 2000)
-    public void scheduleJobWithDelay() throws Exception {
-        Thread.sleep(2000);
+    public void scheduleJobWithDelay() {
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
         logger.info("SpringJob: scheduleJobWithDelay");
     }
 

@@ -9,21 +9,36 @@ import org.quartz.SchedulerException;
 import org.quartz.SimpleScheduleBuilder;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.quartz.SchedulerFactoryBeanCustomizer;
+import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 
 import org.quartz.JobBuilder;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.scheduling.annotation.EnableScheduling;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 @EnableScheduling
-public class Main {
+public class Main implements ApplicationListener {
 
     private static final Logger logger = LogManager.getLogger(Main.class);
+
+    @Autowired
+    private JavaJob javaJob;
 
     @Bean(name = "QuartzJob")
     public JobDetail quartzJob() {
@@ -61,6 +76,20 @@ public class Main {
         return bean -> {
             bean.setGlobalJobListeners(listener);
         };
+    }
+
+    @Bean
+    public JavaJob javaJob() {
+        return new JavaJob();
+    }
+
+    @Override
+    public void onApplicationEvent(ApplicationEvent event) {
+        if (event instanceof ApplicationStartedEvent) {
+            ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(5);
+            scheduler.scheduleAtFixedRate(javaJob::jobWithFixedRate, 0, 2, TimeUnit.SECONDS);
+            scheduler.scheduleWithFixedDelay(javaJob::jobWithDelay, 0, 2, TimeUnit.SECONDS);
+        }
     }
 
     public static void main(String[] args) {
