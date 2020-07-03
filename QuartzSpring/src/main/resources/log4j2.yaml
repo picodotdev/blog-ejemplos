@@ -1,0 +1,13 @@
+configuration:
+  status: warn
+
+  appenders:
+    console:
+      name: STDOUT
+      patternLayout:
+        pattern: "%d{DEFAULT} %X{uuid} %-5level %60.60logger %msg%n"
+  loggers:
+    root:
+      level: info
+      appenderRef:
+        ref: STDOUT
