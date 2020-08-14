@@ -1,0 +1,1 @@
+V	300804223944Z		1000	unknown	/C=ES/ST=Spain/O=Acme S.A./CN=Acme S.A. (Intermediate CA)

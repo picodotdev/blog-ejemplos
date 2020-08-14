@@ -1,0 +1,465 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAULT_ROOT_TOKEN = "s.ltQXU2wZeWYNSEf946CefIuG"
+VAULT_UNSEAL_KEY_1 = "GmSsvWlRtimeVb4ikBYKGJeAWGgkB1h8NpLpGEu0oqTe"
+VAULT_UNSEAL_KEY_2 = "zPBru7ivXOhOZmytYHN5gFhusX2kpNR5TOgvxrjxnL"
+
+Vagrant.configure("2") do |config|
+
+  config.vm.define "consul-server-1" do |instance|
+    instance.vm.box = "ubuntu/focal64"
+    instance.vm.network "private_network", ip: "192.168.33.10"
+
+    instance.vm.provider "virtualbox" do |vb|
+      vb.name = "HashiCorp Consul Server 1"
+      vb.memory = "1024"
+      
+      vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+      vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
+    end
+    
+    instance.vm.provision "shell", inline: $hashicorp_role_script, privileged: false
+    instance.vm.provision "shell", inline: $create_provision_directories_script, privileged: false
+
+    instance.vm.provision "file", source: "ca/intermediate/certs/ca-chain.cert.pem", destination: "/home/vagrant/ca.cert.pem"
+
+    instance.vm.provision "file", source: "consul-server/consul.hcl", destination: "/home/vagrant/consul/consul.hcl"
+
+    instance.vm.provision "file", source: "server-certs/certs/consul-server.cert.pem", destination: "/home/vagrant/consul/consul-server.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/consul-server.key.pem", destination: "/home/vagrant/consul/consul-server.key.pem"
+    instance.vm.provision "file", source: "server-certs/certs/consul-agent.cert.pem", destination: "/home/vagrant/consul/consul-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/consul-agent.key.pem", destination: "/home/vagrant/consul/consul-agent.key.pem"
+
+    instance.vm.provision "shell", inline: $consul_provision_script, privileged: false
+    instance.vm.provision "shell", inline: $remove_provision_directories_script, privileged: false
+    instance.vm.provision "shell", inline: $consul_dns_server_role_script, privileged: false
+    instance.vm.provision "shell", inline: $consul_services_script, privileged: false
+  end
+  
+  config.vm.define "vault-server-1" do |instance|
+    instance.vm.box = "ubuntu/focal64"
+
+    instance.vm.network "private_network", ip: "192.168.33.20"
+
+    instance.vm.provider "virtualbox" do |vb|
+      vb.name = "HashiCorp Vault Server 1"
+      vb.memory = "1024"
+
+      vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+      vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
+    end
+    
+    instance.vm.provision "shell", inline: $hashicorp_role_script, privileged: false
+    instance.vm.provision "shell", inline: $create_provision_directories_script, privileged: false
+
+    instance.vm.provision "file", source: "ca/intermediate/certs/ca-chain.cert.pem", destination: "/home/vagrant/ca.cert.pem"
+
+    instance.vm.provision "file", source: "vault-server/consul-agent.hcl", destination: "/home/vagrant/consul/consul.hcl"
+    instance.vm.provision "file", source: "vault-server/vault.hcl", destination: "/home/vagrant/vault/vault.hcl"
+
+    instance.vm.provision "file", source: "vault-server/nomad-server-policy.hcl", destination: "/home/vagrant/vault/nomad-server-policy.hcl"
+    instance.vm.provision "file", source: "vault-server/nomad-cluster-role.json", destination: "/home/vagrant/vault/nomad-cluster-role.json"
+
+    instance.vm.provision "file", source: "server-certs/certs/consul-agent.cert.pem", destination: "/home/vagrant/consul/consul-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/consul-agent.key.pem", destination: "/home/vagrant/consul/consul-agent.key.pem"
+    instance.vm.provision "file", source: "server-certs/certs/consul-agent.cert.pem", destination: "/home/vagrant/vault/consul-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/consul-agent.key.pem", destination: "/home/vagrant/vault/consul-agent.key.pem"
+    instance.vm.provision "file", source: "server-certs/certs/vault-server.cert.pem", destination: "/home/vagrant/vault/vault-server.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/vault-server.key.pem", destination: "/home/vagrant/vault/vault-server.key.pem"
+    instance.vm.provision "file", source: "server-certs/certs/vault-agent.cert.pem", destination: "/home/vagrant/vault/vault-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/vault-agent.key.pem", destination: "/home/vagrant/vault/vault-agent.key.pem"
+
+    instance.vm.provision "shell", inline: $vault_provision_script, privileged: false
+    instance.vm.provision "shell", inline: $remove_provision_directories_script, privileged: false
+    instance.vm.provision "shell", inline: $consul_dns_server_role_script, privileged: false
+    instance.vm.provision "shell", inline: $consul_dns_agent_role_script, privileged: false
+    instance.vm.provision "shell", inline: $consul_services_script, privileged: false
+    instance.vm.provision "shell", inline: $vault_services_script, privileged: false
+    instance.vm.provision "shell", inline: $vault_configure_script, privileged: false, env: {"VAULT_ROOT_TOKEN" => VAULT_ROOT_TOKEN, "VAULT_UNSEAL_KEY_1" => VAULT_UNSEAL_KEY_1, "VAULT_UNSEAL_KEY_1" => VAULT_UNSEAL_KEY_1}
+  end
+  
+  config.vm.define "nomad-server-1" do |instance|
+    instance.vm.box = "ubuntu/focal64"
+
+    instance.vm.network "private_network", ip: "192.168.33.30"
+
+    instance.vm.provider "virtualbox" do |vb|
+      vb.name = "HashiCorp Nomad Server 1"
+      vb.memory = "1024"
+
+      vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+      vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
+    end
+    
+    instance.vm.provision "shell", inline: $hashicorp_role_script, privileged: false
+    instance.vm.provision "shell", inline: $create_provision_directories_script, privileged: false
+
+    instance.vm.provision "file", source: "ca/intermediate/certs/ca-chain.cert.pem", destination: "/home/vagrant/ca.cert.pem"
+
+    instance.vm.provision "file", source: "nomad-server/consul-agent.hcl", destination: "/home/vagrant/consul/consul.hcl"
+    instance.vm.provision "file", source: "nomad-server/nomad.hcl", destination: "/home/vagrant/nomad/nomad.hcl"
+
+    instance.vm.provision "file", source: "server-certs/certs/consul-agent.cert.pem", destination: "/home/vagrant/consul/consul-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/consul-agent.key.pem", destination: "/home/vagrant/consul/consul-agent.key.pem"
+    instance.vm.provision "file", source: "server-certs/certs/consul-agent.cert.pem", destination: "/home/vagrant/nomad/consul-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/consul-agent.key.pem", destination: "/home/vagrant/nomad/consul-agent.key.pem"
+    instance.vm.provision "file", source: "server-certs/certs/vault-agent.cert.pem", destination: "/home/vagrant/nomad/vault-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/vault-agent.key.pem", destination: "/home/vagrant/nomad/vault-agent.key.pem"
+    instance.vm.provision "file", source: "server-certs/certs/nomad-server.cert.pem", destination: "/home/vagrant/nomad/nomad-server.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/nomad-server.key.pem", destination: "/home/vagrant/nomad/nomad-server.key.pem"
+    instance.vm.provision "file", source: "server-certs/certs/nomad-agent.cert.pem", destination: "/home/vagrant/nomad/nomad-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/nomad-agent.key.pem", destination: "/home/vagrant/nomad/nomad-agent.key.pem"
+
+    instance.vm.provision "shell", inline: $nomad_provision_script, privileged: false
+    instance.vm.provision "shell", inline: $remove_provision_directories_script, privileged: false
+    instance.vm.provision "shell", inline: $consul_dns_server_role_script, privileged: false
+    instance.vm.provision "shell", inline: $consul_dns_agent_role_script, privileged: false
+    instance.vm.provision "shell", inline: $consul_services_script, privileged: false
+    instance.vm.provision "shell", inline: $nomad_configure_script, privileged: false, env: {"VAULT_ROOT_TOKEN" => VAULT_ROOT_TOKEN}
+    instance.vm.provision "shell", inline: $nomad_services_script, privileged: false
+  end
+  
+  config.vm.define "nomad-agent-1" do |instance|
+    instance.vm.box = "ubuntu/focal64"
+
+    instance.vm.network "private_network", ip: "192.168.33.40"
+
+    instance.vm.provider "virtualbox" do |vb|
+      vb.name = "HashiCorp Nomad Agent 1"
+      vb.memory = "2048"
+
+      vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+      vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
+    end
+    
+    instance.vm.provision "shell", inline: $hashicorp_role_script, privileged: false
+    instance.vm.provision "shell", inline: $docker_role_script, privileged: false    
+    instance.vm.provision "shell", inline: $create_provision_directories_script, privileged: false
+
+    instance.vm.provision "file", source: "ca/intermediate/certs/ca-chain.cert.pem", destination: "/home/vagrant/ca.cert.pem"
+
+    instance.vm.provision "file", source: "nomad-agent/consul-agent.hcl", destination: "/home/vagrant/consul/consul.hcl"
+    instance.vm.provision "file", source: "nomad-agent/nomad.hcl", destination: "/home/vagrant/nomad/nomad.hcl"
+
+    instance.vm.provision "file", source: "server-certs/certs/consul-agent.cert.pem", destination: "/home/vagrant/consul/consul-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/consul-agent.key.pem", destination: "/home/vagrant/consul/consul-agent.key.pem"
+    instance.vm.provision "file", source: "server-certs/certs/consul-agent.cert.pem", destination: "/home/vagrant/nomad/consul-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/consul-agent.key.pem", destination: "/home/vagrant/nomad/consul-agent.key.pem"
+    instance.vm.provision "file", source: "server-certs/certs/vault-agent.cert.pem", destination: "/home/vagrant/nomad/vault-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/vault-agent.key.pem", destination: "/home/vagrant/nomad/vault-agent.key.pem"
+    instance.vm.provision "file", source: "server-certs/certs/nomad-agent.cert.pem", destination: "/home/vagrant/nomad/nomad-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/nomad-agent.key.pem", destination: "/home/vagrant/nomad/nomad-agent.key.pem"
+
+    instance.vm.provision "shell", inline: $nomad_provision_script, privileged: false
+    instance.vm.provision "shell", inline: $remove_provision_directories_script, privileged: false
+    instance.vm.provision "shell", inline: $consul_dns_server_role_script, privileged: false
+    instance.vm.provision "shell", inline: $consul_dns_agent_role_script, privileged: false
+    instance.vm.provision "shell", inline: $consul_services_script, privileged: false
+    instance.vm.provision "shell", inline: $nomad_configure_script, privileged: false, env: {"VAULT_ROOT_TOKEN" => VAULT_ROOT_TOKEN}
+    instance.vm.provision "shell", inline: $docker_services_script, privileged: false
+    instance.vm.provision "shell", inline: $nomad_services_script, privileged: false
+  end
+  
+  config.vm.define "ui-server" do |instance|
+    instance.vm.box = "ubuntu/focal64"
+    instance.vm.network "private_network", ip: "192.168.33.50"
+
+    instance.vm.provider "virtualbox" do |vb|
+      vb.name = "HashiCorp Web Server"
+      vb.memory = "512"
+      
+      vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+      vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
+    end
+    
+    instance.vm.provision "shell", inline: $hashicorp_role_script, privileged: false
+    instance.vm.provision "shell", inline: $nginx_role_script, privileged: false
+    instance.vm.provision "shell", inline: $create_provision_directories_script, privileged: false
+
+    instance.vm.provision "file", source: "ca/intermediate/certs/ca-chain.cert.pem", destination: "/home/vagrant/ca.cert.pem"
+
+    instance.vm.provision "file", source: "ui-server/consul-agent.hcl", destination: "/home/vagrant/consul/consul.hcl"
+
+    instance.vm.provision "file", source: "ui-server/consul.conf", destination: "/home/vagrant/nginx/consul.conf"
+    instance.vm.provision "file", source: "ui-server/vault.conf", destination: "/home/vagrant/nginx/vault.conf"
+    instance.vm.provision "file", source: "ui-server/nomad.conf", destination: "/home/vagrant/nginx/nomad.conf"
+    instance.vm.provision "file", source: "ui-server/consul-htpasswd", destination: "/home/vagrant/nginx/consul-htpasswd"
+    instance.vm.provision "file", source: "ui-server/vault-htpasswd", destination: "/home/vagrant/nginx/vault-htpasswd"
+    instance.vm.provision "file", source: "ui-server/nomad-htpasswd", destination: "/home/vagrant/nginx/nomad-htpasswd"
+
+    instance.vm.provision "file", source: "server-certs/certs/consul-agent.cert.pem", destination: "/home/vagrant/consul/consul-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/consul-agent.key.pem", destination: "/home/vagrant/consul/consul-agent.key.pem"
+
+    instance.vm.provision "file", source: "server-certs/certs/ui-server.cert.pem", destination: "/home/vagrant/nginx/ui-server.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/ui-server.key.pem", destination: "/home/vagrant/nginx/ui-server.key.pem"
+    instance.vm.provision "file", source: "server-certs/certs/consul-agent.cert.pem", destination: "/home/vagrant/nginx/consul-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/consul-agent.key.pem", destination: "/home/vagrant/nginx/consul-agent.key.pem"
+    instance.vm.provision "file", source: "server-certs/certs/vault-agent.cert.pem", destination: "/home/vagrant/nginx/vault-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/vault-agent.key.pem", destination: "/home/vagrant/nginx/vault-agent.key.pem"
+    instance.vm.provision "file", source: "server-certs/certs/nomad-agent.cert.pem", destination: "/home/vagrant/nginx/nomad-agent.cert.pem"
+    instance.vm.provision "file", source: "server-certs/private/nomad-agent.key.pem", destination: "/home/vagrant/nginx/nomad-agent.key.pem"
+
+    instance.vm.provision "shell", inline: $ui_server_provision_script, privileged: false
+    instance.vm.provision "shell", inline: $remove_provision_directories_script, privileged: false
+    instance.vm.provision "shell", inline: $consul_dns_server_role_script, privileged: false
+    instance.vm.provision "shell", inline: $consul_dns_agent_role_script, privileged: false
+    instance.vm.provision "shell", inline: $ui_server_services_script, privileged: false
+  end
+  
+  $hashicorp_role_script = <<-SCRIPT
+    sudo apt-get -y update
+    sudo apt-get -y upgrade
+
+    curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+    sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+    sudo apt-get -y update
+
+    sudo apt-get -y install consul vault nomad
+    
+    sudo systemctl disable consul.service
+    sudo systemctl disable vault.service
+    sudo systemctl disable nomad.service
+
+    if [ ! -f "/usr/local/bin/envoy" ]; then
+        curl -L https://getenvoy.io/cli | sudo bash -s -- -b /usr/local/bin 
+        getenvoy run standard:1.15.0 -- --version
+        sudo cp /home/vagrant/.getenvoy/builds/standard/1.15.0/linux_glibc/bin/envoy /usr/local/bin/
+    fi
+    
+    if [ ! -d "/opt/cni/bin" ]; then
+        curl -L -o cni-plugins.tgz https://github.com/containernetworking/plugins/releases/download/v0.8.6/cni-plugins-linux-amd64-v0.8.6.tgz
+        sudo mkdir -p /opt/cni/bin
+        sudo tar -C /opt/cni/bin -xzf cni-plugins.tgz
+        rm cni-plugins.tgz
+    fi
+  SCRIPT
+
+  $docker_role_script = <<-SCRIPT
+    sudo apt-get -y update
+    sudo apt-get -y upgrade
+
+    sudo apt-get -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    sudo apt-get -y update
+
+    sudo apt-get -y install docker-ce docker-ce-cli containerd.io
+    sudo usermod -aG docker vagrant
+
+    sudo systemctl enable docker.service
+  SCRIPT
+
+  $nginx_role_script = <<-SCRIPT
+    sudo apt-get -y update
+    sudo apt-get -y upgrade
+    
+    sudo apt-get -y install nginx
+    
+    sudo systemctl enable nginx.service
+  SCRIPT
+  
+  $consul_dns_server_role_script = <<-SCRIPT
+    sudo iptables -t nat -A PREROUTING -p udp -m udp --dport 53 -j REDIRECT --to-ports 8600
+    sudo iptables -t nat -A PREROUTING -p tcp -m tcp --dport 53 -j REDIRECT --to-ports 8600
+    sudo iptables -t nat -A OUTPUT -d localhost -p udp -m udp --dport 53 -j REDIRECT --to-ports 8600
+    sudo iptables -t nat -A OUTPUT -d localhost -p tcp -m tcp --dport 53 -j REDIRECT --to-ports 8600
+
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install iptables-persistent
+    sudo iptables-save -f /etc/iptables/rules.v4
+  SCRIPT
+  
+  $consul_dns_agent_role_script = <<-SCRIPT
+    if [ ! $(grep -q "nameserver 127.0.0.1" /etc/resolv.conf) ]; then
+      sudo sed -i "s/^$/\\nnameserver 127.0.0.1/g" /etc/resolv.conf
+    fi
+  SCRIPT
+  
+  $create_provision_directories_script = <<-SCRIPT
+    rm -rf /home/vagrant/consul/
+    rm -rf /home/vagrant/vault/
+    rm -rf /home/vagrant/nomad/
+    rm -rf /home/vagrant/nginx/
+    rm -f /home/vagrant/*.pem
+
+    mkdir -p /home/vagrant/consul/
+    mkdir -p /home/vagrant/vault/
+    mkdir -p /home/vagrant/nomad/
+    mkdir -p /home/vagrant/nginx/
+  SCRIPT
+  
+  $remove_provision_directories_script = <<-SCRIPT
+    rm -rf /home/vagrant/consul/
+    rm -rf /home/vagrant/vault/
+    rm -rf /home/vagrant/nomad/
+    rm -rf /home/vagrant/nginx/
+    rm -f /home/vagrant/*.pem
+  SCRIPT
+  
+  $consul_provision_script = <<-SCRIPT
+    sudo cp /home/vagrant/ca.cert.pem /etc/consul.d/ca.cert.pem
+
+    sudo cp /home/vagrant/consul/consul.hcl /etc/consul.d/consul.hcl
+
+    sudo cp /home/vagrant/consul/consul-server.cert.pem /etc/consul.d/consul-server.cert.pem 2>/dev/null || :
+    sudo cp /home/vagrant/consul/consul-server.key.pem /etc/consul.d/consul-server.key.pem 2>/dev/null || :
+    sudo cp /home/vagrant/consul/consul-agent.cert.pem /etc/consul.d/consul-agent.cert.pem 2>/dev/null || :
+    sudo cp /home/vagrant/consul/consul-agent.key.pem /etc/consul.d/consul-agent.key.pem 2>/dev/null || :
+
+    sudo chmod 444 /etc/consul.d/*
+    sudo chmod 644 /etc/consul.d/*.hcl
+    sudo chown root:root /etc/consul.d/*
+  SCRIPT
+
+  $vault_provision_script = <<-SCRIPT
+    sudo cp /home/vagrant/ca.cert.pem /etc/consul.d/ca.cert.pem
+    sudo cp /home/vagrant/ca.cert.pem /etc/vault.d/ca.cert.pem
+
+    sudo cp /home/vagrant/consul/consul.hcl /etc/consul.d/consul.hcl
+    sudo cp /home/vagrant/vault/vault.hcl /etc/vault.d/vault.hcl
+
+    sudo cp /home/vagrant/vault/nomad-server-policy.hcl /etc/vault.d/nomad-server-policy.hcl
+    sudo cp /home/vagrant/vault/nomad-cluster-role.json /etc/vault.d/nomad-cluster-role.json
+
+    sudo cp /home/vagrant/consul/consul-agent.cert.pem /etc/consul.d/consul-agent.cert.pem
+    sudo cp /home/vagrant/consul/consul-agent.key.pem /etc/consul.d/consul-agent.key.pem
+    sudo cp /home/vagrant/vault/consul-agent.key.pem /etc/vault.d/consul-agent.key.pem
+    sudo cp /home/vagrant/vault/consul-agent.cert.pem /etc/vault.d/consul-agent.cert.pem
+    sudo cp /home/vagrant/vault/vault-server.cert.pem /etc/vault.d/vault-server.cert.pem
+    sudo cp /home/vagrant/vault/vault-server.key.pem /etc/vault.d/vault-server.key.pem
+    sudo cp /home/vagrant/vault/vault-agent.cert.pem /etc/vault.d/vault-agent.cert.pem
+    sudo cp /home/vagrant/vault/vault-agent.key.pem /etc/vault.d/vault-agent.key.pem
+
+    sudo chmod 444 /etc/consul.d/* /etc/vault.d/*
+    sudo chmod 644 /etc/consul.d/*.hcl /etc/vault.d/*.hcl
+    sudo chown root:root /etc/consul.d/* /etc/vault.d/*
+
+    sudo sed -i "s/^StartLimitIntervalSec=*$//g" /lib/systemd/system/vault.service
+  SCRIPT
+
+  $nomad_provision_script = <<-SCRIPT
+    sudo cp /home/vagrant/ca.cert.pem /etc/consul.d/ca.cert.pem
+    sudo cp /home/vagrant/ca.cert.pem /etc/nomad.d/ca.cert.pem
+
+    sudo cp /home/vagrant/consul/consul.hcl /etc/consul.d/consul.hcl
+    sudo cp /home/vagrant/nomad/nomad.hcl /etc/nomad.d/nomad.hcl
+
+    sudo cp /home/vagrant/consul/consul-agent.cert.pem /etc/consul.d/consul-agent.cert.pem
+    sudo cp /home/vagrant/consul/consul-agent.key.pem /etc/consul.d/consul-agent.key.pem
+    sudo cp /home/vagrant/nomad/consul-agent.cert.pem /etc/nomad.d/consul-agent.cert.pem
+    sudo cp /home/vagrant/nomad/consul-agent.key.pem /etc/nomad.d/consul-agent.key.pem
+    sudo cp /home/vagrant/nomad/vault-agent.cert.pem /etc/nomad.d/vault-agent.cert.pem
+    sudo cp /home/vagrant/nomad/vault-agent.key.pem /etc/nomad.d/vault-agent.key.pem
+    sudo cp /home/vagrant/nomad/nomad-server.cert.pem /etc/nomad.d/nomad-server.cert.pem 2>/dev/null || :
+    sudo cp /home/vagrant/nomad/nomad-server.key.pem /etc/nomad.d/nomad-server.key.pem 2>/dev/null || :
+    sudo cp /home/vagrant/nomad/nomad-agent.cert.pem /etc/nomad.d/nomad-agent.cert.pem 2>/dev/null || :
+    sudo cp /home/vagrant/nomad/nomad-agent.key.pem /etc/nomad.d/nomad-agent.key.pem 2>/dev/null || :
+
+    sudo chmod 444 /etc/consul.d/* /etc/nomad.d/*
+    sudo chmod 644 /etc/consul.d/*.hcl /etc/nomad.d/*.hcl
+    sudo chown root:root /etc/consul.d/* /etc/nomad.d/*
+
+    sudo sed -i "s/^StartLimitIntervalSec=*$//g" /lib/systemd/system/vault.service
+    sudo sed -i "s/^#Wants=consul.service$/Wants=consul.service/g" /lib/systemd/system/nomad.service
+    sudo sed -i "s/^#After=consul.service$/After=consul.service/g" /lib/systemd/system/nomad.service 
+  SCRIPT
+  
+  $ui_server_provision_script = <<-SCRIPT
+    sudo cp /home/vagrant/ca.cert.pem /etc/consul.d/ca.cert.pem
+
+    sudo cp /home/vagrant/consul/consul.hcl /etc/consul.d/consul.hcl
+
+    sudo cp /home/vagrant/nginx/consul.conf /etc/nginx/sites-enabled/consul.conf
+    sudo cp /home/vagrant/nginx/vault.conf /etc/nginx/sites-enabled/vault.conf
+    sudo cp /home/vagrant/nginx/nomad.conf /etc/nginx/sites-enabled/nomad.conf
+    sudo cp /home/vagrant/nginx/consul-htpasswd /etc/nginx/conf.d/consul-htpasswd
+    sudo cp /home/vagrant/nginx/vault-htpasswd /etc/nginx/conf.d/vault-htpasswd
+    sudo cp /home/vagrant/nginx/nomad-htpasswd /etc/nginx/conf.d/nomad-htpasswd
+
+    sudo cp /home/vagrant/ca.cert.pem /etc/nginx/certs/ca.cert.pem
+
+    sudo cp /home/vagrant/consul/consul-agent.cert.pem /etc/consul.d/consul-agent.cert.pem
+    sudo cp /home/vagrant/consul/consul-agent.key.pem /etc/consul.d/consul-agent.key.pem
+
+    sudo mkdir -p /etc/nginx/certs/
+    sudo mkdir -p /etc/nginx/private/
+    sudo cp /home/vagrant/nginx/ui-server.cert.pem /etc/nginx/certs/ui-server.cert.pem
+    sudo cp /home/vagrant/nginx/ui-server.key.pem /etc/nginx/private/ui-server.key.pem
+    sudo cp /home/vagrant/nginx/consul-agent.cert.pem /etc/nginx/certs/consul-agent.cert.pem
+    sudo cp /home/vagrant/nginx/consul-agent.key.pem /etc/nginx/private/consul-agent.key.pem
+    sudo cp /home/vagrant/nginx/vault-agent.cert.pem /etc/nginx/certs/vault-agent.cert.pem
+    sudo cp /home/vagrant/nginx/vault-agent.key.pem /etc/nginx/private/vault-agent.key.pem
+    sudo cp /home/vagrant/nginx/nomad-agent.cert.pem /etc/nginx/certs/nomad-agent.cert.pem
+    sudo cp /home/vagrant/nginx/nomad-agent.key.pem /etc/nginx/private/nomad-agent.key.pem
+
+    sudo chmod 444 /etc/consul.d/* /etc/nginx/sites-enabled/* /etc/nginx/certs/* /etc/nginx/private/* /etc/nginx/conf.d/*-htpasswd
+    sudo chmod 644 /etc/consul.d/*.hcl /etc/nginx/sites-enabled/*.conf /etc/nginx/certs/* /etc/nginx/private/* /etc/nginx/conf.d/*-htpasswd
+    sudo chown root:root /etc/consul.d/* /etc/nginx/sites-enabled/*.conf /etc/nginx/certs/* /etc/nginx/private/* /etc/nginx/conf.d/*-htpasswd
+  SCRIPT
+
+  $vault_configure_script = <<-SCRIPT
+    export VAULT_ADDR="https://192.168.33.20:8200"
+    export VAULT_CLIENT_CERT="/etc/vault.d/vault-agent.cert.pem"
+    export VAULT_CLIENT_KEY="/etc/vault.d/vault-agent.key.pem"
+    export VAULT_CAPATH="/etc/vault.d/ca.cert.pem"
+
+    vault operator unseal "$VAULT_UNSEAL_KEY_1" || :
+    vault operator unseal "$VAULT_UNSEAL_KEY_2" || :
+    sleep 5
+
+    vault login "$VAULT_ROOT_TOKEN" || :
+    vault policy write nomad-server /etc/vault.d/nomad-server-policy.hcl || :
+    vault write auth/token/roles/nomad-cluster @/etc/vault.d/nomad-cluster-role.json || :
+  SCRIPT
+  
+  $nomad_configure_script = <<-SCRIPT
+    export VAULT_ADDR="https://vault.service.consul:8200"
+    export VAULT_CLIENT_CERT="/etc/nomad.d/vault-agent.cert.pem"
+    export VAULT_CLIENT_KEY="/etc/nomad.d/vault-agent.key.pem"
+    export VAULT_CAPATH="/etc/nomad.d/ca.cert.pem"
+ 
+    vault login "$VAULT_ROOT_TOKEN"
+    VAULT_TOKEN=$(vault token create -policy nomad-server -period 72h -orphan -field token)
+
+    sudo sed -i "s/\$VAULT_TOKEN/$VAULT_TOKEN/g" /etc/nomad.d/nomad.hcl
+  SCRIPT
+
+  $consul_services_script = <<-SCRIPT
+    sudo systemctl enable consul.service
+    sudo systemctl restart consul.service
+    sleep 5
+  SCRIPT
+  
+  $vault_services_script = <<-SCRIPT
+    sudo systemctl enable consul.service
+    sudo systemctl restart consul.service
+    sleep 5
+
+    sudo systemctl enable vault.service
+    sudo systemctl restart vault.service
+    sleep 5
+  SCRIPT
+  
+  $nomad_services_script = <<-SCRIPT
+    sudo systemctl enable nomad.service
+    sudo systemctl restart nomad.service
+    sleep 5
+  SCRIPT
+  
+  $ui_server_services_script = <<-SCRIPT
+    sudo systemctl enable consul.service
+    sudo systemctl restart consul.service
+    sleep 5
+
+    sudo systemctl enable nginx.service
+    sudo systemctl restart nginx.service
+    sleep 5
+  SCRIPT
+
+  $docker_services_script = <<-SCRIPT
+    sudo systemctl enable docker.service
+    sudo systemctl restart docker.service
+    sleep 5
+  SCRIPT
+end
