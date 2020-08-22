@@ -1,3 +1,4 @@
+scalar Long
 scalar LocalDate
 
 type Book {

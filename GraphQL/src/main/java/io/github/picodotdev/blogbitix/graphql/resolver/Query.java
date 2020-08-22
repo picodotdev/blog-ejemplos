@@ -1,10 +1,9 @@
 package io.github.picodotdev.blogbitix.graphql.resolver;
 
-import com.google.common.base.Functions;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import graphql.schema.DataFetchingEnvironment;
 import graphql.schema.SelectedField;
-import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphQLContext;
+import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphqlContext;
 import io.github.picodotdev.blogbitix.graphql.repository.LibraryRepository;
 import io.github.picodotdev.blogbitix.graphql.type.Author;
 import io.github.picodotdev.blogbitix.graphql.type.Book;
@@ -16,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Query implements GraphQLQueryResolver {
@@ -28,7 +28,7 @@ public class Query implements GraphQLQueryResolver {
 
     public List<Book> books(BookFilter filter, DataFetchingEnvironment environment) throws InterruptedException  {
         List<Book> books = libraryRepository.findBooks(filter);
-        DefaultGraphQLContext context = environment.getContext();
+        DefaultGraphqlContext context = environment.getContext();
 
         SelectedField batchedIsbn = getField(environment, "batchedIsbn");
         if (Objects.nonNull(batchedIsbn)) {
@@ -36,7 +36,7 @@ public class Query implements GraphQLQueryResolver {
             Thread.sleep(3000);
             System.out.printf("ok%n");
             Map<Long, String> isbns = books.stream().map(b -> b.getId()).collect(Collectors.toMap(
-                Functions.identity(),
+                Function.identity(),
                 v -> UUID.randomUUID().toString()
             ));;
             context.getData().put("batchedIsbn", isbns);

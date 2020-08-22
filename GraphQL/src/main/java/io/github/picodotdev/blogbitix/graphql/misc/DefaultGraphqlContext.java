@@ -10,7 +10,7 @@ import javax.websocket.Session;
 import javax.websocket.server.HandshakeRequest;
 import java.util.Optional;
 
-public class DefaultGraphQLContext implements GraphQLContext {
+public class DefaultGraphqlContext implements GraphQLContext {
 
     private graphql.GraphQLContext data;
 
@@ -21,17 +21,17 @@ public class DefaultGraphQLContext implements GraphQLContext {
 
     private DataLoaderRegistry dataLoaderRegistry;
 
-    public DefaultGraphQLContext(graphql.GraphQLContext data) {
+    public DefaultGraphqlContext(graphql.GraphQLContext data) {
         this.data = data;
     }
 
-    public DefaultGraphQLContext(graphql.GraphQLContext data, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+    public DefaultGraphqlContext(graphql.GraphQLContext data, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         this.data = data;
         this.httpServletRequest = httpServletRequest;
         this.httpServletResponse = httpServletResponse;
     }
 
-    public DefaultGraphQLContext(graphql.GraphQLContext data, Session session, HandshakeRequest handshakeRequest) {
+    public DefaultGraphqlContext(graphql.GraphQLContext data, Session session, HandshakeRequest handshakeRequest) {
         this.data = data;
         this.session = session;
         this.handshakeRequest = handshakeRequest;

@@ -1,5 +1,6 @@
 package io.github.picodotdev.blogbitix.graphql.misc;
 
+import graphql.language.StringValue;
 import graphql.schema.Coercing;
 import graphql.schema.CoercingParseValueException;
 import graphql.schema.CoercingSerializeException;
@@ -7,49 +8,49 @@ import graphql.schema.CoercingSerializeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class LocalDateCoercing implements Coercing<LocalDate, String> {
+public class LongCoercing implements Coercing<Long, String> {
 
-    private DateTimeFormatter formatter;
-
-    public LocalDateCoercing() {
-        this(DateTimeFormatter.ISO_DATE);
-    }
-
-    public LocalDateCoercing(DateTimeFormatter formatter) {
-        this.formatter = formatter;
+    public LongCoercing() {
     }
 
     @Override
     public String serialize(Object dataFetcherResult) {
         try {
-            LocalDate object = (LocalDate) dataFetcherResult;
+            Long object = (Long) dataFetcherResult;
             if (object == null) {
                 return null;
             }
-            return object.format(formatter);
+            return object.toString();
         } catch (Exception e) {
+            e.printStackTrace();
             throw new CoercingSerializeException(e);
         }
     }
 
     @Override
-    public LocalDate parseValue(Object input) {
+    public Long parseValue(Object input) {
         return parse(input);
     }
 
     @Override
-    public LocalDate parseLiteral(Object input) {
+    public Long parseLiteral(Object input) {
         return parse(input);
     }
 
-    private LocalDate parse(Object input) {
+    private Long parse(Object input) {
         try {
-            String string = (String) input;
+            String string = null;
+            if (input instanceof String) {
+                string = (String) input;
+            } else if (input instanceof StringValue) {
+                string = ((StringValue) input).getValue();
+            }
             if (string == null) {
                 return null;
             }
-            return LocalDate.parse(string, formatter);
+            return Long.parseLong(string);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new CoercingParseValueException(e);
         }
     }

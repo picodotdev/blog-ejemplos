@@ -1,18 +1,13 @@
 package io.github.picodotdev.blogbitix.graphql;
 
-import graphql.GraphQLError;
 import graphql.kickstart.execution.context.GraphQLContext;
-import graphql.kickstart.execution.context.GraphQLContextBuilder;
-import graphql.kickstart.execution.error.DefaultGraphQLErrorHandler;
-import graphql.kickstart.execution.error.GenericGraphQLError;
-import graphql.kickstart.execution.error.GraphQLErrorHandler;
+import graphql.kickstart.servlet.context.GraphQLServletContextBuilder;
 import graphql.kickstart.tools.SchemaParser;
 import graphql.schema.GraphQLScalarType;
 import graphql.schema.GraphQLSchema;
-import graphql.servlet.context.GraphQLServletContextBuilder;
-import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphQLContext;
-import io.github.picodotdev.blogbitix.graphql.misc.GraphQLErrorAdapter;
+import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphqlContext;
 import io.github.picodotdev.blogbitix.graphql.misc.LocalDateCoercing;
+import io.github.picodotdev.blogbitix.graphql.misc.LongCoercing;
 import io.github.picodotdev.blogbitix.graphql.repository.LibraryRepository;
 import io.github.picodotdev.blogbitix.graphql.resolver.BookResolver;
 import io.github.picodotdev.blogbitix.graphql.resolver.Mutation;
@@ -36,9 +31,7 @@ import javax.websocket.Session;
 import javax.websocket.server.HandshakeRequest;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class Main {
@@ -55,42 +48,10 @@ public class Main {
         return SchemaParser.newParser()
                 .schemaString(IOUtils.resourceToString("/library.graphqls", Charset.forName("UTF-8")))
                 .resolvers(new Query(libraryRepository), new Mutation(libraryRepository), new BookResolver(libraryRepository), new MagazineResolver(libraryRepository))
-                .scalars(GraphQLScalarType.newScalar().name("LocalDate").description("LocalDate scalar").coercing(new LocalDateCoercing()).build())
+                .scalars(GraphQLScalarType.newScalar().name("Long").description("Long scalar").coercing(new LongCoercing()).build(), GraphQLScalarType.newScalar().name("LocalDate").description("LocalDate scalar").coercing(new LocalDateCoercing()).build())
                 .dictionary(Magazine.class)
                 .build()
                 .makeExecutableSchema();
-    }
-
-    @Bean
-    public GraphQLErrorHandler graphQLErrorHandler() {
-        return new DefaultGraphQLErrorHandler() {
-            @Override
-            public List<GraphQLError> processErrors(List<GraphQLError> errors) {
-                List<GraphQLError> clientErrors = errors.stream()
-                        .filter(e -> isClientError(e))
-                        .map(GraphQLErrorAdapter::new)
-                        .collect(Collectors.toList());
-
-                List<GraphQLError> serverErrors = errors.stream()
-                        .filter(e -> !isClientError(e))
-                        .map(GraphQLErrorAdapter::new)
-                        .collect(Collectors.toList());
-
-                serverErrors.forEach(error -> {
-                    logger.error("Error executing query ({}): {}", error.getClass().getSimpleName(), error.getMessage());
-                });
-
-                if (!serverErrors.isEmpty()) {
-                    serverErrors = new ArrayList<>();
-                    serverErrors.add(new GenericGraphQLError("Internal Server Error(s) while executing query"));
-                }
-
-                List<GraphQLError> e = new ArrayList<>();
-                e.addAll(clientErrors);
-                e.addAll(serverErrors);
-                return e;
-            }
-        };
     }
 
     @Bean
@@ -99,7 +60,7 @@ public class Main {
             @Override
             public GraphQLContext build(HttpServletRequest request, HttpServletResponse response) {
                 graphql.GraphQLContext data = graphql.GraphQLContext.newContext().build();
-                DefaultGraphQLContext context = new DefaultGraphQLContext(data, request, response);
+                DefaultGraphqlContext context = new DefaultGraphqlContext(data, request, response);
                 context.setDataLoaderRegistry(buildDataLoaderRegistry(mappedBatchLoaders, context));
                 return context;
             }
@@ -107,7 +68,7 @@ public class Main {
             @Override
             public GraphQLContext build(Session session, HandshakeRequest request) {
                 graphql.GraphQLContext data = graphql.GraphQLContext.newContext().build();
-                DefaultGraphQLContext context = new DefaultGraphQLContext(data, session, request);
+                DefaultGraphqlContext context = new DefaultGraphqlContext(data, session, request);
                 context.setDataLoaderRegistry(buildDataLoaderRegistry(mappedBatchLoaders, context));
                 return context;
             }
@@ -115,7 +76,7 @@ public class Main {
             @Override
             public GraphQLContext build() {
                 graphql.GraphQLContext data = graphql.GraphQLContext.newContext().build();
-                DefaultGraphQLContext context = new DefaultGraphQLContext(data);
+                DefaultGraphqlContext context = new DefaultGraphqlContext(data);
                 context.setDataLoaderRegistry(buildDataLoaderRegistry(mappedBatchLoaders, context));
                 return context;
             }

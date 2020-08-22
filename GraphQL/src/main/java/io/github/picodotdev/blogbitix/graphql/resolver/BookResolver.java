@@ -3,7 +3,7 @@ package io.github.picodotdev.blogbitix.graphql.resolver;
 import graphql.kickstart.tools.GraphQLResolver;
 import graphql.schema.DataFetchingEnvironment;
 import io.github.picodotdev.blogbitix.graphql.dataloader.IsbnDataLoader;
-import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphQLContext;
+import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphqlContext;
 import io.github.picodotdev.blogbitix.graphql.repository.LibraryRepository;
 import io.github.picodotdev.blogbitix.graphql.type.Book;
 import io.github.picodotdev.blogbitix.graphql.type.Comment;
@@ -33,7 +33,7 @@ public class BookResolver implements GraphQLResolver<Book> {
     }
 
     public String getBatchedIsbn(Book book, DataFetchingEnvironment environment) throws InterruptedException {
-        DefaultGraphQLContext context = environment.getContext();
+        DefaultGraphqlContext context = environment.getContext();
         Map<Long, String> isbns = (Map<Long, String>) context.getData().get("batchedIsbn");
         return isbns.get(book.getId());
     }
@@ -74,7 +74,7 @@ public class BookResolver implements GraphQLResolver<Book> {
     }
 
     public CommentsConnection getBatchedComments(Book book, String after, Long limit, DataFetchingEnvironment environment) {
-        DefaultGraphQLContext context = environment.getContext();
+        DefaultGraphqlContext context = environment.getContext();
         Map<Long, CommentsConnection> batchedComments = (Map<Long, CommentsConnection>) context.getData().get("batchedComments");
         return batchedComments.get(book.getId());
     }
