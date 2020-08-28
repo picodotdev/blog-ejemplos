@@ -15,10 +15,15 @@ type Book {
     dataLoaderIsbn: String
 }
 
+# The Magazine entity type.
 type Magazine {
+    # The identifier.
     id: Long
+    # The magazine name.
     name: String
+    # The number of pages that magazine has.
     pages: Long
+    old: String @deprecated(reason: "This property should not be used anymore.")
 }
 
 type Comment {

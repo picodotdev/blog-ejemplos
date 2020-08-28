@@ -5,6 +5,7 @@ public class Magazine extends Publication {
     private Long id;
     private String name;
     private Long pages;
+    private String old;
 
     public Magazine(Long id, String name, Long pages) {
         this.id = id;
@@ -34,5 +35,15 @@ public class Magazine extends Publication {
 
     public void setPages(Long pages) {
         this.pages = pages;
+    }
+
+    @Deprecated
+    public String getOld() {
+        return old;
+    }
+
+    @Deprecated
+    public void setOld(String old) {
+        this.old = old;
     }
 }
