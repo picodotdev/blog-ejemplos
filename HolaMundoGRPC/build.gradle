@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'idea'
+    id 'com.google.protobuf' version '0.8.8'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'io.grpc:grpc-protobuf:1.31.1'
+    implementation 'io.grpc:grpc-stub:1.31.1'
+    implementation 'io.grpc:grpc-netty-shaded:1.31.1'
+    compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
+}
+
+application {
+    mainClassName = 'io.github.picodotdev.blogbitix.grpc.Main'
+}
+
+idea {
+    module {
+        sourceDirs += file("src/generated");
+    }
+}
+
+protobuf {
+    generatedFilesBaseDir = "$projectDir/src/generated"
+
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.13.0"
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.31.1'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
+
+clean {
+    delete protobuf.generatedFilesBaseDir
+}
+
+
