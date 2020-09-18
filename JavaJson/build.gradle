@@ -10,22 +10,22 @@ repositories {
 }
 
 dependencies {
-    compile "javax.json:javax.json-api:1.1"
-    compile "javax.json.bind:javax.json.bind-api:1.0"
-    compile "javax.json.bind:javax.json.bind-api:1.0"
-    compile "com.google.code.gson:gson:2.8.5"
-    compile "com.fasterxml.jackson.core:jackson-databind:2.9.8"
+    implementation "javax.json:javax.json-api:1.1"
+    implementation "javax.json.bind:javax.json.bind-api:1.0"
+    implementation "javax.json.bind:javax.json.bind-api:1.0"
+    implementation "com.google.code.gson:gson:2.8.5"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.9.8"
 
-    compile "com.jayway.jsonpath:json-path:2.4.0"
+    implementation "com.jayway.jsonpath:json-path:2.4.0"
 
-    runtime 'org.apache.logging.log4j:log4j-api:2.11.1'
-    runtime 'org.apache.logging.log4j:log4j:2.11.1'
-    runtime 'org.apache.logging.log4j:log4j-core:2.11.1'
-    runtime 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6'
-    runtime "org.apache.logging.log4j:log4j-slf4j18-impl:2.11.1"
+    runtimeOnly 'org.apache.logging.log4j:log4j-api:2.11.1'
+    runtimeOnly 'org.apache.logging.log4j:log4j:2.11.1'
+    runtimeOnly 'org.apache.logging.log4j:log4j-core:2.11.1'
+    runtimeOnly 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6'
+    runtimeOnly "org.apache.logging.log4j:log4j-slf4j18-impl:2.11.1"
 
-    runtime "org.eclipse:yasson:1.0"
-    runtime "org.glassfish:javax.json:1.1"
+    runtimeOnly "org.eclipse:yasson:1.0"
+    runtimeOnly "org.glassfish:javax.json:1.1"
 }
 
 
