@@ -1,0 +1,12 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    labels:
+      - "co.elastic.logs/enabled=true"
+      - "co.elastic.logs/module=nginx"
+      - "co.elastic.logs/fileset.stdout=access"
+      - "co.elastic.logs/fileset.stderr=error"
+    ports:
+      - "8080:80"
