@@ -28,7 +28,7 @@ public class HelloWorldClient {
         return response.getMessage();
     }
 
-    public Stream<String> getHelloRandom(String name) {
+    public Stream<String> getHelloStream(String name) {
         Iterator<HelloWorldClass.HelloResponse> response = blockingStub.helloStream(HelloWorldClass.HelloRequest.newBuilder().setName(name).build());
         Spliterator<HelloWorldClass.HelloResponse> splitIterator = Spliterators.spliteratorUnknownSize(response, Spliterator.ORDERED);
         Stream<String> stream = StreamSupport.stream(splitIterator, false).map(HelloWorldClass.HelloResponse::getMessage);

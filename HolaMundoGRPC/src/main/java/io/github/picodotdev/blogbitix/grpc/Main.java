@@ -20,7 +20,7 @@ public class Main {
     private static void startClient() {
         HelloWorldClient client = new HelloWorldClient("localhost", 8980);
         System.out.println(client.getHelloMessage("gRPC"));
-        client.getHelloRandom("gRPC").forEach(message -> {
+        client.getHelloStream("gRPC").forEach(message -> {
             System.out.println(message);
         });
     }
