@@ -27,12 +27,13 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)
     implementation('org.springframework.boot:spring-boot-starter-actuator', excludeSpringBootStarterLogging)
     implementation('org.springframework.cloud:spring-cloud-starter-config', excludeSpringBootStarterLogging)
-    implementation('org.springframework.cloud:spring-cloud-starter-consul-all') { 
+    implementation('org.springframework.cloud:spring-cloud-starter-consul-all') {
         exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging')
         exclude(group: 'ch.qos.logback')
     }
     implementation('org.springframework.cloud:spring-cloud-starter-netflix-ribbon', excludeSpringBootStarterLogging)
     implementation('org.springframework.cloud:spring-cloud-starter-sleuth', excludeSpringBootStarterLogging)
+    implementation('org.springframework.cloud:spring-cloud-starter-zipkin', excludeSpringBootStarterLogging)
 
     implementation('io.github.resilience4j:resilience4j-spring-boot2:1.2.0', excludeSpringBootStarterLogging)
     implementation('io.github.resilience4j:resilience4j-timelimiter:1.2.0', excludeSpringBootStarterLogging)

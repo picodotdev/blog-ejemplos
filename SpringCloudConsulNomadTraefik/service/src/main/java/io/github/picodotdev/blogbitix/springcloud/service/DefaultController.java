@@ -3,7 +3,6 @@ package io.github.picodotdev.blogbitix.springcloud.service;
 import brave.Span;
 import brave.Tracer;
 import brave.Tracing;
-import brave.propagation.TraceContext;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,16 +34,15 @@ public class DefaultController {
 
     @RequestMapping("/")
     public String home(HttpServletRequest request) throws Exception {
+        Span span = tracer.currentSpan();
+
+        System.out.printf("Service Span (traceId: %s, spanId: %s)%n", span.context().traceIdString(), span.context().spanIdString());
         counter.increment();
 
         // Timeout simulation
         //Thread.sleep(random.nextInt(4000));
 
-        TraceContext.Extractor<HttpServletRequest> extractor = tracing.propagation().extractor((HttpServletRequest carrier, String key) -> { return carrier.getHeader(key); });
-        Span span = tracer.nextSpan(extractor.extract(request));
-        System.out.printf("Service Span (traceId: %s, spanId: %s)%n", span.context().traceIdString(), span.context().spanIdString());
-
-        return String.format("Hello world (url: %s, remoteAddress_%s, localAddress: %s, traceId: %s, spanId: %s, key: %s)", request.getRequestURL(), 
-        request.getRemoteAddr(), request.getLocalAddr(), span.context().traceIdString(), span.context().spanIdString(), configuration.getKey());
+        return String.format("Hello world (url: %s, remoteAddress_%s, localAddress: %s, traceId: %s, spanId: %s, key: %s)", request.getRequestURL(),
+                request.getRemoteAddr(), request.getLocalAddr(), span.context().traceIdString(), span.context().spanIdString(), configuration.getKey());
     }
 }

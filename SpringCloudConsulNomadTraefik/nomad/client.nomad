@@ -14,7 +14,8 @@ job "client" {
         network_mode = "nomad"
         extra_hosts = [
           "consul:172.30.0.1",
-          "traefik:172.30.0.3"
+          "traefik:172.30.0.3",
+          "zipkin:172.30.0.4"
         ]
         volumes = [
           "/home/picodotdev/Software/personal/blog-ejemplos/SpringCloudConsulNomadTraefik/:/app"

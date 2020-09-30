@@ -5,7 +5,7 @@ job "traefik" {
     task "traefik" {
       driver = "docker"
       config {
-        image = "traefik:latest"
+        image = "traefik"
         args = [
           "--api.insecure=true",
           "--providers.consulcatalog.endpoint.address=http://172.30.0.1:8500"
@@ -16,9 +16,6 @@ job "traefik" {
           lb = 80
           ui = 8080
         }        
-        volumes = [
-          "/var/run/docker.sock:/var/run/docker.sock"
-        ]        
       }
 
       service {
