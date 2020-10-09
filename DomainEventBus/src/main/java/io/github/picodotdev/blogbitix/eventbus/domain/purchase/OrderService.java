@@ -1,6 +1,6 @@
 package io.github.picodotdev.blogbitix.eventbus.domain.purchase;
 
-import io.github.picodotdev.blogbitix.eventbus.domain.kernel.domainevent.DomainEventBus;
+import io.github.picodotdev.blogbitix.eventbus.domain.kernel.domainevent.EventBus;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -8,9 +8,9 @@ import java.util.List;
 public class OrderService {
 
     private OrderRepository orderRepository;
-    private DomainEventBus eventBus;
+    private EventBus eventBus;
 
-    public OrderService(OrderRepository orderRepository, DomainEventBus eventBus) {
+    public OrderService(OrderRepository orderRepository, EventBus eventBus) {
         this.orderRepository = orderRepository;
         this.eventBus = eventBus;
     }

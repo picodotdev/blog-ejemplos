@@ -4,7 +4,7 @@ import io.github.picodotdev.blogbitix.eventbus.domain.kernel.aggregateroot.Aggre
 
 import java.util.Collection;
 
-public interface DomainEventBus {
+public interface EventBus {
 
     void publish(DomainEvent e);
 

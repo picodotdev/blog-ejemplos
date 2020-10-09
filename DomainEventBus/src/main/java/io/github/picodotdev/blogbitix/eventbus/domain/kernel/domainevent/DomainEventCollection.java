@@ -23,7 +23,7 @@ public class DomainEventCollection {
         domainEvents.clear();
     }
 
-    public void publish(DomainEventBus eventBus) {
+    public void publish(EventBus eventBus) {
         eventBus.publish(getAll());
         clear();
     }

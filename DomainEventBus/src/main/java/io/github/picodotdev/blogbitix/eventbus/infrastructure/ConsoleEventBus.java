@@ -1,11 +1,11 @@
 package io.github.picodotdev.blogbitix.eventbus.infrastructure;
 
 import io.github.picodotdev.blogbitix.eventbus.domain.kernel.domainevent.DomainEvent;
-import io.github.picodotdev.blogbitix.eventbus.domain.kernel.domainevent.DomainEventBus;
+import io.github.picodotdev.blogbitix.eventbus.domain.kernel.domainevent.EventBus;
 
 import java.time.format.DateTimeFormatter;
 
-public class ConsoleEventBus implements DomainEventBus {
+public class ConsoleEventBus implements EventBus {
 
     @Override
     public void publish(DomainEvent e) {
