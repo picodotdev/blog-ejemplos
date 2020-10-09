@@ -1,6 +1,6 @@
 package io.github.picodotdev.blogbitix.eventbus.domain.purchase;
 
-import io.github.picodotdev.blogbitix.eventbus.domain.kernel.aggregate.Aggregate;
+import io.github.picodotdev.blogbitix.eventbus.domain.kernel.aggregateroot.AggregateRoot;
 import io.github.picodotdev.blogbitix.eventbus.domain.kernel.domainevent.DomainEventCollection;
 
 import java.math.BigDecimal;
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Order implements Aggregate {
+public class Order implements AggregateRoot {
 
     private OrderId id;
     private LocalDateTime date;

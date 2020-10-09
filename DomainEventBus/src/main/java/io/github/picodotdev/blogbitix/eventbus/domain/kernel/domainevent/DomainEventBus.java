@@ -1,6 +1,6 @@
 package io.github.picodotdev.blogbitix.eventbus.domain.kernel.domainevent;
 
-import io.github.picodotdev.blogbitix.eventbus.domain.kernel.aggregate.Aggregate;
+import io.github.picodotdev.blogbitix.eventbus.domain.kernel.aggregateroot.AggregateRoot;
 
 import java.util.Collection;
 
@@ -16,7 +16,7 @@ public interface DomainEventBus {
         c.publish(this);
     }
 
-    default void publish(Aggregate a) {
+    default void publish(AggregateRoot a) {
         publish(a.getEvents());
     }
 }
