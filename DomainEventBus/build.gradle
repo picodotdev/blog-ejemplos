@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+}
+
+application {
+    mainClassName = 'io.github.picodotdev.blogbitix.eventbus.Main'
+}
+
