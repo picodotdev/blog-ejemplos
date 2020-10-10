@@ -247,6 +247,7 @@ Vagrant.configure("2") do |config|
 
     sudo apt-get -y install docker-ce docker-ce-cli containerd.io
     sudo usermod -aG docker vagrant
+    sudo usermod -aG docker nomad
 
     sudo systemctl enable docker.service
   SCRIPT
