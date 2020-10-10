@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'io.github.picodotdev.blogbitix'
+version = '1.0'
+sourceCompatibility = '11'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation platform('org.springframework.boot:spring-boot-dependencies:2.3.4.RELEASE')
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+}
+
+application {
+    mainClassName = 'io.github.picodotdev.blogbitix.eventbus.Main'
+}
+
