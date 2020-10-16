@@ -21,8 +21,8 @@ public class SpringQueryBus implements QueryBus {
     public SpringQueryBus(List<QueryHandler> queryHandlerImplementations) {
         this.handlers = new HashMap<>();
         queryHandlerImplementations.forEach(queryHandler -> {
-            Class classHandler = getQueryClass(queryHandler);
-            handlers.put(classHandler, queryHandler);
+            Class queryClass = getQueryClass(queryHandler);
+            handlers.put(queryClass, queryHandler);
         });
     }
 

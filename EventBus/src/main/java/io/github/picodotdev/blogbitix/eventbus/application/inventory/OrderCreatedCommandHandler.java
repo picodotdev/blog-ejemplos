@@ -13,7 +13,6 @@ import io.github.picodotdev.blogbitix.eventbus.domain.shared.commandbus.CommandH
 import io.github.picodotdev.blogbitix.eventbus.domain.shared.eventbus.EventBus;
 import org.springframework.stereotype.Component;
 
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,15 +37,17 @@ public class OrderCreatedCommandHandler implements CommandHandler<OrderCreatedCo
 
         List<ProductId> oversoldProductIds = order.getItems().stream().filter(it -> {
             Product product = productRepository.findById(it.getProductId());
-            return product.hasStock(it.getQuantity());
+            return !product.hasStock(it.getQuantity());
         }).map(Item::getProductId).collect(Collectors.toList());
 
         order.getItems().forEach(it -> {
             Product product = productRepository.findById(it.getProductId());
-            product.substractStock(it.getQuantity());
+            product.subtractStock(it.getQuantity());
             eventBus.publish(product);
         });
 
-        eventBus.publish(new OrderOversold(orderId, oversoldProductIds));
+        if (!oversoldProductIds.isEmpty()) {
+            eventBus.publish(new OrderOversold(orderId, oversoldProductIds));
+        }
     }
 }

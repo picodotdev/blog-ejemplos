@@ -24,14 +24,14 @@ public class SpringCommandBus implements CommandBus {
     public SpringCommandBus(List<CommandHandler> commandHandlerImplementations) {
         this.handlers = new HashMap<>();
         commandHandlerImplementations.forEach(commandHandler -> {
-            Class<?> classHandler = getCommandClass(commandHandler);
-            handlers.put(classHandler, commandHandler);
+            Class<?> commandClass = getCommandClass(commandHandler);
+            handlers.put(commandClass, commandHandler);
         });
     }
 
 
     @Override
-    public <T> void handle(Command command) throws Exception {
+    public void handle(Command command) throws Exception {
         if (!handlers.containsKey(command.getClass())) {
             throw new Exception(String.format("No handler for %s", command.getClass().getName()));
         }

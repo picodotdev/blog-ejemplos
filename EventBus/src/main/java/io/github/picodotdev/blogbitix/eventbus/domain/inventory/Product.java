@@ -37,7 +37,7 @@ public class Product implements AggregateRoot {
         return stock >= quantity;
     }
 
-    public void substractStock(long quantity) {
+    public void subtractStock(long quantity) {
         if (hasStock(quantity)) {
             stock -= quantity;
         } else {
