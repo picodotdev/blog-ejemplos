@@ -11,6 +11,7 @@ import io.github.picodotdev.blogbitix.eventbus.domain.order.OrderId;
 import io.github.picodotdev.blogbitix.eventbus.domain.order.OrderRepository;
 import io.github.picodotdev.blogbitix.eventbus.domain.shared.commandbus.CommandHandler;
 import io.github.picodotdev.blogbitix.eventbus.domain.shared.eventbus.EventBus;
+import io.github.picodotdev.blogbitix.eventbus.domain.shared.repository.EventRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -21,17 +22,25 @@ public class OrderCreatedCommandHandler implements CommandHandler<OrderCreatedCo
 
     private ProductRepository productRepository;
     private OrderRepository orderRepository;
+    private EventRepository eventRepository;
     private EventBus eventBus;
 
-    public OrderCreatedCommandHandler(ProductRepository productRepository, OrderRepository orderRepository, EventBus eventBus) {
+    public OrderCreatedCommandHandler(ProductRepository productRepository, OrderRepository orderRepository, EventRepository eventRepository, EventBus eventBus) {
         this.productRepository = productRepository;
         this.orderRepository = orderRepository;
+        this.eventRepository = eventRepository;
         this.eventBus = eventBus;
     }
 
     @Override
     public void handle(OrderCreatedCommand command) {
         OrderCreated event = command.getEvent();
+
+        if (eventRepository.exists(event)) {
+            System.out.printf("Duplicated event %s%n", event.getId().getValue());
+            return;
+        }
+
         OrderId orderId = event.getOrderId();
         Order order = orderRepository.findById(orderId);
 
@@ -49,5 +58,7 @@ public class OrderCreatedCommandHandler implements CommandHandler<OrderCreatedCo
         if (!oversoldProductIds.isEmpty()) {
             eventBus.publish(new OrderOversold(orderId, oversoldProductIds));
         }
+
+        eventRepository.add(event);
     }
 }
