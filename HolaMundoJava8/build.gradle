@@ -21,3 +21,11 @@ application {
     mainClassName = 'io.github.picodotdev.blogbitix.java.helloworld.Main'
 }
 
+run {
+    debugOptions {
+       enabled = false
+       server = true
+       suspend = true
+       port = 5005
+   }
+}
