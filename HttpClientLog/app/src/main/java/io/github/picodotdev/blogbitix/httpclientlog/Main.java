@@ -43,7 +43,7 @@ public class Main {
         };
         BiConsumer<HttpResponse<?>, String> onResponse = (HttpResponse<?> r, String curl) -> {
             String headers = r.headers().map().entrySet().stream().map((e) -> {
-                return String.format("[%s: %s]", e.getKey(), e.getValue().stream().collect(Collectors.joining(",")));
+                return String.format("%s: %s", e.getKey(), e.getValue().stream().collect(Collectors.joining(",")));
             }).collect(Collectors.joining(","));
             System.out.printf("%s%n", curl);
             System.out.printf("%s %s%n", r.statusCode(), headers);
@@ -69,9 +69,9 @@ public class Main {
 
         ExchangeFilterFunction logRespose = ExchangeFilterFunction.ofResponseProcessor(r -> {
             String headers = r.headers().asHttpHeaders().entrySet().stream().map((e) -> {
-                return String.format("-H \"%s: %s\"", e.getKey(), e.getValue().stream().collect(Collectors.joining(",")));
+                return String.format("%s: %s", e.getKey(), e.getValue().stream().collect(Collectors.joining(",")));
             }).collect(Collectors.joining(","));
-            System.out.printf("%s %s%n", r.statusCode(), headers);
+            System.out.printf("%s %s%n", r.rawStatusCode(), headers);
             return Mono.just(r);
         });
 
@@ -101,7 +101,7 @@ public class Main {
 
             private void logResponse(Response r) throws IOException {
                 String headers = r.headers().toMultimap().entrySet().stream().map((e) -> {
-                    return String.format("-H \"%s: %s\"", e.getKey(), e.getValue().stream().collect(Collectors.joining(",")));
+                    return String.format("%s: %s", e.getKey(), e.getValue().stream().collect(Collectors.joining(",")));
                 }).collect(Collectors.joining(","));
                 System.out.printf("%s %s%n", r.code(), headers);
             }
@@ -142,7 +142,7 @@ public class Main {
 
             private void logResponse(Response r) throws IOException {
                 String headers = r.headers().toMultimap().entrySet().stream().map((e) -> {
-                    return String.format("-H \"%s: %s\"", e.getKey(), e.getValue().stream().collect(Collectors.joining(",")));
+                    return String.format("%s: %s", e.getKey(), e.getValue().stream().collect(Collectors.joining(",")));
                 }).collect(Collectors.joining(","));
                 System.out.printf("%s %s%n", r.code(), headers);
             }
