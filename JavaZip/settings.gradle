@@ -1,0 +1,2 @@
+rootProject.name = 'JavaZip'
+include('app')
