@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'io.github.picodotdev.blogbitix.springoauth'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:2.4.0"))
+
+    implementation('org.springframework.boot:spring-boot-starter')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
+
+    runtimeOnly('com.fasterxml.jackson.core:jackson-databind:2.9.6')
+    runtimeOnly('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.6')
+}
+
+application {
+    mainClass = 'io.github.picodotdev.blogbitix.springoauth.Main'
+}
