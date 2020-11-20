@@ -1,0 +1,19 @@
+version: '3'
+services:
+  oauth2:
+    image: bitnami/oauth2-proxy:latest
+    volumes:
+      - "./oauth2-proxy.cfg:/etc/oauth2-proxy.cfg"
+      - "./oauth2-proxy-authenticated-emails.cfg:/etc/oauth2-proxy-authenticated-emails.cfg"
+    ports:
+      - "4180:4180"
+    command: oauth2-proxy --config=/etc/oauth2-proxy.cfg --cookie-domain="nginx.127.0.0.1.xip.io"
+
+  nginx:
+    image: nginx
+    volumes:
+      - "./nginx.conf:/etc/nginx/nginx.conf:ro"
+      - "./oauth2.nginx.127.0.0.1.xip.io.conf:/etc/nginx/conf.d/oauth2.nginx.127.0.0.1.xip.io.conf:ro"
+      - "./nginx.127.0.0.1.xip.io.conf:/etc/nginx/conf.d/nginx.127.0.0.1.xip.io.conf:ro"
+    ports:
+      - "80:80"
