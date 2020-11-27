@@ -10,7 +10,6 @@ public class Event {
 
     private EventId id;
     private LocalDateTime date;
-    private Map<String, Object> data;
 
     public Event() {
         this(Collections.emptyMap());
@@ -19,7 +18,6 @@ public class Event {
     public Event(Map<String, Object> data) {
         this.id = new EventId(UUID.randomUUID());
         this.date = LocalDateTime.now(ZoneId.of("UTC"));
-        this.data = data;
     }
 
     public EventId getId() {
@@ -28,9 +26,5 @@ public class Event {
 
     public LocalDateTime getDate() {
         return date;
-    }
-
-    public Map<String, Object> getData() {
-        return data;
     }
 }
