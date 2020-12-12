@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.javainternacionalizatinlocalization;
+package io.github.picodotdev.blogbitix.internacionalizationlocalization;
 
 import org.javamoney.moneta.Money;
 import org.javamoney.moneta.format.CurrencyStyle;
