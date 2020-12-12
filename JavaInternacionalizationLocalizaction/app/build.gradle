@@ -1,0 +1,16 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation('org.javamoney:moneta:1.4.2')
+}
+
+application {
+    mainClass = 'io.github.picodotdev.blogbitix.javainternacionalizatinlocalization.Main'
+}
+
