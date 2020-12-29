@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ${PWD}/www.127.0.0.1.xip.io.conf:/etc/nginx/conf.d/www.127.0.0.1.xip.io.conf:ro
+      - ${PWD}/nginx/log:/var/log/nginx
+
