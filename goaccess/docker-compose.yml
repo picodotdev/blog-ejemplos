@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  goaccess:
+    image: picodotdev/goaccess:1.0
+    ports:
+      - "7890"
+    volumes:
+      - ${PWD}/goaccess.conf:/etc/goaccess/goaccess.conf
+      - ${PWD}/nginx/log:/var/log/nginx:ro
+      - ${PWD}/nginx/goaccess:/usr/share/goaccess/html
+    command: ["goaccess", "--no-global-config", "--config-file=/etc/goaccess/goaccess.conf"]
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ${PWD}/www.127.0.0.1.xip.io.conf:/etc/nginx/conf.d/www.127.0.0.1.xip.io.conf:ro
+      - ${PWD}/goaccess.127.0.0.1.xip.io.conf:/etc/nginx/conf.d/goaccess.127.0.0.1.xip.io.conf:ro
+      - ${PWD}/nginx/log:/var/log/nginx
+      - ${PWD}/nginx/goaccess:/usr/share/goaccess/html:ro
+    depends_on:
+      - goaccess
