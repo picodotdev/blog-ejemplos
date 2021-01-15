@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    command: --max-allowed-packet=64MB
+    volumes:
+      - mysql:/var/lib/mysql
+    env_file:
+      - ${PWD}/database-mysql.env
+
+  matomo:
+    image: matomo:fpm-alpine
+    links:
+      - mysql
+    volumes:
+      - ${PWD}/config:/usr/share/nginx/config:rw
+      - matomo:/var/www/html
+    env_file:
+      - ${PWD}/database-matomo.env
+
+  nginx:
+    image: nginx
+    volumes:
+      - ${PWD}/matomo.127.0.0.1.xip.io.conf:/etc/nginx/conf.d/matomo.127.0.0.1.xip.io.conf:ro
+      - ${PWD}/www.127.0.0.1.xip.io.conf:/etc/nginx/conf.d/www.127.0.0.1.xip.io.conf:ro
+      - matomo:/var/www/html:ro
+      - ${PWD}/www:/var/nginx/html/www
+    ports:
+      - 80:80
+    depends_on:
+      - matomo
+
+volumes:
+  mysql:
+  matomo:
+
