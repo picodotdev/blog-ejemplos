@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:2.4.2"))
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    group = 'com.stubhub'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = '11'
+    mainClassName = 'io.github.picodotdev.blogbitix.dddhexagonal.catalog.Main'
+}
