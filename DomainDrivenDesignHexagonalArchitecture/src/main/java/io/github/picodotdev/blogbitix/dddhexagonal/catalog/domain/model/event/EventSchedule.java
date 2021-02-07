@@ -2,7 +2,7 @@ package io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event;
 
 import java.util.Objects;
 
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.exceptions.EndDateIsBeforeStartDate;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.exceptions.EndDateIsBeforeStartDate;
 
 public class EventSchedule {
 

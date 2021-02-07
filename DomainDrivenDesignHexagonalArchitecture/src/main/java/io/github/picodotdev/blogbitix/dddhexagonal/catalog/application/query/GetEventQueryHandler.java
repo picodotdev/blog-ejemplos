@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.Event;
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.EventRepository;
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.querybus.QueryHandler;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.querybus.QueryHandler;
 
 @Component
 public class GetEventQueryHandler implements QueryHandler<Event, GetEventQuery> {

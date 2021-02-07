@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.domainevents;
+package io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.domaineventbus;
 
 import java.util.ArrayList;
 import java.util.List;

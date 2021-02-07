@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.commandbus;
+package io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.commandbus;
 
 public interface CommandHandler<T extends Command> {
 

@@ -17,8 +17,8 @@ import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.Ev
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.EventDate;
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.EventId;
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.EventSchedule;
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.commandbus.CommandBus;
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.querybus.QueryBus;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.commandbus.CommandBus;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.querybus.QueryBus;
 
 @RestController
 @RequestMapping("/event")

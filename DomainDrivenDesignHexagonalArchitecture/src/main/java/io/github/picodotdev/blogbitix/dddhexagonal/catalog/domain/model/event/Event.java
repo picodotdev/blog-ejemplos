@@ -2,9 +2,9 @@ package io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event;
 
 import java.io.Serializable;
 
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.exceptions.EndDateIsBeforeStartDate;
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.exceptions.InvalidDate;
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.domainevents.DomainEventCollection;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.exceptions.EndDateIsBeforeStartDate;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.exceptions.InvalidDate;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.domaineventbus.DomainEventCollection;
 
 public class Event implements Serializable {
 

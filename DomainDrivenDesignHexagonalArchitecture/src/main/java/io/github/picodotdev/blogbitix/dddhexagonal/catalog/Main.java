@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.command.CreateEventCommand;
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.EventDate;
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.EventSchedule;
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.commandbus.CommandBus;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.commandbus.CommandBus;
 
 @SpringBootApplication
 public class Main implements CommandLineRunner {

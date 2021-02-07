@@ -1,8 +1,7 @@
 package io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.command;
 
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.EventDate;
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.EventSchedule;
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.commandbus.Command;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.commandbus.Command;
 
 public class CreateEventCommand extends Command {
 

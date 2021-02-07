@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.exceptions.InvalidDate;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.exceptions.InvalidDate;
 
 public class EventDate {
 

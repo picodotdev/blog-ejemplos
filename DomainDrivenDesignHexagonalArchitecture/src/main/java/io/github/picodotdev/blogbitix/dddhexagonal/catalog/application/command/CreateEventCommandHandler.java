@@ -5,8 +5,7 @@ import org.springframework.stereotype.Component;
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.usecases.CreateEventUseCase;
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.EventId;
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.EventRepository;
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.EventSchedule;
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.commandbus.CommandHandler;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.commandbus.CommandHandler;
 
 @Component
 public class CreateEventCommandHandler implements CommandHandler<CreateEventCommand> {

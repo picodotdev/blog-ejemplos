@@ -9,9 +9,9 @@ import java.util.Map;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.querybus.Query;
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.querybus.QueryBus;
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.querybus.QueryHandler;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.querybus.Query;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.querybus.QueryBus;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.querybus.QueryHandler;
 
 @Component
 @Primary

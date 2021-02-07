@@ -5,8 +5,8 @@ import java.time.format.DateTimeFormatter;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.domainevents.DomainEvent;
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.domainevents.DomainEventBus;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.domaineventbus.DomainEvent;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.domaineventbus.DomainEventBus;
 
 @Component
 @Primary

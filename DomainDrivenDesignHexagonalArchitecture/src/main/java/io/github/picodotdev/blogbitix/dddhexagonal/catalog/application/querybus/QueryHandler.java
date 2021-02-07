@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.querybus;
+package io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.querybus;
 
 public interface QueryHandler<T, U extends Query<T>> {
 

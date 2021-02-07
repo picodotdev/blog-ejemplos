@@ -9,9 +9,9 @@ import java.util.Map;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.commandbus.Command;
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.commandbus.CommandBus;
-import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.shared.commandbus.CommandHandler;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.commandbus.Command;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.commandbus.CommandBus;
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.commandbus.CommandHandler;
 
 @Component
 @Primary
