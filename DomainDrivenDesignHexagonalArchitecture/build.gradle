@@ -21,7 +21,7 @@ test {
 }
 
 application {
-    group = 'com.stubhub'
+    group = 'io.github.picodotdev.blogbitix'
     version = '0.0.1-SNAPSHOT'
     sourceCompatibility = '11'
     mainClassName = 'io.github.picodotdev.blogbitix.dddhexagonal.catalog.Main'
