@@ -42,9 +42,9 @@ public class EventSchedule {
         if (this == o) return true;
         if (o == null) return false;
         if (!(o instanceof EventSchedule)) return false;
-        EventSchedule eventSchedule = (EventSchedule) o;
-        return Objects.equals(startDate, eventSchedule.startDate)
-                && Objects.equals(endDate, eventSchedule.endDate);
+        EventSchedule that = (EventSchedule) o;
+        return Objects.equals(this.startDate, that.startDate)
+                && Objects.equals(this.endDate, that.endDate);
     }
 
     @Override

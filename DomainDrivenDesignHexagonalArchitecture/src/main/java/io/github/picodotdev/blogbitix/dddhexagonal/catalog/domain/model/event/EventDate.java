@@ -47,8 +47,8 @@ public class EventDate {
         if (this == o) return true;
         if (o == null) return false;
         if (!(o instanceof EventDate)) return false;
-        EventDate eventDate = (EventDate) o;
-        return Objects.equals(datetime, eventDate.datetime);
+        EventDate that = (EventDate) o;
+        return Objects.equals(this.datetime, that.datetime);
     }
 
     @Override
