@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.lombok;
+package io.github.picodotdev.blogbitix.lombokimmutablesrecord.lombok;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.immutables:value:2.8.8'
+
+    implementation 'org.projectlombok:lombok:1.18.8'
+    implementation 'org.immutables:value:2.8.8'
+}
+
+application {
+    sourceCompatibility = '15'
+    mainClass = 'io.github.picodotdev.blogbitix.lombokimmutablesrecord.Main'
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += "--enable-preview"
+}
+
+tasks.withType(Test) {
+    jvmArgs += "--enable-preview"
+}
+
+tasks.withType(JavaExec) {
+    jvmArgs += "--enable-preview"
+}
