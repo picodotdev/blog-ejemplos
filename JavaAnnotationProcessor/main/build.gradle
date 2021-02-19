@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    annotationProcessor 'io.github.picodotdev.blogbitix:annotationprocessor:1.0'
+
+    implementation 'io.github.picodotdev.blogbitix:annotationprocessor:1.0'
+}
+
+application {
+    group = 'io.github.picodotdev.blogbitix'
+    version = '1.0'
+    sourceCompatibility = '11'
+    mainClass = 'io.github.picodotdev.blogbitix.javaannotations.Main'
+}
