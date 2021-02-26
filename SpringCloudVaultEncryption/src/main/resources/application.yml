@@ -1,0 +1,8 @@
+spring.cloud.vault:
+  uri: http://127.0.0.1:8200
+  authentication: APPROLE
+  app-role:
+    role-id: c0b643d1-9507-dae1-ffbd-6e405e082f1d
+    secret-id: 9b1b6fe6-0ee5-4182-c08d-245d20a59351
+    role: app
+    app-role-path: approle

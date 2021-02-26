@@ -1,0 +1,14 @@
+configuration:
+  status: warn
+
+  appenders:
+    console:
+      name: STDOUT
+      patternLayout:
+        Pattern: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+
+  loggers:
+    root:
+      level: info
+      appenderRef:
+        ref: STDOUT
