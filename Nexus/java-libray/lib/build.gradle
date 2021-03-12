@@ -1,0 +1,41 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+repositories {
+    maven {
+        url "http://localhost:8081/repository/maven-releases/"
+    }
+    mavenCentral()
+}
+
+dependencies {
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        library(MavenPublication) {
+            groupId = 'io.github.picodotdev'
+            artifactId = 'java-library'
+            version = '1.0'
+
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name = 'nexus'
+            allowInsecureProtocol = true
+            url "http://localhost:8081/repository/maven-releases/"
+            credentials {
+                username 'admin'
+                password 'admin'
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    maven {
+          allowInsecureProtocol = true
+          url "http://localhost:8081/repository/maven-releases/"
+    }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.github.picodotdev:java-library:1.0'
+}
+
+application {
+    mainClass = 'io.github.picodotdev.blogbitix.nexus.Main'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
