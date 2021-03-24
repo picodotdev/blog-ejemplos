@@ -22,7 +22,7 @@ public class ExceptionReport implements ExceptionReporter {
 	// Match anything ending in .(something?)path.
 	private static final Pattern PATH_RECOGNIZER = Pattern.compile("\\..*path$");
 
-	private final String pathSeparator = System.getProperty(PATH_SEPARATOR_PROPERTY);
+	private String pathSeparator = System.getProperty(PATH_SEPARATOR_PROPERTY);
 
 	@Property
 	private String attributeName;

@@ -73,7 +73,12 @@ public class DefaultJooqProductoDAO implements GenericDAO<Producto>, JooqProduct
     }
     
     private ProductoRecord getRecord(Producto object) {
-        ProductoRecord record = context.newRecord(PRODUCTO);
+        ProductoRecord record = null;
+        if (object.getId() == null) {
+            record = context.newRecord(PRODUCTO);
+        } else {
+            record = context.selectFrom(PRODUCTO).where(PRODUCTO.ID.eq(object.getId())).fetchOne();
+        }
         record.from(object);
         return record;
     }

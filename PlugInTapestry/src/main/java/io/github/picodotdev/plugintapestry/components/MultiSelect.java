@@ -47,7 +47,7 @@ public class MultiSelect extends AbstractField {
     @Parameter(defaultPrefix = BindingConstants.VALIDATE)
     private FieldValidator<Object> validate;
 
-    public final Renderable mainRenderer = new Renderable() {
+    private Renderable mainRenderer = new Renderable() {
         public void render(MarkupWriter writer) {
             SelectModelRenderer visitor = new SelectModelRenderer(writer, encoder, false) {
                 @Override
