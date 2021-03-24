@@ -1,18 +1,17 @@
+plugins {
+    id 'java'
+}
+
 description = 'Machinarum'
 version = '0.1'
-
-apply plugin: 'eclipse'
-apply plugin: 'java'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-	testCompile 'junit:junit:4.12'
-	runtime 'org.slf4j:slf4j-log4j12:1.7.12'
+    runtimeOnly 'org.slf4j:slf4j-log4j12:1.7.12'
+	
+    testImplementation 'junit:junit:4.12'
 }
 
-task wrapper(type: Wrapper) {
-	gradleVersion = '2.5'
-}
