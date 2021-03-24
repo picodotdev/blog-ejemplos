@@ -1,6 +1,6 @@
-package io.github.picodotdev.blogbitix.nexus;
+package io.github.picodotdev.blogbitix.nexus.application;
 
-import io.github.picodotdev.blogbitix.nexus.Library;
+import io.github.picodotdev.blogbitix.nexus.library.Library;
 
 public class Main {
 
