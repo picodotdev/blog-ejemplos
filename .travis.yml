@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - openjdk8
+  - openjdk11
 script:
   - cd Machinarum && ./gradlew check && cd ..
   - cd PlugInTapestry && ./gradlew update && ./gradlew generateJooq && ./gradlew test && cd ..
