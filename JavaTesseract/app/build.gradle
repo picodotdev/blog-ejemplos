@@ -1,0 +1,15 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'net.sourceforge.tess4j:tess4j:4.5.4'
+}
+
+application {
+    mainClass = 'io.github.picodotdev.blogbitix.javatesseract.Main'
+}
