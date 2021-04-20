@@ -1,0 +1,36 @@
+// this block is necessary to make enforcedPlatform work for Quarkus plugin available
+// only locally (snapshot) that is also importing the Quarkus BOM
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+    dependencies {
+        classpath "io.quarkus:quarkus-gradle-plugin:${quarkusVersion}"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'io.quarkus'
+}
+
+group 'io.github.picodotdev.blogbitix.quarkus'
+version '1.0.0'
+
+repositories {
+     mavenLocal()
+     mavenCentral()
+}
+
+dependencies {
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-vertx-web'
+    implementation 'io.quarkus:quarkus-resteasy'
+    implementation 'io.vertx:vertx-web-templ-thymeleaf:3.8.3'
+    implementation 'org.thymeleaf:thymeleaf:3.0.11.RELEASE'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
