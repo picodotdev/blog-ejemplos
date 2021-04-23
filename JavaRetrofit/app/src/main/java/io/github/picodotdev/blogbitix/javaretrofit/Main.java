@@ -1,6 +1,5 @@
 package io.github.picodotdev.blogbitix.javaretrofit;
 
-import java.io.IOException;
 import java.util.UUID;
 
 import io.micrometer.core.instrument.MeterRegistry;
