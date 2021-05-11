@@ -4,14 +4,14 @@ plugins {
 }
 
 application {
-    mainClassName = 'io.github.picodotdev.blogbitix.javapdf.Main'
+    mainClass = 'io.github.picodotdev.blogbitix.javapdf.Main'
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    compile 'org.apache.pdfbox:pdfbox:2.0.16'
+    implementation 'org.apache.pdfbox:pdfbox:2.0.16'
 }
 
