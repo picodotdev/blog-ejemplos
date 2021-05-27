@@ -1,0 +1,14 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+application {
+    mainClass = 'io.github.picodotdev.blogbitix.javasort.Main'
+}
