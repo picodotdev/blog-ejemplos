@@ -1,0 +1,16 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.fusesource.jansi:jansi:2.3.3'
+}
+
+application {
+    mainClass = 'io.github.picodotdev.blogbitix.javaconwaylangton.conway.Main'
+}
+
