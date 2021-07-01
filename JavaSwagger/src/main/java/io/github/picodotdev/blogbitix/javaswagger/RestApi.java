@@ -44,7 +44,7 @@ public interface RestApi {
 	@GetMapping(value = "/", produces = { "application/json" })
 	ResponseEntity<List<Message>> getAll();
 
-	@Operation(summary = "Finds a message by ids", description = "Return a message")
+	@Operation(summary = "Get a message by id", description = "Return a message")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Successful operation", content = @Content(schema = @Schema(implementation = Message.class))),
 			@ApiResponse(responseCode = "400", description = "Invalid id supplied"),
