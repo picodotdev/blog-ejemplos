@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.javaswagger;
+package io.github.picodotdev.blogbitix.springrestswagger;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

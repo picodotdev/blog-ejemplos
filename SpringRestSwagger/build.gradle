@@ -7,10 +7,10 @@ plugins {
 }
 
 application {
-	group = 'io.github.picodotdev.blogbitix.javaswagger'
+	group = 'io.github.picodotdev.blogbitix.springrestswagger'
 	version = '0.0.1-SNAPSHOT'
 	sourceCompatibility = '11'
-	mainClass = 'io.github.picodotdev.blogbitix.javaswagger.Main'
+	mainClass = 'io.github.picodotdev.blogbitix.springrestswagger.Main'
 }
 
 repositories {

@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.javaswagger;
+package io.github.picodotdev.blogbitix.springrestswagger;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

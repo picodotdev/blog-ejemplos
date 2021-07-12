@@ -1,4 +1,4 @@
-package io.github.picodotdev.blogbitix.javaswagger;
+package io.github.picodotdev.blogbitix.springrestswagger;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-public class RestApiController implements RestApi {
+public class MesssageController implements MesssageApi {
 
     private Map<Long, Message> messages;
 
-    public RestApiController() {
+    public MesssageController() {
         this.messages = new HashMap<>();
         this.messages.put(1l, new Message(1l, "Hello World!"));
         this.messages.put(2l, new Message(2l, "Welcome to Blog Bitix!"));
