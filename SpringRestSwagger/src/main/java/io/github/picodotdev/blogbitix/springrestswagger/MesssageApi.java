@@ -42,7 +42,7 @@ public interface MesssageApi {
 		@ApiResponse(responseCode = "409", description = "Already exists") }
 	)
 	@PutMapping(value = "", produces = { "application/json" })
-	ResponseEntity<Void> add(@Parameter(description = "Id of message to return", required = true) @RequestBody Message message);
+	ResponseEntity<Void> add(@Parameter(description = "Message to add", required = true) @RequestBody Message message);
 
 	@Operation(summary = "Deletes a message by id", description = "Delete a message", responses = {
 		@ApiResponse(responseCode = "200", description = "Successful operation"),
@@ -50,5 +50,5 @@ public interface MesssageApi {
 		@ApiResponse(responseCode = "404", description = "Message not found") }
 	)
 	@DeleteMapping(value = "/{id}", produces = { "application/json" })
-	ResponseEntity<Void> deleteBydId(@Parameter(description = "Id of message to delete", required = true) @PathVariable("id") Long id);
+	ResponseEntity<Void> deleteById(@Parameter(description = "Id of message to delete", required = true) @PathVariable("id") Long id);
 }

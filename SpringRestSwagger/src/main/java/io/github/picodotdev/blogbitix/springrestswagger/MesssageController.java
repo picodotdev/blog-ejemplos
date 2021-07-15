@@ -48,7 +48,7 @@ public class MesssageController implements MesssageApi {
     }
 
     @Override
-    public ResponseEntity<Void> deleteBydId(Long id) {
+    public ResponseEntity<Void> deleteById(Long id) {
         if (!exists(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Message not found");
         }
