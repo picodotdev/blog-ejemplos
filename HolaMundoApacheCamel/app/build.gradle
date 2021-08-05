@@ -1,0 +1,22 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform('org.springframework.boot:spring-boot-dependencies:2.5.3')
+    implementation platform('org.apache.camel.springboot:camel-spring-boot-bom:3.11.0')
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.apache.camel.springboot:camel-spring-boot-starter'
+    implementation 'org.apache.camel:camel-stream:3.11.0'
+    implementation 'org.apache.camel:camel-bindy:3.11.0'
+    implementation 'org.apache.camel:camel-csv:3.11.0'
+}
+
+application {
+    mainClass = 'io.github.picodotdev.blogbitix.holamundoapachecamel.Main'
+}
