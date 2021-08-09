@@ -42,7 +42,7 @@ public class MainTest {
     }
 
     private static WireMockServer buildWireMockServer() {
-        WireMockServer wireMockServer = new WireMockServer(WireMockConfiguration.options().port(8089));
+        WireMockServer wireMockServer = new WireMockServer(WireMockConfiguration.options().port(8080));
         wireMockServer.start();
         return wireMockServer;
     }
