@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RestService {
 
-    private static final Map<String, String> MESSSAGES;
+    private static final Map<String, String> MESSAGES;
 
     static {
-        MESSSAGES = new HashMap<>();
-        MESSSAGES.put("es-ES;default", "¡Hola mundo!");
-        MESSSAGES.put("es-ES;hello", "¡Hola %s!");
-        MESSSAGES.put("en-GB;default", "Hello World!");
-        MESSSAGES.put("en-GB;hello", "Hello %s");
+        MESSAGES = new HashMap<>();
+        MESSAGES.put("es-ES;default", "¡Hola mundo!");
+        MESSAGES.put("es-ES;hello", "¡Hola %s!");
+        MESSAGES.put("en-GB;default", "Hello World!");
+        MESSAGES.put("en-GB;hello", "Hello %s");
     }
 
     @GetMapping(path = { "/message/", "/message/{name}" })
@@ -28,10 +28,10 @@ public class RestService {
         String message = "";
         if (name == null || name.isBlank()) {
             String key = String.format("%s;default", locale);
-            message = MESSSAGES.getOrDefault(key, MESSSAGES.get("en-GB;default"));
+            message = MESSAGES.getOrDefault(key, MESSAGES.get("en-GB;default"));
         } else {
             String key = String.format("%s;hello", locale);
-            String value = MESSSAGES.getOrDefault(key, MESSSAGES.get("en-GB;default"));
+            String value = MESSAGES.getOrDefault(key, MESSAGES.get("en-GB;default"));
             message = String.format(value, name);
         }
         return message;
