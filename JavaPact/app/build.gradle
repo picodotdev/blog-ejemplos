@@ -1,0 +1,30 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(platform('org.springframework.boot:spring-boot-dependencies:2.5.3'))
+
+    implementation 'org.springframework.boot:spring-boot'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+    testImplementation 'au.com.dius.pact.consumer:junit5:4.2.9'
+    testImplementation 'au.com.dius.pact.provider:junit5spring:4.2.9'
+}
+
+application {
+    mainClass = 'io.github.picodotdev.blogbitix.javapact.Main'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
