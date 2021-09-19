@@ -1,0 +1,61 @@
+http:
+  routers:
+    nginx-1:
+      rule: "Host(`nginx1.127.0.0.1.sslip.io`)"
+      middlewares:
+        - nginx-ratelimit
+      service: "nginx-1"
+    nginx-2:
+      rule: "Host(`nginx2.127.0.0.1.sslip.io`)"
+      middlewares:
+        - nginx-ratelimit
+      service: "nginx-2"
+    nginx:
+      rule: "Host(`nginx.127.0.0.1.sslip.io`)"
+      middlewares:
+        - nginx-ratelimit
+      service: "nginx"
+    nginx-weighted:
+      rule: "Host(`nginx-weighted.127.0.0.1.sslip.io`)"
+      middlewares:
+        - nginx-ratelimit
+      service: "nginx-weighted"
+    nginx-mirroring:
+      rule: "Host(`nginx-mirroring.127.0.0.1.sslip.io`)"
+      service:
+        - nginx-mirroring
+  middlewares:
+    nginx-ratelimit:
+      rateLimit:
+        average: 1
+  services:
+    nginx-1:
+      loadBalancer:
+        servers:
+          - url: http://nginx-1:80/
+        passHostHeader: true
+    nginx-2:
+      loadBalancer:
+        servers:
+          - url: http://nginx-2:80/
+        passHostHeader: true
+    nginx:
+      loadBalancer:
+        servers:
+          - url: http://nginx-1:80/
+          - url: http://nginx-2:80/
+        passHostHeader: true
+    nginx-weighted:
+      weighted:
+        services:
+          - name: nginx-1
+            weight: 3
+          - name: nginx-2
+            weight: 1
+    nginx-mirroring:
+      mirroring:
+        service: nginx-1
+        mirrors:
+          - name: nginx-2
+            percent: 50
+

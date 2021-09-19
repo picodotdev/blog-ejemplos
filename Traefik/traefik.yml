@@ -1,0 +1,7 @@
+providers:
+ file:
+  watch: true
+  filename: /etc/traefik/traefik-dynamic.yml
+api:
+  insecure: true
+  dashboard: true
