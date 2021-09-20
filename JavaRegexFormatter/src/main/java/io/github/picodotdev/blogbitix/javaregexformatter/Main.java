@@ -13,13 +13,13 @@ public class Main {
 
     public static void main(String[] args) {
         AnsiConsole.systemInstall();
-        AnsiConsole.out.println(Ansi.ansi().reset());
+        AnsiConsole.out().println(Ansi.ansi().reset());
 
         printSql();
         System.out.println();
         printJava();
 
-        AnsiConsole.out.println(Ansi.ansi().reset());
+        AnsiConsole.out().println(Ansi.ansi().reset());
         AnsiConsole.systemUninstall();
     }
 
@@ -46,7 +46,7 @@ public class Main {
                 formatedSql.append(Ansi.ansi().reset().a(other));
             }
         }
-        AnsiConsole.out.println(Ansi.ansi().reset().a(formatedSql.toString()));
+        AnsiConsole.out().println(Ansi.ansi().reset().a(formatedSql.toString()));
     }
 
     private static void printJava() {
@@ -81,6 +81,6 @@ public class Main {
                 formatedSql.append(Ansi.ansi().reset().a(other));
             }
         }
-        AnsiConsole.out.println(Ansi.ansi().reset().a(formatedSql.toString()));
+        AnsiConsole.out().println(Ansi.ansi().reset().a(formatedSql.toString()));
     }
 }
