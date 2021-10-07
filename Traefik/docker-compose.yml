@@ -5,7 +5,7 @@ services:
     image: traefik:latest
     ports:
       - "8090:80"
-      - "8091:8080"
+      - "8080:8080"
     volumes:
       - ./:/etc/traefik/
   nginx-1:
@@ -13,10 +13,10 @@ services:
     volumes:
       - ./nginx-1:/usr/share/nginx/html:ro
     ports:
-      - "8080:80"
+      - "8081:80"
   nginx-2:
     image: nginx:latest
     volumes:
       - ./nginx-2:/usr/share/nginx/html:ro
     ports:
-      - "8081:80"
+      - "8082:80"
