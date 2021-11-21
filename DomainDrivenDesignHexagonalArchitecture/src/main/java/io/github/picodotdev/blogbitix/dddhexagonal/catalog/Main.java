@@ -20,7 +20,7 @@ public class Main implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("Invocando commandBus");
 
-        EventSchedule eventSchedule = EventSchedule.valueOf(EventDate.valueOf("2021-09-03T10:15:30"), EventDate.valueOf("2021-12-03T22:00:00"));
+        EventSchedule eventSchedule = EventSchedule.valueOf(EventDate.valueOf("2121-09-03T10:15:30"), EventDate.valueOf("2121-12-03T22:00:00"));
         CreateEventCommand command = CreateEventCommand.Builder.getInstance()
                 .eventSchedule(eventSchedule)
                 .build();

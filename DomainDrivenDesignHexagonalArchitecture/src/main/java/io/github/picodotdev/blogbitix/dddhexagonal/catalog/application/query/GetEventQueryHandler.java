@@ -2,6 +2,7 @@ package io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.query;
 
 import org.springframework.stereotype.Component;
 
+import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.usecases.GetEventUseCase;
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.Event;
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.domain.model.event.EventRepository;
 import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.querybus.QueryHandler;
@@ -9,14 +10,14 @@ import io.github.picodotdev.blogbitix.dddhexagonal.catalog.application.querybus.
 @Component
 public class GetEventQueryHandler implements QueryHandler<Event, GetEventQuery> {
 
-    private EventRepository eventRepository;
+    private GetEventUseCase useCase;
 
-    public GetEventQueryHandler(EventRepository eventRepository) {
-        this.eventRepository = eventRepository;
+    public GetEventQueryHandler(GetEventUseCase useCase) {
+        this.useCase = useCase;
     }
 
     @Override
     public Event handle(GetEventQuery query) throws Exception {
-        return eventRepository.findById(query.getEventId());
+        return useCase.handle(query.getEventId());
     }
 }
