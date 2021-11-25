@@ -1,0 +1,10 @@
+[
+  {
+    "publicURL": "https://picodotdev.github.io/blog-bitix/misc/json/product.schema.json",
+    "localURL": "resource:/product.schema.json"
+  },
+  {
+    "publicURL": "https://picodotdev.github.io/blog-bitix/misc/json/geographical-location.schema.json",
+    "localURL": "resource:/geographical-location.schema.json"
+  }
+]
