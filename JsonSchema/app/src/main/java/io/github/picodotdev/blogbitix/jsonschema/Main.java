@@ -27,13 +27,17 @@ public class Main {
         {
             JsonNode json = mapper.readTree(Main.class.getResourceAsStream("/product.json"));
             Set<ValidationMessage> errors = schema.validate(json);
-            System.out.printf("Valid JSON errors: %d5n", errors.size());
+            System.out.printf("Valid JSON errors: %d%n", errors.size());
+            errors.stream().forEach(it -> {
+                System.out.printf("Type: %s%n", it.getType());
+                System.out.printf("Message: %s%n", it.getMessage());
+            });
         }
 
         {
             JsonNode json = mapper.readTree(Main.class.getResourceAsStream("/product-invalid.json"));
             Set<ValidationMessage> errors = schema.validate(json);
-            System.out.printf("Valid JSON errors: %d%n", errors.size());
+            System.out.printf("Invalid JSON errors: %d%n", errors.size());
             errors.stream().forEach(it -> {
                 System.out.printf("Type: %s%n", it.getType());
                 System.out.printf("Message: %s%n", it.getMessage());
