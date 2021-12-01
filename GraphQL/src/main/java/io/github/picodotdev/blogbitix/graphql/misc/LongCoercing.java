@@ -5,9 +5,6 @@ import graphql.schema.Coercing;
 import graphql.schema.CoercingParseValueException;
 import graphql.schema.CoercingSerializeException;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 public class LongCoercing implements Coercing<Long, String> {
 
     public LongCoercing() {

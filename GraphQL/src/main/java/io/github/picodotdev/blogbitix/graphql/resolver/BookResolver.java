@@ -1,22 +1,23 @@
 package io.github.picodotdev.blogbitix.graphql.resolver;
 
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import graphql.GraphQLContext;
 import graphql.kickstart.tools.GraphQLResolver;
 import graphql.schema.DataFetchingEnvironment;
+import org.dataloader.DataLoader;
+
 import io.github.picodotdev.blogbitix.graphql.dataloader.IsbnDataLoader;
-import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphqlContext;
 import io.github.picodotdev.blogbitix.graphql.repository.LibraryRepository;
 import io.github.picodotdev.blogbitix.graphql.type.Book;
 import io.github.picodotdev.blogbitix.graphql.type.Comment;
 import io.github.picodotdev.blogbitix.graphql.type.CommentEdge;
 import io.github.picodotdev.blogbitix.graphql.type.CommentsConnection;
 import io.github.picodotdev.blogbitix.graphql.type.PageInfo;
-import org.dataloader.DataLoader;
-
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class BookResolver implements GraphQLResolver<Book> {
 
@@ -32,9 +33,9 @@ public class BookResolver implements GraphQLResolver<Book> {
         return book.getIsbn();
     }
 
-    public String getBatchedIsbn(Book book, DataFetchingEnvironment environment) throws InterruptedException {
-        DefaultGraphqlContext context = environment.getContext();
-        Map<Long, String> isbns = (Map<Long, String>) context.getData().get("batchedIsbn");
+    public String getBatchedIsbn(Book book, DataFetchingEnvironment environment) {
+        GraphQLContext context = environment.getGraphQlContext();
+        Map<Long, String> isbns = (Map<Long, String>) context.get("batchedIsbn");
         return isbns.get(book.getId());
     }
 
@@ -74,8 +75,8 @@ public class BookResolver implements GraphQLResolver<Book> {
     }
 
     public CommentsConnection getBatchedComments(Book book, String after, Long limit, DataFetchingEnvironment environment) {
-        DefaultGraphqlContext context = environment.getContext();
-        Map<Long, CommentsConnection> batchedComments = (Map<Long, CommentsConnection>) context.getData().get("batchedComments");
+        GraphQLContext context = environment.getGraphQlContext();
+        Map<Long, CommentsConnection> batchedComments = (Map<Long, CommentsConnection>) context.get("batchedComments");
         return batchedComments.get(book.getId());
     }
 }

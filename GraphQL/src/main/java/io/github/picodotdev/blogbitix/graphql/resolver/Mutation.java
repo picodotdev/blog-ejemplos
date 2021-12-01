@@ -1,8 +1,9 @@
 package io.github.picodotdev.blogbitix.graphql.resolver;
 
+import graphql.kickstart.servlet.context.GraphQLServletContext;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import graphql.schema.DataFetchingEnvironment;
-import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphqlContext;
+
 import io.github.picodotdev.blogbitix.graphql.repository.LibraryRepository;
 import io.github.picodotdev.blogbitix.graphql.type.Book;
 
@@ -15,7 +16,7 @@ public class Mutation implements GraphQLMutationResolver {
     }
 
     public Book addBook(String title, Long author, DataFetchingEnvironment env) throws Exception {
-        DefaultGraphqlContext context = (DefaultGraphqlContext) env.getContext();
+        GraphQLServletContext context = (GraphQLServletContext) env.getGraphQlContext();
         return libraryRepository.addBook(title, author, context.getHttpServletRequest().getHeader("User"));
     }
 }

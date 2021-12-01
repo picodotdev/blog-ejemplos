@@ -1,17 +1,13 @@
 package io.github.picodotdev.blogbitix.graphql.misc;
 
+import java.util.Map;
+
 import graphql.ErrorClassification;
 import graphql.GraphQLError;
 import graphql.GraphqlErrorBuilder;
 import graphql.language.SourceLocation;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
-import javax.xml.transform.Source;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 @Component
 public class ExceptionHandlers {

@@ -5,12 +5,12 @@ plugins {
 }
 
 application {
-    mainClassName = 'io.github.picodotdev.blogbitix.graphql.Main'
+    mainClass = 'io.github.picodotdev.blogbitix.graphql.Main'
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 repositories {
@@ -26,13 +26,11 @@ repositories {
 //}
 
 dependencies {
-    implementation platform("org.springframework.boot:spring-boot-dependencies:2.3.3.RELEASE")
+    implementation platform("org.springframework.boot:spring-boot-dependencies:2.6.1")
 
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:7.1.0")
-    implementation("com.graphql-java-kickstart:graphiql-spring-boot-starter:7.1.0")
-    implementation("com.graphql-java-kickstart:graphql-java-tools:6.2.0")
-    implementation("org.apache.commons:commons-lang3:3.11")
-    implementation("commons-io:commons-io:2.7")
+    implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:12.0.0")
+    implementation("org.apache.commons:commons-lang3:3.12.0")
+    implementation("commons-io:commons-io:2.11.0")
 }

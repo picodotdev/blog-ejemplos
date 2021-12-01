@@ -1,14 +1,14 @@
 package io.github.picodotdev.blogbitix.graphql.misc;
 
-import graphql.kickstart.execution.context.GraphQLContext;
-import org.dataloader.DataLoaderRegistry;
-
 import javax.security.auth.Subject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.websocket.Session;
 import javax.websocket.server.HandshakeRequest;
 import java.util.Optional;
+
+import graphql.kickstart.execution.context.GraphQLContext;
+import org.dataloader.DataLoaderRegistry;
 
 public class DefaultGraphqlContext implements GraphQLContext {
 
@@ -43,8 +43,8 @@ public class DefaultGraphqlContext implements GraphQLContext {
     }
 
     @Override
-    public Optional<DataLoaderRegistry> getDataLoaderRegistry() {
-        return Optional.ofNullable(dataLoaderRegistry);
+    public DataLoaderRegistry getDataLoaderRegistry() {
+        return dataLoaderRegistry;
     }
 
     public void setDataLoaderRegistry(DataLoaderRegistry dataLoaderRegistry) {

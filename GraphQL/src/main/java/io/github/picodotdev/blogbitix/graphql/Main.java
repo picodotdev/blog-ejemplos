@@ -1,21 +1,20 @@
 package io.github.picodotdev.blogbitix.graphql;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
+import javax.websocket.server.HandshakeRequest;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.List;
+
 import graphql.kickstart.execution.context.GraphQLContext;
 import graphql.kickstart.servlet.context.GraphQLServletContextBuilder;
 import graphql.kickstart.tools.SchemaParser;
 import graphql.schema.GraphQLScalarType;
 import graphql.schema.GraphQLSchema;
-import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphqlContext;
-import io.github.picodotdev.blogbitix.graphql.misc.LocalDateCoercing;
-import io.github.picodotdev.blogbitix.graphql.misc.LongCoercing;
-import io.github.picodotdev.blogbitix.graphql.repository.LibraryRepository;
-import io.github.picodotdev.blogbitix.graphql.resolver.BookResolver;
-import io.github.picodotdev.blogbitix.graphql.resolver.Mutation;
-import io.github.picodotdev.blogbitix.graphql.resolver.Query;
-import io.github.picodotdev.blogbitix.graphql.type.Magazine;
-import io.github.picodotdev.blogbitix.graphql.type.MagazineResolver;
 import org.apache.commons.io.IOUtils;
-import org.dataloader.DataLoader;
+import org.dataloader.DataLoaderFactory;
 import org.dataloader.DataLoaderOptions;
 import org.dataloader.DataLoaderRegistry;
 import org.dataloader.MappedBatchLoaderWithContext;
@@ -25,13 +24,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.websocket.Session;
-import javax.websocket.server.HandshakeRequest;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.List;
+import io.github.picodotdev.blogbitix.graphql.misc.DefaultGraphqlContext;
+import io.github.picodotdev.blogbitix.graphql.misc.LocalDateCoercing;
+import io.github.picodotdev.blogbitix.graphql.misc.LongCoercing;
+import io.github.picodotdev.blogbitix.graphql.repository.LibraryRepository;
+import io.github.picodotdev.blogbitix.graphql.resolver.BookResolver;
+import io.github.picodotdev.blogbitix.graphql.resolver.Mutation;
+import io.github.picodotdev.blogbitix.graphql.resolver.Query;
+import io.github.picodotdev.blogbitix.graphql.type.Magazine;
+import io.github.picodotdev.blogbitix.graphql.type.MagazineResolver;
 
 @SpringBootApplication
 public class Main {
@@ -87,7 +88,7 @@ public class Main {
         DataLoaderRegistry registry = new DataLoaderRegistry();
         for (MappedBatchLoaderWithContext<?, ?> loader : mappedBatchLoaders) {
             registry.register(loader.getClass().getSimpleName(),
-                DataLoader.newMappedDataLoader(
+                DataLoaderFactory.newMappedDataLoader(
                     loader,
                     DataLoaderOptions.newOptions().setBatchLoaderContextProvider(() -> context)
                 )

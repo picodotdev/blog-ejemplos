@@ -1,16 +1,17 @@
 package io.github.picodotdev.blogbitix.graphql.dataloader;
 
-import io.github.picodotdev.blogbitix.graphql.type.Book;
-import org.dataloader.BatchLoaderEnvironment;
-import org.dataloader.MappedBatchLoaderWithContext;
-import org.springframework.stereotype.Component;
-
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import org.dataloader.BatchLoaderEnvironment;
+import org.dataloader.MappedBatchLoaderWithContext;
+import org.springframework.stereotype.Component;
+
+import io.github.picodotdev.blogbitix.graphql.type.Book;
 
 @Component
 public class IsbnDataLoader implements MappedBatchLoaderWithContext<Book, String> {

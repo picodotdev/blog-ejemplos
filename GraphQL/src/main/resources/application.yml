@@ -1,6 +1,8 @@
 graphql:
   servlet:
-    mapping: /graphql
     enabled: true
+    mapping: /graphql
     corsEnabled: true
     exception-handlers-enabled: true
+  graphiql:
+    enabled: true
