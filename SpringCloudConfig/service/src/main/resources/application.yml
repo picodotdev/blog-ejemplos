@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: service
+  profiles:
+    active: production
+  config:
+    import: optional:configserver:http://localhost:8090
+    failFast: true
+  cloud:
+    config:
+      label:
+
+app:
+  properties:
+    classpath: "classpath"
+    external: ""
+    argument: ""
+    environment: ""
+    cloud: ""

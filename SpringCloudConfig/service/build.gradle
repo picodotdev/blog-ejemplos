@@ -1,0 +1,28 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(platform('org.springframework.boot:spring-boot-dependencies:2.6.1'))
+    implementation(platform('org.springframework.cloud:spring-cloud-dependencies:2021.0.0'))
+
+    def excludeSpringBootStarterLogging = { exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+    implementation('org.springframework.boot:spring-boot-starter', excludeSpringBootStarterLogging)
+    implementation('org.springframework.boot:spring-boot-starter-log4j2', excludeSpringBootStarterLogging)
+    implementation('org.springframework.cloud:spring-cloud-starter-config', excludeSpringBootStarterLogging)
+
+    runtimeOnly('com.google.code.gson:gson:2.8.9')
+    runtimeOnly('com.fasterxml.jackson.core:jackson-databind:2.13.0')
+    runtimeOnly('com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.0')
+}
+
+application {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    mainClass = 'io.github.picodotdev.blogbitix.springcloudconfig.service.Main'
+}
+

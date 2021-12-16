@@ -1,0 +1,14 @@
+server:
+  port: ${port:8090}
+
+spring:
+  profiles:
+    active: native
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: file:./misc/config/,file:./misc/config/{application}/,file:./misc/config/{application}/{profile}/,file:./misc/config/{application}/{profile}/{label}
+

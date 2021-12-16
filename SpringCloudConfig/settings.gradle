@@ -1,0 +1,2 @@
+rootProject.name = 'SpringCloudConfig'
+include('configserver', 'service')

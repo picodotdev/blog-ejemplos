@@ -1,0 +1,3 @@
+app:
+  properties:
+    cloud: "cloud-1.0"
