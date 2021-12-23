@@ -1,0 +1,13 @@
+package_update: true
+package_upgrade: true
+packages:
+  - python3
+users:
+  - default
+power_state:
+  delay: "+1"
+  timeout: 120
+  message: Rebooting in five minutes. Please save your work.
+  mode: reboot
+final_message: "The system is finally up at $TIMESTAMP, after $UPTIME seconds"
+

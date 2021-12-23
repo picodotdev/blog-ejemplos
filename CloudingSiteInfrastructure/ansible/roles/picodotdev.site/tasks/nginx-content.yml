@@ -1,0 +1,11 @@
+---
+- name: "Upload content ({{ domain }})"
+  copy:
+    src: "{{ item }}"
+    dest: "/var/www/{{ domain }}"
+  with_items:
+    - index.html
+  become: true
+  tags:
+    - system-install
+    - content-update

@@ -1,0 +1,10 @@
+---
+- name: Create users
+  user:
+    name: "{{ item }}"
+    groups: "sudo"
+    state: present
+  become: true
+  with_items:
+    - ubuntu
+  tags: system-install

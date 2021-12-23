@@ -1,0 +1,100 @@
+---
+- name: Install packages
+  package:
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - nginx
+  tags:
+    - system-install
+#- name: Create users
+#  user:
+#    name: "{{ item }}"
+#    state: present
+#  become: true
+#  with_items:
+#    - nginx
+#  tags: system-install
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - /etc/nginx/conf.d
+    - /etc/nginx/sites-available
+    - /etc/nginx/sites-enabled
+    - "/var/www/{{ domain }}"
+  become: true
+  tags:
+    - system-install
+- name: "Copy nginx configuration (http) ({{ domain }})"
+  template:
+    src: "{{ template }}"
+    dest: "/etc/nginx/sites-available/{{ item }}"
+    owner: root
+    group: root
+    mode: '0644'
+  vars:
+    template: "nginx-virtual-server.conf"
+    default_server: default_server
+    domain: domain
+    apex: apex
+    ssl: false
+  with_items:
+    - "{{ domain }}"
+  become: true
+  tags:
+    - system-install
+- name: "Enable nginx configuration (http) ({{ domain }})"
+  file:
+    src: "/etc/nginx/sites-available/{{ item }}"
+    path: "/etc/nginx/sites-enabled/{{ item }}"
+    state: link
+    owner: root
+    group: root
+    mode: '0644'
+  with_items:
+    - "{{ domain }}"
+  become: true
+  tags:
+    - system-install
+- name: Restart nginx
+  include_tasks:
+    file: restart.yml
+    apply:
+      tags: system-install
+  tags:
+    - system-install
+- name: "Configure certbot ({{ domain }})"
+  include_tasks:
+    file: roles/picodotdev.certbot/tasks/configure.yml
+    apply:
+      tags:
+        - system-install
+        - system-cerbot
+  when: "'clouding' in group_names and ssl"
+  tags:
+    - system-install
+    - system-cerbot
+- name: "Copy nginx configuration (https) ({{ domain }})"
+  template:
+    src: "{{ template }}"
+    dest: "{{ item }}"
+    owner: root
+    group: root
+    mode: '0644'
+  vars:
+    template: "nginx-virtual-server.conf"
+    default_server: default_server
+    domain: domain
+    apex: apex
+    ssl: ssl
+  with_items:
+    - "/etc/nginx/sites-available/{{ domain }}"
+  notify:
+    - Restart nginx
+  become: true
+  when: "'clouding' in group_names and ssl"
+  tags:
+    - system-install

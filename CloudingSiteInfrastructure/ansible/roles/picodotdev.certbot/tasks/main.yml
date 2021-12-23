@@ -1,0 +1,28 @@
+---
+- name: Install packages
+  package:
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - snapd
+  tags:
+    - system-install
+- name: Install snap base packages
+  community.general.snap:
+    name:
+      - core
+      - hello-world
+    state: present
+  become: true
+  tags:
+    - system-install
+- name: Install snap packages
+  community.general.snap:
+    name:
+      - certbot
+    state: present
+    classic: yes
+  become: true
+  tags:
+    - system-install

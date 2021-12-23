@@ -1,0 +1,19 @@
+---
+- name: Set authorized keys
+  authorized_key:
+    user: ubuntu
+    state: present
+    key: "{{ lookup('file', item) }}"
+  become: true
+  with_items:
+    - "{{ lookup('env', 'SSH_KEY_PUB') }}"
+  tags:
+    - system-install
+- name: Disable SSH password authentication
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#PasswordAuthentication yes'
+    line: 'PasswordAuthentication no'
+  become: true
+  tags:
+    - system-install

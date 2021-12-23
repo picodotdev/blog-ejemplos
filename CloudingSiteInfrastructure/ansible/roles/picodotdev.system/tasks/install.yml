@@ -1,0 +1,10 @@
+---
+- name: Install packages
+  package:
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - python3
+  tags:
+    - system-install

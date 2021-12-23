@@ -1,0 +1,23 @@
+---
+- name: Install packages
+  package:
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - ufw
+  tags: system-install
+- name: Configure ufw
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  become: true
+  with_items: "{{ ports }}"
+  tags: system-install
+- name: Enable ufw
+  ufw:
+    state: enabled
+    default: deny
+  become: true
+  tags: system-install

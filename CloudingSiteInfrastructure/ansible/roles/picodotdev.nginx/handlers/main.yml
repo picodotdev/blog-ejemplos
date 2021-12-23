@@ -1,0 +1,4 @@
+---
+- name: Restart nginx
+  include_tasks:
+    file: restart.yml

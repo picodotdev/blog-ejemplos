@@ -1,0 +1,9 @@
+---
+- name: Update system
+  apt:
+    upgrade: full
+    update_cache: yes
+  become: true
+  tags:
+    - system-install
+    - system-update

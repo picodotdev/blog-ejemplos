@@ -1,0 +1,39 @@
+---
+- name: Create users
+  include_tasks:
+    file: users.yml
+    apply:
+      tags:
+        - system-init
+        - system-install
+  tags:
+    - system-init
+    - system-install
+- name: Configure SSH
+  include_tasks:
+    file: ssh.yml
+    apply:
+      tags:
+        - system-init
+        - system-install
+  tags:
+    - system-init
+    - system-install
+- name: Update system
+  include_tasks:
+    file: update.yml
+    apply:
+      tags:
+        - system-install
+        - system-update
+  tags:
+    - system-install
+    - system-update
+- name: Install system
+  include_tasks:
+    file: install.yml
+    apply:
+      tags:
+        - system-install
+  tags:
+    - system-install

@@ -1,0 +1,10 @@
+---
+- name: Configure certbot
+  shell: |
+    ln -sf /snap/bin/certbot /usr/bin/certbot
+    certbot certonly --webroot --non-interactive -m "pico.dev@gmail.com" --agree-tos -w /var/www/{{ domain }} -d {{ domain }}
+    certbot renew --dry-run
+  become: true
+  tags:
+    - system-install
+    - system-cerbot

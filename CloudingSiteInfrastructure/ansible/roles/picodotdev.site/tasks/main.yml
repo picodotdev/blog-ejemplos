@@ -1,0 +1,52 @@
+---
+- name: Configure system
+  include_role:
+    name: picodotdev.system
+  tags:
+    - system-init
+    - system-install
+- name: Configure ufw
+  include_role:
+    name: picodotdev.ufw
+  vars:
+    ports: ['22', '80', '443']
+  tags: system-install
+- name: Configure Certbot
+  include_role:
+    name: picodotdev.certbot
+  tags: system-install
+  when: "'clouding' in group_names"
+- name: Configure Nginx
+  include_role:
+    name: picodotdev.nginx
+  vars:
+    domain: "{{ _item.domain }}"
+    apex: "{{ _item.apex }}"
+    default_server: "{{ _item.default_server }}"
+    ssl: "{{ _item.ssl }}"
+  with_items:
+    - { domain: "{{ lookup('env', 'DOMAIN_DEFAULT') }}", apex: false, default_server: true, ssl: false }
+    - { domain: "{{ lookup('env', 'DOMAIN_SITE') }}", apex: false, default_server: false, ssl: true }
+  loop_control:
+    loop_var: _item
+  tags: system-install
+- name: Configure goaccess
+  include_role:
+    name: picodotdev.goaccess
+  tags: system-install
+- name: Update content
+  include_tasks:
+    file: nginx-content.yml
+    apply:
+      tags:
+        - system-install
+        - content-update
+  vars:
+    domain: "{{ _item.domain }}"
+  with_items:
+    - { domain: "{{ lookup('env', 'DOMAIN_SITE') }}" }
+  loop_control:
+    loop_var: _item
+  tags:
+    - system-install
+    - content-update
