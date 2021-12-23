@@ -8,14 +8,6 @@
     - nginx
   tags:
     - system-install
-#- name: Create users
-#  user:
-#    name: "{{ item }}"
-#    state: present
-#  become: true
-#  with_items:
-#    - nginx
-#  tags: system-install
 - name: Create directories
   file:
     path: "{{ item }}"
