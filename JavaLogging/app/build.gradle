@@ -1,0 +1,21 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation('org.apache.logging.log4j:log4j-core:2.17.1')
+}
+
+application {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    mainClass = 'io.github.picodotdev.blogbitix.javalogging.Main'
+}
+
+run {
+    systemProperties System.getProperties()
+}
