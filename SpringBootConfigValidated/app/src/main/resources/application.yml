@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    default: "local"
+
+app:
+  numeric: 5
+  regexp: "A0000"
+  password:

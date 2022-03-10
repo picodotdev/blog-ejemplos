@@ -1,0 +1,2 @@
+rootProject.name = 'SpringBootConfigValidated'
+include('app')
