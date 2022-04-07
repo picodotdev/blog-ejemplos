@@ -1,0 +1,32 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+project.group = 'io.github.picodotdev.blogbitix.javagradleplugin'
+project.version = "1.0"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+dependencies {
+    implementation 'com.github.spotbugs.snom:spotbugs-gradle-plugin:5.0.6'
+    implementation 'com.puppycrawl.tools:checkstyle:10.1'
+    implementation 'net.sourceforge.pmd:pmd:6.44.0'
+}
+
+gradlePlugin {
+    plugins {
+        javaGradlePlugin {
+            id = 'io.github.picodotdev.blogbitix.javagradleplugin'
+            implementationClass = 'io.github.picodotdev.blogbitix.javagradleplugin.JavaGradlePlugin'
+        }
+    }
+}

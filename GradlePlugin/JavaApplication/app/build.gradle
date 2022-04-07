@@ -1,0 +1,21 @@
+import io.github.picodotdev.blogbitix.javagradleplugin.Version
+
+plugins {
+    id 'application'
+    id 'io.github.picodotdev.blogbitix.javagradleplugin' version '1.0'
+}
+
+project.version = new Version(version: '1.0.0')
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+application {
+    mainClass = 'io.github.picodotdev.blogbitix.javaapplication.App'
+}
+
+
