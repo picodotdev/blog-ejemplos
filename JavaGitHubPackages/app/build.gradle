@@ -1,0 +1,30 @@
+plugins {
+    id 'application'
+}
+
+project.with {
+    group = 'io.github.picodotdev.blogbitix.githubpackages'
+    version = '1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/picodotdev/github-packages")
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+            password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+        }
+    }
+}
+
+dependencies {
+    implementation 'io.github.picodotdev.blogbitix.githubpackages:utils:1.1'
+}
+
+application {
+    mainClass = 'io.github.picodotdev.blogbitix.githubpackages.app.Main'
+}
