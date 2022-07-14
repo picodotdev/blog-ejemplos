@@ -1,0 +1,23 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform('org.springframework.boot:spring-boot-dependencies:2.7.1')
+    implementation platform('io.hawt:hawtio-bom:2.15.0')
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'io.hawt:hawtio-springboot'
+}
+
+application {
+    mainClass = 'io.github.picodotdev.blogbitix.springboothawtio.Main'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

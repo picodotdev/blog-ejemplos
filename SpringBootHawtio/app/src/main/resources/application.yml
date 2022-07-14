@@ -1,0 +1,14 @@
+spring:
+  jmx:
+    enabled: true
+
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: "hawtio,jolokia"
+
+hawtio:
+  authenticationEnabled: false
