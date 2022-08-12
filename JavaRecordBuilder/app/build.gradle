@@ -1,0 +1,16 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor 'io.soabase.record-builder:record-builder-processor:34'
+    compileOnly 'io.soabase.record-builder:record-builder-core:34'
+}
+
+application {
+    mainClass = 'io.github.picodotdev.bloblogbitix.javarecordbuilder.Main'
+}
