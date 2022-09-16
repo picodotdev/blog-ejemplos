@@ -1,0 +1,2 @@
+rootProject.name = 'SpringBootOauthClientServer'
+include('client', 'server')

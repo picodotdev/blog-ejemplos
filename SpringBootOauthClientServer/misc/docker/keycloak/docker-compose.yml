@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    ports:
+      - "9080:8080"
+    command: start-dev

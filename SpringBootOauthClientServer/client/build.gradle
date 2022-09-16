@@ -1,0 +1,27 @@
+plugins {
+	id 'application'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation platform('org.springframework.boot:spring-boot-dependencies:2.7.3')
+
+	implementation('org.springframework.boot:spring-boot-starter')
+
+	implementation('com.squareup.okhttp3:okhttp:4.10.0')
+
+	implementation('javax.json:javax.json-api:1.1')
+	implementation('javax.json.bind:javax.json.bind-api:1.0')
+	implementation('javax.json.bind:javax.json.bind-api:1.0')
+	runtimeOnly('org.eclipse:yasson:1.0')
+	runtimeOnly('org.glassfish:javax.json:1.1')
+}
+
+application {
+    mainClass = 'io.github.picodotdev.blogbitix.springbootjaxrsoauth.client.Main'
+	sourceCompatibility = 11
+	targetCompatibility = 11
+}
