@@ -1,0 +1,61 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.define "ubuntu" do |instance|
+    instance.vm.box = "ubuntu/jammy64"
+    instance.vm.network "private_network", ip: "192.168.56.10"
+    instance.vm.synced_folder ".", "/home/vagrant/ConsulServiceMesh/"
+
+    instance.vm.provider :virtualbox do |vb|
+      vb.name = "Ubuntu 22.04 (Vagrant)"
+      vb.memory = "4096"
+
+      instance.vm.provision "shell", inline: $consul_role_script
+    end
+  end
+
+  $consul_role_script = <<-SCRIPT
+    echo "Updating..."
+    sudo apt-get update
+    sudo apt-get upgrade
+
+    echo "Installing Consul..."
+    wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+    sudo apt-get update && sudo apt-get install consul
+
+    echo "Installing Nomad..."
+    wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg  > /dev/null
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+    sudo apt-get update && sudo apt-get install nomad
+
+    echo "Installing Envoy..."
+    curl -L https://func-e.io/install.sh | sudo bash -s -- -b /usr/local/bin && func-e use 1.23.0 && sudo cp ~/.func-e/versions/1.23.0/bin/envoy /usr/local/bin/
+    
+    echo "Installing cni plugins..."
+    curl -L -o cni-plugins.tgz https://github.com/containernetworking/plugins/releases/download/v1.1.1/cni-plugins-linux-amd64-v1.1.1.tgz
+    sudo mkdir -p /opt/cni/bin
+    sudo tar -C /opt/cni/bin -xzf cni-plugins.tgz
+    
+    echo 1 | sudo tee /proc/sys/net/bridge/bridge-nf-call-arptables
+    echo 1 | sudo tee /proc/sys/net/bridge/bridge-nf-call-ip6tables
+    echo 1 | sudo tee /proc/sys/net/bridge/bridge-nf-call-iptables
+    
+    sudo cat << EOF > /etc/sysctl.d/
+net.bridge.bridge-nf-call-arptables = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+    
+    echo "Installing Docker..."
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker.gpg
+    echo \
+        "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+        $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update && sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin && sudo systemctl enable docker.service
+    sudo usermod -aG docker vagrant
+  SCRIPT
+end
+

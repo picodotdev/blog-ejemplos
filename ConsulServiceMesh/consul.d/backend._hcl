@@ -1,0 +1,25 @@
+service {
+    name = "backend"
+    port = 8082
+
+    checks = [{
+        name = "backend-check"
+        tcp = "localhost:8082"
+        interval = "10s"
+    }]
+
+    meta {
+        prometheus_port = "20201"
+    }
+
+    connect {
+        sidecar_service {
+            port = 22000
+            proxy {
+                config {
+                    envoy_prometheus_bind_addr = "0.0.0.0:20201"
+                }
+            }
+        }
+    }  
+}

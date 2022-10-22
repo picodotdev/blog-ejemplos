@@ -1,0 +1,29 @@
+service {
+    name = "frontend"
+    port = 8081
+
+    checks = [{
+        name = "frontend-check"
+        tcp = "localhost:8081"
+        interval = "10s"
+    }]
+    
+    meta {
+        prometheus_port = "20200"
+    }
+    
+    connect {
+        sidecar_service {
+            port = 21000
+            proxy {
+                upstreams = [{
+                    destination_name = "backend"
+                    local_bind_port = 9082
+                }]
+                config {
+                   envoy_prometheus_bind_addr = "0.0.0.0:20200"
+                }
+           }
+       }
+   }
+}
