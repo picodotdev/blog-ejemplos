@@ -1,0 +1,9 @@
+logging:
+  pattern:
+    level: "%-5level"
+    console: "%d{DEFAULT} %-5level [%t] %60.60logger %m%n"
+  level:
+    root: "info"
+
+app:
+  property: "value"
