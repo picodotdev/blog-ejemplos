@@ -8,12 +8,14 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.InjectionPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.core.MethodParameter;
 
 @Configuration
 public class Beans {
 
     @Bean
+    @Scope("prototype")
     Logger logger(InjectionPoint ip) {
         Optional<Class> clazzParameter = Optional.of(ip.getMethodParameter()).map(MethodParameter::getContainingClass);
         if (clazzParameter.isPresent()) {
