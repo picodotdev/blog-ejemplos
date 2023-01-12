@@ -1,0 +1,1 @@
+app: JAVA_HOME=/layers/paketo-buildpacks_adoptium/jre app/bin/app

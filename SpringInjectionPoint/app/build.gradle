@@ -33,3 +33,4 @@ dependencies {
 application {
     mainClass = 'io.github.picodotdev.blogbitix.springinjectionpoint.Main'
 }
+
