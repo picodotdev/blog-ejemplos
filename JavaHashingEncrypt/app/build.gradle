@@ -10,5 +10,5 @@ dependencies {
 }
 
 application {
-    mainClass = 'io.github.picodotdev.blogbitix.javahashing.Main'
+    mainClass = 'io.github.picodotdev.blogbitix.javahashingencrypt.Main'
 }
