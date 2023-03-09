@@ -1,0 +1,23 @@
+plugins {
+	id 'java'
+	id 'application'
+}
+
+application {
+	group = 'io.github.picdodotdev.blogbitix'
+	sourceCompatibility = JavaVersion.VERSION_17
+
+	mainClassName = 'io.github.picdodotdev.blogbitix.springrestclients.Main'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation platform('org.springframework.boot:spring-boot-dependencies:3.0.4')
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+}
