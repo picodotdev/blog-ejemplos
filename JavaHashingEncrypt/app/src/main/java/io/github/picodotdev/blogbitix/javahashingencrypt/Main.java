@@ -3,14 +3,19 @@ package io.github.picodotdev.blogbitix.javahashingencrypt;
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.StringWriter;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.security.DigestInputStream;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.security.Security;
 import java.security.spec.KeySpec;
 import java.time.Duration;
@@ -26,6 +31,9 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.bouncycastle.openssl.jcajce.JcaPEMWriter;
+import org.bouncycastle.util.io.pem.PemObject;
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -33,8 +41,12 @@ public class Main {
         hashing();
 
         System.out.println("");
-        System.out.println("Symetric encryption");
-        symetricEncrypt();
+        System.out.println("Symmetric encryption");
+        symmetricEncrypt();
+
+        System.out.println("");
+        System.out.println("Asymmetric encryption");
+        asymmetricEncrypt();
     }
 
     private static void hashing() throws Exception {
@@ -74,7 +86,7 @@ public class Main {
         System.out.println("sha256sum matches: " + shasum.equals(shasumCalculated));
     }
 
-    private static void symetricEncrypt() throws Exception {
+    private static void symmetricEncrypt() throws Exception {
         Set<String> keyGenerators = Security.getAlgorithms("KeyGenerator");
         System.out.println("Supported key generators: " + keyGenerators.stream().sorted().collect(Collectors.joining(",")));
 
@@ -107,6 +119,29 @@ public class Main {
         System.out.println("Key decrypted: " + new String(decrypt(key, keyEncrypted)));
         System.out.println("Password key decrypted: " + new String(decrypt(passwordKey, passwordEncrypted)));
         System.out.println("HMAC: " + calculateHmac(key, text));
+    }
+
+    private static void asymmetricEncrypt() throws Exception {
+        Set<String> keypairGenerators = Security.getAlgorithms("KeyPairGenerator");
+        System.out.println("Supported key generators: " + keypairGenerators.stream().sorted().collect(Collectors.joining(",")));
+
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+        keyPairGenerator.initialize(8192);
+        KeyPair keyPair = keyPairGenerator.generateKeyPair();
+        PrivateKey privateKey = keyPair.getPrivate();
+        PublicKey publicKey = keyPair.getPublic();
+
+        System.out.println("Private key: \n" + encodePem(privateKey));
+        System.out.println("Public key: \n" + encodePem(publicKey));
+
+        String text = "rw@wbnaq2R@DS#u3o7hxWckqhfkzbT";
+
+        byte[] encrypted = encrypt(publicKey, text);
+        String decrypted = new String(decrypt(privateKey, encrypted));
+
+        System.out.println("Plain text: " + text);
+        System.out.println("Public key encrypted: " + HexFormat.of().formatHex(encrypted));
+        System.out.println("Private key decrypted: " + decrypted);
     }
 
     private static String calculateHash(String algorithm, String content) throws Exception {
@@ -153,8 +188,20 @@ public class Main {
         return cipherInputStream.readAllBytes();
     }
 
+    private static byte[] encrypt(PublicKey publicKey, String text) throws Exception {
+        Cipher cipher = Cipher.getInstance("RSA");
+        cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+        return cipher.doFinal(text.getBytes());
+    }
+
     private static byte[] decrypt(SecretKey key, byte[] encrypted) throws Exception {
         Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.DECRYPT_MODE, key);
+        return cipher.doFinal(encrypted);
+    }
+
+    private static byte[] decrypt(PrivateKey key, byte[] encrypted) throws Exception {
+        Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.DECRYPT_MODE, key);
         return cipher.doFinal(encrypted);
     }
@@ -164,6 +211,24 @@ public class Main {
         mac.init(key);
         byte[] bytes = mac.doFinal(text.getBytes());
         return HexFormat.of().formatHex(bytes);
+    }
+
+    public static String encodePem(PrivateKey privateKey) throws Exception {
+        PemObject privateKeyPemObject = new PemObject("RSA PRIVATE KEY", privateKey.getEncoded());
+        StringWriter stringWriter = new StringWriter();
+        JcaPEMWriter pemWriter = new JcaPEMWriter(stringWriter);
+        pemWriter.writeObject(privateKeyPemObject);
+        pemWriter.close();
+        return stringWriter.toString();
+    }
+
+    public static String encodePem(PublicKey publicKey) throws Exception {
+        PemObject privateKeyPemObject = new PemObject("RSA PUBLIC KEY", publicKey.getEncoded());
+        StringWriter stringWriter = new StringWriter();
+        JcaPEMWriter pemWriter = new JcaPEMWriter(stringWriter);
+        pemWriter.writeObject(privateKeyPemObject);
+        pemWriter.close();
+        return stringWriter.toString();
     }
 }
 
