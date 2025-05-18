@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: Catalog
+  version: 1.0.0
+servers:
+  - url: https://picodotdev.github.io/catalog/
+    variables:
+      host:
+        default: picodotdev.github.io
+        enum:
+          - picodotdev.github.io
+tags:
+  - name: Catalog
+paths:
+  /events/v1/{id}:
+    get:
+      tags:
+        - Catalog
+      summary: Get an event
+      description: Get an event
+      operationId: getEvent
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id of the event
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '400':
+          description: Bad request
+        '404':
+          description: Not found
+      security:
+        - bearer: []
+components:
+  schemas:
+    Event:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        status:
+          type: string
+        locale:
+          type: string
+        date:
+          type: string
+        timezone:
+          type: string
+        uri:
+          type: string
+        seoURI:
+          type: string
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
