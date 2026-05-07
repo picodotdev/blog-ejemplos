@@ -1,0 +1,24 @@
+<Configuration name="Log4j2Configuration" status="ERROR" monitorInterval="5">
+  <SpringProfile name="default | local | test">
+    <Appenders>
+      <Console name="Console">
+        <PatternLayout pattern="${spring:logging.pattern.console}"/>
+      </Console>
+    </Appenders>
+  </SpringProfile>
+  <SpringProfile name="development | production">
+    <Appenders>
+      <Console name="Console">
+        <JsonTemplateLayout eventTemplateUri="classpath:GcpLayout.json"/>
+      </Console>
+    </Appenders>
+  </SpringProfile>
+  <Loggers>
+    <Logger name="io.github.picodotdev" level="${spring:logging.level.io.github.picodotdev.blogbitix}" additivity="false">
+      <AppenderRef ref="Console"/>
+    </Logger>
+    <Root level="${spring:logging.level.root}">
+      <AppenderRef ref="Console"/>
+    </Root>
+  </Loggers>
+</Configuration>

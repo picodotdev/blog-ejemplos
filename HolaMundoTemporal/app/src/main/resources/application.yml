@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: HelloWorldTemporal
+
+logging:
+  level:
+    root: "info"
+    io.github.picodotdev.blogbitix: "info"
+  pattern:
+    level: "%-5level"
+    console: "%d{DEFAULT} %X{uuid} %-5level %X{correlation} %60.60logger %msg%n"
+

@@ -1,0 +1,28 @@
+[versions]
+spring-boot = "4.0.6"
+temporal = "1.31.0"
+junit-jupiter = "5.12.1"
+
+[libraries]
+spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
+
+spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter" }
+spring-boot-starter-log4j2 = { module = "org.springframework.boot:spring-boot-starter-log4j2" }
+
+log4j-layout-template-json = { module = "org.apache.logging.log4j:log4j-layout-template-json" }
+temporal = { module = "io.temporal:temporal-spring-boot-starter", version.ref = "temporal" }
+
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+
+[bundles]
+spring-boot = [
+  "spring-boot-starter",
+  "spring-boot-starter-log4j2"
+]
+
+other = [
+  "log4j-layout-template-json"
+]
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
