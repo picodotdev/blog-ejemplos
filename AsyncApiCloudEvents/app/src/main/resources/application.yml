@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: events-service
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.cloudevents.kafka.CloudEventSerializer
+    consumer:
+      group-id: events-service
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.cloudevents.kafka.CloudEventDeserializer
+      auto-offset-reset: earliest
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: "info"
+    io.github.picodotdev.blogbitix: "info"
+  pattern:
+    level: "%-5level"
+
+    console: "%d{DEFAULT} %X{uuid} %-5level %X{correlation} %60.60logger %msg%n"
+
+app:
+  topic: events

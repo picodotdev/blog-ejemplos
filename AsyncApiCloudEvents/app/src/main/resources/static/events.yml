@@ -1,0 +1,37 @@
+asyncapi: 3.0.0
+info:
+  title: Service API
+  version: 1.0.0
+  description: The API notifies you whenever there is a new event.
+servers:
+  centralKafkaServer:
+    host: localhost:8092
+    description: Kafka broker
+    protocol: kafka
+operations:
+  onPlaceOrder:
+    action: send
+    channel:
+      $ref: '#/channels/event'
+channels:
+  placeOrder:
+    description: A message when there is a new event.
+    address: place-order
+    messages:
+      event:
+        $ref: '#/components/messages/event'
+components:
+  messages:
+    event:
+      name: Event
+      title: Event
+      payload:
+        $ref: '#/components/schemas/EventPayload'
+  schemas:
+    PlaceOrderPayload:
+      type: object
+      title: PlaceOrderPayload
+      properties:
+        eventId:
+          type: string
+          description: Event id
