@@ -36,15 +36,15 @@ public class EventsProducer {
             byte[] data = objectMapper.writeValueAsBytes(payload);
 
             CloudEvent event = CloudEventBuilder.v1()
-                    .withId(UUID.randomUUID().toString())
-                    .withSource(URI.create("io.github.picodotdev.blogbitix.asyncapicloudevents/events"))
-                    .withType("io.github.picodotdev.blogbitix.asyncapicloudevents.Event")
-                    .withTime(OffsetDateTime.now())
-                    .withDataContentType("application/json")
-                    .withData(data)
-                    .build();
-            kafkaTemplate.send(topic, payload.eventId(), event);
-            log.info("Published event event (id={}, eventId={})", event.getId(), payload.eventId());
+                                                .withId(UUID.randomUUID().toString())
+                                                .withSource(URI.create("io.github.picodotdev.blogbitix.asyncapicloudevents/events"))
+                                                .withType("io.github.picodotdev.blogbitix.asyncapicloudevents.Event")
+                                                .withTime(OffsetDateTime.now())
+                                                .withDataContentType("application/json")
+                                                .withData(data)
+                                                .build();
+            kafkaTemplate.send(topic, event.getId(), event);
+            log.info("Published event event (id={}, orderId={}, customerId={}, total={})", event.getId(), payload.orderId(), payload.customerId(), payload.total());
         } catch (JsonProcessingException e) {
             throw new IllegalStateException("Failed to serialize EventPayload", e);
         }

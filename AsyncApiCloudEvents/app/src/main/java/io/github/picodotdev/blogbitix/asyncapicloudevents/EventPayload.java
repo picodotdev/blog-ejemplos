@@ -1,4 +1,6 @@
 package io.github.picodotdev.blogbitix.asyncapicloudevents;
 
-public record EventPayload(String eventId) {
+import java.math.BigDecimal;
+
+public record EventPayload(String orderId, String customerId, BigDecimal total) {
 }

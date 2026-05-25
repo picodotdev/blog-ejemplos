@@ -28,7 +28,8 @@ public class EventsConsumer {
         }
         try {
             EventPayload payload = objectMapper.readValue(event.getData().toBytes(), EventPayload.class);
-            log.info("Received event (id={}, type={}, eventId={})", event.getId(), event.getType(), payload.eventId());
+            log.info("Received event (id={}, type={}, orderId={}, customerId={}, total={})", event.getId(), event.getType(), payload.orderId(),
+                     payload.customerId(), payload.total());
         } catch (IOException e) {
             log.error("Failed to deserialize CloudEvent (id={})", event.getId(), e);
         }
