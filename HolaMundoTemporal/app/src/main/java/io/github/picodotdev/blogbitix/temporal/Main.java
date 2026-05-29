@@ -3,6 +3,7 @@ package io.github.picodotdev.blogbitix.temporal;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,18 +22,18 @@ public class Main implements ApplicationRunner {
     }
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(@NonNull ApplicationArguments args) throws Exception {
         PlaceOrderWorkflowWorker worker = new PlaceOrderWorkflowWorker();
         Workflow workflow = new Workflow();
 
-        ExecutorService executor = Executors.newFixedThreadPool(3);
-        executor.submit(() -> worker.start());
-        Thread.sleep(1000);
-        executor.submit(() -> workflow.run());
-        Thread.sleep(5000);
+        try (ExecutorService executor = Executors.newFixedThreadPool(3)) {
+            executor.submit(worker::start);
+            Thread.sleep(1000);
+            executor.submit(workflow::run);
+            Thread.sleep(5000);
 
-        worker.shutdown();
-        workflow.shutdown();
-        executor.shutdown();
+            worker.shutdown();
+            workflow.shutdown();
+        }
     }
 }
