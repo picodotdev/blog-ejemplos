@@ -1,1 +1,1 @@
-rootProject.name = "hola-mundo"
+rootProject.name = "HolaMundoSpotless"
