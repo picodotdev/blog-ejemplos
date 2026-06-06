@@ -7,5 +7,7 @@ public class Main {
         Greeter greeter = new Greeter();
         greeter = greeter;
         System.out.println(greeter.greet("Mundo"));
+        // Test JSpecify, Error Prone and NullAway
+        //System.out.println(greeter.greet(null));
     }
 }

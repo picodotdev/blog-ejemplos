@@ -1,3 +1,4 @@
+import net.ltgt.gradle.errorprone.CheckSeverity
 import net.ltgt.gradle.errorprone.errorprone
 
 plugins {
@@ -11,7 +12,10 @@ repositories {
 }
 
 dependencies {
-    errorprone("com.google.errorprone:error_prone_core:2.28.0")
+    compileOnly("org.jspecify:jspecify:1.0.0")
+
+    errorprone("com.google.errorprone:error_prone_core:2.49.0")
+    errorprone("com.uber.nullaway:nullaway:0.13.6")
 }
 
 java {
@@ -52,6 +56,9 @@ tasks.withType<JavaCompile>().configureEach {
         excludedPaths.set(".*/build/generated/.*")
         disable("StringCaseLocaleUsage")
         error("DefaultCharset", "MissingOverride", "UnusedVariable")
+
+        check("NullAway", CheckSeverity.ERROR)
+        option("NullAway:AnnotatedPackages", "io.github.picodotdev.blogbitix")
     }
 }
 
