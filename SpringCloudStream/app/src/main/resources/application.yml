@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: spring-cloud-stream
+  cloud:
+    function:
+        definition: uppercase;logger
+    stream:
+      bindings:
+        uppercase-in-0:
+          destination: message
+          group: uppercase-function
+        uppercase-out-0:
+          destination: message-uppercase
+        logger-in-0:
+          destination: message-uppercase
+          group: logger-consumer
+      kafka:
+        binder:
+          brokers: localhost:9092
+
+logging:
+  level:
+    root: "info"
+    io.github.picodotdev.blogbitix: "info"
+  pattern:
+    level: "%-5level"
+    console: "%d{DEFAULT} %X{uuid} %-5level %X{correlation} %60.60logger %msg%n"
