@@ -2,7 +2,7 @@ package io.github.picodotdev.blogbitix.holamundospotless;
 
 public class Main {
 
-    @SuppressWarnings("SelfAssignment")
+    @SuppressWarnings({ "SelfAssignment", "PMD.SystemPrintln" })
     public static void main(final String[] args) {
         Greeter greeter = new Greeter();
         greeter = greeter;

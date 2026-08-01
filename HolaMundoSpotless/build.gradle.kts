@@ -3,8 +3,10 @@ import net.ltgt.gradle.errorprone.errorprone
 
 plugins {
     application
-    id("com.diffplug.spotless") version "7.0.2"
+    pmd
+    checkstyle
     id("net.ltgt.errorprone") version "5.1.0"
+    id("com.diffplug.spotless") version "7.0.2"
 }
 
 repositories {
@@ -28,6 +30,18 @@ application {
     mainClass.set("io.github.picodotdev.blogbitix.holamundospotless.Main")
 }
 
+pmd {
+    toolVersion = "7.26.0"
+    threads = 4
+    rulesMinimumPriority = 5
+    ruleSets = listOf("category/java/bestpractices.xml", "category/java/performance.xml", "category/java/multithreading.xml")
+}
+
+checkstyle {
+    toolVersion = "13.9.0"
+    configFile = file("$rootDir/config/checkstyle.xml")
+}
+
 spotless {
     java {
         target("src/**/*.java")
@@ -45,6 +59,13 @@ spotless {
         target("*.md", "*.yml", ".gitignore", ".editorconfig")
         trimTrailingWhitespace()
         endWithNewline()
+    }
+}
+
+tasks.withType<Checkstyle>().configureEach {
+    reports {
+        xml.required = false
+        html.required = true
     }
 }
 
