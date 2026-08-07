@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: "drools-rules"
+
+logging:
+  pattern:
+    level: "%-5level"
+    console: "%d ${logging.pattern.level} [${spring.application.name:},%X{traceId},%X{spanId}] [%t] %60.60logger %m%n"
+  level:
+    root: INFO
+    com.stubhub: INFO
+    org.apache.kafka.clients.NetworkClient: WARN

@@ -1,0 +1,26 @@
+package io.github.picodotdev.blogbitix.drools;
+
+import io.github.picodotdev.blogbitix.drools.domain.Applicant;
+import io.github.picodotdev.blogbitix.drools.domain.LoanApplication;
+
+rule "Underage"
+  salience 15
+  ruleflow-group "applicationGroup"
+  when
+    $application : LoanApplication($applicantId: applicantId)
+    Applicant(id == $applicantId && age < 21)
+  then
+    $application.setApproved(false);
+    $application.setExplanation("Underage");
+end
+
+rule "Overage"
+  salience 15
+  ruleflow-group "applicationGroup"
+  when
+    $application : LoanApplication($applicantId: applicantId)
+    Applicant(id == $applicantId && age >= 21)
+  then
+    $application.setApproved(true);
+    $application.setExplanation("Old enough");
+end

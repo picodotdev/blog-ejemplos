@@ -1,0 +1,43 @@
+[versions]
+springboot = "3.5.16"
+drools = "10.2.0"
+kogito = "10.2.0"
+
+[libraries]
+springBootBom = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "springboot" }
+droolsBom = { module = "org.drools:drools-bom", version.ref = "drools" }
+kogitoBom = { module = "org.kie.kogito:kogito-bom", version.ref = "kogito" }
+
+spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter" }
+spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+spring-boot-starter-aop = { module = "org.springframework.boot:spring-boot-starter-aop" }
+spring-boot-starter-log4j2 = { module = "org.springframework.boot:spring-boot-starter-log4j2" }
+
+drools-core = { module = "org.drools:drools-core" }
+drools-compiler = { module = "org.drools:drools-compiler" }
+drools-model-compiler = { module = "org.drools:drools-model-compiler" }
+drools-mvel = { module = "org.drools:drools-mvel" }
+drools-xml-support = { module = "org.drools:drools-xml-support" }
+kie-dmn-core = { module = "org.kie:kie-dmn-core", version.ref = "kogito" }
+
+[bundles]
+springBoot = [
+    "spring-boot-starter",
+    "spring-boot-starter-web",
+    "spring-boot-starter-actuator",
+    "spring-boot-starter-aop",
+    "spring-boot-starter-log4j2"
+]
+
+drools = [
+    "drools-core",
+    "drools-compiler",
+    "drools-model-compiler",
+    "drools-mvel",
+    "drools-xml-support",
+    "kie-dmn-core",
+]
+
+[plugins]
+springboot = { id = "org.springframework.boot", version.ref = "springboot" }
