@@ -21,7 +21,7 @@ import java.util.List;
 public class Main {
 
     private static final String APPLICATION_NAME = "JavaGoogleApi";
-    private static final String API_KEY = "AIzaSyDGwW...";
+    private static final String API_KEY = System.getenv("GOOGLE_API_KEY");
     private static final String CREDENTIALS_FILE_PATH = "/blogbitix-119471bc8ebf.json";
     private static final String SPREADSHEET_ID = "1JhBPGW4FN...";
     private static final String RANGE = "Hoja1";
